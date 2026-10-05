@@ -73,7 +73,7 @@ struct GridView: View {
 
     private func titleColumn(_ table: Table) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            headerCell("Kalem", alignment: .leading)
+            headerCell(String(localized: "Kalem"), alignment: .leading)
             ForEach(table.rows, id: \.objectID) { item in
                 HStack(spacing: 8) {
                     Circle()

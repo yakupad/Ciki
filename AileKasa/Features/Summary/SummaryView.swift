@@ -76,7 +76,7 @@ struct SummaryView: View {
             ForEach(people, id: \.objectID) { person in
                 PersonTile(name: person.displayName, color: person.color, value: summary.net(for: person))
             }
-            PersonTile(name: "Ortak", color: .petrol, value: shared)
+            PersonTile(name: String(localized: "Ortak"), color: .petrol, value: shared)
         }
     }
 
@@ -225,7 +225,7 @@ private struct UpcomingRow: View {
                     if line.item.dueDay > 0 {
                         DueChip(day: Int(line.item.dueDay), month: line.month)
                     }
-                    Text(line.item.owner?.displayName ?? "Ortak")
+                    Text(line.item.ownerName)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -291,7 +291,7 @@ struct NetChart: View {
                     AxisGridLine()
                     AxisValueLabel {
                         if let number = value.as(Double.self) {
-                            Text("\(Int(number / 1000))B")
+                            Text("\(Int(number / 1000))B", comment: "Grafik ekseni: bin TL kısaltması")
                         }
                     }
                 }

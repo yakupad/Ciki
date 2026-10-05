@@ -88,9 +88,16 @@ struct ItemEditorView: View {
                     }
                     .pickerStyle(.segmented)
                     Picker("Para birimi", selection: $currency) {
-                        ForEach(Currency.allCases) { Text("\($0.symbol) \($0.title)").tag($0) }
+                        Section {
+                            ForEach(Currency.common) { CurrencyLabel(currency: $0).tag($0) }
+                        }
+                        Section {
+                            ForEach(Currency.all.filter { !Currency.common.contains($0) }) {
+                                CurrencyLabel(currency: $0).tag($0)
+                            }
+                        }
                     }
-                    .pickerStyle(.segmented)
+                    .pickerStyle(.navigationLink)
                     Picker("Son ödeme günü", selection: $dueDay) {
                         Text("Yok").tag(0)
                         ForEach(1...31, id: \.self) { Text("\($0)").tag($0) }
@@ -134,7 +141,7 @@ struct ItemEditorView: View {
                     }
                 }
             }
-            .navigationTitle(item == nil ? "Yeni kalem" : "Kalemi düzenle")
+            .navigationTitle(item == nil ? String(localized: "Yeni kalem") : String(localized: "Kalemi düzenle"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -159,9 +166,11 @@ struct ItemEditorView: View {
     }
 
     private var recurringFooter: String {
-        guard hasEnd else { return "\(recurringStart.title) ayından itibaren her ay tahmini olarak görünür." }
+        let start = recurringStart.title
+        guard hasEnd else { return String(localized: "\(start) ayından itibaren her ay tahmini olarak görünür.") }
+        let end = recurringEnd.title
         let count = recurringStart.distance(to: recurringEnd) + 1
-        return "\(recurringStart.title) – \(recurringEnd.title), toplam \(count) ay."
+        return String(localized: "\(start) – \(end), toplam \(count) ay.")
     }
 
     private func save() {
@@ -202,4 +211,21 @@ struct ItemEditorView: View {
 #Preview {
     ItemEditorView(item: nil)
         .environment(\.managedObjectContext, PersistenceController.preview.viewContext)
+}
+
+/// "€  EUR · Euro"
+struct CurrencyLabel: View {
+    let currency: Currency
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Text(currency.symbol)
+                .font(.system(.body, design: .rounded).weight(.semibold))
+                .frame(minWidth: 36, alignment: .leading)
+            Text(verbatim: currency.title)
+                .fontWeight(.semibold)
+            Text(verbatim: currency.name)
+                .foregroundStyle(.secondary)
+        }
+    }
 }

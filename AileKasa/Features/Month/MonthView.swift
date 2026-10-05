@@ -123,9 +123,10 @@ struct MonthView: View {
     private func copyFromPrevious() {
         let count = context.copyEntries(from: app.month.adding(-1), to: app.month,
                                         items: items.filter(filter.includes), rates: rates.table)
+        let source = app.month.adding(-1).name
         copyMessage = count == 0
-            ? "\(app.month.adding(-1).name) ayında kopyalanacak yeni kayıt yok."
-            : "\(count) kayıt \(app.month.adding(-1).name) ayından kopyalandı. Tutarları ekstreye göre güncelleyin."
+            ? String(localized: "\(source) ayında kopyalanacak yeni kayıt yok.")
+            : String(localized: "\(count) kayıt \(source) ayından kopyalandı. Tutarları ekstreye göre güncelleyin.")
     }
 
     struct Group: Identifiable {
@@ -139,8 +140,8 @@ struct MonthView: View {
     static func groups(from lines: [LedgerLine]) -> [Group] {
         var order: [String] = []
         var map: [String: [LedgerLine]] = [:]
-        let incomeTitle = "Gelir ve alacaklar"
-        let otherTitle = "Diğer giderler"
+        let incomeTitle = String(localized: "Gelir ve alacaklar")
+        let otherTitle = String(localized: "Diğer giderler")
         for line in lines {
             let title: String
             if line.direction != .expense {
@@ -206,15 +207,16 @@ struct EntryRow: View {
         switch line.status {
         case .paid:
             if let date = line.entry?.paidAt {
-                parts.append("Ödendi · " + date.formatted(.dateTime.day().month(.abbreviated).locale(Money.locale)))
+                let day = date.formatted(.dateTime.day().month(.abbreviated).locale(Money.locale))
+                parts.append(String(localized: "Ödendi · \(day)"))
             } else {
-                parts.append("Ödendi")
+                parts.append(String(localized: "Ödendi"))
             }
-        case .excluded: parts.append("Bu ay hariç")
-        case .pending: if line.isProjected { parts.append("Düzenli · tahmini") }
+        case .excluded: parts.append(String(localized: "Bu ay hariç"))
+        case .pending: if line.isProjected { parts.append(String(localized: "Düzenli · tahmini")) }
         }
-        if showOwner { parts.append(line.item.owner?.displayName ?? "Ortak") }
-        if line.item.dueDay > 0 { parts.append("SÖT \(line.item.dueDay)") }
+        if showOwner { parts.append(line.item.ownerName) }
+        if line.item.dueDay > 0 { parts.append(String(localized: "SÖT \(Int(line.item.dueDay))")) }
         if let note = line.entry?.note, !note.isEmpty { parts.append(note) }
         if parts.isEmpty { parts.append(line.item.kind.title) }
         return parts.joined(separator: " · ")

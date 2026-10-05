@@ -21,9 +21,9 @@ struct ReportView: View {
         var id: String { rawValue }
         var title: String {
             switch self {
-            case .half: "6 ay"
-            case .year: "12 ay"
-            case .plan: "12 ay + 6 ay"
+            case .half: String(localized: "6 ay")
+            case .year: String(localized: "12 ay")
+            case .plan: String(localized: "12 ay + 6 ay")
             }
         }
         /// Bugüne göre ay aralığı.
@@ -82,7 +82,7 @@ private struct StatsRow: View {
                      color: Color.amount(average))
             StatTile(title: "Ödenmemiş gider", value: Money.string(remaining, fractions: false),
                      color: remaining > 0 ? .gider : .secondary,
-                     caption: totals.contains { $0.month > now } ? "Bu ay ve sonrası" : "Bu ay")
+                     caption: totals.contains { $0.month > now } ? String(localized: "Bu ay ve sonrası") : String(localized: "Bu ay"))
             if let peak {
                 StatTile(title: "En yüksek gider", value: Money.string(peak.expense, fractions: false),
                          color: .gider, caption: peak.month.title)
@@ -96,7 +96,7 @@ private struct StatsRow: View {
 }
 
 private struct StatTile: View {
-    let title: String
+    let title: LocalizedStringKey
     let value: String
     let color: Color
     var caption: String?
@@ -213,8 +213,8 @@ private struct DebtChart: View {
 }
 
 private struct ChartCard<Content: View>: View {
-    let title: String
-    let caption: String
+    let title: LocalizedStringKey
+    let caption: LocalizedStringKey
     @ViewBuilder let content: Content
 
     var body: some View {
@@ -262,7 +262,7 @@ private extension View {
                 AxisGridLine()
                 AxisValueLabel {
                     if let number = value.as(Double.self) {
-                        Text("\(Int(number / 1000))B")
+                        Text("\(Int(number / 1000))B", comment: "Grafik ekseni: bin TL kısaltması")
                     }
                 }
             }
@@ -280,7 +280,8 @@ private struct MonthTable: View {
         let rows = cumulativeRows
 
         VStack(spacing: 0) {
-            row(month: "Ay", incoming: "Gelir", expense: "Gider", net: "Net", cumulative: "Birikimli", header: true)
+            row(month: String(localized: "Ay"), incoming: String(localized: "Gelir"), expense: String(localized: "Gider"),
+                net: String(localized: "Net"), cumulative: String(localized: "Birikimli"), header: true)
             ForEach(rows.reversed(), id: \.0.id) { total, cumulative in
                 Divider()
                 row(month: total.month.shortTitle,

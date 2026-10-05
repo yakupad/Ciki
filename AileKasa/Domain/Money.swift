@@ -1,7 +1,8 @@
 import Foundation
 
 nonisolated enum Money {
-    static let locale = Locale(identifier: "tr_TR")
+    /// Uygulama dilinin sayı biçimi: Türkçe "18989", İngilizce "18989".
+    static var locale: Locale { AppLanguage.current.locale }
 
     enum SignStyle {
         /// Yalnızca eksi değerlerde işaret.
@@ -16,7 +17,8 @@ nonisolated enum Money {
     static func string(_ value: Decimal,
                        currency: Currency = .tl,
                        sign: SignStyle = .automatic,
-                       fractions: Bool = true) -> String {
+                       fractions: Bool = true,
+                       locale: Locale = Money.locale) -> String {
         let magnitude = value < 0 ? -value : value
         let number = magnitude.formatted(
             .number
@@ -33,7 +35,7 @@ nonisolated enum Money {
     }
 
     /// Para birimi simgesi olmadan, tablo hücreleri için: "−89.965"
-    static func compact(_ value: Decimal) -> String {
+    static func compact(_ value: Decimal, locale: Locale = Money.locale) -> String {
         let magnitude = value < 0 ? -value : value
         let number = magnitude.formatted(.number.locale(locale).precision(.fractionLength(0)))
         return value < 0 ? "−\(number)" : number

@@ -11,18 +11,24 @@ final class RateService {
 
     private let defaults: UserDefaults
     private static let url = URL(string: "https://www.tcmb.gov.tr/kurlar/today.xml")!
+    private static let storageKey = "rates.v2"
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
-        self.table = RateTable(
-            usd: defaults.string(forKey: "rate.USD").flatMap { Decimal(string: $0) },
-            eur: defaults.string(forKey: "rate.EUR").flatMap { Decimal(string: $0) }
-        )
+        let stored = defaults.dictionary(forKey: Self.storageKey) as? [String: String] ?? [:]
+        var rates = stored.compactMapValues { Decimal(string: $0, locale: Locale(identifier: "en_US_POSIX")) }
+        // Eski sürümün yalnızca USD/EUR sakladığı anahtarlar.
+        for code in ["USD", "EUR"] where rates[code] == nil {
+            if let legacy = defaults.string(forKey: "rate.\(code)").flatMap({ Decimal(string: $0) }) {
+                rates[code] = legacy
+            }
+        }
+        self.table = RateTable(rates: rates)
         self.updatedAt = defaults.object(forKey: "rate.updatedAt") as? Date
     }
 
     func refreshIfStale() async {
-        if let updatedAt, Date.now.timeIntervalSince(updatedAt) < 6 * 3600 { return }
+        if let updatedAt, Date.now.timeIntervalSince(updatedAt) < 6 * 3600, table.rates.count > 2 { return }
         await refresh()
     }
 
@@ -33,27 +39,28 @@ final class RateService {
         do {
             let (data, _) = try await URLSession.shared.data(from: Self.url)
             let rates = try TCMBParser.parse(data)
-            guard rates.usd != nil || rates.eur != nil else { throw URLError(.cannotParseResponse) }
+            guard !rates.rates.isEmpty else { throw URLError(.cannotParseResponse) }
             table = rates
             updatedAt = .now
             errorMessage = nil
             persist()
         } catch {
-            errorMessage = "Kur alınamadı. İnternet bağlantınızı kontrol edip yeniden deneyin."
+            errorMessage = String(localized: "Kur alınamadı. İnternet bağlantınızı kontrol edip yeniden deneyin.")
         }
     }
 
     private func persist() {
-        defaults.set(table.usd.map { "\($0)" }, forKey: "rate.USD")
-        defaults.set(table.eur.map { "\($0)" }, forKey: "rate.EUR")
+        let stored = table.rates.mapValues { "\($0)" }
+        defaults.set(stored, forKey: Self.storageKey)
         defaults.set(updatedAt, forKey: "rate.updatedAt")
     }
 }
 
-/// `<Currency Kod="USD"> … <ForexSelling>41.2034</ForexSelling>` yapısını okur.
+/// `<Currency Kod="JPY"><Unit>100</Unit> … <ForexSelling>31.19</ForexSelling>` yapısını okur.
+/// Döviz satış kuru yoksa efektif satış kullanılır; birden fazla birimlik kurlar (JPY 100) bire indirilir.
 nonisolated final class TCMBParser: NSObject, XMLParserDelegate {
     private var currentCode: String?
-    private var currentElement = ""
+    private var fields: [String: String] = [:]
     private var buffer = ""
     private var result = RateTable()
 
@@ -71,8 +78,8 @@ nonisolated final class TCMBParser: NSObject, XMLParserDelegate {
                 qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
         if elementName == "Currency" {
             currentCode = attributeDict["Kod"] ?? attributeDict["CurrencyCode"]
+            fields = [:]
         }
-        currentElement = elementName
         buffer = ""
     }
 
@@ -82,16 +89,21 @@ nonisolated final class TCMBParser: NSObject, XMLParserDelegate {
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?,
                 qualifiedName qName: String?) {
-        if elementName == "ForexSelling", let code = currentCode {
-            let value = Decimal(string: buffer.trimmingCharacters(in: .whitespacesAndNewlines),
-                                locale: Locale(identifier: "en_US_POSIX"))
-            switch code {
-            case "USD": result.usd = value
-            case "EUR": result.eur = value
-            default: break
-            }
+        if currentCode != nil {
+            fields[elementName] = buffer.trimmingCharacters(in: .whitespacesAndNewlines)
         }
-        if elementName == "Currency" { currentCode = nil }
+        if elementName == "Currency", let code = currentCode {
+            let posix = Locale(identifier: "en_US_POSIX")
+            let unit = fields["Unit"].flatMap { Decimal(string: $0, locale: posix) } ?? 1
+            let selling = [fields["ForexSelling"], fields["BanknoteSelling"]]
+                .compactMap { $0 }
+                .first { !$0.isEmpty }
+                .flatMap { Decimal(string: $0, locale: posix) }
+            if let selling, selling > 0, unit > 0, code != "XDR" {
+                result.rates[code] = selling / unit
+            }
+            currentCode = nil
+        }
         buffer = ""
     }
 }

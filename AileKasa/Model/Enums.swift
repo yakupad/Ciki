@@ -1,26 +1,51 @@
 import Foundation
 
-nonisolated enum Currency: String, CaseIterable, Identifiable, Sendable {
-    case tl = "TRY"
-    case usd = "USD"
-    case eur = "EUR"
+/// ISO 4217 kodlu para birimi. TL dışındakilerin kuru TCMB'den gelir.
+nonisolated struct Currency: Hashable, Identifiable, Sendable {
+    let code: String
 
-    var id: String { rawValue }
+    init(code: String) {
+        self.code = code.uppercased()
+    }
+
+    static let tl = Currency(code: "TRY")
+    static let usd = Currency(code: "USD")
+    static let eur = Currency(code: "EUR")
+    static let gbp = Currency(code: "GBP")
+
+    /// TCMB'nin günlük yayımladığı para birimleri; sık kullanılanlar önde.
+    static let all: [Currency] = ["TRY", "USD", "EUR", "GBP", "CHF", "JPY", "CAD", "AUD",
+                                  "SAR", "AED", "QAR", "KWD", "AZN", "RUB", "CNY", "SEK",
+                                  "NOK", "DKK", "RON", "KRW", "PKR", "KZT"].map(Currency.init(code:))
+    /// Seçicide üstte gösterilen birimler.
+    static let common: [Currency] = [.tl, .usd, .eur, .gbp, Currency(code: "CHF")]
+
+    var id: String { code }
 
     var symbol: String {
-        switch self {
-        case .tl: "₺"
-        case .usd: "$"
-        case .eur: "€"
+        switch code {
+        case "TRY": "₺"
+        case "USD": "$"
+        case "EUR": "€"
+        case "GBP": "£"
+        case "JPY": "¥"
+        case "CNY": "CN¥"
+        case "CAD": "C$"
+        case "AUD": "A$"
+        case "RUB": "₽"
+        case "AZN": "₼"
+        case "KRW": "₩"
+        case "KZT": "₸"
+        default: code
         }
     }
 
-    var title: String {
-        switch self {
-        case .tl: "TL"
-        case .usd: "USD"
-        case .eur: "EUR"
-        }
+    /// Kısa ad: "TL", "USD", "EUR"…
+    var title: String { self == .tl ? "TL" : code }
+
+    /// Uygulama dilinde tam ad: "ABD Doları" / "US Dollar".
+    var name: String {
+        AppLanguage.current.locale.localizedString(forCurrencyCode: code)?.capitalized(with: AppLanguage.current.locale) ?? code
     }
 }
 
@@ -33,9 +58,9 @@ nonisolated enum Direction: String, CaseIterable, Identifiable, Sendable {
 
     var title: String {
         switch self {
-        case .expense: "Gider"
-        case .income: "Gelir"
-        case .receivable: "Alacak"
+        case .expense: String(localized: "Gider")
+        case .income: String(localized: "Gelir")
+        case .receivable: String(localized: "Alacak")
         }
     }
 
@@ -60,17 +85,17 @@ nonisolated enum ItemKind: String, CaseIterable, Identifiable, Sendable {
 
     var title: String {
         switch self {
-        case .card: "Kart"
-        case .cashAdvance: "Nakit Avans"
-        case .loan: "Kredi"
-        case .cash: "Nakit"
-        case .rent: "Kira"
-        case .bill: "Fatura"
-        case .housing: "Konut / Tasarruf"
-        case .family: "Aile / Gönderim"
-        case .salary: "Maaş"
-        case .receivable: "Alacak"
-        case .other: "Diğer"
+        case .card: String(localized: "Kart")
+        case .cashAdvance: String(localized: "Nakit Avans")
+        case .loan: String(localized: "Kredi")
+        case .cash: String(localized: "Nakit")
+        case .rent: String(localized: "Kira")
+        case .bill: String(localized: "Fatura")
+        case .housing: String(localized: "Konut / Tasarruf")
+        case .family: String(localized: "Aile / Gönderim")
+        case .salary: String(localized: "Maaş")
+        case .receivable: String(localized: "Alacak")
+        case .other: String(localized: "Diğer")
         }
     }
 
@@ -116,9 +141,9 @@ nonisolated enum EntryStatus: String, CaseIterable, Identifiable, Sendable {
 
     var title: String {
         switch self {
-        case .pending: "Bekliyor"
-        case .paid: "Ödendi"
-        case .excluded: "Hariç"
+        case .pending: String(localized: "Bekliyor")
+        case .paid: String(localized: "Ödendi")
+        case .excluded: String(localized: "Hariç")
         }
     }
 }

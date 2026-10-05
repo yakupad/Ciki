@@ -36,7 +36,7 @@ struct ItemsView: View {
 
             section("Düzenli ödemeler", recurringExpense)
             section("Düzenli gelirler", recurringIncome)
-            section("Diğer kalemler", others)
+            section("Diğer kalemler", others, showsReorderHint: true)
             section("Arşiv", archived)
         }
         .listStyle(.insetGrouped)
@@ -58,7 +58,7 @@ struct ItemsView: View {
     }
 
     @ViewBuilder
-    private func section(_ title: String, _ items: [LedgerItem]) -> some View {
+    private func section(_ title: LocalizedStringKey, _ items: [LedgerItem], showsReorderHint: Bool = false) -> some View {
         if !items.isEmpty {
             Section {
                 ForEach(items, id: \.objectID) { item in
@@ -71,7 +71,7 @@ struct ItemsView: View {
             } header: {
                 Text(title)
             } footer: {
-                if title == "Diğer kalemler" {
+                if showsReorderHint {
                     Text("Sırayı değiştirmek için Düzenle'ye dokunup kalemleri sürükleyin. Aylar ve Tablo ekranları bu sırayı kullanır.")
                 }
             }
@@ -120,43 +120,62 @@ private struct ItemRow: View {
     }
 
     private var subtitle: String {
-        var parts = [item.owner?.displayName ?? "Ortak"]
+        var parts = [item.ownerName]
         if item.isRecurring {
-            parts.append(item.dueDay > 0 ? "her ayın \(item.dueDay)'i" : "her ay")
+            parts.append(item.dueDay > 0
+                         ? String(localized: "her ayın \(Int(item.dueDay)). günü")
+                         : String(localized: "her ay"))
             if item.recurringEnd != 0 {
-                parts.append("\(Month(key: item.recurringEnd).title)'a kadar")
+                parts.append(String(localized: "son ay: \(Month(key: item.recurringEnd).title)"))
             }
         } else {
             parts.append(item.kind.title)
-            if item.dueDay > 0 { parts.append("SÖT \(item.dueDay)") }
+            if item.dueDay > 0 { parts.append(String(localized: "SÖT \(Int(item.dueDay))")) }
         }
         return parts.joined(separator: " · ")
     }
 }
 
+/// Kalemlerde kullanılan dövizlerin güncel kuru; dokununca tüm kurlar açılır.
 struct RateCard: View {
     @Environment(RateService.self) private var rates
 
+    @FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "currencyCode != %@ AND isArchived == NO", "TRY"))
+    private var foreignItems: FetchedResults<LedgerItem>
+
+    /// USD ve EUR her zaman, ardından kalemlerde kullanılan diğer dövizler.
+    private var shown: [Currency] {
+        var list: [Currency] = [.usd, .eur]
+        for item in foreignItems where !list.contains(item.currency) {
+            list.append(item.currency)
+        }
+        return list
+    }
+
     var body: some View {
         HStack(alignment: .center) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Döviz kuru · TCMB satış")
-                    .font(.caption2.weight(.semibold))
-                    .textCase(.uppercase)
-                    .foregroundStyle(.secondary)
-                HStack(spacing: 14) {
-                    rate("$", rates.table.usd)
-                    rate("€", rates.table.eur)
-                }
-                if let error = rates.errorMessage {
-                    Text(error).font(.caption).foregroundStyle(Color.gider)
-                } else if let updated = rates.updatedAt {
-                    Text("Güncellendi: " + updated.formatted(.dateTime.day().month().hour().minute().locale(Money.locale)))
-                        .font(.caption)
+            NavigationLink {
+                AllRatesView()
+            } label: {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Döviz kuru · TCMB satış")
+                        .font(.caption2.weight(.semibold))
+                        .textCase(.uppercase)
                         .foregroundStyle(.secondary)
+                    ViewThatFits(in: .horizontal) {
+                        HStack(spacing: 14) { rateTexts }
+                        VStack(alignment: .leading, spacing: 2) { rateTexts }
+                    }
+                    if let error = rates.errorMessage {
+                        Text(error).font(.caption).foregroundStyle(Color.gider)
+                    } else if let updated = rates.updatedAt {
+                        let date = updated.formatted(.dateTime.day().month().hour().minute().locale(Money.locale))
+                        Text("Güncellendi: \(date)")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
-            Spacer()
             if rates.isLoading {
                 ProgressView()
             } else {
@@ -169,9 +188,52 @@ struct RateCard: View {
         }
     }
 
-    private func rate(_ symbol: String, _ value: Decimal?) -> some View {
-        Text("\(symbol) \(value.map { Money.string($0, fractions: true) } ?? "—")")
-            .font(.amount(16, weight: .semibold))
+    @ViewBuilder
+    private var rateTexts: some View {
+        ForEach(shown) { currency in
+            Text(verbatim: "\(currency.symbol) \(rates.table.rate(for: currency).map { Money.string($0) } ?? "—")")
+                .font(.amount(16, weight: .semibold))
+                .lineLimit(1)
+        }
+    }
+}
+
+/// TCMB'nin yayımladığı tüm kurlar, aranabilir.
+struct AllRatesView: View {
+    @Environment(RateService.self) private var rates
+    @State private var query = ""
+
+    var body: some View {
+        let list = Currency.all.filter { $0 != .tl }.filter { currency in
+            query.isEmpty
+                || currency.code.localizedCaseInsensitiveContains(query)
+                || currency.name.localizedCaseInsensitiveContains(query)
+        }
+
+        List {
+            Section {
+                ForEach(list) { currency in
+                    HStack {
+                        CurrencyLabel(currency: currency)
+                        Spacer()
+                        Text(verbatim: rates.table.rate(for: currency).map(format) ?? "—")
+                            .font(.amount(15, weight: .semibold))
+                    }
+                }
+            } footer: {
+                Text("1 birim döviz için TCMB döviz satış kuru. Satış kuru yayımlanmayan birimlerde efektif satış kullanılır.")
+            }
+        }
+        .searchable(text: $query, prompt: Text("Para birimi ara"))
+        .navigationTitle("Döviz kurları")
+        .refreshable { await rates.refresh() }
+    }
+
+    /// Küçük kurlarda (KRW 0,0366) dört ondalığa kadar gösterilir.
+    private func format(_ value: Decimal) -> String {
+        let digits = value < 1 ? 4 : 2
+        let number = value.formatted(.number.locale(Money.locale).precision(.fractionLength(0...digits)))
+        return "\(number) ₺"
     }
 }
 

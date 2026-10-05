@@ -4,6 +4,7 @@ import CoreData
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.managedObjectContext) private var context
+    @Environment(\.openURL) private var openURL
 
     @FetchRequest(sortDescriptors: [SortDescriptor(\Person.sortOrder)])
     private var people: FetchedResults<Person>
@@ -37,6 +38,22 @@ struct SettingsView: View {
 
                 Section {
                     RateCard()
+                }
+
+                Section {
+                    Button {
+                        if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
+                    } label: {
+                        LabeledContent("Uygulama dili") {
+                            HStack(spacing: 4) {
+                                Text(verbatim: AppLanguage.current == .english ? "English" : "Türkçe")
+                                Image(systemName: "arrow.up.forward.app")
+                            }
+                        }
+                    }
+                    .foregroundStyle(.primary)
+                } footer: {
+                    Text("Dil, iOS Ayarlar'da uygulamanın sayfasından değiştirilir. Türkçe ve İngilizce desteklenir.")
                 }
 
                 Section("iCloud") {

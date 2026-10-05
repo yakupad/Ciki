@@ -69,7 +69,7 @@ nonisolated extension Household {
 nonisolated extension Person {
     var displayName: String {
         let trimmed = (name ?? "").trimmingCharacters(in: .whitespaces)
-        return trimmed.isEmpty ? "İsimsiz" : trimmed
+        return trimmed.isEmpty ? String(localized: "İsimsiz") : trimmed
     }
 }
 
@@ -85,8 +85,13 @@ nonisolated extension LedgerItem {
     }
 
     var currency: Currency {
-        get { Currency(rawValue: currencyCode ?? "") ?? .tl }
-        set { currencyCode = newValue.rawValue }
+        get { currencyCode.map(Currency.init(code:)) ?? .tl }
+        set { currencyCode = newValue.code }
+    }
+
+    /// Sahibin adı; sahibi yoksa "Ortak".
+    var ownerName: String {
+        owner?.displayName ?? String(localized: "Ortak")
     }
 
     var bankName: String? {

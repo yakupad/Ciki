@@ -27,8 +27,9 @@ struct LedgerTests {
     @Test func monthArithmeticCrossesYearBoundary() {
         let december = Month(year: 2026, month: 12)
         #expect(december.adding(1) == Month(year: 2027, month: 1))
-        #expect(december.adding(1).title == "Ocak 2027")
-        #expect(Month(year: 2027, month: 1).adding(-1).title == "Aralık 2026")
+        #expect(december.adding(1).title(in: .turkish) == "Ocak 2027")
+        #expect(Month(year: 2027, month: 1).adding(-1).title(in: .turkish) == "Aralık 2026")
+        #expect(december.title(in: .english) == "December 2026")
         #expect(october.distance(to: december) == 2)
     }
 
@@ -107,10 +108,12 @@ struct LedgerTests {
     }
 
     @Test func moneyFormatsInTurkish() {
-        #expect(Money.string(-18989) == "−18989 ₺")
-        #expect(Money.string(42320, sign: .always) == "+42320 ₺")
-        #expect(Money.string(52319, currency: .eur) == "52319 €")
-        #expect(Money.compact(-30099) == "−45653")
+        let turkish = Locale(identifier: "tr_TR")
+        #expect(Money.string(-18989, locale: turkish) == "−18989 ₺")
+        #expect(Money.string(42320, sign: .always, locale: turkish) == "+42320 ₺")
+        #expect(Money.string(52319, currency: .eur, locale: turkish) == "52319 €")
+        #expect(Money.compact(-30099, locale: turkish) == "−45653")
+        #expect(Money.string(-18989, locale: Locale(identifier: "en_US")) == "−18989 ₺")
     }
 
     @Test func copyEntriesSkipsRecurringAndExisting() {
@@ -146,7 +149,7 @@ struct LedgerTests {
 
         let suggestions = Ledger.suggestions(for: item, before: october)
         #expect(suggestions.map(\.amount) == [3000, 2000, 47875])
-        #expect(suggestions.first?.label == "Geçen ay")
+        #expect(suggestions.first?.label == String(localized: "Geçen ay"))
     }
 
     @Test func suggestionsSkipExcludedAndDuplicateAmounts() {
@@ -180,5 +183,27 @@ struct LedgerTests {
         #expect(totals.net == 1500)
         #expect(totals.debtByBank == ["YapıKredi": 1000])
         #expect(totals.pendingExpense == 1000)
+    }
+
+    @Test func tcmbParserHandlesUnitsAndBanknoteFallback() throws {
+        let xml = """
+        <Tarih_Date>
+          <Currency Kod="JPY"><Unit>100</Unit><ForexSelling>31.1917</ForexSelling><BanknoteSelling>31.3102</BanknoteSelling></Currency>
+          <Currency Kod="AED"><Unit>1</Unit><ForexSelling></ForexSelling><BanknoteSelling>13.4322</BanknoteSelling></Currency>
+          <Currency Kod="XDR"><Unit>1</Unit><ForexSelling></ForexSelling><BanknoteSelling></BanknoteSelling></Currency>
+        </Tarih_Date>
+        """
+        let table = try TCMBParser.parse(Data(xml.utf8))
+        #expect(table.rate(for: Currency(code: "JPY")) == Decimal(string: "0.311917"))
+        #expect(table.rate(for: Currency(code: "AED")) == Decimal(string: "13.4322"))
+        #expect(table.rates["XDR"] == nil)
+        #expect(table.rate(for: .tl) == 1)
+    }
+
+    @Test func anyCurrencyConvertsWithItsRate() {
+        let item = makeItem(kind: .family, currency: .gbp, recurring: 100, start: october)
+        let table = RateTable(rates: ["GBP": 65])
+        #expect(Ledger.line(for: item, month: october, rates: table)?.signedTRY == -6500)
+        #expect(item.currencyCode == "GBP")
     }
 }

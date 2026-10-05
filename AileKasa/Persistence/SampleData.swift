@@ -7,7 +7,7 @@ enum SampleData {
         let people = household.peopleArray
         let deniz = people.first
         let ece = people.dropFirst().first
-        let rates = RateTable(usd: 41.20, eur: 48.30)
+        let rates = RateTable(usd: 49.06, eur: 55.18)
 
         let aug = Month(year: 2026, month: 8)
         let sep = aug.adding(1)

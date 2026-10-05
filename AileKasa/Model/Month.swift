@@ -33,15 +33,31 @@ nonisolated struct Month: Hashable, Comparable, Identifiable, Sendable {
         lhs.key < rhs.key
     }
 
-    static let names = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+    static func names(in language: AppLanguage = .current) -> [String] {
+        switch language {
+        case .turkish: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
                         "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
-    static let shortNames = ["Oca", "Şub", "Mar", "Nis", "May", "Haz",
-                             "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"]
+        case .english: ["January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"]
+        }
+    }
 
-    var name: String { Self.names[month - 1] }
-    var shortName: String { Self.shortNames[month - 1] }
-    /// "Ekim 2026"
-    var title: String { "\(name) \(year)" }
+    static func shortNames(in language: AppLanguage = .current) -> [String] {
+        switch language {
+        case .turkish: ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"]
+        case .english: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        }
+    }
+
+    var name: String { Self.names()[month - 1] }
+    var shortName: String { Self.shortNames()[month - 1] }
+
+    /// "Ekim 2026" / "October 2026"
+    func title(in language: AppLanguage = .current) -> String {
+        "\(Self.names(in: language)[month - 1]) \(year)"
+    }
+
+    var title: String { title() }
     /// "Eki '26"
     var shortTitle: String { "\(shortName) '\(String(year).suffix(2))" }
 

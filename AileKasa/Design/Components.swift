@@ -63,8 +63,8 @@ struct DueChip: View {
 
     private var label: String {
         switch state {
-        case -1: "GECİKTİ"
-        case 0: "BUGÜN"
+        case -1: String(localized: "GECİKTİ")
+        case 0: String(localized: "BUGÜN")
         default: "\(month.clampedDay(day)) \(month.shortName.uppercased(with: Money.locale))"
         }
     }
@@ -99,7 +99,7 @@ struct MonthNavigator: ToolbarContent {
 
 /// Bir ay seçici satır: "Başlangıç   ‹ Ekim 2026 ›"
 struct MonthStepperRow: View {
-    let title: String
+    let title: LocalizedStringKey
     @Binding var month: Month
 
     var body: some View {

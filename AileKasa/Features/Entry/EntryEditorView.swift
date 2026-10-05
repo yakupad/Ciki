@@ -94,14 +94,14 @@ struct EntryEditorView: View {
                         Picker("Kalem", selection: $item) {
                             Text("Seçin").tag(LedgerItem?.none)
                             ForEach(items.filter { $0.direction == direction }, id: \.objectID) { item in
-                                Text("\(item.fullTitle) · \(item.owner?.displayName ?? "Ortak")")
+                                Text(verbatim: "\(item.fullTitle) · \(item.ownerName)")
                                     .tag(Optional(item))
                             }
                         }
                         Button("Yeni kalem oluştur", systemImage: "plus.circle") { isCreatingItem = true }
                     } else if let item {
                         LabeledContent("Kalem", value: item.fullTitle)
-                        LabeledContent("Kişi", value: item.owner?.displayName ?? "Ortak")
+                        LabeledContent("Kişi", value: item.ownerName)
                     }
                     MonthStepperRow(title: splitIntoInstallments ? "İlk taksit" : "Ay", month: $month)
                         .disabled(!isNew)
@@ -142,7 +142,7 @@ struct EntryEditorView: View {
                     }
                 }
             }
-            .navigationTitle(isNew ? "Yeni kayıt" : month.title)
+            .navigationTitle(isNew ? String(localized: "Yeni kayıt") : month.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -179,12 +179,13 @@ struct EntryEditorView: View {
 
     private var amountCaption: String {
         guard let amount, amount > 0 else {
-            return currency == .tl ? "Tutarı TL olarak girin" : "Tutarı \(currency.title) olarak girin"
+            return String(localized: "Tutarı \(currency.title) olarak girin")
         }
         var parts: [String] = []
         if splitIntoInstallments {
             let parts2 = Ledger.split(amount, into: installmentCount)
-            parts.append("\(installmentCount) taksit × \(Money.string(parts2[0], currency: currency))")
+            let part = Money.string(parts2[0], currency: currency)
+            parts.append(String(localized: "\(installmentCount) taksit × \(part)"))
         }
         if currency != .tl, let rate = rates.table.rate(for: currency) {
             parts.append("≈ " + Money.string(amount * rate, fractions: false))
@@ -197,7 +198,7 @@ struct EntryEditorView: View {
         let trimmedNote = note.trimmingCharacters(in: .whitespacesAndNewlines)
         if isNew && splitIntoInstallments {
             for (index, part) in Ledger.split(amount, into: installmentCount).enumerated() {
-                let label = "Taksit \(index + 1)/\(installmentCount)" + (trimmedNote.isEmpty ? "" : " · \(trimmedNote)")
+                let label = String(localized: "Taksit \(index + 1)/\(installmentCount)") + (trimmedNote.isEmpty ? "" : " · \(trimmedNote)")
                 context.upsertEntry(item: item, month: month.adding(index), amount: part,
                                     status: index == 0 ? status : .pending, note: label, rates: rates.table)
             }

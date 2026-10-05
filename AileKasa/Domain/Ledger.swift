@@ -1,16 +1,23 @@
 import CoreData
 
-/// TL karşılığı bilinen döviz kurları (1 birim = x ₺).
+/// TL karşılığı bilinen döviz kurları (1 birim = x ₺), para birimi koduna göre.
 nonisolated struct RateTable: Equatable, Sendable {
-    var usd: Decimal?
-    var eur: Decimal?
+    var rates: [String: Decimal] = [:]
+
+    init(rates: [String: Decimal] = [:]) {
+        self.rates = rates
+    }
+
+    init(usd: Decimal?, eur: Decimal?) {
+        if let usd { rates["USD"] = usd }
+        if let eur { rates["EUR"] = eur }
+    }
+
+    var usd: Decimal? { rates["USD"] }
+    var eur: Decimal? { rates["EUR"] }
 
     func rate(for currency: Currency) -> Decimal? {
-        switch currency {
-        case .tl: 1
-        case .usd: usd
-        case .eur: eur
-        }
+        currency == .tl ? 1 : rates[currency.code]
     }
 }
 
@@ -127,16 +134,16 @@ extension Ledger {
             result.append(AmountSuggestion(label: label, amount: amount))
         }
 
-        add("Geçen ay", history.last { $0.monthKey == month.key - 1 }?.amountValue)
+        add(String(localized: "Geçen ay"), history.last { $0.monthKey == month.key - 1 }?.amountValue)
         if let last = history.last {
-            add("Son: \(last.month.shortTitle)", last.amountValue)
+            add(String(localized: "Son: \(last.month.shortTitle)"), last.amountValue)
         }
         let recent = history.suffix(3)
         if recent.count >= 2 {
             let total = recent.reduce(Decimal(0)) { $0 + $1.amountValue }
-            add("\(recent.count) ay ort.", (total / Decimal(recent.count)).rounded(scale: 2))
+            add(String(localized: "\(recent.count) ay ort."), (total / Decimal(recent.count)).rounded(scale: 2))
         }
-        add("Düzenli", item.recurringAmountValue)
+        add(String(localized: "Düzenli"), item.recurringAmountValue)
         return result
     }
 
@@ -178,7 +185,7 @@ extension Ledger {
                     totals.expense -= value
                     if line.status == .pending { totals.pendingExpense -= value }
                     if line.item.kind.isBankProduct {
-                        totals.debtByBank[line.item.bankName ?? "Diğer", default: 0] -= value
+                        totals.debtByBank[line.item.bankName ?? String(localized: "Diğer"), default: 0] -= value
                     }
                 } else {
                     totals.incoming += value
