@@ -16,6 +16,7 @@ struct SummaryView: View {
     private var entries: FetchedResults<LedgerEntry>
 
     @State private var route: EditorRoute?
+    @State private var showReport = false
 
     var body: some View {
         @Bindable var app = app
@@ -43,9 +44,18 @@ struct SummaryView: View {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Ayarlar", systemImage: "gearshape") { route = .settings }
             }
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Rapor", systemImage: "chart.line.uptrend.xyaxis") { showReport = true }
+            }
             MonthNavigator(month: $app.month)
         }
         .sheet(item: $route) { EditorSheet(route: $0) }
+        .navigationDestination(isPresented: $showReport) { ReportView() }
+        #if DEBUG
+        .onAppear {
+            if CommandLine.arguments.contains("-openReport") { showReport = true }
+        }
+        #endif
     }
 
     private var emptyState: some View {

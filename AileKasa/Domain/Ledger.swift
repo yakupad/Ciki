@@ -107,3 +107,84 @@ enum Ledger {
         return Array(repeating: part, count: count - 1) + [last]
     }
 }
+
+// MARK: - Tutar önerileri
+
+struct AmountSuggestion: Identifiable, Equatable {
+    let label: String
+    let amount: Decimal
+    var id: String { label }
+}
+
+extension Ledger {
+    /// Kayıt girerken gösterilecek hızlı tutarlar: geçen ay, son girilen, son 3 ay ortalaması, düzenli tutar.
+    static func suggestions(for item: LedgerItem, before month: Month) -> [AmountSuggestion] {
+        let history = item.entriesArray
+            .filter { $0.monthKey < month.key && $0.status != .excluded && $0.amountValue > 0 }
+        var result: [AmountSuggestion] = []
+        func add(_ label: String, _ amount: Decimal?) {
+            guard let amount, amount > 0, !result.contains(where: { $0.amount == amount }) else { return }
+            result.append(AmountSuggestion(label: label, amount: amount))
+        }
+
+        add("Geçen ay", history.last { $0.monthKey == month.key - 1 }?.amountValue)
+        if let last = history.last {
+            add("Son: \(last.month.shortTitle)", last.amountValue)
+        }
+        let recent = history.suffix(3)
+        if recent.count >= 2 {
+            let total = recent.reduce(Decimal(0)) { $0 + $1.amountValue }
+            add("\(recent.count) ay ort.", (total / Decimal(recent.count)).rounded(scale: 2))
+        }
+        add("Düzenli", item.recurringAmountValue)
+        return result
+    }
+
+    /// Bir alt kümenin (ör. bir bölüm) sırası değişince tüm listede o alt kümenin yerlerini yeni sırayla doldurur.
+    static func reorder<T: Equatable>(_ all: [T], subset: [T], from source: IndexSet, to destination: Int) -> [T] {
+        var moved = subset
+        moved.move(fromOffsets: source, toOffset: destination)
+        var result = all
+        let slots = result.indices.filter { subset.contains(result[$0]) }
+        for (slot, element) in zip(slots, moved) {
+            result[slot] = element
+        }
+        return result
+    }
+}
+
+// MARK: - Rapor
+
+struct MonthTotals: Identifiable {
+    let month: Month
+    var incoming: Decimal = 0
+    var expense: Decimal = 0
+    /// Kart, nakit avans ve kredi kalemlerinin banka bazında toplamı.
+    var debtByBank: [String: Decimal] = [:]
+    var pendingExpense: Decimal = 0
+
+    var id: Int32 { month.key }
+    var net: Decimal { incoming - expense }
+    var debt: Decimal { debtByBank.values.reduce(0, +) }
+}
+
+extension Ledger {
+    static func totals(for months: [Month], items: [LedgerItem], rates: RateTable) -> [MonthTotals] {
+        months.map { month in
+            var totals = MonthTotals(month: month)
+            for line in lines(for: month, items: items, rates: rates) where line.counts {
+                guard let value = line.signedTRY else { continue }
+                if line.direction == .expense {
+                    totals.expense -= value
+                    if line.status == .pending { totals.pendingExpense -= value }
+                    if line.item.kind.isBankProduct {
+                        totals.debtByBank[line.item.bankName ?? "Diğer", default: 0] -= value
+                    }
+                } else {
+                    totals.incoming += value
+                }
+            }
+            return totals
+        }
+    }
+}

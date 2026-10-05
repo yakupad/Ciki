@@ -26,7 +26,7 @@ xcodebuild -project AileKasa.xcodeproj -scheme AileKasa \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle** ile Ağustos–Kasım 2026 örnek verisi yüklenir. Simülatörde `-loadSampleData` başlatma argümanı aynı işi açılışta yapar.
+Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle** ile Ağustos–Kasım 2026 örnek verisi yüklenir. Simülatörde `-loadSampleData` başlatma argümanı aynı işi açılışta yapar; `-openReport` doğrudan rapor ekranını açar.
 
 ## Excel'deki her şeyin uygulamadaki karşılığı
 
@@ -50,8 +50,9 @@ Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle**
 | **Özet** | Ay sonu net, gelir/gider çubuğu, kişi bazında net, 13 aylık grafik, bu ay ödenecekler (BUGÜN / GECİKTİ çipleri, tek dokunuşla ödendi). |
 | **Aylar** | Bankaya göre gruplu kayıtlar. Sola kaydır: ödendi. Sağa kaydır: bu ay hariç. Kişi filtresi, "Geçen aydan kopyala". |
 | **Tablo** | Excel düzeni: satırlar kalemler, sütunlar aylar. Seçili ay vurgulu, hücreye dokununca düzenleme. |
-| **Kalemler** | Düzenli ödemeler, düzenli gelirler, diğer kalemler ve arşiv. Üstte güncel döviz kuru. |
-| **Kayıt ekle** | Tutar, kalem, ay, durum, not. Taksitlendir açılırsa tutar aylara bölünür. |
+| **Kalemler** | Düzenli ödemeler, düzenli gelirler, diğer kalemler ve arşiv. Üstte güncel döviz kuru. Düzenle ile sürükleyerek sıralanır. |
+| **Kayıt ekle** | Tutar, kalem, ay, durum, not. Geçen ay, son girilen, son 3 ay ortalaması ve düzenli tutar öneri olarak sunulur. Taksitlendir açılırsa tutar aylara bölünür. |
+| **Rapor** | Özet'ten açılır. Son 6 ay ortalama net, ödenmemiş gider, en yüksek gider ayı; net ve birikimli bakiye grafiği; bankaya göre kart ve kredi ödemeleri; ay ay tablo. |
 | **Ayarlar** | Hane adı, kişi adları ve renkleri, kur bilgisi. |
 
 ### Etkileşim ilkeleri
@@ -128,8 +129,8 @@ AileKasa/
   Persistence/    PersistenceController, kayıt işlemleri, örnek veri
   Domain/         Ledger (hesaplama), Money (biçimlendirme), RateService (TCMB)
   Design/         Renkler, ortak bileşenler
-  Features/       Summary, Month, Grid, Items, Entry, Settings
-AileKasaTests/    Hesaplama, taksit, kur ve biçimlendirme testleri
+  Features/       Summary, Month, Grid, Items, Entry, Report, Settings
+AileKasaTests/    Hesaplama, taksit, kur, öneri, sıralama ve rapor testleri
 ```
 
 ## Yol haritası
@@ -145,10 +146,10 @@ AileKasaTests/    Hesaplama, taksit, kur ve biçimlendirme testleri
 - [x] Düzenli ödemeler ve TCMB kuru
 - [x] Geçen aydan kopyala
 
-### Aşama 2 · Kullanım kolaylığı
-- [ ] Kalem sıralamasını sürükleyerek değiştirme
-- [ ] Kalemin geçmiş tutarlarından hızlı öneri
-- [ ] Ay ay toplam ve borç seyri raporu
+### Aşama 2 · Kullanım kolaylığı ✅
+- [x] Kalem sıralamasını sürükleyerek değiştirme
+- [x] Kalemin geçmiş tutarlarından hızlı öneri
+- [x] Ay ay toplam ve borç seyri raporu
 
 ### Aşama 3 · Ortak kullanım
 - [ ] CloudKit container (`iCloud.com.yakupad.AileKasa`) ve yetkiler

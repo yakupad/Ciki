@@ -27,6 +27,7 @@
 		AA55576D29CFA86EC0F0AECA /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C0360FDA7D7F7C4891006 /* Theme.swift */; };
 		C5A650BC8E668BCF89689E77 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE4EAB9FD57FE0B9337309 /* Ledger.swift */; };
 		E07431D4B0F4613F7AC15868 /* ManagedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D6E11BF4B6EFDD0226CB07 /* ManagedObjects.swift */; };
+		EBDBC50349DF9F81C5958608 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D3C6BF42C3C050E1945CD /* ReportView.swift */; };
 		F4F9E3B0CD8F209EAB74D8CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B29F45C26A72024D0C01D39 /* Assets.xcassets */; };
 		F934919C210F6940A3C3594F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D41B0C6186B2BB45CE533 /* Enums.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		2CD2C28E9CE2DEBD19614EDC /* LedgerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerActions.swift; sourceTree = "<group>"; };
 		36BE4EAB9FD57FE0B9337309 /* Ledger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ledger.swift; sourceTree = "<group>"; };
 		4B29F45C26A72024D0C01D39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		522D3C6BF42C3C050E1945CD /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		73E6A6C56F6A67A1B3124A2F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7C3C0360FDA7D7F7C4891006 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		8603ECFF11175CDD147E306D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				946E4C7553DF91233128B911 /* Grid */,
 				AF3A8CF42BA3B62F7721AF1E /* Items */,
 				0FDE4FE7AD53643AADF50D28 /* Month */,
+				AB7FC75D18C9352B4235576F /* Report */,
 				1E2A52833A9605BC33570E76 /* Settings */,
 				EC7D17D5CC04AC4005073FEB /* Summary */,
 			);
@@ -188,6 +191,14 @@
 				F89903DFD30975F16949A985 /* GridView.swift */,
 			);
 			path = Grid;
+			sourceTree = "<group>";
+		};
+		AB7FC75D18C9352B4235576F /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				522D3C6BF42C3C050E1945CD /* ReportView.swift */,
+			);
+			path = Report;
 			sourceTree = "<group>";
 		};
 		AF3A8CF42BA3B62F7721AF1E /* Items */ = {
@@ -340,6 +351,7 @@
 				92C7396DBF5331918C6D77C0 /* MonthView.swift in Sources */,
 				4057D87EAB02E8C384B2D572 /* PersistenceController.swift in Sources */,
 				6C3DFE3BA61F3CDDA4B0CC07 /* RateService.swift in Sources */,
+				EBDBC50349DF9F81C5958608 /* ReportView.swift in Sources */,
 				8DFD584AE6BE4D59062D96DA /* SampleData.swift in Sources */,
 				05F88D9399B0281E0CC940E9 /* SettingsView.swift in Sources */,
 				7A1725054A9F45E999509DD1 /* SummaryView.swift in Sources */,

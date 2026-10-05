@@ -136,4 +136,49 @@ struct LedgerTests {
         #expect(table.usd == Decimal(string: "41.2034"))
         #expect(table.eur == Decimal(string: "48.3012"))
     }
+
+    @Test func suggestionsOfferPreviousMonthAverageAndRecurring() {
+        let item = makeItem(kind: .housing, recurring: 47875, start: october.adding(-3))
+        context.upsertEntry(item: item, month: october.adding(-3), amount: 1000, status: .paid, rates: rates)
+        context.upsertEntry(item: item, month: october.adding(-2), amount: 2000, status: .paid, rates: rates)
+        context.upsertEntry(item: item, month: october.adding(-1), amount: 3000, status: .paid, rates: rates)
+        context.upsertEntry(item: item, month: october, amount: 9999, status: .pending, rates: rates)
+
+        let suggestions = Ledger.suggestions(for: item, before: october)
+        #expect(suggestions.map(\.amount) == [3000, 2000, 47875])
+        #expect(suggestions.first?.label == "Geçen ay")
+    }
+
+    @Test func suggestionsSkipExcludedAndDuplicateAmounts() {
+        let item = makeItem()
+        context.upsertEntry(item: item, month: october.adding(-2), amount: 500, status: .excluded, rates: rates)
+        context.upsertEntry(item: item, month: october.adding(-1), amount: 700, status: .paid, rates: rates)
+
+        let suggestions = Ledger.suggestions(for: item, before: october)
+        #expect(suggestions.map(\.amount) == [700])
+    }
+
+    @Test func reorderWithinSubsetKeepsOtherSlots() {
+        // a, B, c, D, e: büyük harfler bir bölüm. D'yi B'nin önüne taşı.
+        let all = ["a", "B", "c", "D", "e"]
+        let result = Ledger.reorder(all, subset: ["B", "D"], from: IndexSet(integer: 1), to: 0)
+        #expect(result == ["a", "D", "c", "B", "e"])
+    }
+
+    @Test func totalsGroupDebtByBankAndTrackPending() {
+        let card = makeItem()
+        card.bank = "YapıKredi"
+        let rent = makeItem(kind: .rent)
+        let salary = makeItem(kind: .salary)
+        context.upsertEntry(item: card, month: october, amount: 1000, status: .pending, rates: rates)
+        context.upsertEntry(item: rent, month: october, amount: 500, status: .paid, rates: rates)
+        context.upsertEntry(item: salary, month: october, amount: 3000, status: .paid, rates: rates)
+
+        let totals = Ledger.totals(for: [october], items: [card, rent, salary], rates: rates)[0]
+        #expect(totals.expense == 1500)
+        #expect(totals.incoming == 3000)
+        #expect(totals.net == 1500)
+        #expect(totals.debtByBank == ["YapıKredi": 1000])
+        #expect(totals.pendingExpense == 1000)
+    }
 }

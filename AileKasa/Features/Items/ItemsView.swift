@@ -4,8 +4,9 @@ import CoreData
 /// Tüm kalemler: düzenli ödemeler, düzenli gelirler, diğerleri ve arşiv.
 struct ItemsView: View {
     @Environment(RateService.self) private var rates
+    @Environment(\.managedObjectContext) private var context
 
-    @FetchRequest(sortDescriptors: [SortDescriptor(\LedgerItem.sortOrder)])
+    @FetchRequest(sortDescriptors: [SortDescriptor(\LedgerItem.sortOrder), SortDescriptor(\LedgerItem.createdAt)])
     private var items: FetchedResults<LedgerItem>
 
     @State private var route: EditorRoute?
@@ -43,6 +44,11 @@ struct ItemsView: View {
         .background(Color.zemin)
         .navigationTitle("Kalemler")
         .toolbar {
+            if !items.isEmpty {
+                ToolbarItem(placement: .topBarLeading) {
+                    EditButton()
+                }
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Yeni kalem", systemImage: "plus") { route = .newItem }
             }
@@ -53,13 +59,33 @@ struct ItemsView: View {
     @ViewBuilder
     private func section(_ title: String, _ items: [LedgerItem]) -> some View {
         if !items.isEmpty {
-            Section(title) {
+            Section {
                 ForEach(items, id: \.objectID) { item in
                     Button { route = .item(item) } label: { ItemRow(item: item, rates: rates.table) }
                         .buttonStyle(.plain)
                 }
+                .onMove { source, destination in
+                    move(items, from: source, to: destination)
+                }
+            } header: {
+                Text(title)
+            } footer: {
+                if title == "Diğer kalemler" {
+                    Text("Sırayı değiştirmek için Düzenle'ye dokunup kalemleri sürükleyin. Aylar ve Tablo ekranları bu sırayı kullanır.")
+                }
             }
         }
+    }
+}
+
+extension ItemsView {
+    /// Bölüm içindeki yeni sırayı tüm kalemlerin `sortOrder` değerine yazar.
+    private func move(_ subset: [LedgerItem], from source: IndexSet, to destination: Int) {
+        let ordered = Ledger.reorder(Array(items), subset: subset, from: source, to: destination)
+        for (index, item) in ordered.enumerated() where item.sortOrder != Int32(index + 1) {
+            item.sortOrder = Int32(index + 1)
+        }
+        context.saveIfNeeded()
     }
 }
 

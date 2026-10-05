@@ -73,6 +73,20 @@ struct EntryEditorView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
+
+                    if let item, !suggestions(for: item).isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 8) {
+                                ForEach(suggestions(for: item)) { suggestion in
+                                    SuggestionChip(suggestion: suggestion, currency: currency,
+                                                   isSelected: amount == suggestion.amount) {
+                                        amount = suggestion.amount
+                                    }
+                                }
+                            }
+                        }
+                        .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                    }
                 }
 
                 Section {
@@ -159,6 +173,10 @@ struct EntryEditorView: View {
         }
     }
 
+    private func suggestions(for item: LedgerItem) -> [AmountSuggestion] {
+        Ledger.suggestions(for: item, before: month)
+    }
+
     private var amountCaption: String {
         guard let amount, amount > 0 else {
             return currency == .tl ? "Tutarı TL olarak girin" : "Tutarı \(currency.title) olarak girin"
@@ -195,6 +213,32 @@ struct EntryEditorView: View {
         if let existing { context.delete(existing) }
         context.saveIfNeeded()
         dismiss()
+    }
+}
+
+private struct SuggestionChip: View {
+    let suggestion: AmountSuggestion
+    let currency: Currency
+    let isSelected: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            VStack(alignment: .leading, spacing: 1) {
+                Text(suggestion.label)
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(isSelected ? Color.white.opacity(0.85) : .secondary)
+                Text(Money.string(suggestion.amount, currency: currency))
+                    .font(.amount(13, weight: .semibold))
+                    .foregroundStyle(isSelected ? .white : .primary)
+            }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(isSelected ? Color.petrol : Color(.tertiarySystemFill),
+                        in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("\(suggestion.label): \(Money.string(suggestion.amount, currency: currency))")
     }
 }
 
