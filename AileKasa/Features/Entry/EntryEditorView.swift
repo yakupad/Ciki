@@ -138,12 +138,22 @@ struct EntryEditorView: View {
                     }
                 }
 
-                if existing != nil {
+                if let existing {
                     Section {
                         Button("Bu ayın kaydını sil", role: .destructive) { confirmDelete = true }
                     } footer: {
-                        if item?.isRecurring == true {
-                            Text("Düzenli kalemlerde kayıt silinirse tahmini tutar geri gelir. O ayı saymamak için durumu Hariç yapın.")
+                        VStack(alignment: .leading, spacing: 6) {
+                            if item?.isRecurring == true {
+                                Text("Düzenli kalemlerde kayıt silinirse tahmini tutar geri gelir. O ayı saymamak için durumu Hariç yapın.")
+                            }
+                            if let changed = existing.updatedAt {
+                                let when = changed.formatted(.dateTime.day().month(.abbreviated).hour().minute().locale(Money.locale))
+                                if let who = existing.updatedBy {
+                                    Text("Son değişiklik: \(who) · \(when)")
+                                } else {
+                                    Text("Son değişiklik: \(when)")
+                                }
+                            }
                         }
                     }
                 }

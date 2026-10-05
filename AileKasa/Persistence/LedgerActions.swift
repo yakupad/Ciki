@@ -17,6 +17,7 @@ extension NSManagedObjectContext {
         entry.amountValue = amount
         entry.note = note?.isEmpty == true ? nil : note
         entry.updatedAt = .now
+        entry.updatedBy = DeviceOwner.name(in: self)
         apply(status, to: entry, currency: item.currency, rates: rates)
         return entry
     }
@@ -27,6 +28,7 @@ extension NSManagedObjectContext {
                                               status: .pending, rates: rates)
         apply(status, to: entry, currency: line.currency, rates: rates)
         entry.updatedAt = .now
+        entry.updatedBy = DeviceOwner.name(in: self)
         saveIfNeeded()
     }
 

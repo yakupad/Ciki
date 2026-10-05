@@ -1018,6 +1018,22 @@
         }
       }
     },
+    "Bilinmeyen kişi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown person"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bilinmeyen kişi"
+          }
+        }
+      }
+    },
     "Bilinmiyor": {
       "localizations": {
         "en": {
@@ -1322,6 +1338,22 @@
         }
       }
     },
+    "Bu telefonu kullanan": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This phone belongs to"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu telefonu kullanan"
+          }
+        }
+      }
+    },
     "Bugün": {
       "localizations": {
         "en": {
@@ -1542,6 +1574,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Döviz kuru · TCMB satış"
+          }
+        }
+      }
+    },
+    "Dün": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yesterday"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dün"
           }
         }
       }
@@ -2137,6 +2185,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hatırlatmalar"
+          }
+        }
+      }
+    },
+    "Henüz değişiklik yok": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No changes yet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz değişiklik yok"
           }
         }
       }
@@ -2862,6 +2926,22 @@
         }
       }
     },
+    "Kayıt ekledikçe ya da ödendi işaretledikçe burada görünür.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entries you add or mark as paid show up here."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayıt ekledikçe ya da ödendi işaretledikçe burada görünür."
+          }
+        }
+      }
+    },
     "Kayıt listesi": {
       "localizations": {
         "en": {
@@ -3038,18 +3118,18 @@
         }
       }
     },
-    "Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer.": {
+    "Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer. Bu telefonu kullanan kişiyi seçerseniz yaptığınız değişikliklerde adınız görünür.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Person colors are used in the summary, lists and table. A deleted person's items move to Shared."
+            "value": "Person colors are used in the summary, lists and table. A deleted person's items move to Shared. Choose who uses this phone so your name appears on the changes you make."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer."
+            "value": "Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer. Bu telefonu kullanan kişiyi seçerseniz yaptığınız değişikliklerde adınız görünür."
           }
         }
       }
@@ -3566,6 +3646,22 @@
         }
       }
     },
+    "Seçilmedi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not set"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçilmedi"
+          }
+        }
+      }
+    },
     "Seçin": {
       "localizations": {
         "en": {
@@ -3658,6 +3754,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "son ay: %@"
+          }
+        }
+      }
+    },
+    "Son değişiklik: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last changed: %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son değişiklik: %@"
+          }
+        }
+      }
+    },
+    "Son değişiklik: %@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last changed by %1$@ · %2$@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son değişiklik: %@ · %@"
+          }
+        }
+      }
+    },
+    "Son değişiklikler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent Changes"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son değişiklikler"
           }
         }
       }

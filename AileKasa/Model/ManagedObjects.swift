@@ -41,6 +41,8 @@ nonisolated final class LedgerItem: NSManagedObject {
     @NSManaged var recurringEnd: Int32
     @NSManaged var note: String?
     @NSManaged var createdAt: Date?
+    @NSManaged var updatedAt: Date?
+    @NSManaged var updatedBy: String?
     @NSManaged var household: Household?
     @NSManaged var owner: Person?
     @NSManaged var payee: Account?
@@ -76,6 +78,8 @@ nonisolated final class LedgerEntry: NSManagedObject {
     @NSManaged var note: String?
     @NSManaged var createdAt: Date?
     @NSManaged var updatedAt: Date?
+    /// Değişikliği yapan telefonun kişisi (Ayarlar → Bu telefonu kullanan).
+    @NSManaged var updatedBy: String?
     @NSManaged var item: LedgerItem?
 }
 

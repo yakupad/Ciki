@@ -128,6 +128,7 @@ erDiagram
 - **Person (Kişi):** Deniz ve Ece. Sahibi olmayan kalem "Ortak" sayılır.
 - **LedgerItem (Kalem):** kart, nakit avans, kredi, kira, konut taksidi, maaş, alacak, aile gönderimi vb. Düzenliyse aylık tutar ve başlangıç/bitiş ayı taşır.
 - **Account (Hesap):** IBAN rehberi kaydı. `isOwn` ailenin kendi hesabı mı yoksa ödeme yapılan kişi/kurum mu olduğunu belirtir. Kalemler `payee` ile bir hesaba bağlanabilir.
+- **Değişiklik kaydı.** Her telefon için "Bu telefonu kullanan" kişi seçilir (cihaza özel). Kayıt ve kalem değişikliklerinde `updatedBy` ve `updatedAt` yazılır.
 - **LedgerEntry (Kayıt):** bir kalemin bir aydaki tutarı ve durumu. `monthKey = yıl × 12 + (ay − 1)`.
 
 ### Teknik kararlar
@@ -135,7 +136,7 @@ erDiagram
 - **İki depo.** `AileKasa.sqlite` kendi verilerimizi iCloud özel veritabanında, `AileKasa-shared.sqlite` eşin paylaştığı haneyi paylaşılan veritabanında tutar. Depolar arası ilişki kurulamadığı için yeni kayıtlar `place(_:in:)` ile hanenin bulunduğu depoya yazılır.
 - **Etkin hane.** Paylaşılan hane varsa o, yoksa en eski yerel hane. iCloud'dan gelen değişikliklerden sonra `HouseholdSync` fazladan haneleri birleştirir.
 - **Core Data + NSPersistentCloudKitContainer.** iOS 27 SDK'sında SwiftData yalnızca özel (private) iCloud veritabanını destekliyor. Eşle ortak kullanım için CKShare gerekiyor, bu yüzden Core Data seçildi. Tüm öznitelikler isteğe bağlı, benzersizlik kısıtı yok (CloudKit şartı).
-- **Model sürümleri.** Veri modeli sürümlüdür (`AileKasa 2.xcdatamodel` güncel). Yeni alanlar yeni sürümle eklenir, mevcut veriler otomatik (lightweight) taşınır.
+- **Model sürümleri.** Veri modeli sürümlüdür (`AileKasa 3.xcdatamodel` güncel; 1. sürümden taşıma test edilir). Yeni alanlar yeni sürümle eklenir, mevcut veriler otomatik (lightweight) taşınır.
 - **Banka adları** büyük/küçük harf ve boşluk farkı yok sayılarak eşleştirilir; bilinen bankalar listedeki yazımla gösterilir.
 - **Tutarlar `Decimal`.** Kuruş yuvarlama hatası olmaz. Taksit bölmede artan kuruşlar son taksite eklenir.
 - **Gösterim para birimi.** TCMB kurları TL karşılığı olarak gelir; TL ara birimdir. Gösterim birimi TL değilse çapraz kurla çevrilir (ör. USD → EUR = USD/TL ÷ EUR/TL). Seçim cihaza özeldir, her kişi kendi telefonunda farklı birim seçebilir. Ödenmiş döviz kayıtlarının TL karşılığı ödeme günündeki kurla sabittir.
@@ -194,7 +195,7 @@ AileKasaTests/    Hesaplama, kur, IBAN, hatırlatma, CSV ve rapor testleri
 - [x] Daveti kabul etme, yerel kayıtları ortak haneye kopyalama ya da silme
 - [x] Aynı Apple ID'li ikinci cihazda oluşan fazladan haneyi birleştirme
 - [ ] CloudKit container'ının hesapta açılması ve iki cihazla uçtan uca deneme
-- [ ] Kim, neyi değiştirdi bilgisi
+- [x] Kim, neyi değiştirdi bilgisi (Ayarlar → Son değişiklikler)
 
 ### Aşama 4 · Cila ✅
 - [x] Son ödeme gününden önce bildirim

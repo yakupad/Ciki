@@ -228,6 +228,8 @@ struct ItemEditorView: View {
         target.recurringStart = isRecurring ? recurringStart.key : 0
         target.recurringEnd = isRecurring && hasEnd ? recurringEnd.key : 0
         target.isArchived = isArchived
+        target.updatedAt = .now
+        target.updatedBy = DeviceOwner.name(in: context)
         target.payee = direction == .expense ? payee : nil
         context.saveIfNeeded()
         onSave?(target)

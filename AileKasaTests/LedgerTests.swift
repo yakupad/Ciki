@@ -407,4 +407,56 @@ struct LedgerTests {
         #expect(copiedCard.owner?.displayName == "Ece")
         #expect(target.accountsArray.count == 1)
     }
+
+    @Test func entriesRecordWhoChangedThem() {
+        let household = context.currentHousehold()
+        let ece = household.peopleArray[1]
+        ece.uuid = UUID()
+        context.saveIfNeeded()
+        UserDefaults.standard.set(ece.uuid?.uuidString, forKey: DeviceOwner.key)
+        defer { UserDefaults.standard.removeObject(forKey: DeviceOwner.key) }
+
+        let card = makeItem()
+        let entry = context.upsertEntry(item: card, month: october, amount: 100, status: .pending, rates: rates)
+        #expect(entry.updatedBy == "Ece")
+        #expect(entry.updatedAt != nil)
+
+        UserDefaults.standard.removeObject(forKey: DeviceOwner.key)
+        context.setStatus(.paid, for: Ledger.line(for: card, month: october, rates: rates)!, rates: rates)
+        #expect(entry.updatedBy == nil)
+    }
+
+    /// Telefondaki ilk sürüm veritabanının güncel modele kendiliğinden taşındığını doğrular.
+    @Test func firstVersionStoreMigratesToCurrentModel() throws {
+        let bundle = Bundle(for: PersistenceController.self)
+        let momd = try #require(bundle.url(forResource: "AileKasa", withExtension: "momd"))
+        let v1 = try #require(NSManagedObjectModel(contentsOf: momd.appending(path: "AileKasa.mom")))
+        let current = try #require(NSManagedObjectModel(contentsOf: momd))
+        let url = FileManager.default.temporaryDirectory.appending(path: "migration-\(UUID().uuidString).sqlite")
+
+        let oldCoordinator = NSPersistentStoreCoordinator(managedObjectModel: v1)
+        _ = try oldCoordinator.addPersistentStore(type: .sqlite, at: url)
+        let oldContext = NSManagedObjectContext(.mainQueue)
+        oldContext.persistentStoreCoordinator = oldCoordinator
+        let item = NSEntityDescription.insertNewObject(forEntityName: "LedgerItem", into: oldContext)
+        item.setValue("Kira", forKey: "name")
+        let entry = NSEntityDescription.insertNewObject(forEntityName: "LedgerEntry", into: oldContext)
+        entry.setValue(NSDecimalNumber(value: 46764), forKey: "amount")
+        entry.setValue(item, forKey: "item")
+        try oldContext.save()
+        try oldCoordinator.persistentStores.forEach { try oldCoordinator.remove($0) }
+
+        let newCoordinator = NSPersistentStoreCoordinator(managedObjectModel: current)
+        _ = try newCoordinator.addPersistentStore(type: .sqlite, at: url, options: [
+            NSMigratePersistentStoresAutomaticallyOption: true,
+            NSInferMappingModelAutomaticallyOption: true,
+        ])
+        let newContext = NSManagedObjectContext(.mainQueue)
+        newContext.persistentStoreCoordinator = newCoordinator
+        let migrated = try newContext.fetch(NSFetchRequest<NSManagedObject>(entityName: "LedgerEntry"))
+        #expect(migrated.count == 1)
+        #expect((migrated.first?.value(forKey: "amount") as? NSDecimalNumber)?.intValue == 46764)
+        #expect(migrated.first?.value(forKey: "updatedBy") == nil)
+        #expect(try newContext.count(for: NSFetchRequest<NSManagedObject>(entityName: "Account")) == 0)
+    }
 }

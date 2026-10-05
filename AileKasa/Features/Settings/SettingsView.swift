@@ -17,6 +17,7 @@ struct SettingsView: View {
     private var accounts: FetchedResults<Account>
 
     @State private var confirmWipe = false
+    @AppStorage(DeviceOwner.key) private var deviceOwnerID = ""
     @State private var personToDelete: Person?
 
     var body: some View {
@@ -43,6 +44,14 @@ struct SettingsView: View {
                     }
                     .onMove(perform: movePeople)
                     Button("Kişi ekle", systemImage: "person.badge.plus", action: addPerson)
+                    Picker("Bu telefonu kullanan", selection: $deviceOwnerID) {
+                        Text("Seçilmedi").tag("")
+                        ForEach(people, id: \.objectID) { person in
+                            if let id = person.uuid?.uuidString {
+                                Text(verbatim: person.displayName).tag(id)
+                            }
+                        }
+                    }
                 } header: {
                     HStack {
                         Text("Kişiler")
@@ -52,7 +61,7 @@ struct SettingsView: View {
                         }
                     }
                 } footer: {
-                    Text("Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer.")
+                    Text("Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer. Bu telefonu kullanan kişiyi seçerseniz yaptığınız değişikliklerde adınız görünür.")
                 }
 
                 Section {
@@ -169,6 +178,14 @@ struct SettingsView: View {
                 }
 
                 SharingSection()
+
+                Section {
+                    NavigationLink {
+                        ActivityView()
+                    } label: {
+                        Label("Son değişiklikler", systemImage: "clock.arrow.circlepath")
+                    }
+                }
 
                 #if DEBUG
                 Section {
