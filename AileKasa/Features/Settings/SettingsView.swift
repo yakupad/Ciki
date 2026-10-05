@@ -6,6 +6,8 @@ struct SettingsView: View {
     @Environment(\.managedObjectContext) private var context
     @Environment(\.openURL) private var openURL
     @Environment(RateService.self) private var rates
+    @Environment(AppLock.self) private var lock
+    @Environment(ReminderScheduler.self) private var reminders
 
     @FetchRequest(sortDescriptors: [SortDescriptor(\Person.sortOrder)])
     private var people: FetchedResults<Person>
@@ -19,6 +21,7 @@ struct SettingsView: View {
 
     var body: some View {
         @Bindable var rates = rates
+        @Bindable var reminders = reminders
         NavigationStack {
             Form {
                 if let household = households.first {
@@ -105,6 +108,64 @@ struct SettingsView: View {
                     .foregroundStyle(.primary)
                 } footer: {
                     Text("Dil, iOS Ayarlar'da uygulamanın sayfasından değiştirilir. Türkçe ve İngilizce desteklenir.")
+                }
+
+                Section {
+                    Toggle(isOn: Binding(
+                        get: { lock.isEnabled },
+                        set: { enabled in Task { await lock.setEnabled(enabled) } }
+                    )) {
+                        Label("\(lock.methodName) ile kilitle", systemImage: "lock.fill")
+                    }
+                } header: {
+                    Text("Güvenlik")
+                } footer: {
+                    if let error = lock.errorMessage {
+                        Text(error).foregroundStyle(Color.gider)
+                    } else {
+                        Text("Uygulama arka plana geçince kilitlenir. Uygulama değiştiricide tutarlar ve IBAN'lar gizlenir.")
+                    }
+                }
+
+                Section {
+                    Toggle(isOn: Binding(
+                        get: { reminders.isEnabled },
+                        set: { enabled in Task { await reminders.setEnabled(enabled) } }
+                    )) {
+                        Label("Ödeme hatırlatmaları", systemImage: "bell.badge")
+                    }
+                    if reminders.isEnabled {
+                        Picker("Ne zaman", selection: $reminders.daysBefore) {
+                            Text("Son ödeme günü").tag(0)
+                            Text("1 gün önce").tag(1)
+                            Text("2 gün önce").tag(2)
+                            Text("3 gün önce").tag(3)
+                            Text("1 hafta önce").tag(7)
+                        }
+                        Picker("Saat", selection: $reminders.hour) {
+                            ForEach(7...22, id: \.self) { hour in
+                                Text(verbatim: String(format: "%02d:00", hour)).tag(hour)
+                            }
+                        }
+                    }
+                } header: {
+                    Text("Hatırlatmalar")
+                } footer: {
+                    if let error = reminders.errorMessage {
+                        Text(error).foregroundStyle(Color.gider)
+                    } else {
+                        Text("Son ödeme günü girilmiş ve ödenmemiş giderler için bildirim gelir. Ödendi işaretlenen kayıtların bildirimi iptal olur.")
+                    }
+                }
+
+                Section {
+                    NavigationLink {
+                        ExportView()
+                    } label: {
+                        Label("Dışa aktar (CSV)", systemImage: "square.and.arrow.up")
+                    }
+                } footer: {
+                    Text("Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için.")
                 }
 
                 Section("iCloud") {
@@ -199,4 +260,6 @@ struct SettingsView: View {
     SettingsView()
         .environment(\.managedObjectContext, PersistenceController.preview.viewContext)
         .environment(RateService())
+        .environment(AppLock())
+        .environment(ReminderScheduler())
 }

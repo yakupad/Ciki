@@ -1,10 +1,17 @@
 import SwiftUI
+import CoreData
+import Combine
 
 @main
 struct AileKasaApp: App {
     private let persistence = PersistenceController.shared
     @State private var appState = AppState()
     @State private var rates = RateService()
+    @State private var lock = AppLock()
+    @State private var reminders = ReminderScheduler()
+    @State private var rescheduleTask: Task<Void, Never>?
+    @Environment(\.scenePhase) private var scenePhase
+    private let lockWindow = LockWindow()
 
     var body: some Scene {
         WindowGroup {
@@ -12,6 +19,31 @@ struct AileKasaApp: App {
                 .environment(\.managedObjectContext, persistence.viewContext)
                 .environment(appState)
                 .environment(rates)
+                .environment(lock)
+                .environment(reminders)
+                .onChange(of: scenePhase, initial: true) { _, phase in
+                    switch phase {
+                    case .background:
+                        lock.lock()
+                    case .active:
+                        Task { await lock.unlock() }
+                        scheduleReminders()
+                    default:
+                        break
+                    }
+                    updateLockWindow()
+                }
+                .onChange(of: lock.isLocked) { updateLockWindow() }
+                .onChange(of: lock.isEnabled) {
+                    updateLockWindow()
+                    scheduleReminders()
+                }
+                .onReceive(NotificationCenter.default.publisher(for: NSManagedObjectContext.didSaveObjectsNotification)) { _ in
+                    scheduleReminders()
+                }
+                .onChange(of: reminders.isEnabled) { scheduleReminders() }
+                .onChange(of: reminders.daysBefore) { scheduleReminders() }
+                .onChange(of: reminders.hour) { scheduleReminders() }
                 .task {
                     persistence.viewContext.currentHousehold()
                     #if DEBUG
@@ -22,6 +54,24 @@ struct AileKasaApp: App {
                     #endif
                     await rates.refreshIfStale()
                 }
+        }
+    }
+}
+
+extension AileKasaApp {
+    /// Kilit açıkken arka planda ya da kilitliyken tutarlar gizlenir.
+    private func updateLockWindow() {
+        lockWindow.update(visible: lock.isEnabled && (lock.isLocked || scenePhase != .active), lock: lock)
+    }
+
+    /// Kayıt değişikliklerinde art arda gelen çağrıları birleştirip widget özetini ve hatırlatmaları yeniler.
+    private func scheduleReminders() {
+        rescheduleTask?.cancel()
+        rescheduleTask = Task {
+            try? await Task.sleep(for: .milliseconds(600))
+            guard !Task.isCancelled else { return }
+            WidgetPublisher.publish(context: persistence.viewContext, rates: rates.table, isPrivate: lock.isEnabled)
+            await reminders.reschedule(context: persistence.viewContext, rates: rates.table)
         }
     }
 }
@@ -109,4 +159,6 @@ private struct NewEntryAccessory: View {
         .environment(\.managedObjectContext, PersistenceController.preview.viewContext)
         .environment(AppState())
         .environment(RateService())
+        .environment(AppLock())
+        .environment(ReminderScheduler())
 }

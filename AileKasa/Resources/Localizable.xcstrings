@@ -65,6 +65,22 @@
         }
       }
     },
+    "%@ ile kilitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lock with %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ ile kilitle"
+          }
+        }
+      }
+    },
     "%@ için bekleyen ödeme yok.": {
       "localizations": {
         "en": {
@@ -362,6 +378,38 @@
         }
       }
     },
+    "1 gün önce": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 day before"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 gün önce"
+          }
+        }
+      }
+    },
+    "1 hafta önce": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 week before"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hafta önce"
+          }
+        }
+      }
+    },
     "12 ay": {
       "localizations": {
         "en": {
@@ -390,6 +438,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "12 ay + 6 ay"
+          }
+        }
+      }
+    },
+    "2 gün önce": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 days before"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 gün önce"
+          }
+        }
+      }
+    },
+    "3 gün önce": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 days before"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 gün önce"
           }
         }
       }
@@ -486,6 +566,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aile / Gönderim"
+          }
+        }
+      }
+    },
+    "Aile Kasası kilitli": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aile Kasası is locked"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aile Kasası kilitli"
+          }
+        }
+      }
+    },
+    "Aile Kasası'nı açmak için kimliğinizi doğrulayın": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verify your identity to open Aile Kasası"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aile Kasası'nı açmak için kimliğinizi doğrulayın"
           }
         }
       }
@@ -698,6 +810,38 @@
         }
       }
     },
+    "Aylık tablo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly table"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aylık tablo"
+          }
+        }
+      }
+    },
+    "Aylık tablo (Excel düzeni)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly table (spreadsheet layout)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aylık tablo (Excel düzeni)"
+          }
+        }
+      }
+    },
     "Aylık tutar": {
       "localizations": {
         "en": {
@@ -822,6 +966,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bekliyor"
+          }
+        }
+      }
+    },
+    "Bildirim izni verilmedi. iOS Ayarlar → Bildirimler → Aile Kasası'ndan açabilirsiniz.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications aren't allowed. Turn them on in iOS Settings → Notifications → Aile Kasası."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirim izni verilmedi. iOS Ayarlar → Bildirimler → Aile Kasası'ndan açabilirsiniz."
           }
         }
       }
@@ -1018,6 +1178,22 @@
         }
       }
     },
+    "Bu cihazda parola ya da Face ID ayarlı değil. Önce iOS Ayarlar'dan bir parola belirleyin.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device has no passcode or Face ID set up. Set a passcode in iOS Settings first."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihazda parola ya da Face ID ayarlı değil. Önce iOS Ayarlar'dan bir parola belirleyin."
+          }
+        }
+      }
+    },
     "Bu hesaba ödenen kalemler": {
       "localizations": {
         "en": {
@@ -1062,6 +1238,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "BUGÜN"
+          }
+        }
+      }
+    },
+    "Cihaz parolası": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Device passcode"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cihaz parolası"
           }
         }
       }
@@ -1290,6 +1482,38 @@
         }
       }
     },
+    "Dışa aktar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dışa aktar"
+          }
+        }
+      }
+    },
+    "Dışa aktar (CSV)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export (CSV)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dışa aktar (CSV)"
+          }
+        }
+      }
+    },
     "En yüksek gider": {
       "localizations": {
         "en": {
@@ -1302,6 +1526,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "En yüksek gider"
+          }
+        }
+      }
+    },
+    "Eski Excel tablonuz gibi: satırlar kalemler, sütunlar aylar (%@ – %@). Tutarlar %@ cinsinden; düzenli kalemlerin tahminleri dahil, hariç kayıtlar boş.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Like your old spreadsheet: items as rows, months as columns (%1$@ – %2$@). Amounts in %3$@; recurring estimates included, skipped entries left blank."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eski Excel tablonuz gibi: satırlar kalemler, sütunlar aylar (%@ – %@). Tutarlar %@ cinsinden; düzenli kalemlerin tahminleri dahil, hariç kayıtlar boş."
           }
         }
       }
@@ -1564,6 +1804,22 @@
         }
       }
     },
+    "Güvenlik": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Security"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güvenlik"
+          }
+        }
+      }
+    },
     "Hane": {
       "localizations": {
         "en": {
@@ -1624,6 +1880,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hariç kayıtlar silinmez ama o ayın toplamına girmez."
+          }
+        }
+      }
+    },
+    "Hatırlatmalar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reminders"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hatırlatmalar"
           }
         }
       }
@@ -1736,6 +2008,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Her kart, kredi, kira, maaş ya da düzenli gönderim bir kalemdir."
+          }
+        }
+      }
+    },
+    "Her satır bir kayıt: ay, kişi, kalem, banka, tutar, durum, ödeme tarihi ve kur. Toplam %lld kayıt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One row per entry: month, person, item, bank, amount, status, payment date and rate. %lld entries in total."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her satır bir kayıt: ay, kişi, kalem, banka, tutar, durum, ödeme tarihi ve kur. Toplam %lld kayıt."
           }
         }
       }
@@ -2252,6 +2540,22 @@
         }
       }
     },
+    "Karşılık (%@)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Value (%@)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karşılık (%@)"
+          }
+        }
+      }
+    },
     "Kaydet": {
       "localizations": {
         "en": {
@@ -2268,6 +2572,38 @@
         }
       }
     },
+    "Kayıt listesi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entry list"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayıt listesi"
+          }
+        }
+      }
+    },
+    "Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To open your entries or the monthly table in Excel, Numbers or Google Sheets."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için."
+          }
+        }
+      }
+    },
     "Kendi hesaplarınızı ve ödeme yaptığınız kişi ve kurumların IBAN'larını burada saklayın. Bir hesaba dokununca IBAN kopyalanır.": {
       "localizations": {
         "en": {
@@ -2280,6 +2616,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kendi hesaplarınızı ve ödeme yaptığınız kişi ve kurumların IBAN'larını burada saklayın. Bir hesaba dokununca IBAN kopyalanır."
+          }
+        }
+      }
+    },
+    "Kilidi aç": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilidi aç"
+          }
+        }
+      }
+    },
+    "Kilidi açmak için kimliğinizi doğrulayın": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verify your identity to turn on the lock"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilidi açmak için kimliğinizi doğrulayın"
           }
         }
       }
@@ -2508,6 +2876,22 @@
         }
       }
     },
+    "Kur (TL)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rate (TRY)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kur (TL)"
+          }
+        }
+      }
+    },
     "Kur alınamadı. İnternet bağlantınızı kontrol edip yeniden deneyin.": {
       "localizations": {
         "en": {
@@ -2600,6 +2984,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nakit Avans"
+          }
+        }
+      }
+    },
+    "Ne zaman": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne zaman"
           }
         }
       }
@@ -2796,6 +3196,22 @@
         }
       }
     },
+    "Saat": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat"
+          }
+        }
+      }
+    },
     "Seçili ayın altı ay öncesinden altı ay sonrasına aylık net bakiye": {
       "localizations": {
         "en": {
@@ -2908,6 +3324,38 @@
         }
       }
     },
+    "Son ödeme %@ · %@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due %1$@ · %2$@ · %3$@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son ödeme %@ · %@ · %@"
+          }
+        }
+      }
+    },
+    "Son ödeme bugün · %@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due today · %1$@ · %2$@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son ödeme bugün · %@ · %@"
+          }
+        }
+      }
+    },
     "Son ödeme günü": {
       "localizations": {
         "en": {
@@ -2920,6 +3368,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Son ödeme günü"
+          }
+        }
+      }
+    },
+    "Son ödeme günü girilmiş ve ödenmemiş giderler için bildirim gelir. Ödendi işaretlenen kayıtların bildirimi iptal olur.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You'll get a notification for unpaid expenses that have a due day. Marking an entry as paid cancels its reminder."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son ödeme günü girilmiş ve ödenmemiş giderler için bildirim gelir. Ödendi işaretlenen kayıtların bildirimi iptal olur."
           }
         }
       }
@@ -3181,6 +3645,22 @@
         }
       }
     },
+    "Uygulama arka plana geçince kilitlenir. Uygulama değiştiricide tutarlar ve IBAN'lar gizlenir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app locks when it goes to the background. Amounts and IBANs are hidden in the app switcher."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulama arka plana geçince kilitlenir. Uygulama değiştiricide tutarlar ve IBAN'lar gizlenir."
+          }
+        }
+      }
+    },
     "Uygulama dili": {
       "localizations": {
         "en": {
@@ -3373,6 +3853,22 @@
         }
       }
     },
+    "Ödeme hatırlatmaları": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment reminders"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme hatırlatmaları"
+          }
+        }
+      }
+    },
     "Ödeme hesabı": {
       "localizations": {
         "en": {
@@ -3385,6 +3881,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ödeme hesabı"
+          }
+        }
+      }
+    },
+    "Ödeme tarihi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment date"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme tarihi"
           }
         }
       }

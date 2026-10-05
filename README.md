@@ -56,6 +56,7 @@ Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle**
 | **Kayıt ekle** | Tutar, kalem, ay, durum, not. Geçen ay, son girilen, son 3 ay ortalaması ve düzenli tutar öneri olarak sunulur. Taksitlendir açılırsa tutar aylara bölünür. |
 | **Hesaplar** (Ayarlar → Kişiler'in altında) | IBAN rehberi: kişilerin kendi hesapları ve ödeme yapılan kişi/kurumlar. Dokununca IBAN kopyalanır; alıcı adı kopyalama ve paylaşma basılı tutunca. IBAN mod-97 ile doğrulanır, TR IBAN'ında banka otomatik bulunur. Kaleme ödeme hesabı bağlanırsa kayıt ekranında IBAN tek dokunuşla kopyalanır. |
 | **Rapor** | Özet'ten açılır. Son 6 ay ortalama net, ödenmemiş gider, en yüksek gider ayı; net ve birikimli bakiye grafiği; bankaya göre kart ve kredi ödemeleri; ay ay tablo. |
+| **Widget** | Ana ekran (küçük, orta) ve kilit ekranı. Ay sonu net ve sıradaki ödemeler. Uygulama kilidi açıksa tutarları göstermez. |
 | **Ayarlar** | Hane adı, kişi adları ve renkleri, kur bilgisi. |
 
 ### Etkileşim ilkeleri
@@ -125,6 +126,10 @@ erDiagram
 - **Gösterim para birimi.** TCMB kurları TL karşılığı olarak gelir; TL ara birimdir. Gösterim birimi TL değilse çapraz kurla çevrilir (ör. USD → EUR = USD/TL ÷ EUR/TL). Seçim cihaza özeldir, her kişi kendi telefonunda farklı birim seçebilir. Ödenmiş döviz kayıtlarının TL karşılığı ödeme günündeki kurla sabittir.
 - **Döviz.** Ödenmemiş kayıtlar güncel kurla, ödenmiş kayıtlar ödeme günündeki kurla TL'ye çevrilir. Kaynak: `https://www.tcmb.gov.tr/kurlar/today.xml`. Döviz satış kuru kullanılır, yayımlanmayan birimlerde efektif satış. JPY gibi 100 birimlik kurlar bire indirilir. Çevrimdışıyken son alınan kurlar kullanılır.
 - **Yerelleştirme.** Metinler `Localizable.xcstrings` (kaynak dil Türkçe) içinde. Tutar ve tarih biçimi uygulama diline göre: Türkçe `18989`, İngilizce `18989`.
+- **Kilit.** Face ID / Touch ID / cihaz parolası (`LocalAuthentication`). Kilit ekranı ayrı bir `UIWindow`'da gösterilir; açık sayfalar da uygulama değiştiricide gizlenir.
+- **Hatırlatmalar.** Bu ay ve sonraki iki ayın bekleyen, son ödeme günü olan giderleri için yerel bildirim (en fazla 60). Her kayıt değişikliğinde yeniden planlanır.
+- **Widget.** Uygulama bu ayın özetini `group.com.yakupad.AileKasa` App Group'una JSON olarak yazar; widget yalnızca bu özeti okur, veri tabanına erişmez. Gerçek cihazda App Group için Xcode'da Team seçili olmalıdır.
+- **CSV.** Türkçede `;` ayraç ve `,` ondalık, İngilizcede `,` ve `.`. Excel'in Türkçe karakterleri tanıması için UTF-8 BOM eklenir.
 - **Swift 6, varsayılan MainActor izolasyonu.** Core Data alt sınıfları `nonisolated`.
 
 ### Hesaplama kuralları
@@ -143,8 +148,10 @@ AileKasa/
   Persistence/    PersistenceController, kayıt işlemleri, örnek veri
   Domain/         Ledger (hesaplama), Money (biçimlendirme), RateService (TCMB)
   Design/         Renkler, ortak bileşenler
+  Shared/         Uygulama ve widget'ın ortak kullandığı özet modeli
   Features/       Summary, Month, Grid, Items, Accounts, Entry, Report, Settings
-AileKasaTests/    Hesaplama, taksit, kur, öneri, sıralama ve rapor testleri
+AileKasaWidget/   Widget eklentisi (WidgetKit)
+AileKasaTests/    Hesaplama, kur, IBAN, hatırlatma, CSV ve rapor testleri
 ```
 
 ## Yol haritası
@@ -172,8 +179,8 @@ AileKasaTests/    Hesaplama, taksit, kur, öneri, sıralama ve rapor testleri
 - [ ] Kim, neyi değiştirdi bilgisi
 - [ ] Çakışma testleri
 
-### Aşama 4 · Cila
-- [ ] Son ödeme gününden önce bildirim
-- [ ] Ana ekran widget'ı
-- [ ] Face ID kilidi ve uygulama değiştiricide tutar gizleme
-- [ ] CSV dışa aktarma
+### Aşama 4 · Cila ✅
+- [x] Son ödeme gününden önce bildirim
+- [x] Ana ekran ve kilit ekranı widget'ı
+- [x] Face ID kilidi ve uygulama değiştiricide tutar gizleme
+- [x] CSV dışa aktarma (kayıt listesi ve Excel düzeninde aylık tablo)

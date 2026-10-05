@@ -282,4 +282,61 @@ struct LedgerTests {
         #expect(groups.map(\.title) == ["YapıKredi", "Benim Bankam"])
         #expect(groups.map(\.lines.count) == [2, 2])
     }
+
+    @Test func remindersSkipPaidPastAndUndatedItems() throws {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "Europe/Istanbul")!
+        let now = calendar.date(from: DateComponents(year: 2026, month: 10, day: 5, hour: 10))!
+
+        let due7 = makeItem(); due7.bank = "YapıKredi"; due7.dueDay = 7
+        let due3 = makeItem(); due3.dueDay = 3            // geçmişte kaldı
+        let paid = makeItem(); paid.dueDay = 20
+        let undated = makeItem()                          // ödeme günü yok
+        let salary = makeItem(kind: .salary); salary.dueDay = 15
+        for item in [due7, due3, undated, salary] {
+            context.upsertEntry(item: item, month: october, amount: 100, status: .pending, rates: rates)
+        }
+        context.upsertEntry(item: paid, month: october, amount: 100, status: .paid, rates: rates)
+
+        let lines = Ledger.lines(for: october, items: [due7, due3, paid, undated, salary], rates: rates)
+        let plan = Reminders.plan(lines: lines, daysBefore: 1, hour: 9, now: now, calendar: calendar)
+        #expect(plan.count == 1)
+        let reminder = try #require(plan.first)
+        #expect(reminder.title == "YapıKredi Kart" || reminder.title == "YapıKredi Card")
+        #expect(calendar.dateComponents([.month, .day, .hour], from: reminder.date) == DateComponents(month: 10, day: 6, hour: 9))
+    }
+
+    @Test func reminderDueDayClampsToMonthLength() throws {
+        let calendar = Calendar(identifier: .gregorian)
+        let february = Month(year: 2027, month: 2)
+        let item = makeItem(); item.dueDay = 31
+        context.upsertEntry(item: item, month: february, amount: 100, status: .pending, rates: rates)
+        let lines = Ledger.lines(for: february, items: [item], rates: rates)
+        let plan = Reminders.plan(lines: lines, daysBefore: 0, hour: 9, now: .distantPast, calendar: calendar)
+        let reminder = try #require(plan.first)
+        #expect(calendar.component(.day, from: reminder.date) == 28)
+    }
+
+    @Test func csvEscapesFieldsAndUsesTurkishNumbers() {
+        let format = CSVExport.Format(separator: ";", locale: Locale(identifier: "tr_TR"))
+        let text = CSVExport.csv([["Ad", "Not"], ["Kira; Ekim", "\"özel\" not"]], format)
+        #expect(text == "Ad;Not\r\n\"Kira; Ekim\";\"\"\"özel\"\" not\"")
+        #expect(CSVExport.number(-18989, format) == "-18989")
+        #expect(CSVExport.number(52319, CSVExport.Format(separator: ",", locale: Locale(identifier: "en_US"))) == "52319")
+    }
+
+    @Test func csvTableSumsNetAndLeavesExcludedBlank() {
+        let format = CSVExport.Format(separator: ";", locale: Locale(identifier: "tr_TR"))
+        let card = makeItem(); card.bank = "Akbank"
+        let salary = makeItem(kind: .salary)
+        context.upsertEntry(item: card, month: october, amount: 300, status: .paid, rates: rates)
+        context.upsertEntry(item: card, month: october.adding(1), amount: 50, status: .excluded, rates: rates)
+        context.upsertEntry(item: salary, month: october, amount: 1000, status: .paid, rates: rates)
+
+        let rows = CSVExport.table(items: [card, salary], months: [october, october.adding(1)], rates: rates, format: format)
+            .components(separatedBy: "\r\n")
+        #expect(rows.count == 4)
+        #expect(rows[1].hasSuffix(";-300;"))
+        #expect(rows[3].hasSuffix(";700;0"))
+    }
 }

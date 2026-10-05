@@ -29,12 +29,47 @@ targets:
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_NSFaceIDUsageDescription: "Aile Kasası'nı açarken kimliğinizi doğrulamak için Face ID kullanılır."
         TARGETED_DEVICE_FAMILY: "1"
         MARKETING_VERSION: "0.1.0"
         CURRENT_PROJECT_VERSION: "1"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         CODE_SIGN_STYLE: Automatic
+    entitlements:
+      path: AileKasa/AileKasa.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.yakupad.AileKasa
+    dependencies:
+      - target: AileKasaWidget
+
+  AileKasaWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - AileKasaWidget
+      - AileKasa/Shared
+    info:
+      path: AileKasaWidget/Info.plist
+      properties:
+        CFBundleDisplayName: Aile Kasası
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: AileKasaWidget/AileKasaWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.yakupad.AileKasa
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasa.Widget
+        GENERATE_INFOPLIST_FILE: YES
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        SKIP_INSTALL: YES
 
   AileKasaTests:
     type: bundle.unit-test
