@@ -25,35 +25,7 @@ struct SummaryView: View {
         let lines = Ledger.lines(for: app.month, items: items, rates: rates.table)
         let summary = Ledger.summary(of: lines)
 
-        ScrollView {
-            Group {
-                if items.isEmpty {
-                    emptyState
-                } else if isWide {
-                    // iPad, iPhone Duo iç ekranı ve Mac: solda özet, sağda ödenecekler.
-                    HStack(alignment: .top, spacing: 16) {
-                        VStack(alignment: .leading, spacing: 14) {
-                            NetCard(summary: summary)
-                            peopleRow(summary)
-                            NetChart(points: chartPoints, selected: app.month)
-                        }
-                        VStack(alignment: .leading, spacing: 14) {
-                            upcoming
-                        }
-                    }
-                    .readableWidth(1100)
-                } else {
-                    VStack(alignment: .leading, spacing: 14) {
-                        NetCard(summary: summary)
-                        peopleRow(summary)
-                        NetChart(points: chartPoints, selected: app.month)
-                        upcoming
-                    }
-                }
-            }
-            .padding(.horizontal)
-            .padding(.bottom, 24)
-        }
+        content(summary)
         .background(Color.zemin)
         .navigationTitle(app.month.title)
         .toolbar {
@@ -73,6 +45,69 @@ struct SummaryView: View {
             if CommandLine.arguments.contains("-openSettings") { route = .settings }
         }
         #endif
+    }
+
+    @ViewBuilder
+    private func content(_ summary: MonthSummary) -> some View {
+        if items.isEmpty {
+            ScrollView { emptyState.padding(.horizontal) }
+        } else if isWide {
+            wideLayout(summary)
+        } else {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 14) {
+                    overview(summary)
+                    upcoming
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 24)
+            }
+        }
+    }
+
+    /// iPad, Mac ve iPhone Duo iç ekranı: iki bölme, her biri kendi içinde kayar.
+    /// iOS 27.1'de `ArrangementView` bölmeleri katlanma çizgisinin iki yanına yerleştirir:
+    /// kitap gibi tutulunca solda/sağda, masa üstü duruşta üstte (özet) ve altta (ödenecekler).
+    @ViewBuilder
+    private func wideLayout(_ summary: MonthSummary) -> some View {
+        let overviewPane = ScrollView {
+            VStack(alignment: .leading, spacing: 14) { overview(summary) }
+                .padding(.horizontal)
+                .padding(.bottom, 24)
+        }
+        let paymentsPane = ScrollView {
+            VStack(alignment: .leading, spacing: 14) { upcoming }
+                .padding(.horizontal)
+                .padding(.bottom, 24)
+        }
+        #if targetEnvironment(macCatalyst)
+        // ArrangementView Mac'te yok; Mac'te iki bölme yan yana.
+        HStack(alignment: .top, spacing: 0) {
+            overviewPane
+            paymentsPane
+        }
+        #else
+        if #available(iOS 27.1, *) {
+            ArrangementView {
+                overviewPane
+            } secondary: {
+                paymentsPane
+            }
+            .arrangementViewStyle(.split)
+        } else {
+            HStack(alignment: .top, spacing: 0) {
+                overviewPane
+                paymentsPane
+            }
+        }
+        #endif
+    }
+
+    @ViewBuilder
+    private func overview(_ summary: MonthSummary) -> some View {
+        NetCard(summary: summary)
+        peopleRow(summary)
+        NetChart(points: chartPoints, selected: app.month)
     }
 
     private var emptyState: some View {

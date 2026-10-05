@@ -18,6 +18,7 @@ Excel'de tutulan aylık borç, gelir ve ödeme tablosunun iPhone uygulaması. De
 
 - **iPhone ve iPhone Duo dış ekranı:** tek sütun, altta sekme çubuğu.
 - **iPad, Mac ve iPhone Duo iç ekranı** (geniş boyut sınıfı): kenar çubuğuna açılabilen sekmeler, iki sütunlu Özet, yan yana grafikler, okunur genişlikte listeler.
+- **iPhone Duo iç ekranı:** Özet, `ArrangementView` (`.split`) ile iki bölmeye ayrılır; iOS bölmeleri katlanma çizgisinin iki yanına yerleştirir. Kitap duruşunda özet solda, ödenecekler sağda; masa üstü duruşta özet üstte, ödenecekler altta. Mac'te `ArrangementView` olmadığı için yan yana düzen kullanılır.
 - Düzen pencere genişliğine göre seçilir (600 pt ve üstü iki sütun). Duo'nun iç ekranı iPhone olduğu için boyut sınıfı "dar" görünebilir; genişlik ölçüldüğü için yine iki sütunlu açılır. Duo katlanıp açıldığında ya da iPad'de bölünmüş ekranda kendiliğinden değişir.
 
 ### iPhone Duo'da test
@@ -32,6 +33,8 @@ xcrun simctl io booted screenshot --display=<ekran UUID> duo.png   # ekranlar: s
 ```
 
 ## Kurulum
+
+**Xcode 27.1 gerekir** (iPhone Duo API'leri: `ArrangementView`, `DeviceHinge`). En düşük sürüm iOS / iPadOS / macOS 27.0'dır; 27.1 öncesinde Duo'ya özel düzen yerine yan yana düzen kullanılır.
 
 ```sh
 brew install xcodegen      # bir kez
