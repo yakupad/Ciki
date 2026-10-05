@@ -16,6 +16,23 @@ struct AileKasaApp: App {
     @AppStorage(Appearance.key) private var appearance: Appearance = .system
     private let lockWindow = LockWindow()
 
+    init() {
+        Self.skipOnboardingForExistingData(in: PersistenceController.shared.viewContext)
+    }
+
+    /// Önceki sürümlerden gelen ya da kişisi olan kurulumlarda karşılama ekranı gösterilmez.
+    private static func skipOnboardingForExistingData(in context: NSManagedObjectContext) {
+        let defaults = UserDefaults.standard
+        guard !defaults.bool(forKey: OnboardingView.completedKey) else { return }
+        let people = (try? context.count(for: NSFetchRequest<Person>(entityName: "Person"))) ?? 0
+        let items = (try? context.count(for: NSFetchRequest<LedgerItem>(entityName: "LedgerItem"))) ?? 0
+        var skip = people + items > 0
+        #if DEBUG
+        skip = skip || CommandLine.arguments.contains("-loadSampleData")
+        #endif
+        if skip { defaults.set(true, forKey: OnboardingView.completedKey) }
+    }
+
     var body: some Scene {
         WindowGroup {
             RootView()
@@ -111,6 +128,7 @@ final class AppState {
 struct RootView: View {
     @Environment(AppState.self) private var app
     @State private var route: EditorRoute?
+    @AppStorage(OnboardingView.completedKey) private var isOnboarded = false
     @State private var tab = RootView.initialTab
 
     /// DEBUG derlemede `-startTab 3` ile açılış sekmesi seçilebilir (ekran görüntüsü için).
@@ -149,6 +167,9 @@ struct RootView: View {
         }
         .sheet(item: $route) { EditorSheet(route: $0) }
         .modifier(LocalHouseholdDecision())
+        .fullScreenCover(isPresented: Binding(get: { !isOnboarded }, set: { isOnboarded = !$0 })) {
+            OnboardingView()
+        }
         .tint(.petrol)
     }
 }

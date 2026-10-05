@@ -256,18 +256,8 @@ struct SettingsView: View {
         )
     }
 
-    /// Yeni kişiye sıradaki paletten, kullanılmayan bir renk verilir.
     private func addPerson() {
-        let palette = ["3D5FD9", "C23F7B", "D9822B", "2E9E6B", "7A4FD1", "1F8FB0", "B5452E", "6B7A2E"]
-        let used = Set(people.compactMap { $0.colorHex?.uppercased() })
-        let person = Person(context: context)
-        person.uuid = UUID()
-        person.name = ""
-        person.colorHex = palette.first { !used.contains($0) } ?? palette[people.count % palette.count]
-        person.sortOrder = Int16((people.map(\.sortOrder).max() ?? -1) + 1)
-        let household = context.currentHousehold()
-        context.place(person, in: household)
-        person.household = household
+        context.addPerson(named: "", to: context.currentHousehold())
         context.saveIfNeeded()
     }
 

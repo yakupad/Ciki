@@ -506,6 +506,22 @@
         }
       }
     },
+    "Ad": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad"
+          }
+        }
+      }
+    },
     "Ad (boşsa: %@)": {
       "localizations": {
         "en": {
@@ -570,6 +586,22 @@
         }
       }
     },
+    "Adınız": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your name"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adınız"
+          }
+        }
+      }
+    },
     "Aile / Gönderim": {
       "localizations": {
         "en": {
@@ -614,6 +646,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aile Kasası kilitli"
+          }
+        }
+      }
+    },
+    "Aile Kasası'na hoş geldiniz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Aile Kasası"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aile Kasası'na hoş geldiniz"
           }
         }
       }
@@ -986,6 +1034,22 @@
         }
       }
     },
+    "Başla": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get Started"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başla"
+          }
+        }
+      }
+    },
     "Başlangıç": {
       "localizations": {
         "en": {
@@ -1078,6 +1142,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Birikimli"
+          }
+        }
+      }
+    },
+    "Bitir": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitir"
           }
         }
       }
@@ -1434,6 +1514,22 @@
         }
       }
     },
+    "Davet bağlantısını açın": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the invitation link"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Davet bağlantısını açın"
+          }
+        }
+      }
+    },
     "Davet bekliyor": {
       "localizations": {
         "en": {
@@ -1446,6 +1542,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Davet bekliyor"
+          }
+        }
+      }
+    },
+    "Davet gelmediyse eşinizden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Eşinizle paylaşın adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If you haven't received it, ask your partner to go to Settings → Share with iCloud → Share with Your Partner in Aile Kasası. Both phones need to be signed in to iCloud."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Davet gelmediyse eşinizden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Eşinizle paylaşın adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı."
           }
         }
       }
@@ -1478,6 +1590,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Davetli"
+          }
+        }
+      }
+    },
+    "Devam": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devam"
           }
         }
       }
@@ -1803,6 +1931,54 @@
         }
       }
     },
+    "Excel'de tuttuğunuz borç, gelir ve ödeme tablosunun telefondaki hali.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The spreadsheet of debts, income and payments you kept, now on your phone."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excel'de tuttuğunuz borç, gelir ve ödeme tablosunun telefondaki hali."
+          }
+        }
+      }
+    },
+    "Eşim beni davet etti": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My Partner Invited Me"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşim beni davet etti"
+          }
+        }
+      }
+    },
+    "Eşinizin adı (isteğe bağlı)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partner's name (optional)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşinizin adı (isteğe bağlı)"
+          }
+        }
+      }
+    },
     "Eşinizin hanesine katıldınız. Bu cihazda daha önce girdiğiniz kalemler ya da hesaplar var. Ortak haneye kopyalarsanız eşiniz de görür; silerseniz yalnızca ortak hane kalır.": {
       "localizations": {
         "en": {
@@ -1815,6 +1991,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Eşinizin hanesine katıldınız. Bu cihazda daha önce girdiğiniz kalemler ya da hesaplar var. Ortak haneye kopyalarsanız eşiniz de görür; silerseniz yalnızca ortak hane kalır."
+          }
+        }
+      }
+    },
+    "Eşinizin Mesajlar, WhatsApp ya da e-postayla gönderdiği davet bağlantısına bu telefonda dokunun. Ortak hane birkaç saniye içinde gelir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On this phone, tap the invitation link your partner sent by Messages, WhatsApp or email. The shared household arrives within a few seconds."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşinizin Mesajlar, WhatsApp ya da e-postayla gönderdiği davet bağlantısına bu telefonda dokunun. Ortak hane birkaç saniye içinde gelir."
+          }
+        }
+      }
+    },
+    "Eşinizle ortak": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shared with your partner"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşinizle ortak"
           }
         }
       }
@@ -1965,6 +2173,22 @@
         }
       }
     },
+    "Geri": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geri"
+          }
+        }
+      }
+    },
     "Geri al": {
       "localizations": {
         "en": {
@@ -2025,6 +2249,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Gider"
+          }
+        }
+      }
+    },
+    "Gizlilik ve bildirimler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy and Notifications"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gizlilik ve bildirimler"
           }
         }
       }
@@ -2137,6 +2377,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hane adı"
+          }
+        }
+      }
+    },
+    "Hanede kimler var?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Who's in your household?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hanede kimler var?"
           }
         }
       }
@@ -2297,6 +2553,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "her ay"
+          }
+        }
+      }
+    },
+    "Her ay tek bakışta": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every month at a glance"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her ay tek bakışta"
           }
         }
       }
@@ -2638,6 +2910,22 @@
         }
       }
     },
+    "iCloud ile iki telefon aynı kayıtları görür ve düzenler.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "With iCloud, both phones see and edit the same entries."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud ile iki telefon aynı kayıtları görür ve düzenler."
+          }
+        }
+      }
+    },
     "iCloud ile ortak kullanım": {
       "localizations": {
         "en": {
@@ -2666,6 +2954,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "İlk kalemi ekle"
+          }
+        }
+      }
+    },
+    "İlk kişi bu telefonu kullanan kişi olarak seçilir. Kişileri sonra Ayarlar'dan değiştirebilirsiniz.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The first person is set as the user of this phone. You can change people later in Settings."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlk kişi bu telefonu kullanan kişi olarak seçilir. Kişileri sonra Ayarlar'dan değiştirebilirsiniz."
           }
         }
       }
@@ -2894,6 +3198,22 @@
         }
       }
     },
+    "Kartlar, krediler, kira ve maaşlar; geçmiş, bu ay ve gelecek aylar.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cards, loans, rent and salaries; past, current and upcoming months."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartlar, krediler, kira ve maaşlar; geçmiş, bu ay ve gelecek aylar."
+          }
+        }
+      }
+    },
     "Kartlarınızı, kredilerinizi, maaşları ve düzenli ödemeleri kalem olarak ekleyin. Sonra her ay tutarları girersiniz.": {
       "localizations": {
         "en": {
@@ -2990,6 +3310,22 @@
         }
       }
     },
+    "Kayıtlar yalnızca cihazınızda ve kendi iCloud hesabınızda durur. Reklam ya da analiz yok.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your data stays on your device and in your own iCloud account. No ads, no analytics."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayıtlar yalnızca cihazınızda ve kendi iCloud hesabınızda durur. Reklam ya da analiz yok."
+          }
+        }
+      }
+    },
     "Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için.": {
       "localizations": {
         "en": {
@@ -3002,6 +3338,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için."
+          }
+        }
+      }
+    },
+    "Kendi hanemi oluşturayım": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create My Own Household"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kendi hanemi oluşturayım"
           }
         }
       }
@@ -3374,6 +3726,22 @@
         }
       }
     },
+    "Mac'te dil, Sistem Ayarları → Genel → Dil ve Bölge → Uygulamalar bölümünden değiştirilir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On Mac, change the language in System Settings → General → Language & Region → Applications."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac'te dil, Sistem Ayarları → Genel → Dil ve Bölge → Uygulamalar bölümünden değiştirilir."
+          }
+        }
+      }
+    },
     "Nakit": {
       "localizations": {
         "en": {
@@ -3610,6 +3978,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Paylaşım başlatılamadı. İnternet bağlantınızı ve iCloud hesabınızı kontrol edip yeniden deneyin."
+          }
+        }
+      }
+    },
+    "Paylaşım davetlerinde bu ad görünür.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This name appears in sharing invitations."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaşım davetlerinde bu ad görünür."
           }
         }
       }
@@ -3950,6 +4334,22 @@
         }
       }
     },
+    "Son ödeme gününden bir gün önce saat 09:00'da bildirim gelir. Zamanı Ayarlar'dan değiştirebilirsiniz.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You'll be notified at 9:00 the day before a payment is due. You can change the time in Settings."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son ödeme gününden bir gün önce saat 09:00'da bildirim gelir. Zamanı Ayarlar'dan değiştirebilirsiniz."
+          }
+        }
+      }
+    },
     "Son: %@": {
       "localizations": {
         "en": {
@@ -4255,6 +4655,22 @@
         }
       }
     },
+    "Uygulama her açılışta kimliğinizi sorar. Uygulama değiştiricide ve widget'ta tutarlar gizlenir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app asks for your identity each time it opens. Amounts are hidden in the app switcher and widget."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulama her açılışta kimliğinizi sorar. Uygulama değiştiricide ve widget'ta tutarlar gizlenir."
+          }
+        }
+      }
+    },
     "Vazgeç": {
       "localizations": {
         "en": {
@@ -4267,6 +4683,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vazgeç"
+          }
+        }
+      }
+    },
+    "Verileriniz sizde": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your data stays yours"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verileriniz sizde"
           }
         }
       }

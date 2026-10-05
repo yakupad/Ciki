@@ -8,6 +8,18 @@ struct LedgerTests {
     let rates = RateTable(usd: 40, eur: 50)
     let october = Month(year: 2026, month: 10)
 
+    /// İlk açılış ekranında eklenen iki kişiyi taklit eder.
+    @discardableResult
+    private func householdWithPeople() -> Household {
+        let household = context.currentHousehold()
+        if household.peopleArray.isEmpty {
+            context.addPerson(named: "Deniz", to: household)
+            context.addPerson(named: "Ece", to: household)
+            context.saveIfNeeded()
+        }
+        return household
+    }
+
     private func makeItem(kind: ItemKind = .card, currency: Currency = .tl,
                           recurring: Decimal? = nil, start: Month? = nil, end: Month? = nil) -> LedgerItem {
         let item = LedgerItem(context: context)
@@ -94,7 +106,7 @@ struct LedgerTests {
     }
 
     @Test func ownerTotalsSeparateSharedItems() {
-        let household = context.currentHousehold()
+        let household = householdWithPeople()
         let deniz = household.peopleArray[0]
         let card = makeItem()
         card.owner = deniz
@@ -341,7 +353,7 @@ struct LedgerTests {
     }
 
     @Test func duplicateHouseholdsMergeIntoTheOneWithData() throws {
-        let original = context.currentHousehold()
+        let original = householdWithPeople()
         let card = makeItem()
         card.household = original
         card.owner = original.peopleArray.first
@@ -370,7 +382,7 @@ struct LedgerTests {
     }
 
     @Test func copyMovesItemsEntriesAndAccountsIntoTargetHousehold() throws {
-        let target = context.currentHousehold()
+        let target = householdWithPeople()
         let source = Household(context: context)
         source.uuid = UUID()
         source.createdAt = .now
@@ -409,7 +421,7 @@ struct LedgerTests {
     }
 
     @Test func entriesRecordWhoChangedThem() {
-        let household = context.currentHousehold()
+        let household = householdWithPeople()
         let ece = household.peopleArray[1]
         ece.uuid = UUID()
         context.saveIfNeeded()

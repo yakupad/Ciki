@@ -49,7 +49,7 @@ xcodebuild -project AileKasa.xcodeproj -scheme AileKasa \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle** ile Ağustos–Kasım 2026 örnek verisi yüklenir. Simülatörde `-loadSampleData` başlatma argümanı aynı işi açılışta yapar; `-openReport` doğrudan rapor ekranını, `-startTab 0…3` istenen sekmeyi açar.
+Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle** (`-loadSampleData` ilk açılış ekranını da atlar; `-onboardingStep people|privacy|invited` ilk açılışın bir adımını açar) ile Ağustos–Kasım 2026 örnek verisi yüklenir. Simülatörde `-loadSampleData` başlatma argümanı aynı işi açılışta yapar; `-openReport` doğrudan rapor ekranını, `-startTab 0…3` istenen sekmeyi açar.
 
 ## iCloud ile ortak kullanım kurulumu
 
@@ -88,6 +88,7 @@ iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca 
 | **Kalemler** | Düzenli ödemeler, düzenli gelirler, diğer kalemler ve arşiv. Üstte USD, EUR ve kalemlerde kullanılan dövizlerin kuru; dokununca aranabilir tüm kurlar listesi açılır. Düzenle ile sürükleyerek sıralanır. |
 | **Kayıt ekle** | Tutar, kalem, ay, durum, not. Geçen ay, son girilen, son 3 ay ortalaması ve düzenli tutar öneri olarak sunulur. Taksitlendir açılırsa tutar aylara bölünür. |
 | **Hesaplar** (Ayarlar → Kişiler'in altında) | IBAN rehberi: kişilerin kendi hesapları ve ödeme yapılan kişi/kurumlar. Dokununca IBAN kopyalanır; alıcı adı kopyalama ve paylaşma basılı tutunca. IBAN mod-97 ile doğrulanır, TR IBAN'ında banka otomatik bulunur. Kaleme ödeme hesabı bağlanırsa kayıt ekranında IBAN tek dokunuşla kopyalanır. |
+| **İlk açılış** | Tanıtım, hane adı ve kişiler, Face ID kilidi ve hatırlatma tercihi. "Eşim beni davet etti" seçeneği kişi oluşturmadan geçer ve davet bağlantısını bekler. Verisi olan kurulumlarda gösterilmez. |
 | **Rapor** | Özet'ten açılır. Son 6 ay ortalama net, ödenmemiş gider, en yüksek gider ayı; net ve birikimli bakiye grafiği; bankaya göre kart ve kredi ödemeleri; ay ay tablo. |
 | **Widget** | Ana ekran (küçük, orta) ve kilit ekranı. Ay sonu net ve sıradaki ödemeler. Uygulama kilidi açıksa tutarları göstermez. |
 | **Ayarlar** | Hane adı, kişi adları ve renkleri, kur bilgisi. |

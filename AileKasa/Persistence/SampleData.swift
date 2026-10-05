@@ -4,6 +4,10 @@ import CoreData
 enum SampleData {
     static func load(into context: NSManagedObjectContext) {
         let household = context.currentHousehold()
+        if household.peopleArray.isEmpty {
+            context.addPerson(named: "Deniz", to: household)
+            context.addPerson(named: "Ece", to: household)
+        }
         let people = household.peopleArray
         let deniz = people.first
         let ece = people.dropFirst().first

@@ -1,0 +1,291 @@
+import SwiftUI
+import CoreData
+
+/// İlk açılış: tanıtım, hane ve kişiler, gizlilik tercihleri. Eşi tarafından davet edilen kişi
+/// kişi oluşturmadan geçer; davet kabul edilince ortak hane gelir.
+struct OnboardingView: View {
+    @Environment(\.managedObjectContext) private var context
+    @Environment(AppLock.self) private var lock
+    @Environment(ReminderScheduler.self) private var reminders
+    @AppStorage(OnboardingView.completedKey) private var isCompleted = false
+    @AppStorage(DeviceOwner.key) private var deviceOwnerID = ""
+
+    static let completedKey = "onboarding.completed"
+
+    enum Step { case welcome, people, privacy, invited }
+
+    @State private var step = OnboardingView.initialStep
+
+    /// DEBUG'da "-onboardingStep people" ile istenen adımdan başlanır (ekran görüntüsü için).
+    private static var initialStep: Step {
+        #if DEBUG
+        switch UserDefaults.standard.string(forKey: "onboardingStep") {
+        case "people": return .people
+        case "privacy": return .privacy
+        case "invited": return .invited
+        default: return .welcome
+        }
+        #else
+        return .welcome
+        #endif
+    }
+    @State private var householdName = ""
+    @State private var names = ["", ""]
+    @FocusState private var focusedField: Int?
+
+    var body: some View {
+        NavigationStack {
+            Group {
+                switch step {
+                case .welcome: welcome
+                case .people: people
+                case .privacy: privacy
+                case .invited: invited
+                }
+            }
+            .background(Color.zemin)
+            .animation(.default, value: step)
+        }
+        .interactiveDismissDisabled()
+    }
+
+    // MARK: - Hoş geldiniz
+
+    private var welcome: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 28) {
+                VStack(alignment: .leading, spacing: 12) {
+                    Image(systemName: "wallet.bifold.fill")
+                        .font(.system(size: 44))
+                        .foregroundStyle(Color.petrol)
+                        .accessibilityHidden(true)
+                    Text("Aile Kasası'na hoş geldiniz")
+                        .font(.largeTitle.bold())
+                        .accessibilityAddTraits(.isHeader)
+                    Text("Excel'de tuttuğunuz borç, gelir ve ödeme tablosunun telefondaki hali.")
+                        .font(.title3)
+                        .foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 20) {
+                    Feature(symbol: "calendar", title: "Her ay tek bakışta",
+                            text: "Kartlar, krediler, kira ve maaşlar; geçmiş, bu ay ve gelecek aylar.")
+                    Feature(symbol: "person.2.fill", title: "Eşinizle ortak",
+                            text: "iCloud ile iki telefon aynı kayıtları görür ve düzenler.")
+                    Feature(symbol: "lock.shield.fill", title: "Verileriniz sizde",
+                            text: "Kayıtlar yalnızca cihazınızda ve kendi iCloud hesabınızda durur. Reklam ya da analiz yok.")
+                }
+            }
+            .padding(24)
+            .readableWidth(560)
+        }
+        .safeAreaInset(edge: .bottom) {
+            VStack(spacing: 12) {
+                PrimaryButton("Başla") { step = .people }
+                Button("Eşim beni davet etti") { step = .invited }
+                    .font(.body.weight(.semibold))
+            }
+            .padding(24)
+            .readableWidth(560)
+            .background(Color.zemin)
+        }
+    }
+
+    // MARK: - Kişiler
+
+    private var people: some View {
+        Form {
+            Section {
+                TextField("Hane adı", text: $householdName, prompt: Text("Evimiz"))
+                    .textContentType(.organizationName)
+            } header: {
+                Text("Hane")
+            } footer: {
+                Text("Paylaşım davetlerinde bu ad görünür.")
+            }
+
+            Section {
+                ForEach(names.indices, id: \.self) { index in
+                    HStack(spacing: 12) {
+                        Circle()
+                            .fill(Color(hexString: Person.palette[index % Person.palette.count]) ?? .petrol)
+                            .frame(width: 12, height: 12)
+                            .accessibilityHidden(true)
+                        TextField(placeholder(for: index), text: $names[index])
+                            .textContentType(index == 0 ? .givenName : .none)
+                            .focused($focusedField, equals: index)
+                            .submitLabel(.next)
+                            .onSubmit { focusedField = index + 1 < names.count ? index + 1 : nil }
+                    }
+                }
+                .onDelete { offsets in
+                    names.remove(atOffsets: offsets)
+                    if names.isEmpty { names = [""] }
+                }
+                Button("Kişi ekle", systemImage: "person.badge.plus") {
+                    names.append("")
+                    focusedField = names.count - 1
+                }
+            } header: {
+                Text("Kişiler")
+            } footer: {
+                Text("İlk kişi bu telefonu kullanan kişi olarak seçilir. Kişileri sonra Ayarlar'dan değiştirebilirsiniz.")
+            }
+        }
+        .navigationTitle("Hanede kimler var?")
+        .navigationBarTitleDisplayMode(.large)
+        .scrollContentBackground(.hidden)
+        .readableWidth(640)
+        .safeAreaInset(edge: .bottom) {
+            PrimaryButton("Devam") { createHousehold() }
+                .disabled(names.first?.isBlank ?? true)
+                .padding(24)
+                .readableWidth(560)
+                .background(Color.zemin)
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Geri", systemImage: "chevron.left") { step = .welcome }
+            }
+        }
+        .onAppear { focusedField = 0 }
+    }
+
+    private func placeholder(for index: Int) -> String {
+        switch index {
+        case 0: String(localized: "Adınız")
+        case 1: String(localized: "Eşinizin adı (isteğe bağlı)")
+        default: String(localized: "Ad")
+        }
+    }
+
+    // MARK: - Gizlilik
+
+    private var privacy: some View {
+        Form {
+            Section {
+                Toggle(isOn: Binding(get: { lock.isEnabled },
+                                     set: { enabled in Task { await lock.setEnabled(enabled) } })) {
+                    Label("\(lock.methodName) ile kilitle", systemImage: "lock.fill")
+                }
+            } footer: {
+                if let error = lock.errorMessage {
+                    Text(error).foregroundStyle(Color.gider)
+                } else {
+                    Text("Uygulama her açılışta kimliğinizi sorar. Uygulama değiştiricide ve widget'ta tutarlar gizlenir.")
+                }
+            }
+
+            Section {
+                Toggle(isOn: Binding(get: { reminders.isEnabled },
+                                     set: { enabled in Task { await reminders.setEnabled(enabled) } })) {
+                    Label("Ödeme hatırlatmaları", systemImage: "bell.badge")
+                }
+            } footer: {
+                Text("Son ödeme gününden bir gün önce saat 09:00'da bildirim gelir. Zamanı Ayarlar'dan değiştirebilirsiniz.")
+            }
+        }
+        .navigationTitle("Gizlilik ve bildirimler")
+        .navigationBarTitleDisplayMode(.large)
+        .scrollContentBackground(.hidden)
+        .readableWidth(640)
+        .safeAreaInset(edge: .bottom) {
+            PrimaryButton("Bitir") { isCompleted = true }
+                .padding(24)
+                .readableWidth(560)
+                .background(Color.zemin)
+        }
+    }
+
+    // MARK: - Davet
+
+    private var invited: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Image(systemName: "envelope.open.fill")
+                    .font(.system(size: 44))
+                    .foregroundStyle(Color.petrol)
+                    .accessibilityHidden(true)
+                Text("Davet bağlantısını açın")
+                    .font(.largeTitle.bold())
+                    .accessibilityAddTraits(.isHeader)
+                Text("Eşinizin Mesajlar, WhatsApp ya da e-postayla gönderdiği davet bağlantısına bu telefonda dokunun. Ortak hane birkaç saniye içinde gelir.")
+                    .font(.body)
+                Text("Davet gelmediyse eşinizden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Eşinizle paylaşın adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı.")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(24)
+            .readableWidth(560)
+        }
+        .safeAreaInset(edge: .bottom) {
+            VStack(spacing: 12) {
+                PrimaryButton("Tamam") { isCompleted = true }
+                Button("Kendi hanemi oluşturayım") { step = .people }
+                    .font(.body.weight(.semibold))
+            }
+            .padding(24)
+            .readableWidth(560)
+            .background(Color.zemin)
+        }
+    }
+
+    // MARK: - Kaydet
+
+    private func createHousehold() {
+        let household = context.currentHousehold()
+        if let name = householdName.trimmedOrNil { household.name = name }
+        let people = names.compactMap(\.trimmedOrNil).map { context.addPerson(named: $0, to: household) }
+        context.saveIfNeeded()
+        if let me = people.first?.uuid?.uuidString { deviceOwnerID = me }
+        step = .privacy
+    }
+}
+
+private struct Feature: View {
+    let symbol: String
+    let title: LocalizedStringKey
+    let text: LocalizedStringKey
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 16) {
+            Image(systemName: symbol)
+                .font(.title2)
+                .foregroundStyle(Color.petrol)
+                .frame(width: 36)
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title).font(.headline)
+                Text(text).foregroundStyle(.secondary)
+            }
+        }
+        .accessibilityElement(children: .combine)
+    }
+}
+
+private struct PrimaryButton: View {
+    let title: LocalizedStringKey
+    let action: () -> Void
+
+    init(_ title: LocalizedStringKey, action: @escaping () -> Void) {
+        self.title = title
+        self.action = action
+    }
+
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .font(.headline)
+                .frame(maxWidth: .infinity, minHeight: 44)
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.petrol)
+    }
+}
+
+#Preview {
+    OnboardingView()
+        .environment(\.managedObjectContext, PersistenceController.preview.viewContext)
+        .environment(AppLock())
+        .environment(ReminderScheduler())
+}

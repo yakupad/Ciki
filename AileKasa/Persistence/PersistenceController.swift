@@ -102,7 +102,7 @@ final class PersistenceController {
 
 extension NSManagedObjectContext {
     /// Etkin hane: eşin paylaştığı hane varsa o, yoksa bu cihazdaki en eski hane.
-    /// Hiç yoksa iki kişiyle birlikte oluşturulur.
+    /// Hiç yoksa boş olarak oluşturulur; kişiler ilk açılış ekranında eklenir.
     @discardableResult
     func currentHousehold() -> Household {
         let request = NSFetchRequest<Household>(entityName: "Household")
@@ -119,17 +119,22 @@ extension NSManagedObjectContext {
         household.uuid = UUID()
         household.name = String(localized: "Evimiz")
         household.createdAt = .now
-
-        for (index, (name, color)) in [("Deniz", "3D5FD9"), ("Ece", "C23F7B")].enumerated() {
-            let person = Person(context: self)
-            person.uuid = UUID()
-            person.name = name
-            person.colorHex = color
-            person.sortOrder = Int16(index)
-            person.household = household
-        }
         saveIfNeeded()
         return household
+    }
+
+    /// Haneye kişi ekler; renk, diğer kişilerin kullanmadığı paletten seçilir.
+    @discardableResult
+    func addPerson(named name: String, to household: Household) -> Person {
+        let used = Set(household.peopleArray.compactMap { $0.colorHex?.uppercased() })
+        let person = Person(context: self)
+        place(person, in: household)
+        person.uuid = UUID()
+        person.name = name
+        person.colorHex = Person.palette.first { !used.contains($0) } ?? Person.palette[household.peopleArray.count % Person.palette.count]
+        person.sortOrder = Int16((household.peopleArray.map(\.sortOrder).max() ?? -1) + 1)
+        person.household = household
+        return person
     }
 
     /// Yeni nesneyi hanenin bulunduğu depoya yerleştirir. Depolar arası ilişki kurulamadığı için

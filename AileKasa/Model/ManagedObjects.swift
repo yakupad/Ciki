@@ -92,6 +92,9 @@ nonisolated extension Household {
 }
 
 nonisolated extension Person {
+    /// Kişi renkleri; yeni kişiye kullanılmayan ilk renk verilir.
+    static let palette = ["3D5FD9", "C23F7B", "D9822B", "2E9E6B", "7A4FD1", "1F8FB0", "B5452E", "6B7A2E"]
+
     var displayName: String {
         let trimmed = (name ?? "").trimmingCharacters(in: .whitespaces)
         return trimmed.isEmpty ? String(localized: "İsimsiz") : trimmed

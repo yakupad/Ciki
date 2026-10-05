@@ -37,6 +37,7 @@
 		A0FE83D16A4BCC46B3405143 /* IBAN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B643CE6449F36528DFEFE8 /* IBAN.swift */; };
 		A4605A5C0CD5195231BBE609 /* AileKasaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00421585ED1E78C6759F399 /* AileKasaApp.swift */; };
 		A7A90DBB43D120CEF353500E /* LedgerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E54240F3A7688A35718035E /* LedgerTests.swift */; };
+		A8681727AA7FA12BE2E35512 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA24FE2A0FA9D5165110A47 /* OnboardingView.swift */; };
 		AA55576D29CFA86EC0F0AECA /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C0360FDA7D7F7C4891006 /* Theme.swift */; };
 		BA0364217FD8C7644914AB80 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F469415488FB967EC16B717 /* WidgetSnapshot.swift */; };
 		BA27CFF9F446CAF7CFCF35D4 /* WidgetPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025FCB2D19672E79001932E3 /* WidgetPublisher.swift */; };
@@ -131,6 +132,7 @@
 		A59D86044E0AB63FF6D3D751 /* EntryEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryEditorView.swift; sourceTree = "<group>"; };
 		A80159089CAD251EE5DBBC89 /* AileKasaTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AileKasaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9883A7945229CAB20F67325 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
+		AAA24FE2A0FA9D5165110A47 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B22FACBB2EBD83D23072F141 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		B2D6E11BF4B6EFDD0226CB07 /* ManagedObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjects.swift; sourceTree = "<group>"; };
 		B8951FDEC117FFCB744EB9FA /* AileKasaWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = AileKasaWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +271,7 @@
 				946E4C7553DF91233128B911 /* Grid */,
 				AF3A8CF42BA3B62F7721AF1E /* Items */,
 				0FDE4FE7AD53643AADF50D28 /* Month */,
+				CCAE82D7CAE7F9315D14CEB0 /* Onboarding */,
 				AB7FC75D18C9352B4235576F /* Report */,
 				1E2A52833A9605BC33570E76 /* Settings */,
 				EC7D17D5CC04AC4005073FEB /* Summary */,
@@ -318,6 +321,14 @@
 				A9883A7945229CAB20F67325 /* ItemsView.swift */,
 			);
 			path = Items;
+			sourceTree = "<group>";
+		};
+		CCAE82D7CAE7F9315D14CEB0 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				AAA24FE2A0FA9D5165110A47 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		E369CC5A40C6239D191E04D2 /* Model */ = {
@@ -533,6 +544,7 @@
 				19AD97690391557E889B4320 /* Money.swift in Sources */,
 				5CE7B16DB391069A20E9A607 /* Month.swift in Sources */,
 				92C7396DBF5331918C6D77C0 /* MonthView.swift in Sources */,
+				A8681727AA7FA12BE2E35512 /* OnboardingView.swift in Sources */,
 				4057D87EAB02E8C384B2D572 /* PersistenceController.swift in Sources */,
 				6C3DFE3BA61F3CDDA4B0CC07 /* RateService.swift in Sources */,
 				8D2515F26E8F3E0AB4B73D0D /* Reminders.swift in Sources */,
