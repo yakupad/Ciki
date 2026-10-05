@@ -6,13 +6,19 @@ Excel'de tutulan aylık borç, gelir ve ödeme tablosunun iPhone uygulaması. De
 
 <img src="docs/ozet.png" width="300" alt="Özet ekranı, Ekim 2026">
 
-- **Platform:** iOS 27, SwiftUI
+- **Platform:** iPhone, iPad ve Mac (Mac Catalyst, Mac görünümü), iOS / iPadOS / macOS 27, SwiftUI. iPhone Duo'nun dış ve iç ekranına uyumlu.
 - **Veri:** Core Data + NSPersistentCloudKitContainer (iCloud paylaşımına hazır)
 - **Diller:** Türkçe ve İngilizce (iOS Ayarlar → Aile Kasası → Dil)
 - **Görünüm:** Açık ve koyu mod; Ayarlar → Görünüm'den Sistem / Açık / Koyu seçilebilir.
 - **Para birimleri:** TL ve TCMB'nin yayımladığı 21 döviz (USD, EUR, GBP, CHF, JPY, SAR, AED, AZN…)
 - **Gösterim para birimi:** Toplamlar TL, EUR, USD ya da desteklenen herhangi bir birimde gösterilebilir (Ayarlar → Para birimi).
 - **Tasarım sayfası:** [Plan, ekranlar ve palet](https://claude.ai/artifact/QEnAVyTx2Cw5UZVjPVkVHu)
+
+## Ekran boyutları
+
+- **iPhone ve iPhone Duo dış ekranı:** tek sütun, altta sekme çubuğu.
+- **iPad, Mac ve iPhone Duo iç ekranı** (geniş boyut sınıfı): kenar çubuğuna açılabilen sekmeler, iki sütunlu Özet, yan yana grafikler, okunur genişlikte listeler.
+- Düzen boyut sınıfına göre seçilir; Duo katlanıp açıldığında ya da iPad'de bölünmüş ekranda kendiliğinden değişir.
 
 ## Kurulum
 
@@ -33,7 +39,7 @@ Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle**
 
 ## iCloud ile ortak kullanım kurulumu
 
-1. Xcode'da **AileKasa** ve **AileKasaWidget** hedefleri için *Signing & Capabilities → Team* seçin.
+1. Xcode → Settings → Accounts'ta Apple ID ekli olsun. Team (`D677J9K7QY`) `project.yml`'da tanımlı.
 2. *iCloud* yeteneğinde `iCloud.com.yakupad.AileKasa` container'ının işaretli olduğunu kontrol edin; yoksa **+** ile oluşturun.
 3. Uygulamayı iki ayrı Apple ID'li iki iPhone'a yükleyin.
 4. İlk telefonda **Ayarlar → iCloud ile ortak kullanım → Eşinizle paylaşın** ile daveti gönderin.
@@ -42,7 +48,6 @@ Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle**
 
 iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca yerel olarak çalışır.
 
-> `xcodegen generate` Xcode'da seçilen Team'i sıfırlar. Kalıcı olması için `project.yml` içinde `DEVELOPMENT_TEAM` ayarlanmalıdır.
 
 ## Excel'deki her şeyin uygulamadaki karşılığı
 

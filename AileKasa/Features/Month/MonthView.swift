@@ -110,6 +110,7 @@ struct MonthView: View {
         }
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
+        .readableWidth()
         .background(Color.zemin)
         .navigationTitle(app.month.title)
         .toolbar {

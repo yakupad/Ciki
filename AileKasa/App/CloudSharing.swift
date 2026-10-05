@@ -45,7 +45,8 @@ enum CloudSharing {
     }
 
     static func share(for household: Household) -> CKShare? {
-        try? persistence.container.fetchShares(matching: [household.objectID])[household.objectID]
+        guard PersistenceController.isCloudKitAvailable else { return nil }
+        return try? persistence.container.fetchShares(matching: [household.objectID])[household.objectID]
     }
 
     /// Haneyi ve ona bağlı kişileri, kalemleri, kayıtları ve hesapları paylaşır.
@@ -56,7 +57,8 @@ enum CloudSharing {
     }
 
     static func accountStatus() async -> CKAccountStatus {
-        (try? await persistence.cloudContainer.accountStatus()) ?? .couldNotDetermine
+        guard PersistenceController.isCloudKitAvailable else { return .noAccount }
+        return (try? await persistence.cloudContainer.accountStatus()) ?? .couldNotDetermine
     }
 
     /// iOS'un paylaşım ekranını (davet gönderme, katılımcılar, paylaşımı durdurma) en üstteki ekrandan açar.

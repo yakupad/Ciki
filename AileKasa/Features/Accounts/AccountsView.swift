@@ -56,6 +56,7 @@ struct AccountsView: View {
         }
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
+        .readableWidth()
         .background(Color.zemin)
         .navigationTitle("Hesaplar")
         .searchable(text: $query, prompt: Text("Ad, banka ya da IBAN ara"))

@@ -16,9 +16,12 @@ struct GridView: View {
     @State private var filter: OwnerFilter = .all
     @State private var route: EditorRoute?
 
+    @Environment(\.horizontalSizeClass) private var sizeClass
+
     private let rowHeight: CGFloat = 40
     private let columnWidth: CGFloat = 92
-    private let titleWidth: CGFloat = 124
+    /// Geniş ekranda (iPad, Mac, iPhone Duo iç ekranı) kalem adları kısalmasın diye daha geniş.
+    private var titleWidth: CGFloat { sizeClass == .regular ? 190 : 124 }
 
     var body: some View {
         @Bindable var app = app

@@ -15,6 +15,7 @@ struct ReportView: View {
 
     @State private var filter: OwnerFilter = .all
     @State private var range: ReportRange = .year
+    @Environment(\.horizontalSizeClass) private var sizeClass
 
     enum ReportRange: String, CaseIterable, Identifiable {
         case half, year, plan
@@ -51,10 +52,18 @@ struct ReportView: View {
                 .pickerStyle(.segmented)
 
                 StatsRow(totals: totals, now: now)
-                NetTrendChart(totals: totals, now: now)
-                DebtChart(totals: totals, now: now)
+                if sizeClass == .regular {
+                    HStack(alignment: .top, spacing: 14) {
+                        NetTrendChart(totals: totals, now: now)
+                        DebtChart(totals: totals, now: now)
+                    }
+                } else {
+                    NetTrendChart(totals: totals, now: now)
+                    DebtChart(totals: totals, now: now)
+                }
                 MonthTable(totals: totals, now: now)
             }
+            .readableWidth(1100)
             .padding(.horizontal)
             .padding(.bottom, 24)
         }
@@ -77,7 +86,7 @@ private struct StatsRow: View {
         let remaining = totals.filter { $0.month >= now }.reduce(Decimal(0)) { $0 + $1.pendingExpense }
         let peak = past.max { $0.expense < $1.expense }
 
-        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 8) {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 160), spacing: 8)], spacing: 8) {
             StatTile(title: "Son 6 ay ort. net", value: Money.string(average, sign: .always, fractions: false),
                      color: Color.amount(average))
             StatTile(title: "Ödenmemiş gider", value: Money.string(remaining, fractions: false),

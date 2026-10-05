@@ -1,5 +1,8 @@
 import CoreData
 import CloudKit
+#if targetEnvironment(macCatalyst)
+import Security
+#endif
 
 final class PersistenceController {
     static let shared = PersistenceController()
@@ -25,6 +28,19 @@ final class PersistenceController {
         return model
     }()
 
+    /// Uygulama iCloud yetkisiyle imzalanmış mı. Yetkisiz bir Mac derlemesinde CloudKit başlatılırsa
+    /// macOS uygulamayı kapatır; bu durumda veriler yalnızca yerel tutulur.
+    static let isCloudKitAvailable: Bool = {
+        #if targetEnvironment(macCatalyst)
+        guard let task = SecTaskCreateFromSelf(nil),
+              let value = SecTaskCopyValueForEntitlement(task, "com.apple.developer.icloud-container-identifiers" as CFString, nil)
+        else { return false }
+        return (value as? [String])?.contains(cloudContainerID) == true
+        #else
+        return true
+        #endif
+    }()
+
     let container: NSPersistentCloudKitContainer
     private(set) var privateStore: NSPersistentStore?
     private(set) var sharedStore: NSPersistentStore?
@@ -43,6 +59,8 @@ final class PersistenceController {
 
         if inMemory {
             privateDescription.url = URL(fileURLWithPath: "/dev/null")
+            privateDescription.cloudKitContainerOptions = nil
+        } else if !Self.isCloudKitAvailable {
             privateDescription.cloudKitContainerOptions = nil
         } else {
             // Kendi verilerimiz: iCloud özel veritabanı. Mevcut AileKasa.sqlite dosyası aynen kullanılır.

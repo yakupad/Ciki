@@ -116,6 +116,15 @@ struct SettingsView: View {
                     Text("Sistem seçiliyse telefonun açık ya da koyu mod ayarı izlenir. Bu ayar yalnızca bu telefon için geçerlidir.")
                 }
 
+                #if targetEnvironment(macCatalyst)
+                Section {
+                    LabeledContent("Uygulama dili") {
+                        Text(verbatim: AppLanguage.current == .english ? "English" : "Türkçe")
+                    }
+                } footer: {
+                    Text("Mac'te dil, Sistem Ayarları → Genel → Dil ve Bölge → Uygulamalar bölümünden değiştirilir.")
+                }
+                #else
                 Section {
                     Button {
                         if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
@@ -131,6 +140,7 @@ struct SettingsView: View {
                 } footer: {
                     Text("Dil, iOS Ayarlar'da uygulamanın sayfasından değiştirilir. Türkçe ve İngilizce desteklenir.")
                 }
+                #endif
 
                 Section {
                     Toggle(isOn: Binding(

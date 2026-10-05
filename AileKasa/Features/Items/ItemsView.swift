@@ -41,6 +41,7 @@ struct ItemsView: View {
         }
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
+        .readableWidth()
         .background(Color.zemin)
         .navigationTitle("Kalemler")
         .toolbar {

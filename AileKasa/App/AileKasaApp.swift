@@ -116,12 +116,11 @@ struct RootView: View {
     /// DEBUG derlemede `-startTab 3` ile açılış sekmesi seçilebilir (ekran görüntüsü için).
     private static var initialTab: Int {
         #if DEBUG
-        let arguments = CommandLine.arguments
-        if let index = arguments.firstIndex(of: "-startTab"), index + 1 < arguments.count {
-            return Int(arguments[index + 1]) ?? 0
-        }
-        #endif
+        // "-startTab 1" başlatma argümanı UserDefaults'un argüman alanına düşer.
+        return UserDefaults.standard.integer(forKey: "startTab")
+        #else
         return 0
+        #endif
     }
 
     var body: some View {
@@ -139,6 +138,7 @@ struct RootView: View {
                 NavigationStack { ItemsView() }
             }
         }
+        .tabViewStyle(.sidebarAdaptable)
         .tabBarMinimizeBehavior(.onScrollDown)
         // Yeni kayıt her sekmede aynı yerde: sekme çubuğunun üstünde.
         .tabViewBottomAccessory {

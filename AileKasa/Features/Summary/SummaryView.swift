@@ -16,6 +16,7 @@ struct SummaryView: View {
     private var entries: FetchedResults<LedgerEntry>
 
     @State private var route: EditorRoute?
+    @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var showReport = false
 
     var body: some View {
@@ -25,14 +26,29 @@ struct SummaryView: View {
         let summary = Ledger.summary(of: lines)
 
         ScrollView {
-            VStack(alignment: .leading, spacing: 14) {
+            Group {
                 if items.isEmpty {
                     emptyState
+                } else if sizeClass == .regular {
+                    // iPad, iPhone Duo iç ekranı ve Mac: solda özet, sağda ödenecekler.
+                    HStack(alignment: .top, spacing: 16) {
+                        VStack(alignment: .leading, spacing: 14) {
+                            NetCard(summary: summary)
+                            peopleRow(summary)
+                            NetChart(points: chartPoints, selected: app.month)
+                        }
+                        VStack(alignment: .leading, spacing: 14) {
+                            upcoming
+                        }
+                    }
+                    .readableWidth(1100)
                 } else {
-                    NetCard(summary: summary)
-                    peopleRow(summary)
-                    NetChart(points: chartPoints, selected: app.month)
-                    upcoming
+                    VStack(alignment: .leading, spacing: 14) {
+                        NetCard(summary: summary)
+                        peopleRow(summary)
+                        NetChart(points: chartPoints, selected: app.month)
+                        upcoming
+                    }
                 }
             }
             .padding(.horizontal)
