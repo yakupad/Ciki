@@ -13,6 +13,7 @@ struct AileKasaApp: App {
     @State private var rescheduleTask: Task<Void, Never>?
     @State private var resolveTask: Task<Void, Never>?
     @Environment(\.scenePhase) private var scenePhase
+    @AppStorage(Appearance.key) private var appearance: Appearance = .system
     private let lockWindow = LockWindow()
 
     var body: some Scene {
@@ -23,11 +24,13 @@ struct AileKasaApp: App {
                 .environment(rates)
                 .environment(lock)
                 .environment(reminders)
+                .preferredColorScheme(appearance.colorScheme)
                 .onChange(of: scenePhase, initial: true) { _, phase in
                     switch phase {
                     case .background:
                         lock.lock()
                     case .active:
+                        appearance.apply()
                         Task { await lock.unlock() }
                         scheduleReminders()
                     default:
@@ -35,6 +38,7 @@ struct AileKasaApp: App {
                     }
                     updateLockWindow()
                 }
+                .onChange(of: appearance) { _, newValue in newValue.apply() }
                 .onChange(of: lock.isLocked) { updateLockWindow() }
                 .onChange(of: lock.isEnabled) {
                     updateLockWindow()

@@ -92,6 +92,7 @@ final class LockWindow {
                 .first else { return }
         let window = UIWindow(windowScene: scene)
         window.windowLevel = .alert + 1
+        window.overrideUserInterfaceStyle = Appearance.current.interfaceStyle
         let host = UIHostingController(rootView: LockScreen(lock: lock))
         host.view.backgroundColor = .clear
         window.rootViewController = host

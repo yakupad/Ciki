@@ -890,6 +890,22 @@
         }
       }
     },
+    "Açık": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açık"
+          }
+        }
+      }
+    },
     "Banka": {
       "localizations": {
         "en": {
@@ -2009,6 +2025,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Gider"
+          }
+        }
+      }
+    },
+    "Görünüm": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appearance"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görünüm"
           }
         }
       }
@@ -3230,6 +3262,22 @@
         }
       }
     },
+    "Koyu": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dark"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koyu"
+          }
+        }
+      }
+    },
     "Kredi": {
       "localizations": {
         "en": {
@@ -3690,6 +3738,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sil"
+          }
+        }
+      }
+    },
+    "Sistem": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistem"
+          }
+        }
+      }
+    },
+    "Sistem seçiliyse telefonun açık ya da koyu mod ayarı izlenir. Bu ayar yalnızca bu telefon için geçerlidir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "With System, the app follows your phone's light or dark mode. This setting applies to this phone only."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistem seçiliyse telefonun açık ya da koyu mod ayarı izlenir. Bu ayar yalnızca bu telefon için geçerlidir."
           }
         }
       }

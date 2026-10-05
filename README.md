@@ -9,6 +9,7 @@ Excel'de tutulan aylık borç, gelir ve ödeme tablosunun iPhone uygulaması. De
 - **Platform:** iOS 27, SwiftUI
 - **Veri:** Core Data + NSPersistentCloudKitContainer (iCloud paylaşımına hazır)
 - **Diller:** Türkçe ve İngilizce (iOS Ayarlar → Aile Kasası → Dil)
+- **Görünüm:** Açık ve koyu mod; Ayarlar → Görünüm'den Sistem / Açık / Koyu seçilebilir.
 - **Para birimleri:** TL ve TCMB'nin yayımladığı 21 döviz (USD, EUR, GBP, CHF, JPY, SAR, AED, AZN…)
 - **Gösterim para birimi:** Toplamlar TL, EUR, USD ya da desteklenen herhangi bir birimde gösterilebilir (Ayarlar → Para birimi).
 - **Tasarım sayfası:** [Plan, ekranlar ve palet](https://claude.ai/artifact/QEnAVyTx2Cw5UZVjPVkVHu)

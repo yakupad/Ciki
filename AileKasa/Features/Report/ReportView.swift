@@ -202,7 +202,7 @@ private struct DebtChart: View {
                         .foregroundStyle(by: .value("Banka", slice.bank))
                         .opacity(slice.month > now ? 0.45 : 1)
                 }
-                .chartForegroundStyleScale(domain: banks, range: banks.map { Color(hex: Banks.colorHex(for: $0)) })
+                .chartForegroundStyleScale(domain: banks, range: banks.map { Color(light: Banks.colorHex(for: $0), dark: Banks.darkColorHex(for: $0)) })
                 .chartLegend(position: .bottom, alignment: .leading)
                 .monthAxis(totals.map(\.month), now: now)
                 .thousandsAxis()

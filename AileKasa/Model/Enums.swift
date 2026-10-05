@@ -190,6 +190,13 @@ nonisolated enum Banks {
         }
     }
 
+    /// Koyu modda okunabilmesi için bankanın renginin %40 beyazla karıştırılmış hali.
+    static func darkColorHex(for bank: String) -> UInt32 {
+        let hex = colorHex(for: bank)
+        func lift(_ channel: UInt32) -> UInt32 { channel + (255 - channel) * 2 / 5 }
+        return lift((hex >> 16) & 0xFF) << 16 | lift((hex >> 8) & 0xFF) << 8 | lift(hex & 0xFF)
+    }
+
     static func colorHex(for bank: String) -> UInt32 {
         switch bank {
         case "YapıKredi": 0x1B4F9C

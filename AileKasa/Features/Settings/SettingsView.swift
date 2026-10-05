@@ -18,6 +18,7 @@ struct SettingsView: View {
 
     @State private var confirmWipe = false
     @AppStorage(DeviceOwner.key) private var deviceOwnerID = ""
+    @AppStorage(Appearance.key) private var appearance: Appearance = .system
     @State private var personToDelete: Person?
 
     var body: some View {
@@ -101,6 +102,18 @@ struct SettingsView: View {
                     } else {
                         Text("Özet, rapor ve toplamlar bu para biriminde gösterilir. Kalemler kendi para biriminde kalır. Çevrim TCMB kurlarıyla yapılır.")
                     }
+                }
+
+                Section {
+                    Picker("Görünüm", selection: $appearance) {
+                        ForEach(Appearance.allCases) { Text($0.title).tag($0) }
+                    }
+                    .pickerStyle(.segmented)
+                    .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                } header: {
+                    Text("Görünüm")
+                } footer: {
+                    Text("Sistem seçiliyse telefonun açık ya da koyu mod ayarı izlenir. Bu ayar yalnızca bu telefon için geçerlidir.")
                 }
 
                 Section {
