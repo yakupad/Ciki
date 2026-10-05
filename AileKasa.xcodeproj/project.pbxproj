@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01405F47C892C2E6E2095636 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 2FD18C997936E44EDC992236 /* PrivacyInfo.xcprivacy */; };
+		0210E4348E17ACA799448AAD /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB851D82880E6E107AB816 /* PrivacyView.swift */; };
 		05F88D9399B0281E0CC940E9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E6A6C56F6A67A1B3124A2F /* SettingsView.swift */; };
 		1293DF560FD0A99057CDDB9F /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9883A7945229CAB20F67325 /* ItemsView.swift */; };
 		16E8A3ECE7B77303BAE4838A /* AileKasaWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B8951FDEC117FFCB744EB9FA /* AileKasaWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -33,8 +35,10 @@
 		8DFD584AE6BE4D59062D96DA /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FACBB2EBD83D23072F141 /* SampleData.swift */; };
 		8E5BEB31E92B4FE720F2232A /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F469415488FB967EC16B717 /* WidgetSnapshot.swift */; };
 		92C7396DBF5331918C6D77C0 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6B9255677382C25259368 /* MonthView.swift */; };
+		9C16FA63A39CD4DE30DAAEFC /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 38679DED757F7F6E23FC7A95 /* PrivacyInfo.xcprivacy */; };
 		A0944AF3F16391CCBEAA5214 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128E29828B745A6E14E2A0B8 /* AccountsView.swift */; };
 		A0FE83D16A4BCC46B3405143 /* IBAN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B643CE6449F36528DFEFE8 /* IBAN.swift */; };
+		A277AC3730F4C888580B0C2E /* DataEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2B0D738A74AE954FEE383 /* DataEraser.swift */; };
 		A4605A5C0CD5195231BBE609 /* AileKasaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00421585ED1E78C6759F399 /* AileKasaApp.swift */; };
 		A7A90DBB43D120CEF353500E /* LedgerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E54240F3A7688A35718035E /* LedgerTests.swift */; };
 		A8681727AA7FA12BE2E35512 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA24FE2A0FA9D5165110A47 /* OnboardingView.swift */; };
@@ -89,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		025FCB2D19672E79001932E3 /* WidgetPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPublisher.swift; sourceTree = "<group>"; };
+		02EB851D82880E6E107AB816 /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		049E1400C0B096A7CE1067C8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		067F984FF3F9E5C13B39DD21 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		09B643CE6449F36528DFEFE8 /* IBAN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBAN.swift; sourceTree = "<group>"; };
@@ -96,16 +101,19 @@
 		0E54240F3A7688A35718035E /* LedgerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerTests.swift; sourceTree = "<group>"; };
 		128E29828B745A6E14E2A0B8 /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
 		1382447340E34870395B9EB1 /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
+		15D2B0D738A74AE954FEE383 /* DataEraser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEraser.swift; sourceTree = "<group>"; };
 		1CC8BB8235D14C1AD706178E /* SharingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingSection.swift; sourceTree = "<group>"; };
 		28E63C32539B4258CAEB70F4 /* AileKasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AileKasa.xcdatamodel; sourceTree = "<group>"; };
 		297B56781C8751F38C52D76E /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		2CD2C28E9CE2DEBD19614EDC /* LedgerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerActions.swift; sourceTree = "<group>"; };
 		2E02581EF32E1A1BBD1C2A16 /* DeviceOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOwner.swift; sourceTree = "<group>"; };
+		2FD18C997936E44EDC992236 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		33A73338249BCEB0E4A174C5 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
 		36BE4EAB9FD57FE0B9337309 /* Ledger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ledger.swift; sourceTree = "<group>"; };
 		37479CD0137E22FA470048CF /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		3808D80CBAD5C543B7A851C4 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		383383A075B0649FDBA26C37 /* AileKasaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AileKasaWidget.swift; sourceTree = "<group>"; };
+		38679DED757F7F6E23FC7A95 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		396056DDF31B9968DA7FA879 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4B29F45C26A72024D0C01D39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		522D3C6BF42C3C050E1945CD /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
@@ -166,6 +174,7 @@
 			children = (
 				37479CD0137E22FA470048CF /* ActivityView.swift */,
 				33A73338249BCEB0E4A174C5 /* ExportView.swift */,
+				02EB851D82880E6E107AB816 /* PrivacyView.swift */,
 				73E6A6C56F6A67A1B3124A2F /* SettingsView.swift */,
 				1CC8BB8235D14C1AD706178E /* SharingSection.swift */,
 			);
@@ -209,6 +218,7 @@
 		48B80A627D1502B499745E18 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				15D2B0D738A74AE954FEE383 /* DataEraser.swift */,
 				2E02581EF32E1A1BBD1C2A16 /* DeviceOwner.swift */,
 				92A8F3030A7798122C288B14 /* HouseholdSync.swift */,
 				2CD2C28E9CE2DEBD19614EDC /* LedgerActions.swift */,
@@ -259,6 +269,7 @@
 				4B29F45C26A72024D0C01D39 /* Assets.xcassets */,
 				7DF32E18352219B50E830F53 /* InfoPlist.xcstrings */,
 				049E1400C0B096A7CE1067C8 /* Localizable.xcstrings */,
+				2FD18C997936E44EDC992236 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -367,6 +378,7 @@
 				383383A075B0649FDBA26C37 /* AileKasaWidget.swift */,
 				64C8E04AC786FFB847445396 /* Info.plist */,
 				396056DDF31B9968DA7FA879 /* Localizable.xcstrings */,
+				38679DED757F7F6E23FC7A95 /* PrivacyInfo.xcprivacy */,
 			);
 			path = AileKasaWidget;
 			sourceTree = "<group>";
@@ -482,6 +494,7 @@
 				F4F9E3B0CD8F209EAB74D8CB /* Assets.xcassets in Resources */,
 				2517641C92385351249F53A0 /* InfoPlist.xcstrings in Resources */,
 				FAF3190B1504566A2FB71739 /* Localizable.xcstrings in Resources */,
+				01405F47C892C2E6E2095636 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76ACE4B693FB5916C576ED8B /* Localizable.xcstrings in Resources */,
+				9C16FA63A39CD4DE30DAAEFC /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +542,7 @@
 				E1947254F5D98E9C92D67B20 /* CSVExport.swift in Sources */,
 				268CE33BB998AEC74169AE45 /* CloudSharing.swift in Sources */,
 				47C2491270A9181EE13881F8 /* Components.swift in Sources */,
+				A277AC3730F4C888580B0C2E /* DataEraser.swift in Sources */,
 				BD271EFD063C246F76B54A88 /* DeviceOwner.swift in Sources */,
 				261B4DFE8CC8073DEBB10DAA /* EntryEditorView.swift in Sources */,
 				F934919C210F6940A3C3594F /* Enums.swift in Sources */,
@@ -546,6 +561,7 @@
 				92C7396DBF5331918C6D77C0 /* MonthView.swift in Sources */,
 				A8681727AA7FA12BE2E35512 /* OnboardingView.swift in Sources */,
 				4057D87EAB02E8C384B2D572 /* PersistenceController.swift in Sources */,
+				0210E4348E17ACA799448AAD /* PrivacyView.swift in Sources */,
 				6C3DFE3BA61F3CDDA4B0CC07 /* RateService.swift in Sources */,
 				8D2515F26E8F3E0AB4B73D0D /* Reminders.swift in Sources */,
 				EBDBC50349DF9F81C5958608 /* ReportView.swift in Sources */,

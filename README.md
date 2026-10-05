@@ -63,6 +63,14 @@ Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle**
 iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca yerel olarak çalışır.
 
 
+## Gizlilik
+
+- **Toplanan veri yok.** App Store gizlilik etiketi: *Veri Toplanmıyor*. Reklam, analiz ve takip yok.
+- **Veriler** cihazda (Core Data, iOS veri koruması) ve kullanıcının kendi iCloud'unda (CloudKit özel ve paylaşılan veritabanı) durur; geliştirici erişemez.
+- **Tek ağ isteği:** TCMB kur dosyası (`tcmb.gov.tr`), kişisel bilgi içermez.
+- **Gizlilik bildirimi:** `AileKasa/Resources/PrivacyInfo.xcprivacy` ve `AileKasaWidget/PrivacyInfo.xcprivacy`. Takip yok, toplanan veri türü yok; UserDefaults gerekçesi `CA92.1` (uygulamanın kendi ayarları) ve `1C8F.1` (widget ile App Group).
+- **Uygulama içinde:** Face ID kilidi, uygulama değiştiricide ve widget'ta tutar gizleme, bildirimde tutar gizleme, Ayarlar → Gizlilik → *Verileriniz nerede?* ve *Tüm verilerimi sil*.
+
 ## Excel'deki her şeyin uygulamadaki karşılığı
 
 | Excel'de | Uygulamada | Ne işe yarar |

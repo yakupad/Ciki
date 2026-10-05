@@ -17,6 +17,7 @@ struct SettingsView: View {
     private var accounts: FetchedResults<Account>
 
     @State private var confirmWipe = false
+    @State private var confirmErase = false
     @AppStorage(DeviceOwner.key) private var deviceOwnerID = ""
     @AppStorage(Appearance.key) private var appearance: Appearance = .system
     @State private var personToDelete: Person?
@@ -179,6 +180,7 @@ struct SettingsView: View {
                                 Text(verbatim: String(format: "%02d:00", hour)).tag(hour)
                             }
                         }
+                        Toggle("Bildirimde tutarı gizle", isOn: $reminders.hidesAmounts)
                     }
                 } header: {
                     Text("Hatırlatmalar")
@@ -201,6 +203,19 @@ struct SettingsView: View {
                 }
 
                 SharingSection()
+
+                Section {
+                    NavigationLink {
+                        PrivacyView()
+                    } label: {
+                        Label("Verileriniz nerede?", systemImage: "hand.raised.fill")
+                    }
+                    Button("Tüm verilerimi sil", systemImage: "trash", role: .destructive) { confirmErase = true }
+                } header: {
+                    Text("Gizlilik")
+                } footer: {
+                    Text("Silme işlemi bu cihazdaki ve iCloud'unuzdaki kalemleri, kayıtları, kişileri ve hesapları kaldırır. Geri alınamaz.")
+                }
 
                 Section {
                     NavigationLink {
@@ -241,6 +256,14 @@ struct SettingsView: View {
             } message: { person in
                 let count = (person.items as? Set<LedgerItem>)?.count ?? 0
                 Text("\(person.displayName) adına \(count) kalem var. Kalemler ve kayıtları silinmez, Ortak'a geçer.")
+            }
+            .confirmationDialog("Tüm verileriniz silinsin mi?", isPresented: $confirmErase, titleVisibility: .visible) {
+                Button("Tüm verilerimi sil", role: .destructive) {
+                    DataEraser.eraseOwnData(in: context)
+                    dismiss()
+                }
+            } message: {
+                Text("Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdan ve iCloud'unuzdan silinir. Haneyi eşinizle paylaştıysanız onun telefonundan da kalkar. Eşinizin size paylaştığı hane silinmez. Bu işlem geri alınamaz.")
             }
             .confirmationDialog("Tüm kalemler ve kayıtlar silinsin mi?", isPresented: $confirmWipe, titleVisibility: .visible) {
                 Button("Hepsini sil", role: .destructive) { SampleData.wipe(context) }

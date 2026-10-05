@@ -73,6 +73,7 @@ struct AileKasaApp: App {
                 .onChange(of: reminders.isEnabled) { scheduleReminders() }
                 .onChange(of: reminders.daysBefore) { scheduleReminders() }
                 .onChange(of: reminders.hour) { scheduleReminders() }
+                .onChange(of: reminders.hidesAmounts) { scheduleReminders() }
                 .task {
                     persistence.viewContext.currentHousehold()
                     #if DEBUG

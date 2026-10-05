@@ -471,4 +471,36 @@ struct LedgerTests {
         #expect(migrated.first?.value(forKey: "updatedBy") == nil)
         #expect(try newContext.count(for: NSFetchRequest<NSManagedObject>(entityName: "Account")) == 0)
     }
+
+    @Test func remindersCanHideAmounts() throws {
+        let item = makeItem(); item.dueDay = 20
+        context.upsertEntry(item: item, month: october, amount: 18989, status: .pending, rates: rates)
+        let lines = Ledger.lines(for: october, items: [item], rates: rates)
+        let shown = try #require(Reminders.plan(lines: lines, daysBefore: 1, hour: 9, now: .distantPast).first)
+        let hidden = try #require(Reminders.plan(lines: lines, daysBefore: 1, hour: 9, hidesAmounts: true, now: .distantPast).first)
+        #expect(shown.body.contains("89"))
+        #expect(!hidden.body.contains("89"))
+        #expect(hidden.date == shown.date)
+    }
+
+    @Test func eraseRemovesOwnHouseholdAndResetsDeviceSettings() throws {
+        let household = householdWithPeople()
+        let card = makeItem()
+        card.household = household
+        context.upsertEntry(item: card, month: october, amount: 100, status: .pending, rates: rates)
+        let account = Account(context: context)
+        account.household = household
+        context.saveIfNeeded()
+        UserDefaults.standard.set(true, forKey: OnboardingView.completedKey)
+        UserDefaults.standard.set("x", forKey: DeviceOwner.key)
+        defer { UserDefaults.standard.set(true, forKey: OnboardingView.completedKey) }
+
+        DataEraser.eraseOwnData(in: context)
+
+        for entity in ["Household", "Person", "LedgerItem", "LedgerEntry", "Account"] {
+            #expect(try context.count(for: NSFetchRequest<NSManagedObject>(entityName: entity)) == 0, "\(entity) kaldı")
+        }
+        #expect(UserDefaults.standard.bool(forKey: OnboardingView.completedKey) == false)
+        #expect(UserDefaults.standard.string(forKey: DeviceOwner.key) == nil)
+    }
 }

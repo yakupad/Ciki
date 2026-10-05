@@ -17,8 +17,9 @@ enum Reminders {
     static let limit = 60
 
     /// Bekleyen giderler için hatırlatma tarihleri. Geçmişte kalanlar atlanır.
-    static func plan(lines: [LedgerLine], daysBefore: Int, hour: Int, now: Date = .now,
-                     calendar: Calendar = .current) -> [Reminder] {
+    /// - Parameter hidesAmounts: Kilit ekranında tutar görünmesin diye bildirim metninden tutarı çıkarır.
+    static func plan(lines: [LedgerLine], daysBefore: Int, hour: Int, hidesAmounts: Bool = false,
+                     now: Date = .now, calendar: Calendar = .current) -> [Reminder] {
         lines.compactMap { line -> Reminder? in
             guard line.direction == .expense, line.status == .pending, line.amount > 0,
                   line.item.dueDay > 0 else { return nil }
@@ -30,9 +31,14 @@ enum Reminders {
 
             let amount = Money.string(line.amount * line.direction.sign, currency: line.currency)
             let dueText = due.formatted(.dateTime.day().month(.wide).locale(Money.locale))
-            let body = daysBefore == 0
-                ? String(localized: "Son ödeme bugün · \(amount) · \(line.item.ownerName)")
-                : String(localized: "Son ödeme \(dueText) · \(amount) · \(line.item.ownerName)")
+            let owner = line.item.ownerName
+            let body: String
+            switch (daysBefore == 0, hidesAmounts) {
+            case (true, false): body = String(localized: "Son ödeme bugün · \(amount) · \(owner)")
+            case (false, false): body = String(localized: "Son ödeme \(dueText) · \(amount) · \(owner)")
+            case (true, true): body = String(localized: "Son ödeme bugün · \(owner)")
+            case (false, true): body = String(localized: "Son ödeme \(dueText) · \(owner)")
+            }
             let id = "\(idPrefix)\(line.item.objectID.uriRepresentation().absoluteString)-\(line.month.key)"
             return Reminder(id: id, date: fire, title: line.item.fullTitle, body: body)
         }
@@ -52,6 +58,10 @@ final class ReminderScheduler {
     var hour: Int {
         didSet { defaults.set(hour, forKey: "reminders.hour") }
     }
+    /// Kilit ekranındaki bildirimlerde tutar yazılmaz.
+    var hidesAmounts: Bool {
+        didSet { defaults.set(hidesAmounts, forKey: "reminders.hidesAmounts") }
+    }
     private(set) var errorMessage: String?
 
     private let defaults: UserDefaults
@@ -62,6 +72,7 @@ final class ReminderScheduler {
         self.isEnabled = defaults.bool(forKey: "reminders.enabled")
         self.daysBefore = defaults.object(forKey: "reminders.daysBefore") as? Int ?? 1
         self.hour = defaults.object(forKey: "reminders.hour") as? Int ?? 9
+        self.hidesAmounts = defaults.bool(forKey: "reminders.hidesAmounts")
     }
 
     func setEnabled(_ enabled: Bool) async {
@@ -93,7 +104,7 @@ final class ReminderScheduler {
         let now = Month.current
         let lines = (0...2).flatMap { Ledger.lines(for: now.adding($0), items: items, rates: rates) }
 
-        for reminder in Reminders.plan(lines: lines, daysBefore: daysBefore, hour: hour) {
+        for reminder in Reminders.plan(lines: lines, daysBefore: daysBefore, hour: hour, hidesAmounts: hidesAmounts) {
             let content = UNMutableNotificationContent()
             content.title = reminder.title
             content.body = reminder.body

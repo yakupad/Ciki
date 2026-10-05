@@ -1098,6 +1098,22 @@
         }
       }
     },
+    "Bildirimde tutarı gizle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide Amounts in Notifications"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimde tutarı gizle"
+          }
+        }
+      }
+    },
     "Bilinmeyen kişi": {
       "localizations": {
         "en": {
@@ -1434,6 +1450,22 @@
         }
       }
     },
+    "Bu telefona özel ayarlar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings on this phone only"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu telefona özel ayarlar"
+          }
+        }
+      }
+    },
     "Bu telefonu kullanan": {
       "localizations": {
         "en": {
@@ -1494,6 +1526,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cihaz parolası"
+          }
+        }
+      }
+    },
+    "Cihazınızda": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On your device"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cihazınızda"
           }
         }
       }
@@ -1706,6 +1754,22 @@
         }
       }
     },
+    "Döviz kurları için TCMB'nin herkese açık kur dosyası indirilir (tcmb.gov.tr). Bu istekte sizinle ilgili hiçbir bilgi gönderilmez.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For exchange rates, the app downloads the Central Bank of Türkiye's public rate file (tcmb.gov.tr). No information about you is sent with this request."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Döviz kurları için TCMB'nin herkese açık kur dosyası indirilir (tcmb.gov.tr). Bu istekte sizinle ilgili hiçbir bilgi gönderilmez."
+          }
+        }
+      }
+    },
     "Döviz kuru · TCMB satış": {
       "localizations": {
         "en": {
@@ -1862,6 +1926,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dışa aktar (CSV)"
+          }
+        }
+      }
+    },
+    "Ekstra koruma": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extra protection"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekstra koruma"
           }
         }
       }
@@ -2060,6 +2140,22 @@
         }
       }
     },
+    "Face ID kilidi açıkken uygulama değiştiricide ve widget'ta tutarlar görünmez. Bildirimlerde tutarı gizlemek için Hatırlatmalar bölümünü kullanın.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "With the Face ID lock on, amounts are hidden in the app switcher and widget. To hide amounts in notifications, use the Reminders section."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Face ID kilidi açıkken uygulama değiştiricide ve widget'ta tutarlar görünmez. Bildirimlerde tutarı gizlemek için Hatırlatmalar bölümünü kullanın."
+          }
+        }
+      }
+    },
     "Fatura": {
       "localizations": {
         "en": {
@@ -2253,6 +2349,22 @@
         }
       }
     },
+    "Gizlilik": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gizlilik"
+          }
+        }
+      }
+    },
     "Gizlilik ve bildirimler": {
       "localizations": {
         "en": {
@@ -2281,6 +2393,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Görünüm"
+          }
+        }
+      }
+    },
+    "Görünüm, gösterim para birimi, kilit, hatırlatmalar ve \"bu telefonu kullanan\" seçimi yalnızca bu telefonda saklanır, eşitlenmez.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appearance, display currency, lock, reminders and the \"this phone belongs to\" choice are stored only on this phone and aren't synced."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görünüm, gösterim para birimi, kilit, hatırlatmalar ve \"bu telefonu kullanan\" seçimi yalnızca bu telefonda saklanır, eşitlenmez."
           }
         }
       }
@@ -2894,6 +3022,22 @@
         }
       }
     },
+    "iCloud açıksa aynı veriler sizin özel iCloud alanınıza eşitlenir. Eşinizle paylaşırsanız ortak hane yalnızca davet ettiğiniz kişiyle paylaşılır. Uygulamanın geliştiricisi bu verilere erişemez.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If iCloud is on, the same data syncs to your private iCloud space. If you share with your partner, the household is shared only with the person you invite. The app's developer can't access this data."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud açıksa aynı veriler sizin özel iCloud alanınıza eşitlenir. Eşinizle paylaşırsanız ortak hane yalnızca davet ettiğiniz kişiyle paylaşılır. Uygulamanın geliştiricisi bu verilere erişemez."
+          }
+        }
+      }
+    },
     "iCloud durumu kontrol ediliyor…": {
       "localizations": {
         "en": {
@@ -2986,6 +3130,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "İlk taksit"
+          }
+        }
+      }
+    },
+    "İnternete giden tek istek": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The only request sent over the internet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İnternete giden tek istek"
           }
         }
       }
@@ -3130,6 +3290,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kalemler sekmesinden kalem ekleyin."
+          }
+        }
+      }
+    },
+    "Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdaki veritabanında durur. iOS cihaz şifrelemesiyle korunur.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Items, entries, people and IBANs are stored in a database on this device, protected by iOS device encryption."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdaki veritabanında durur. iOS cihaz şifrelemesiyle korunur."
+          }
+        }
+      }
+    },
+    "Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdan ve iCloud'unuzdan silinir. Haneyi eşinizle paylaştıysanız onun telefonundan da kalkar. Eşinizin size paylaştığı hane silinmez. Bu işlem geri alınamaz.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Items, entries, people and IBANs are deleted from this device and your iCloud. If you shared your household with your partner, it's removed from their phone too. A household your partner shared with you isn't deleted. This can't be undone."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdan ve iCloud'unuzdan silinir. Haneyi eşinizle paylaştıysanız onun telefonundan da kalkar. Eşinizin size paylaştığı hane silinmez. Bu işlem geri alınamaz."
           }
         }
       }
@@ -3370,6 +3562,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kendi hesaplarınızı ve ödeme yaptığınız kişi ve kurumların IBAN'larını burada saklayın. Bir hesaba dokununca IBAN kopyalanır."
+          }
+        }
+      }
+    },
+    "Kendi iCloud hesabınızda": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In your own iCloud account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kendi iCloud hesabınızda"
           }
         }
       }
@@ -4030,6 +4238,22 @@
         }
       }
     },
+    "Reklam, analiz, takip, konum ya da rehber erişimi yok. Uygulama kullanımınız ölçülmez.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No ads, analytics, tracking, location or contacts access. Your use of the app isn't measured."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reklam, analiz, takip, konum ya da rehber erişimi yok. Uygulama kullanımınız ölçülmez."
+          }
+        }
+      }
+    },
     "Renk": {
       "localizations": {
         "en": {
@@ -4122,6 +4346,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sil"
+          }
+        }
+      }
+    },
+    "Silme işlemi bu cihazdaki ve iCloud'unuzdaki kalemleri, kayıtları, kişileri ve hesapları kaldırır. Geri alınamaz.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deleting removes items, entries, people and accounts from this device and your iCloud. This can't be undone."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silme işlemi bu cihazdaki ve iCloud'unuzdaki kalemleri, kayıtları, kişileri ve hesapları kaldırır. Geri alınamaz."
           }
         }
       }
@@ -4270,6 +4510,22 @@
         }
       }
     },
+    "Son ödeme %@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due %1$@ · %2$@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son ödeme %@ · %@"
+          }
+        }
+      }
+    },
     "Son ödeme %@ · %@ · %@": {
       "localizations": {
         "en": {
@@ -4282,6 +4538,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Son ödeme %@ · %@ · %@"
+          }
+        }
+      }
+    },
+    "Son ödeme bugün · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due today · %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son ödeme bugün · %@"
           }
         }
       }
@@ -4510,6 +4782,22 @@
         }
       }
     },
+    "Toplanmayanlar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What isn't collected"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplanmayanlar"
+          }
+        }
+      }
+    },
     "Tutar": {
       "localizations": {
         "en": {
@@ -4587,6 +4875,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tüm kalemleri sil"
+          }
+        }
+      }
+    },
+    "Tüm verilerimi sil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete All My Data"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm verilerimi sil"
+          }
+        }
+      }
+    },
+    "Tüm verileriniz silinsin mi?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all your data?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm verileriniz silinsin mi?"
           }
         }
       }
@@ -4683,6 +5003,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vazgeç"
+          }
+        }
+      }
+    },
+    "Verileriniz nerede?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Where Is Your Data?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verileriniz nerede?"
           }
         }
       }
