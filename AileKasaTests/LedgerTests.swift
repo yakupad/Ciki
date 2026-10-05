@@ -1,0 +1,139 @@
+import CoreData
+import Testing
+@testable import AileKasa
+
+@MainActor
+struct LedgerTests {
+    let context = PersistenceController(inMemory: true).viewContext
+    let rates = RateTable(usd: 40, eur: 50)
+    let october = Month(year: 2026, month: 10)
+
+    private func makeItem(kind: ItemKind = .card, currency: Currency = .tl,
+                          recurring: Decimal? = nil, start: Month? = nil, end: Month? = nil) -> LedgerItem {
+        let item = LedgerItem(context: context)
+        item.uuid = UUID()
+        item.kind = kind
+        item.direction = kind.defaultDirection
+        item.currency = currency
+        if let recurring {
+            item.isRecurring = true
+            item.recurringAmountValue = recurring
+            item.recurringStart = start?.key ?? 0
+            item.recurringEnd = end?.key ?? 0
+        }
+        return item
+    }
+
+    @Test func monthArithmeticCrossesYearBoundary() {
+        let december = Month(year: 2026, month: 12)
+        #expect(december.adding(1) == Month(year: 2027, month: 1))
+        #expect(december.adding(1).title == "Ocak 2027")
+        #expect(Month(year: 2027, month: 1).adding(-1).title == "Aralık 2026")
+        #expect(october.distance(to: december) == 2)
+    }
+
+    @Test func recurringItemIsProjectedOnlyWithinItsRange() {
+        let item = makeItem(kind: .housing, recurring: 47875, start: october, end: october.adding(2))
+        #expect(Ledger.line(for: item, month: october.adding(-1), rates: rates) == nil)
+        #expect(Ledger.line(for: item, month: october.adding(3), rates: rates) == nil)
+
+        let line = Ledger.line(for: item, month: october.adding(1), rates: rates)
+        #expect(line?.isProjected == true)
+        #expect(line?.signedTRY == -47875)
+    }
+
+    @Test func entryOverridesRecurringAmount() {
+        let item = makeItem(kind: .salary, recurring: 42320, start: october)
+        context.upsertEntry(item: item, month: october, amount: 210000, status: .paid, rates: rates)
+        let line = Ledger.line(for: item, month: october, rates: rates)
+        #expect(line?.isProjected == false)
+        #expect(line?.signedTRY == 210000)
+    }
+
+    @Test func excludedEntriesDoNotCountAndPaidEntriesDo() {
+        let card = makeItem()
+        let housing = makeItem(kind: .housing)
+        let salary = makeItem(kind: .salary)
+        context.upsertEntry(item: card, month: october, amount: 1000, status: .paid, rates: rates)
+        context.upsertEntry(item: housing, month: october, amount: 47875, status: .excluded, rates: rates)
+        context.upsertEntry(item: salary, month: october, amount: 5000, status: .pending, rates: rates)
+
+        let summary = Ledger.summary(of: Ledger.lines(for: october, items: [card, housing, salary], rates: rates))
+        #expect(summary.expense == 1000)
+        #expect(summary.income == 5000)
+        #expect(summary.net == 4000)
+        #expect(summary.unpaidExpense == 0)
+    }
+
+    @Test func foreignCurrencyUsesCurrentRateUntilPaid() {
+        let item = makeItem(kind: .family, currency: .eur, recurring: 52319, start: october)
+        #expect(Ledger.line(for: item, month: october, rates: rates)?.signedTRY == -57500)
+
+        let line = Ledger.line(for: item, month: october, rates: rates)!
+        context.setStatus(.paid, for: line, rates: rates)
+
+        // Kur sonradan değişse de ödenmiş kayıt ödeme günündeki kurla kalır.
+        let laterRates = RateTable(usd: 45, eur: 60)
+        #expect(Ledger.line(for: item, month: october, rates: laterRates)?.signedTRY == -57500)
+        #expect(Ledger.line(for: item, month: october.adding(1), rates: laterRates)?.signedTRY == -69000)
+    }
+
+    @Test func missingRateIsReportedInsteadOfCounted() {
+        let item = makeItem(kind: .family, currency: .usd, recurring: 30, start: october)
+        let summary = Ledger.summary(of: Ledger.lines(for: october, items: [item], rates: RateTable()))
+        #expect(summary.missingRateCount == 1)
+        #expect(summary.net == 0)
+    }
+
+    @Test func installmentsSplitWithoutLosingKurus() {
+        let parts = Ledger.split(1000, into: 3)
+        #expect(parts == [333.33, 333.33, 333.34])
+        #expect(parts.reduce(0, +) == 1000)
+        #expect(Ledger.split(500, into: 1) == [500])
+    }
+
+    @Test func ownerTotalsSeparateSharedItems() {
+        let household = context.currentHousehold()
+        let deniz = household.peopleArray[0]
+        let card = makeItem()
+        card.owner = deniz
+        let receivable = makeItem(kind: .receivable)
+        context.upsertEntry(item: card, month: october, amount: 18989, status: .pending, rates: rates)
+        context.upsertEntry(item: receivable, month: october, amount: 44542, status: .pending, rates: rates)
+
+        let summary = Ledger.summary(of: Ledger.lines(for: october, items: [card, receivable], rates: rates))
+        #expect(summary.net(for: deniz) == -18989)
+        #expect(summary.net(for: nil) == 44542)
+    }
+
+    @Test func moneyFormatsInTurkish() {
+        #expect(Money.string(-18989) == "−18989 ₺")
+        #expect(Money.string(42320, sign: .always) == "+42320 ₺")
+        #expect(Money.string(52319, currency: .eur) == "52319 €")
+        #expect(Money.compact(-30099) == "−45653")
+    }
+
+    @Test func copyEntriesSkipsRecurringAndExisting() {
+        let card = makeItem()
+        let housing = makeItem(kind: .housing, recurring: 47875, start: october)
+        context.upsertEntry(item: card, month: october, amount: 1200, status: .paid, rates: rates)
+        context.upsertEntry(item: housing, month: october, amount: 47875, status: .paid, rates: rates)
+
+        let copied = context.copyEntries(from: october, to: october.adding(1), items: [card, housing], rates: rates)
+        #expect(copied == 1)
+        #expect(card.entry(for: october.adding(1))?.status == .pending)
+        #expect(housing.entry(for: october.adding(1)) == nil)
+    }
+
+    @Test func tcmbParserReadsForexSelling() throws {
+        let xml = """
+        <Tarih_Date Tarih="05.10.2026">
+          <Currency CrossOrder="0" Kod="USD" CurrencyCode="USD"><Unit>1</Unit><ForexBuying>41.10</ForexBuying><ForexSelling>41.2034</ForexSelling></Currency>
+          <Currency CrossOrder="9" Kod="EUR" CurrencyCode="EUR"><Unit>1</Unit><ForexBuying>48.20</ForexBuying><ForexSelling>48.3012</ForexSelling></Currency>
+        </Tarih_Date>
+        """
+        let table = try TCMBParser.parse(Data(xml.utf8))
+        #expect(table.usd == Decimal(string: "41.2034"))
+        #expect(table.eur == Decimal(string: "48.3012"))
+    }
+}

@@ -1,0 +1,614 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05F88D9399B0281E0CC940E9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E6A6C56F6A67A1B3124A2F /* SettingsView.swift */; };
+		1293DF560FD0A99057CDDB9F /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9883A7945229CAB20F67325 /* ItemsView.swift */; };
+		19AD97690391557E889B4320 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1382447340E34870395B9EB1 /* Money.swift */; };
+		261B4DFE8CC8073DEBB10DAA /* EntryEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D86044E0AB63FF6D3D751 /* EntryEditorView.swift */; };
+		2AFE4267E0DEC7F1AF489FCC /* LedgerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD2C28E9CE2DEBD19614EDC /* LedgerActions.swift */; };
+		34745761170CFF8C0E063307 /* AileKasa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FED16E908139EE1CFA6D051 /* AileKasa.xcdatamodeld */; };
+		4057D87EAB02E8C384B2D572 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8603ECFF11175CDD147E306D /* PersistenceController.swift */; };
+		47C2491270A9181EE13881F8 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B56781C8751F38C52D76E /* Components.swift */; };
+		5AE7E86FDA126D8ABE2FFD6E /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89903DFD30975F16949A985 /* GridView.swift */; };
+		5CE7B16DB391069A20E9A607 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067F984FF3F9E5C13B39DD21 /* Month.swift */; };
+		6C01AAE9A57A54567F253DAB /* ItemEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B30F93860E3B98E2204CB9 /* ItemEditorView.swift */; };
+		6C3DFE3BA61F3CDDA4B0CC07 /* RateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFEC99EBEAF499761D8668 /* RateService.swift */; };
+		7A1725054A9F45E999509DD1 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF1F1B0F36098DF07CED85 /* SummaryView.swift */; };
+		8DFD584AE6BE4D59062D96DA /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FACBB2EBD83D23072F141 /* SampleData.swift */; };
+		92C7396DBF5331918C6D77C0 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6B9255677382C25259368 /* MonthView.swift */; };
+		A4605A5C0CD5195231BBE609 /* AileKasaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00421585ED1E78C6759F399 /* AileKasaApp.swift */; };
+		A7A90DBB43D120CEF353500E /* LedgerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E54240F3A7688A35718035E /* LedgerTests.swift */; };
+		AA55576D29CFA86EC0F0AECA /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C0360FDA7D7F7C4891006 /* Theme.swift */; };
+		C5A650BC8E668BCF89689E77 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE4EAB9FD57FE0B9337309 /* Ledger.swift */; };
+		E07431D4B0F4613F7AC15868 /* ManagedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D6E11BF4B6EFDD0226CB07 /* ManagedObjects.swift */; };
+		F4F9E3B0CD8F209EAB74D8CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B29F45C26A72024D0C01D39 /* Assets.xcassets */; };
+		F934919C210F6940A3C3594F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D41B0C6186B2BB45CE533 /* Enums.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD4B814EDFCDA58675D50EB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B66C6BFDA007F8FCC2C70479 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28B101539C7455E05FA7D8DC;
+			remoteInfo = AileKasa;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		067F984FF3F9E5C13B39DD21 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		0CDFEC99EBEAF499761D8668 /* RateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateService.swift; sourceTree = "<group>"; };
+		0E54240F3A7688A35718035E /* LedgerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerTests.swift; sourceTree = "<group>"; };
+		1382447340E34870395B9EB1 /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
+		28E63C32539B4258CAEB70F4 /* AileKasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AileKasa.xcdatamodel; sourceTree = "<group>"; };
+		297B56781C8751F38C52D76E /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		2CD2C28E9CE2DEBD19614EDC /* LedgerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerActions.swift; sourceTree = "<group>"; };
+		36BE4EAB9FD57FE0B9337309 /* Ledger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ledger.swift; sourceTree = "<group>"; };
+		4B29F45C26A72024D0C01D39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		73E6A6C56F6A67A1B3124A2F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7C3C0360FDA7D7F7C4891006 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		8603ECFF11175CDD147E306D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		8ABF1F1B0F36098DF07CED85 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		923D41B0C6186B2BB45CE533 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		A00421585ED1E78C6759F399 /* AileKasaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AileKasaApp.swift; sourceTree = "<group>"; };
+		A59D86044E0AB63FF6D3D751 /* EntryEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryEditorView.swift; sourceTree = "<group>"; };
+		A80159089CAD251EE5DBBC89 /* AileKasaTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AileKasaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9883A7945229CAB20F67325 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
+		B22FACBB2EBD83D23072F141 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		B2D6E11BF4B6EFDD0226CB07 /* ManagedObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjects.swift; sourceTree = "<group>"; };
+		D3A6B9255677382C25259368 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		DB3DB836129A99718E8A087E /* AileKasa.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AileKasa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4B30F93860E3B98E2204CB9 /* ItemEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEditorView.swift; sourceTree = "<group>"; };
+		F89903DFD30975F16949A985 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0FDE4FE7AD53643AADF50D28 /* Month */ = {
+			isa = PBXGroup;
+			children = (
+				D3A6B9255677382C25259368 /* MonthView.swift */,
+			);
+			path = Month;
+			sourceTree = "<group>";
+		};
+		12A387B7CAF9BBC763ECA114 /* Entry */ = {
+			isa = PBXGroup;
+			children = (
+				A59D86044E0AB63FF6D3D751 /* EntryEditorView.swift */,
+			);
+			path = Entry;
+			sourceTree = "<group>";
+		};
+		1E2A52833A9605BC33570E76 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				73E6A6C56F6A67A1B3124A2F /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		1F6C80913A40634C2C95C204 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				36BE4EAB9FD57FE0B9337309 /* Ledger.swift */,
+				1382447340E34870395B9EB1 /* Money.swift */,
+				0CDFEC99EBEAF499761D8668 /* RateService.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		25A33454F2B9A157FF0ABA94 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				297B56781C8751F38C52D76E /* Components.swift */,
+				7C3C0360FDA7D7F7C4891006 /* Theme.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		48B80A627D1502B499745E18 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				2CD2C28E9CE2DEBD19614EDC /* LedgerActions.swift */,
+				8603ECFF11175CDD147E306D /* PersistenceController.swift */,
+				B22FACBB2EBD83D23072F141 /* SampleData.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		4BB47C1A1A49EC18896ED104 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB3DB836129A99718E8A087E /* AileKasa.app */,
+				A80159089CAD251EE5DBBC89 /* AileKasaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F4982B7E0CD557736CC9564 /* AileKasa */ = {
+			isa = PBXGroup;
+			children = (
+				820310EEF70E05C324C0F677 /* App */,
+				25A33454F2B9A157FF0ABA94 /* Design */,
+				1F6C80913A40634C2C95C204 /* Domain */,
+				73114F89C8894DCBAB58FCA4 /* Features */,
+				E369CC5A40C6239D191E04D2 /* Model */,
+				48B80A627D1502B499745E18 /* Persistence */,
+				6E61214B25766A7273CFFA2D /* Resources */,
+			);
+			path = AileKasa;
+			sourceTree = "<group>";
+		};
+		58000B150220F323A41FF979 /* AileKasaTests */ = {
+			isa = PBXGroup;
+			children = (
+				0E54240F3A7688A35718035E /* LedgerTests.swift */,
+			);
+			path = AileKasaTests;
+			sourceTree = "<group>";
+		};
+		6E61214B25766A7273CFFA2D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4B29F45C26A72024D0C01D39 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		73114F89C8894DCBAB58FCA4 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				12A387B7CAF9BBC763ECA114 /* Entry */,
+				946E4C7553DF91233128B911 /* Grid */,
+				AF3A8CF42BA3B62F7721AF1E /* Items */,
+				0FDE4FE7AD53643AADF50D28 /* Month */,
+				1E2A52833A9605BC33570E76 /* Settings */,
+				EC7D17D5CC04AC4005073FEB /* Summary */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		820310EEF70E05C324C0F677 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A00421585ED1E78C6759F399 /* AileKasaApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		946E4C7553DF91233128B911 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				F89903DFD30975F16949A985 /* GridView.swift */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		AF3A8CF42BA3B62F7721AF1E /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				F4B30F93860E3B98E2204CB9 /* ItemEditorView.swift */,
+				A9883A7945229CAB20F67325 /* ItemsView.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		E369CC5A40C6239D191E04D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				923D41B0C6186B2BB45CE533 /* Enums.swift */,
+				B2D6E11BF4B6EFDD0226CB07 /* ManagedObjects.swift */,
+				067F984FF3F9E5C13B39DD21 /* Month.swift */,
+				1FED16E908139EE1CFA6D051 /* AileKasa.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EC7D17D5CC04AC4005073FEB /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				8ABF1F1B0F36098DF07CED85 /* SummaryView.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		F34A5E90FA8938FEF7B2D264 = {
+			isa = PBXGroup;
+			children = (
+				4F4982B7E0CD557736CC9564 /* AileKasa */,
+				58000B150220F323A41FF979 /* AileKasaTests */,
+				4BB47C1A1A49EC18896ED104 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28B101539C7455E05FA7D8DC /* AileKasa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3DA2D6E501BCC39904EE923 /* Build configuration list for PBXNativeTarget "AileKasa" */;
+			buildPhases = (
+				E0C8A0BC60248D5F697B78AF /* Sources */,
+				5C2E1BE2DC26CE627946F37E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AileKasa;
+			packageProductDependencies = (
+			);
+			productName = AileKasa;
+			productReference = DB3DB836129A99718E8A087E /* AileKasa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2A1CF72D902A8D1A5ADECD3B /* AileKasaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0994894CB81D615882BBFEB /* Build configuration list for PBXNativeTarget "AileKasaTests" */;
+			buildPhases = (
+				DE3195450EA8A314AFFC2C8C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C4F86A57FA43756ADCEE8884 /* PBXTargetDependency */,
+			);
+			name = AileKasaTests;
+			packageProductDependencies = (
+			);
+			productName = AileKasaTests;
+			productReference = A80159089CAD251EE5DBBC89 /* AileKasaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B66C6BFDA007F8FCC2C70479 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					28B101539C7455E05FA7D8DC = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = CF6FD114F2E27E9F0FB791F2 /* Build configuration list for PBXProject "AileKasa" */;
+			developmentRegion = tr;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				tr,
+			);
+			mainGroup = F34A5E90FA8938FEF7B2D264;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4BB47C1A1A49EC18896ED104 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28B101539C7455E05FA7D8DC /* AileKasa */,
+				2A1CF72D902A8D1A5ADECD3B /* AileKasaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C2E1BE2DC26CE627946F37E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4F9E3B0CD8F209EAB74D8CB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE3195450EA8A314AFFC2C8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7A90DBB43D120CEF353500E /* LedgerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0C8A0BC60248D5F697B78AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34745761170CFF8C0E063307 /* AileKasa.xcdatamodeld in Sources */,
+				A4605A5C0CD5195231BBE609 /* AileKasaApp.swift in Sources */,
+				47C2491270A9181EE13881F8 /* Components.swift in Sources */,
+				261B4DFE8CC8073DEBB10DAA /* EntryEditorView.swift in Sources */,
+				F934919C210F6940A3C3594F /* Enums.swift in Sources */,
+				5AE7E86FDA126D8ABE2FFD6E /* GridView.swift in Sources */,
+				6C01AAE9A57A54567F253DAB /* ItemEditorView.swift in Sources */,
+				1293DF560FD0A99057CDDB9F /* ItemsView.swift in Sources */,
+				C5A650BC8E668BCF89689E77 /* Ledger.swift in Sources */,
+				2AFE4267E0DEC7F1AF489FCC /* LedgerActions.swift in Sources */,
+				E07431D4B0F4613F7AC15868 /* ManagedObjects.swift in Sources */,
+				19AD97690391557E889B4320 /* Money.swift in Sources */,
+				5CE7B16DB391069A20E9A607 /* Month.swift in Sources */,
+				92C7396DBF5331918C6D77C0 /* MonthView.swift in Sources */,
+				4057D87EAB02E8C384B2D572 /* PersistenceController.swift in Sources */,
+				6C3DFE3BA61F3CDDA4B0CC07 /* RateService.swift in Sources */,
+				8DFD584AE6BE4D59062D96DA /* SampleData.swift in Sources */,
+				05F88D9399B0281E0CC940E9 /* SettingsView.swift in Sources */,
+				7A1725054A9F45E999509DD1 /* SummaryView.swift in Sources */,
+				AA55576D29CFA86EC0F0AECA /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C4F86A57FA43756ADCEE8884 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28B101539C7455E05FA7D8DC /* AileKasa */;
+			targetProxy = BD4B814EDFCDA58675D50EB8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2FC80CC0D2FA3177B20EA742 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.AileKasaTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AileKasa.app/AileKasa";
+			};
+			name = Debug;
+		};
+		47A4BEB92475C10EDB6015B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_LANGUAGE = tr;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		4AC878CE25099BB0571AC6B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Aile Kasası";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.AileKasa;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		7AA51E530CA591B66ECDF719 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Aile Kasası";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.AileKasa;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C6233E5639244EB2C2E31B83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_LANGUAGE = tr;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		CCD286A43F255BC42DD64322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.AileKasaTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AileKasa.app/AileKasa";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B3DA2D6E501BCC39904EE923 /* Build configuration list for PBXNativeTarget "AileKasa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AC878CE25099BB0571AC6B9 /* Debug */,
+				7AA51E530CA591B66ECDF719 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CF6FD114F2E27E9F0FB791F2 /* Build configuration list for PBXProject "AileKasa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6233E5639244EB2C2E31B83 /* Debug */,
+				47A4BEB92475C10EDB6015B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D0994894CB81D615882BBFEB /* Build configuration list for PBXNativeTarget "AileKasaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FC80CC0D2FA3177B20EA742 /* Debug */,
+				CCD286A43F255BC42DD64322 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1FED16E908139EE1CFA6D051 /* AileKasa.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				28E63C32539B4258CAEB70F4 /* AileKasa.xcdatamodel */,
+			);
+			currentVersion = 28E63C32539B4258CAEB70F4 /* AileKasa.xcdatamodel */;
+			path = AileKasa.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B66C6BFDA007F8FCC2C70479 /* Project object */;
+}
