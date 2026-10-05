@@ -51,6 +51,7 @@ struct ItemsView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Yeni kalem", systemImage: "plus") { route = .newItem }
+                    .labelStyle(.titleAndIcon)
             }
         }
         .sheet(item: $route) { EditorSheet(route: $0) }

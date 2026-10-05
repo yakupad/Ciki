@@ -57,6 +57,8 @@ Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle**
 
 ### Etkileşim ilkeleri
 
+- **Yeni kayıt tek yerden eklenir:** sekme çubuğunun üstündeki "Yeni kayıt" çubuğu her sekmede aynı yerdedir ve seçili ay için kayıt açar. Kaydırınca sekme çubuğuyla birlikte küçülür.
+- Kalem (kart, kredi, maaş…) Kalemler sekmesinden ya da kayıt ekranındaki "Yeni kalem oluştur" ile eklenir.
 - Sola kaydır: ödendi. Sağa kaydır: bu ay hariç. İkisi de geri alınabilir.
 - Düzenli kalemler kayıt girilene kadar "tahmini" görünür; elle girilen tutar her zaman önceliklidir.
 - "Geçen aydan kopyala" ekstre satırlarını yeni aya taşır.

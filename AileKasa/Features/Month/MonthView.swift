@@ -35,7 +35,7 @@ struct MonthView: View {
                 ContentUnavailableView {
                     Label("\(app.month.title) boş", systemImage: "calendar.badge.plus")
                 } description: {
-                    Text("Bu ay için kayıt yok. Yeni kayıt ekleyin ya da geçen ayın tutarlarını kopyalayın.")
+                    Text("Bu ay için kayıt yok. Alttaki Yeni kayıt düğmesini kullanın ya da geçen ayın tutarlarını kopyalayın.")
                 } actions: {
                     Button("Geçen aydan kopyala") { copyFromPrevious() }
                 }
@@ -109,16 +109,7 @@ struct MonthView: View {
         .toolbar {
             MonthNavigator(month: $app.month)
             ToolbarItem(placement: .topBarLeading) {
-                Menu("Diğer", systemImage: "ellipsis.circle") {
-                    Button("Geçen aydan kopyala", systemImage: "doc.on.doc") { copyFromPrevious() }
-                    Button("Yeni kalem", systemImage: "square.and.pencil") { route = .newItem }
-                }
-            }
-            ToolbarItem(placement: .bottomBar) {
-                Button("Yeni kayıt", systemImage: "plus") {
-                    route = .entry(item: nil, month: app.month)
-                }
-                .buttonStyle(.borderedProminent)
+                Button("Geçen aydan kopyala", systemImage: "doc.on.doc") { copyFromPrevious() }
             }
         }
         .sheet(item: $route) { EditorSheet(route: $0) }

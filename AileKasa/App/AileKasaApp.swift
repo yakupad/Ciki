@@ -33,6 +33,9 @@ final class AppState {
 }
 
 struct RootView: View {
+    @Environment(AppState.self) private var app
+    @State private var route: EditorRoute?
+
     var body: some View {
         TabView {
             Tab("Özet", systemImage: "square.grid.2x2.fill") {
@@ -44,11 +47,48 @@ struct RootView: View {
             Tab("Tablo", systemImage: "tablecells") {
                 NavigationStack { GridView() }
             }
-            Tab("Kalemler", systemImage: "arrow.triangle.2.circlepath") {
+            Tab("Kalemler", systemImage: "list.bullet.rectangle") {
                 NavigationStack { ItemsView() }
             }
         }
+        .tabBarMinimizeBehavior(.onScrollDown)
+        // Yeni kayıt her sekmede aynı yerde: sekme çubuğunun üstünde.
+        .tabViewBottomAccessory {
+            NewEntryAccessory(month: app.month) {
+                route = .entry(item: nil, month: app.month)
+            }
+        }
+        .sheet(item: $route) { EditorSheet(route: $0) }
         .tint(.petrol)
+    }
+}
+
+private struct NewEntryAccessory: View {
+    let month: Month
+    let action: () -> Void
+    @Environment(\.tabViewBottomAccessoryPlacement) private var placement
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 8) {
+                Image(systemName: "plus.circle.fill")
+                    .font(.title3)
+                    .foregroundStyle(Color.petrol)
+                Text("Yeni kayıt")
+                    .fontWeight(.semibold)
+                if placement != .inline {
+                    Spacer()
+                    Text(month.title)
+                        .foregroundStyle(.secondary)
+                        .monospacedDigit()
+                }
+            }
+            .padding(.horizontal, 16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Yeni kayıt, \(month.title)")
     }
 }
 
