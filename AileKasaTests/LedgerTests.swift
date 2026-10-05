@@ -40,7 +40,7 @@ struct LedgerTests {
 
         let line = Ledger.line(for: item, month: october.adding(1), rates: rates)
         #expect(line?.isProjected == true)
-        #expect(line?.signedTRY == -47875)
+        #expect(line?.signedValue == -47875)
     }
 
     @Test func entryOverridesRecurringAmount() {
@@ -48,7 +48,7 @@ struct LedgerTests {
         context.upsertEntry(item: item, month: october, amount: 210000, status: .paid, rates: rates)
         let line = Ledger.line(for: item, month: october, rates: rates)
         #expect(line?.isProjected == false)
-        #expect(line?.signedTRY == 210000)
+        #expect(line?.signedValue == 210000)
     }
 
     @Test func excludedEntriesDoNotCountAndPaidEntriesDo() {
@@ -68,15 +68,15 @@ struct LedgerTests {
 
     @Test func foreignCurrencyUsesCurrentRateUntilPaid() {
         let item = makeItem(kind: .family, currency: .eur, recurring: 52319, start: october)
-        #expect(Ledger.line(for: item, month: october, rates: rates)?.signedTRY == -57500)
+        #expect(Ledger.line(for: item, month: october, rates: rates)?.signedValue == -57500)
 
         let line = Ledger.line(for: item, month: october, rates: rates)!
         context.setStatus(.paid, for: line, rates: rates)
 
         // Kur sonradan değişse de ödenmiş kayıt ödeme günündeki kurla kalır.
         let laterRates = RateTable(usd: 45, eur: 60)
-        #expect(Ledger.line(for: item, month: october, rates: laterRates)?.signedTRY == -57500)
-        #expect(Ledger.line(for: item, month: october.adding(1), rates: laterRates)?.signedTRY == -69000)
+        #expect(Ledger.line(for: item, month: october, rates: laterRates)?.signedValue == -57500)
+        #expect(Ledger.line(for: item, month: october.adding(1), rates: laterRates)?.signedValue == -69000)
     }
 
     @Test func missingRateIsReportedInsteadOfCounted() {
@@ -203,7 +203,43 @@ struct LedgerTests {
     @Test func anyCurrencyConvertsWithItsRate() {
         let item = makeItem(kind: .family, currency: .gbp, recurring: 100, start: october)
         let table = RateTable(rates: ["GBP": 65])
-        #expect(Ledger.line(for: item, month: october, rates: table)?.signedTRY == -6500)
+        #expect(Ledger.line(for: item, month: october, rates: table)?.signedValue == -6500)
         #expect(item.currencyCode == "GBP")
+    }
+
+    @Test func baseCurrencyConvertsTotalsThroughCrossRates() {
+        let table = RateTable(rates: ["EUR": 50, "USD": 40], base: .eur)
+        let card = makeItem()
+        context.upsertEntry(item: card, month: october, amount: 5000, status: .pending, rates: table)
+        let euroItem = makeItem(kind: .family, currency: .eur, recurring: 52319, start: october)
+        let dollarItem = makeItem(kind: .family, currency: .usd, recurring: 100, start: october)
+
+        #expect(Ledger.line(for: card, month: october, rates: table)?.signedValue == -100)
+        #expect(Ledger.line(for: euroItem, month: october, rates: table)?.signedValue == -52319)
+        #expect(Ledger.line(for: dollarItem, month: october, rates: table)?.signedValue == -80)
+        #expect(table.rate(for: .tl) == Decimal(string: "0.02"))
+    }
+
+    @Test func paidEntryKeepsItsRateInAnyBaseCurrency() {
+        let tlTable = RateTable(rates: ["EUR": 50, "USD": 40])
+        let dollarItem = makeItem(kind: .family, currency: .usd, recurring: 100, start: october)
+        let line = Ledger.line(for: dollarItem, month: october, rates: tlTable)!
+        context.setStatus(.paid, for: line, rates: tlTable)
+        #expect(dollarItem.entry(for: october)?.rateValue == 40)
+
+        // Dolar sonradan 45 olsa da ödenen 4.000 TL sabit; Euro gösteriminde güncel Euro kuruyla çevrilir.
+        let later = RateTable(rates: ["EUR": 50, "USD": 45], base: .eur)
+        #expect(Ledger.line(for: dollarItem, month: october, rates: later)?.signedValue == -80)
+        // Gösterim birimi kalemin kendi birimiyse tutar aynen kalır.
+        let usdBase = RateTable(rates: ["EUR": 50, "USD": 45], base: .usd)
+        #expect(Ledger.line(for: dollarItem, month: october, rates: usdBase)?.signedValue == -100)
+    }
+
+    @Test func missingBaseRateLeavesValuesUnknown() {
+        let table = RateTable(rates: ["EUR": 50], base: .gbp)
+        let card = makeItem()
+        context.upsertEntry(item: card, month: october, amount: 1000, status: .pending, rates: table)
+        let summary = Ledger.summary(of: Ledger.lines(for: october, items: [card], rates: table))
+        #expect(summary.missingRateCount == 1)
     }
 }

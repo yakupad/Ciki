@@ -1,11 +1,16 @@
 import CoreData
 
-/// TL karşılığı bilinen döviz kurları (1 birim = x ₺), para birimi koduna göre.
+/// Döviz kurları ve toplamların gösterildiği para birimi.
+/// Kurlar TCMB'den TL karşılığı olarak gelir; gösterim birimi TL değilse çapraz kurla çevrilir.
 nonisolated struct RateTable: Equatable, Sendable {
+    /// 1 birim dövizin TL karşılığı, para birimi koduna göre.
     var rates: [String: Decimal] = [:]
+    /// Toplamların gösterildiği para birimi.
+    var base: Currency = .tl
 
-    init(rates: [String: Decimal] = [:]) {
+    init(rates: [String: Decimal] = [:], base: Currency = .tl) {
         self.rates = rates
+        self.base = base
     }
 
     init(usd: Decimal?, eur: Decimal?) {
@@ -16,8 +21,27 @@ nonisolated struct RateTable: Equatable, Sendable {
     var usd: Decimal? { rates["USD"] }
     var eur: Decimal? { rates["EUR"] }
 
-    func rate(for currency: Currency) -> Decimal? {
+    /// 1 birimin TL karşılığı.
+    func tryRate(for currency: Currency) -> Decimal? {
         currency == .tl ? 1 : rates[currency.code]
+    }
+
+    /// 1 birimin gösterim birimindeki karşılığı.
+    func rate(for currency: Currency) -> Decimal? {
+        if currency == base { return 1 }
+        guard let value = tryRate(for: currency), let baseRate = tryRate(for: base), baseRate > 0 else { return nil }
+        return value / baseRate
+    }
+
+    /// Tutarın gösterim birimindeki karşılığı. Ödenmiş döviz kaydı, ödeme günündeki TL kuruyla sabitlenir.
+    func value(of amount: Decimal, in currency: Currency, fixedTRYRate: Decimal? = nil) -> Decimal? {
+        if currency == base { return amount }
+        if let fixedTRYRate {
+            if base == .tl { return amount * fixedTRYRate }
+            guard let baseRate = tryRate(for: base), baseRate > 0 else { return nil }
+            return amount * fixedTRYRate / baseRate
+        }
+        return rate(for: currency).map { amount * $0 }
     }
 }
 
@@ -29,8 +53,8 @@ struct LedgerLine: Identifiable {
     /// Kalemin kendi para biriminde, işaretsiz tutar.
     let amount: Decimal
     let status: EntryStatus
-    /// İşaretli TL karşılığı. Kur bilinmiyorsa nil.
-    let signedTRY: Decimal?
+    /// Gösterim birimindeki işaretli karşılığı. Kur bilinmiyorsa nil.
+    let signedValue: Decimal?
 
     var id: NSManagedObjectID { item.objectID }
     var isProjected: Bool { entry == nil }
@@ -63,34 +87,25 @@ enum Ledger {
     }
 
     static func line(for item: LedgerItem, month: Month, rates: RateTable) -> LedgerLine? {
-        let amount: Decimal
-        let status: EntryStatus
-        var rate = rates.rate(for: item.currency)
-
+        let sign = item.direction.sign
         if let entry = item.entry(for: month) {
-            amount = entry.amountValue
-            status = entry.status
-            // Ödenmiş döviz kaydı ödeme günündeki kurla sabitlenir.
-            if status == .paid, let stored = entry.rateValue {
-                rate = stored
-            }
-            return LedgerLine(item: item, entry: entry, month: month, amount: amount, status: status,
-                              signedTRY: rate.map { amount * $0 * item.direction.sign })
+            let amount = entry.amountValue
+            let fixed = entry.status == .paid ? entry.rateValue : nil
+            return LedgerLine(item: item, entry: entry, month: month, amount: amount, status: entry.status,
+                              signedValue: rates.value(of: amount, in: item.currency, fixedTRYRate: fixed).map { $0 * sign })
         }
 
         guard item.isRecurringActive(in: month), let recurring = item.recurringAmountValue else {
             return nil
         }
-        amount = recurring
-        status = .pending
-        return LedgerLine(item: item, entry: nil, month: month, amount: amount, status: status,
-                          signedTRY: rate.map { amount * $0 * item.direction.sign })
+        return LedgerLine(item: item, entry: nil, month: month, amount: recurring, status: .pending,
+                          signedValue: rates.value(of: recurring, in: item.currency).map { $0 * sign })
     }
 
     static func summary(of lines: [LedgerLine]) -> MonthSummary {
         var summary = MonthSummary()
         for line in lines where line.counts {
-            guard let value = line.signedTRY else {
+            guard let value = line.signedValue else {
                 summary.missingRateCount += 1
                 continue
             }
@@ -180,7 +195,7 @@ extension Ledger {
         months.map { month in
             var totals = MonthTotals(month: month)
             for line in lines(for: month, items: items, rates: rates) where line.counts {
-                guard let value = line.signedTRY else { continue }
+                guard let value = line.signedValue else { continue }
                 if line.direction == .expense {
                     totals.expense -= value
                     if line.status == .pending { totals.pendingExpense -= value }

@@ -10,6 +10,7 @@ Excel'de tutulan aylık borç, gelir ve ödeme tablosunun iPhone uygulaması. De
 - **Veri:** Core Data + NSPersistentCloudKitContainer (iCloud paylaşımına hazır)
 - **Diller:** Türkçe ve İngilizce (iOS Ayarlar → Aile Kasası → Dil)
 - **Para birimleri:** TL ve TCMB'nin yayımladığı 21 döviz (USD, EUR, GBP, CHF, JPY, SAR, AED, AZN…)
+- **Gösterim para birimi:** Toplamlar TL, EUR, USD ya da desteklenen herhangi bir birimde gösterilebilir (Ayarlar → Para birimi).
 - **Tasarım sayfası:** [Plan, ekranlar ve palet](https://claude.ai/artifact/QEnAVyTx2Cw5UZVjPVkVHu)
 
 ## Kurulum
@@ -113,6 +114,7 @@ erDiagram
 
 - **Core Data + NSPersistentCloudKitContainer.** iOS 27 SDK'sında SwiftData yalnızca özel (private) iCloud veritabanını destekliyor. Eşle ortak kullanım için CKShare gerekiyor, bu yüzden Core Data seçildi. Tüm öznitelikler isteğe bağlı, benzersizlik kısıtı yok (CloudKit şartı).
 - **Tutarlar `Decimal`.** Kuruş yuvarlama hatası olmaz. Taksit bölmede artan kuruşlar son taksite eklenir.
+- **Gösterim para birimi.** TCMB kurları TL karşılığı olarak gelir; TL ara birimdir. Gösterim birimi TL değilse çapraz kurla çevrilir (ör. USD → EUR = USD/TL ÷ EUR/TL). Seçim cihaza özeldir, her kişi kendi telefonunda farklı birim seçebilir. Ödenmiş döviz kayıtlarının TL karşılığı ödeme günündeki kurla sabittir.
 - **Döviz.** Ödenmemiş kayıtlar güncel kurla, ödenmiş kayıtlar ödeme günündeki kurla TL'ye çevrilir. Kaynak: `https://www.tcmb.gov.tr/kurlar/today.xml`. Döviz satış kuru kullanılır, yayımlanmayan birimlerde efektif satış. JPY gibi 100 birimlik kurlar bire indirilir. Çevrimdışıyken son alınan kurlar kullanılır.
 - **Yerelleştirme.** Metinler `Localizable.xcstrings` (kaynak dil Türkçe) içinde. Tutar ve tarih biçimi uygulama diline göre: Türkçe `18989`, İngilizce `18989`.
 - **Swift 6, varsayılan MainActor izolasyonu.** Core Data alt sınıfları `nonisolated`.

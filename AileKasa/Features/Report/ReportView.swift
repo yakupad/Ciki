@@ -280,7 +280,7 @@ private struct MonthTable: View {
         let rows = cumulativeRows
 
         VStack(spacing: 0) {
-            row(month: String(localized: "Ay"), incoming: String(localized: "Gelir"), expense: String(localized: "Gider"),
+            row(month: String(localized: "Ay") + " · " + Money.baseCurrency.symbol, incoming: String(localized: "Gelir"), expense: String(localized: "Gider"),
                 net: String(localized: "Net"), cumulative: String(localized: "Birikimli"), header: true)
             ForEach(rows.reversed(), id: \.0.id) { total, cumulative in
                 Divider()

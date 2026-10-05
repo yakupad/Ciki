@@ -107,7 +107,7 @@ private struct ItemRow: View {
                     Text(Money.string(amount * item.direction.sign, currency: item.currency, sign: .always))
                         .font(.amount(14, weight: .semibold))
                         .foregroundStyle(item.direction == .expense ? Color.gider : Color.gelir)
-                    if item.currency != .tl, let rate = rates.rate(for: item.currency) {
+                    if item.currency != rates.base, let rate = rates.rate(for: item.currency) {
                         Text("≈ " + Money.string(amount * rate, fractions: false))
                             .font(.caption2)
                             .foregroundStyle(.secondary)
@@ -145,11 +145,11 @@ struct RateCard: View {
 
     /// USD ve EUR her zaman, ardından kalemlerde kullanılan diğer dövizler.
     private var shown: [Currency] {
-        var list: [Currency] = [.usd, .eur]
+        var list: [Currency] = [.usd, .eur, .tl]
         for item in foreignItems where !list.contains(item.currency) {
             list.append(item.currency)
         }
-        return list
+        return list.filter { $0 != rates.baseCurrency }
     }
 
     var body: some View {
@@ -204,7 +204,7 @@ struct AllRatesView: View {
     @State private var query = ""
 
     var body: some View {
-        let list = Currency.all.filter { $0 != .tl }.filter { currency in
+        let list = Currency.all.filter { $0 != rates.baseCurrency }.filter { currency in
             query.isEmpty
                 || currency.code.localizedCaseInsensitiveContains(query)
                 || currency.name.localizedCaseInsensitiveContains(query)
@@ -221,7 +221,12 @@ struct AllRatesView: View {
                     }
                 }
             } footer: {
-                Text("1 birim döviz için TCMB döviz satış kuru. Satış kuru yayımlanmayan birimlerde efektif satış kullanılır.")
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("1 birim döviz için TCMB döviz satış kuru. Satış kuru yayımlanmayan birimlerde efektif satış kullanılır.")
+                    if rates.baseCurrency != .tl {
+                        Text("Kurlar \(rates.baseCurrency.title) karşılığı olarak, TCMB kurlarından çapraz hesaplanır.")
+                    }
+                }
             }
         }
         .searchable(text: $query, prompt: Text("Para birimi ara"))
@@ -233,7 +238,7 @@ struct AllRatesView: View {
     private func format(_ value: Decimal) -> String {
         let digits = value < 1 ? 4 : 2
         let number = value.formatted(.number.locale(Money.locale).precision(.fractionLength(0...digits)))
-        return "\(number) ₺"
+        return "\(number) \(rates.baseCurrency.symbol)"
     }
 }
 

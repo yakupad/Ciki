@@ -187,7 +187,7 @@ struct EntryEditorView: View {
             let part = Money.string(parts2[0], currency: currency)
             parts.append(String(localized: "\(installmentCount) taksit × \(part)"))
         }
-        if currency != .tl, let rate = rates.table.rate(for: currency) {
+        if currency != rates.table.base, let rate = rates.table.rate(for: currency) {
             parts.append("≈ " + Money.string(amount * rate, fractions: false))
         }
         return parts.isEmpty ? Money.string(amount, currency: currency) : parts.joined(separator: " · ")

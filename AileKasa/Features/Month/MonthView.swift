@@ -133,7 +133,7 @@ struct MonthView: View {
         let title: String
         var lines: [LedgerLine]
         var id: String { title }
-        var total: Decimal { lines.filter(\.counts).compactMap(\.signedTRY).reduce(0, +) }
+        var total: Decimal { lines.filter(\.counts).compactMap(\.signedValue).reduce(0, +) }
     }
 
     /// Giderler bankaya göre, gelir ve alacaklar ayrı grupta toplanır.
@@ -182,7 +182,7 @@ struct EntryRow: View {
                     .font(.amount(15, weight: .semibold))
                     .strikethrough(line.status != .pending, pattern: line.status == .excluded ? .dash : .solid)
                     .foregroundStyle(amountColor)
-                if line.currency != .tl, let value = line.signedTRY {
+                if line.currency != Money.baseCurrency, let value = line.signedValue {
                     Text("≈ " + Money.string(value, fractions: false))
                         .font(.caption2)
                         .foregroundStyle(.secondary)

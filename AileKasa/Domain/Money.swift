@@ -4,6 +4,13 @@ nonisolated enum Money {
     /// Uygulama dilinin sayı biçimi: Türkçe "18989", İngilizce "18989".
     static var locale: Locale { AppLanguage.current.locale }
 
+    static let baseCurrencyKey = "baseCurrency"
+
+    /// Toplamların gösterildiği para birimi (Ayarlar'dan seçilir, cihaza özel).
+    static var baseCurrency: Currency {
+        UserDefaults.standard.string(forKey: baseCurrencyKey).map(Currency.init(code:)) ?? .tl
+    }
+
     enum SignStyle {
         /// Yalnızca eksi değerlerde işaret.
         case automatic
@@ -15,7 +22,7 @@ nonisolated enum Money {
 
     /// "−18989 ₺", "+42320 ₺", "52319 €"
     static func string(_ value: Decimal,
-                       currency: Currency = .tl,
+                       currency: Currency = Money.baseCurrency,
                        sign: SignStyle = .automatic,
                        fractions: Bool = true,
                        locale: Locale = Money.locale) -> String {

@@ -50,7 +50,7 @@ extension NSManagedObjectContext {
         if status == .paid {
             if !wasPaid { entry.paidAt = .now }
             if currency != .tl, entry.rateValue == nil {
-                entry.rateValue = rates.rate(for: currency)
+                entry.rateValue = rates.tryRate(for: currency)
             }
         } else {
             entry.paidAt = nil

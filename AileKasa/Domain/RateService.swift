@@ -4,7 +4,14 @@ import Observation
 /// TCMB günlük kur dosyasından döviz satış kurlarını alır ve son değeri saklar.
 @Observable
 final class RateService {
-    private(set) var table: RateTable
+    /// TCMB'den gelen TL kurları.
+    private(set) var tryRates: [String: Decimal]
+    /// Toplamların gösterildiği para birimi.
+    var baseCurrency: Currency {
+        didSet { defaults.set(baseCurrency.code, forKey: Money.baseCurrencyKey) }
+    }
+
+    var table: RateTable { RateTable(rates: tryRates, base: baseCurrency) }
     private(set) var updatedAt: Date?
     private(set) var isLoading = false
     private(set) var errorMessage: String?
@@ -23,12 +30,13 @@ final class RateService {
                 rates[code] = legacy
             }
         }
-        self.table = RateTable(rates: rates)
+        self.tryRates = rates
+        self.baseCurrency = defaults.string(forKey: Money.baseCurrencyKey).map(Currency.init(code:)) ?? .tl
         self.updatedAt = defaults.object(forKey: "rate.updatedAt") as? Date
     }
 
     func refreshIfStale() async {
-        if let updatedAt, Date.now.timeIntervalSince(updatedAt) < 6 * 3600, table.rates.count > 2 { return }
+        if let updatedAt, Date.now.timeIntervalSince(updatedAt) < 6 * 3600, tryRates.count > 2 { return }
         await refresh()
     }
 
@@ -40,7 +48,7 @@ final class RateService {
             let (data, _) = try await URLSession.shared.data(from: Self.url)
             let rates = try TCMBParser.parse(data)
             guard !rates.rates.isEmpty else { throw URLError(.cannotParseResponse) }
-            table = rates
+            tryRates = rates.rates
             updatedAt = .now
             errorMessage = nil
             persist()
@@ -50,7 +58,7 @@ final class RateService {
     }
 
     private func persist() {
-        let stored = table.rates.mapValues { "\($0)" }
+        let stored = tryRates.mapValues { "\($0)" }
         defaults.set(stored, forKey: Self.storageKey)
         defaults.set(updatedAt, forKey: "rate.updatedAt")
     }

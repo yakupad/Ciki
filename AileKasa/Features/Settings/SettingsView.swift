@@ -5,6 +5,7 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.managedObjectContext) private var context
     @Environment(\.openURL) private var openURL
+    @Environment(RateService.self) private var rates
 
     @FetchRequest(sortDescriptors: [SortDescriptor(\Person.sortOrder)])
     private var people: FetchedResults<Person>
@@ -15,6 +16,7 @@ struct SettingsView: View {
     @State private var personToDelete: Person?
 
     var body: some View {
+        @Bindable var rates = rates
         NavigationStack {
             Form {
                 if let household = households.first {
@@ -49,7 +51,27 @@ struct SettingsView: View {
                 }
 
                 Section {
+                    Picker("Gösterim para birimi", selection: $rates.baseCurrency) {
+                        Section {
+                            ForEach(Currency.common) { CurrencyLabel(currency: $0).tag($0) }
+                        }
+                        Section {
+                            ForEach(Currency.all.filter { !Currency.common.contains($0) }) {
+                                CurrencyLabel(currency: $0).tag($0)
+                            }
+                        }
+                    }
+                    .pickerStyle(.navigationLink)
                     RateCard()
+                } header: {
+                    Text("Para birimi")
+                } footer: {
+                    if rates.baseCurrency != .tl && rates.table.tryRate(for: rates.baseCurrency) == nil {
+                        Text("\(rates.baseCurrency.title) kuru henüz alınamadı. Toplamlar kur gelene kadar eksik görünebilir.")
+                            .foregroundStyle(Color.gider)
+                    } else {
+                        Text("Özet, rapor ve toplamlar bu para biriminde gösterilir. Kalemler kendi para biriminde kalır. Çevrim TCMB kurlarıyla yapılır.")
+                    }
                 }
 
                 Section {

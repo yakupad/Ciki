@@ -90,7 +90,7 @@ struct GridView: View {
                 .contentShape(Rectangle())
                 .onTapGesture { route = .item(item) }
             }
-            Text("Net")
+            Text("Net \(Money.baseCurrency.symbol)")
                 .font(.caption.weight(.bold))
                 .padding(.horizontal, 10)
                 .frame(width: titleWidth, height: rowHeight, alignment: .leading)
@@ -133,7 +133,7 @@ struct GridView: View {
     private func cell(_ line: LedgerLine?) -> some View {
         if let line {
             let value = line.amount * line.direction.sign
-            Text(line.currency == .tl ? Money.compact(value) : Money.string(value, currency: line.currency, fractions: false))
+            Text(line.currency == Money.baseCurrency ? Money.compact(value) : Money.string(value, currency: line.currency, fractions: false))
                 .font(.system(size: 12, weight: line.status == .pending ? .semibold : .regular, design: .rounded))
                 .monospacedDigit()
                 .italic(line.isProjected)

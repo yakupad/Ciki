@@ -1,231 +1,279 @@
 {
-  "sourceLanguage" : "tr",
-  "strings" : {
-    "%@ – %@, toplam %lld ay." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ – %2$@, %3$lld months in total."
+  "sourceLanguage": "tr",
+  "strings": {
+    "%@ adına %lld kalem var. Kalemler ve kayıtları silinmez, Ortak'a geçer.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ has %2$lld item(s). Items and their entries are kept and move to Shared."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ – %@, toplam %lld ay."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ adına %lld kalem var. Kalemler ve kayıtları silinmez, Ortak'a geçer."
           }
         }
       }
     },
-    "%@ adına %lld kalem var. Kalemler ve kayıtları silinmez, Ortak'a geçer." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ has %2$lld item(s). Items and their entries are kept and move to Shared."
+    "%@ ayında kopyalanacak yeni kayıt yok.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing new to copy from %@."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ adına %lld kalem var. Kalemler ve kayıtları silinmez, Ortak'a geçer."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ ayında kopyalanacak yeni kayıt yok."
           }
         }
       }
     },
-    "%@ ayında kopyalanacak yeni kayıt yok." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nothing new to copy from %@."
+    "%@ ayından itibaren her ay tahmini olarak görünür.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shown as an estimate every month from %@."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ ayında kopyalanacak yeni kayıt yok."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ ayından itibaren her ay tahmini olarak görünür."
           }
         }
       }
     },
-    "%@ ayından itibaren her ay tahmini olarak görünür." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Shown as an estimate every month from %@."
+    "%@ boş": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ is empty"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ ayından itibaren her ay tahmini olarak görünür."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ boş"
           }
         }
       }
     },
-    "%@ boş" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ is empty"
+    "%@ için bekleyen ödeme yok.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No pending payments for %@."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ boş"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ için bekleyen ödeme yok."
           }
         }
       }
     },
-    "%@ için bekleyen ödeme yok." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No pending payments for %@."
+    "%@ kişisini sil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ için bekleyen ödeme yok."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ kişisini sil"
           }
         }
       }
     },
-    "%@ kişisini sil" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete %@"
+    "%@ kuru henüz alınamadı. Toplamlar kur gelene kadar eksik görünebilir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No %@ rate yet. Totals may be incomplete until rates load."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ kişisini sil"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ kuru henüz alınamadı. Toplamlar kur gelene kadar eksik görünebilir."
           }
         }
       }
     },
-    "%@: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@: %2$@"
+    "%@ – %@, toplam %lld ay.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ – %2$@, %3$lld months in total."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@: %@"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ – %@, toplam %lld ay."
           }
         }
       }
     },
-    "%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
+    "%@: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@: %@"
           }
         }
       }
     },
-    "%lld ay ort." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld-mo avg."
+    "%lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld ay ort."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
           }
         }
       }
     },
-    "%lld döviz kalemi kur olmadığı için toplama girmedi." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Left out of totals because no exchange rate is available: %lld foreign currency item(s)."
+    "%lld ay ort.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld-mo avg."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld döviz kalemi kur olmadığı için toplama girmedi."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld ay ort."
           }
         }
       }
     },
-    "%lld kayıt %@ ayından kopyalandı. Tutarları ekstreye göre güncelleyin." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copied %1$lld entries from %2$@. Update the amounts to match your statements."
+    "%lld döviz kalemi kur olmadığı için toplama girmedi.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left out of totals because no exchange rate is available: %lld foreign currency item(s)."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld kayıt %@ ayından kopyalandı. Tutarları ekstreye göre güncelleyin."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld döviz kalemi kur olmadığı için toplama girmedi."
           }
         }
       }
     },
-    "%lld ödeme" : {
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld payment"
+    "%lld kayıt %@ ayından kopyalandı. Tutarları ekstreye göre güncelleyin.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied %1$lld entries from %2$@. Update the amounts to match your statements."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld kayıt %@ ayından kopyalandı. Tutarları ekstreye göre güncelleyin."
+          }
+        }
+      }
+    },
+    "%lld taksit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld installments"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld taksit"
+          }
+        }
+      }
+    },
+    "%lld taksit × %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld installments × %2$@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld taksit × %@"
+          }
+        }
+      }
+    },
+    "%lld ödeme": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld payment"
                 }
               },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld payments"
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld payments"
                 }
               }
             }
           }
         },
-        "tr" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld ödeme"
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld ödeme"
                 }
               },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld ödeme"
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld ödeme"
                 }
               }
             }
@@ -233,2619 +281,2651 @@
         }
       }
     },
-    "%lld taksit" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld installments"
+    "%lldB": {
+      "comment": "Grafik ekseni: bin TL kısaltması",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lldK"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld taksit"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lldB"
           }
         }
       }
     },
-    "%lld taksit × %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld installments × %2$@"
+    "0": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld taksit × %@"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0"
           }
         }
       }
     },
-    "%lldB" : {
-      "comment" : "Grafik ekseni: bin TL kısaltması",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lldK"
+    "1 birim döviz için TCMB döviz satış kuru. Satış kuru yayımlanmayan birimlerde efektif satış kullanılır.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CBRT forex selling rate per 1 unit. Where no forex rate is published, the banknote selling rate is used."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lldB"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 birim döviz için TCMB döviz satış kuru. Satış kuru yayımlanmayan birimlerde efektif satış kullanılır."
           }
         }
       }
     },
-    "0" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "0"
+    "12 ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12 mo"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "0"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12 ay"
           }
         }
       }
     },
-    "1 birim döviz için TCMB döviz satış kuru. Satış kuru yayımlanmayan birimlerde efektif satış kullanılır." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CBRT forex selling rate per 1 unit. Where no forex rate is published, the banknote selling rate is used."
+    "12 ay + 6 ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12 mo + 6 mo"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 birim döviz için TCMB döviz satış kuru. Satış kuru yayımlanmayan birimlerde efektif satış kullanılır."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12 ay + 6 ay"
           }
         }
       }
     },
-    "6 ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "6 mo"
+    "6 ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 mo"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "6 ay"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 ay"
           }
         }
       }
     },
-    "12 ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "12 mo"
+    "Ad (boşsa: %@)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name (default: %@)"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "12 ay"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad (boşsa: %@)"
           }
         }
       }
     },
-    "12 ay + 6 ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "12 mo + 6 mo"
+    "Aile / Gönderim": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Family / Transfer"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "12 ay + 6 ay"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aile / Gönderim"
           }
         }
       }
     },
-    "Ad (boşsa: %@)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Name (default: %@)"
+    "Alacak": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receivable"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ad (boşsa: %@)"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alacak"
           }
         }
       }
     },
-    "Aile / Gönderim" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Family / Transfer"
+    "Aralık": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Range"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aile / Gönderim"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aralık"
           }
         }
       }
     },
-    "Alacak" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Receivable"
+    "Arşiv": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Archive"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alacak"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arşiv"
           }
         }
       }
     },
-    "Aralık" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Range"
+    "Arşivle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Archive"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aralık"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arşivle"
           }
         }
       }
     },
-    "Arşiv" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Archive"
+    "Arşivlenen kalem yeni aylarda görünmez, geçmiş kayıtları kalır. Silmek tüm aylardaki kayıtlarını da siler.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Archived items no longer appear in new months; past entries are kept. Deleting removes its entries in every month."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Arşiv"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arşivlenen kalem yeni aylarda görünmez, geçmiş kayıtları kalır. Silmek tüm aylardaki kayıtlarını da siler."
           }
         }
       }
     },
-    "Arşivle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Archive"
+    "Ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Arşivle"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay"
           }
         }
       }
     },
-    "Arşivlenen kalem yeni aylarda görünmez, geçmiş kayıtları kalır. Silmek tüm aylardaki kayıtlarını da siler." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Archived items no longer appear in new months; past entries are kept. Deleting removes its entries in every month."
+    "Ay neti": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Month net"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Arşivlenen kalem yeni aylarda görünmez, geçmiş kayıtları kalır. Silmek tüm aylardaki kayıtlarını da siler."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay neti"
           }
         }
       }
     },
-    "Ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Month"
+    "Ay sonu net": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net at month end"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ay"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay sonu net"
           }
         }
       }
     },
-    "Ay neti" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Month net"
+    "Ayarlar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ay neti"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayarlar"
           }
         }
       }
     },
-    "Ay sonu net" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Net at month end"
+    "Aylar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Months"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ay sonu net"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aylar"
           }
         }
       }
     },
-    "Ayarlar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Settings"
+    "Aylık net": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly net"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ayarlar"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aylık net"
           }
         }
       }
     },
-    "Aylar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Months"
+    "Aylık tutar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly amount"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aylar"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aylık tutar"
           }
         }
       }
     },
-    "Aylık net" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly net"
+    "Banka": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bank"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aylık net"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Banka"
           }
         }
       }
     },
-    "Aylık tutar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly amount"
+    "Banka seç": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose bank"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aylık tutar"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Banka seç"
           }
         }
       }
     },
-    "Banka" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bank"
+    "Banka yok": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No bank"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Banka"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Banka yok"
           }
         }
       }
     },
-    "Banka seç" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choose bank"
+    "Başlangıç": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Banka seç"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlangıç"
           }
         }
       }
     },
-    "Banka yok" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No bank"
+    "Bekliyor": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pending"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Banka yok"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bekliyor"
           }
         }
       }
     },
-    "Başlangıç" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Start month"
+    "Birikimli": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Running"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Başlangıç"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birikimli"
           }
         }
       }
     },
-    "Bekliyor" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pending"
+    "Bitiş ayı var": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Has an end month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bekliyor"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitiş ayı var"
           }
         }
       }
     },
-    "Birikimli" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Running"
+    "Bitti": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Birikimli"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitti"
           }
         }
       }
     },
-    "Bitiş ayı var" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Has an end month"
+    "Bu aralıkta kart veya kredi kaydı yok.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No card or loan entries in this range."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bitiş ayı var"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu aralıkta kart veya kredi kaydı yok."
           }
         }
       }
     },
-    "Bitti" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
+    "Bu ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bitti"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu ay"
           }
         }
       }
     },
-    "Bu aralıkta kart veya kredi kaydı yok." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No card or loan entries in this range."
+    "Bu ay hariç": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skipped this month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu aralıkta kart veya kredi kaydı yok."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu ay hariç"
           }
         }
       }
     },
-    "Bu ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This month"
+    "Bu ay için kayıt yok. Alttaki Yeni kayıt düğmesini kullanın ya da geçen ayın tutarlarını kopyalayın.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No entries this month. Use the New Entry button at the bottom or copy last month's amounts."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu ay"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu ay için kayıt yok. Alttaki Yeni kayıt düğmesini kullanın ya da geçen ayın tutarlarını kopyalayın."
           }
         }
       }
     },
-    "Bu ay hariç" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Skipped this month"
+    "Bu ay ve sonrası": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This month onward"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu ay hariç"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu ay ve sonrası"
           }
         }
       }
     },
-    "Bu ay için kayıt yok. Alttaki Yeni kayıt düğmesini kullanın ya da geçen ayın tutarlarını kopyalayın." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No entries this month. Use the New Entry button at the bottom or copy last month's amounts."
+    "Bu ay ödenecekler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due this month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu ay için kayıt yok. Alttaki Yeni kayıt düğmesini kullanın ya da geçen ayın tutarlarını kopyalayın."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu ay ödenecekler"
           }
         }
       }
     },
-    "Bu ay ödenecekler" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Due this month"
+    "Bu ayın kaydı silinsin mi?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this month's entry?"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu ay ödenecekler"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu ayın kaydı silinsin mi?"
           }
         }
       }
     },
-    "Bu ay ve sonrası" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This month onward"
+    "Bu ayın kaydını sil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete This Month's Entry"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu ay ve sonrası"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu ayın kaydını sil"
           }
         }
       }
     },
-    "Bu ayın kaydı silinsin mi?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete this month's entry?"
+    "Bugün": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu ayın kaydı silinsin mi?"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün"
           }
         }
       }
     },
-    "Bu ayın kaydını sil" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete This Month's Entry"
+    "BUGÜN": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TODAY"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu ayın kaydını sil"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BUGÜN"
           }
         }
       }
     },
-    "Bugün" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Today"
+    "Dahil et": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Include"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bugün"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dahil et"
           }
         }
       }
     },
-    "BUGÜN" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TODAY"
+    "Dil, iOS Ayarlar'da uygulamanın sayfasından değiştirilir. Türkçe ve İngilizce desteklenir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change the language from this app's page in iOS Settings. Turkish and English are supported."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BUGÜN"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dil, iOS Ayarlar'da uygulamanın sayfasından değiştirilir. Türkçe ve İngilizce desteklenir."
           }
         }
       }
     },
-    "Çubuk: o ayın neti. Çizgi: dönem başından bu yana toplam. Çizgi aşağı iniyorsa borç birikiyor." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bars: that month's net. Line: running total since the start of the range. A falling line means debt is building up."
+    "Diğer": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Çubuk: o ayın neti. Çizgi: dönem başından bu yana toplam. Çizgi aşağı iniyorsa borç birikiyor."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diğer"
           }
         }
       }
     },
-    "Dahil et" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Include"
+    "Diğer giderler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other expenses"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dahil et"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diğer giderler"
           }
         }
       }
     },
-    "Diğer" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Other"
+    "Diğer kalemler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other items"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diğer"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diğer kalemler"
           }
         }
       }
     },
-    "Diğer giderler" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Other expenses"
+    "Durum": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diğer giderler"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durum"
           }
         }
       }
     },
-    "Diğer kalemler" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Other items"
+    "Döviz kurları": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exchange Rates"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diğer kalemler"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Döviz kurları"
           }
         }
       }
     },
-    "Dil, iOS Ayarlar'da uygulamanın sayfasından değiştirilir. Türkçe ve İngilizce desteklenir." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Change the language from this app's page in iOS Settings. Turkish and English are supported."
+    "Döviz kuru · TCMB satış": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exchange rate · CBRT selling"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dil, iOS Ayarlar'da uygulamanın sayfasından değiştirilir. Türkçe ve İngilizce desteklenir."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Döviz kuru · TCMB satış"
           }
         }
       }
     },
-    "Döviz kurları" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exchange Rates"
+    "Düzenli": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recurring"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Döviz kurları"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenli"
           }
         }
       }
     },
-    "Döviz kuru · TCMB satış" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exchange rate · CBRT selling"
+    "Düzenli gelirler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recurring income"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Döviz kuru · TCMB satış"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenli gelirler"
           }
         }
       }
     },
-    "Durum" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Status"
+    "Düzenli kalemlerde kayıt silinirse tahmini tutar geri gelir. O ayı saymamak için durumu Hariç yapın.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For recurring items, deleting the entry brings back the estimated amount. To leave the month out, set the status to Skipped."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Durum"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenli kalemlerde kayıt silinirse tahmini tutar geri gelir. O ayı saymamak için durumu Hariç yapın."
           }
         }
       }
     },
-    "Düzenli" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recurring"
+    "Düzenli · tahmini": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recurring · estimate"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Düzenli"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenli · tahmini"
           }
         }
       }
     },
-    "Düzenli · tahmini" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recurring · estimate"
+    "Düzenli ödemeler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recurring payments"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Düzenli · tahmini"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenli ödemeler"
           }
         }
       }
     },
-    "Düzenli gelirler" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recurring income"
+    "En yüksek gider": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Highest expenses"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Düzenli gelirler"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En yüksek gider"
           }
         }
       }
     },
-    "Düzenli kalemlerde kayıt silinirse tahmini tutar geri gelir. O ayı saymamak için durumu Hariç yapın." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "For recurring items, deleting the entry brings back the estimated amount. To leave the month out, set the status to Skipped."
+    "Excel örnek verisini yükle": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Load Excel Sample Data"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Düzenli kalemlerde kayıt silinirse tahmini tutar geri gelir. O ayı saymamak için durumu Hariç yapın."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excel örnek verisini yükle"
           }
         }
       }
     },
-    "Düzenli ödemeler" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recurring payments"
+    "Eşinizle paylaşım bir sonraki aşamada eklenecek. Şu an veriler yalnızca bu cihazda.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sharing with your partner is coming in a later update. For now, data stays on this device."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Düzenli ödemeler"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşinizle paylaşım bir sonraki aşamada eklenecek. Şu an veriler yalnızca bu cihazda."
           }
         }
       }
     },
-    "En yüksek gider" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Highest expenses"
+    "Fatura": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bill"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En yüksek gider"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fatura"
           }
         }
       }
     },
-    "Eşinizle paylaşım bir sonraki aşamada eklenecek. Şu an veriler yalnızca bu cihazda." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sharing with your partner is coming in a later update. For now, data stays on this device."
+    "GECİKTİ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OVERDUE"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eşinizle paylaşım bir sonraki aşamada eklenecek. Şu an veriler yalnızca bu cihazda."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GECİKTİ"
           }
         }
       }
     },
-    "Excel örnek verisini yükle" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Load Excel Sample Data"
+    "Gelecek aylar tahmini": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Future months estimated"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Excel örnek verisini yükle"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelecek aylar tahmini"
           }
         }
       }
     },
-    "Fatura" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bill"
+    "Gelir": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Income"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fatura"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelir"
           }
         }
       }
     },
-    "Geçen ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Last month"
+    "Gelir + alacak": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Income + receivables"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geçen ay"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelir + alacak"
           }
         }
       }
     },
-    "Geçen aydan kopyala" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copy from Last Month"
+    "Gelir ve alacaklar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Income and receivables"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geçen aydan kopyala"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelir ve alacaklar"
           }
         }
       }
     },
-    "GECİKTİ" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OVERDUE"
+    "Geliştirici": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Developer"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GECİKTİ"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geliştirici"
           }
         }
       }
     },
-    "Gelecek aylar tahmini" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Future months estimated"
+    "Geri al": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gelecek aylar tahmini"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geri al"
           }
         }
       }
     },
-    "Gelir" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Income"
+    "Geçen ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gelir"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geçen ay"
           }
         }
       }
     },
-    "Gelir + alacak" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Income + receivables"
+    "Geçen aydan kopyala": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy from Last Month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gelir + alacak"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geçen aydan kopyala"
           }
         }
       }
     },
-    "Gelir ve alacaklar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Income and receivables"
+    "Gider": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expense"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gelir ve alacaklar"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gider"
           }
         }
       }
     },
-    "Geliştirici" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Developer"
+    "Gösterilecek kalem yok": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No items to show"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geliştirici"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gösterilecek kalem yok"
           }
         }
       }
     },
-    "Geri al" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Undo"
+    "Gösterim para birimi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display currency"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geri al"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gösterim para birimi"
           }
         }
       }
     },
-    "Gider" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expense"
+    "Güncellendi: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updated: %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gider"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellendi: %@"
           }
         }
       }
     },
-    "Gösterilecek kalem yok" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No items to show"
+    "Hane": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Household"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gösterilecek kalem yok"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hane"
           }
         }
       }
     },
-    "Güncellendi: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Updated: %@"
+    "Hane adı": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Household name"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Güncellendi: %@"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hane adı"
           }
         }
       }
     },
-    "Hane" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Household"
+    "Hariç": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skipped"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hane"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hariç"
           }
         }
       }
     },
-    "Hane adı" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Household name"
+    "Hariç kayıtlar silinmez ama o ayın toplamına girmez.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skipped entries are kept but don't count toward the month's total."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hane adı"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hariç kayıtlar silinmez ama o ayın toplamına girmez."
           }
         }
       }
     },
-    "Hariç" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Skipped"
+    "Henüz kalem yok": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No items yet"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hariç"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz kalem yok"
           }
         }
       }
     },
-    "Hariç kayıtlar silinmez ama o ayın toplamına girmez." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Skipped entries are kept but don't count toward the month's total."
+    "Hepsini sil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete All"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hariç kayıtlar silinmez ama o ayın toplamına girmez."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hepsini sil"
           }
         }
       }
     },
-    "Henüz kalem yok" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No items yet"
+    "her ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "every month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Henüz kalem yok"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "her ay"
           }
         }
       }
     },
-    "Hepsini sil" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete All"
+    "Her ay tekrarla": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repeat every month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hepsini sil"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her ay tekrarla"
           }
         }
       }
     },
-    "her ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "every month"
+    "her ayın %lld. günü": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "on day %lld"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "her ay"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "her ayın %lld. günü"
           }
         }
       }
     },
-    "Her ay tekrarla" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Repeat every month"
+    "Her kart, kredi, kira, maaş ya da düzenli gönderim bir kalemdir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each card, loan, rent, salary or regular transfer is an item."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Her ay tekrarla"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her kart, kredi, kira, maaş ya da düzenli gönderim bir kalemdir."
           }
         }
       }
     },
-    "her ayın %lld. günü" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "on day %lld"
+    "Hücreye dokunarak tutarı düzenleyin. Üstü çizili: ödendi. Soluk: hariç. İtalik: düzenli ödemeden tahmini.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap a cell to edit the amount. Struck through: paid. Faded: skipped. Italic: estimated from a recurring item."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "her ayın %lld. günü"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hücreye dokunarak tutarı düzenleyin. Üstü çizili: ödendi. Soluk: hariç. İtalik: düzenli ödemeden tahmini."
           }
         }
       }
     },
-    "Her kart, kredi, kira, maaş ya da düzenli gönderim bir kalemdir." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Each card, loan, rent, salary or regular transfer is an item."
+    "iCloud": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Her kart, kredi, kira, maaş ya da düzenli gönderim bir kalemdir."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud"
           }
         }
       }
     },
-    "Hücreye dokunarak tutarı düzenleyin. Üstü çizili: ödendi. Soluk: hariç. İtalik: düzenli ödemeden tahmini." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap a cell to edit the amount. Struck through: paid. Faded: skipped. Italic: estimated from a recurring item."
+    "İlk kalemi ekle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add First Item"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hücreye dokunarak tutarı düzenleyin. Üstü çizili: ödendi. Soluk: hariç. İtalik: düzenli ödemeden tahmini."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlk kalemi ekle"
           }
         }
       }
     },
-    "iCloud" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "iCloud"
+    "İlk taksit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First installment"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "iCloud"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlk taksit"
           }
         }
       }
     },
-    "İlk kalemi ekle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add First Item"
+    "İsim": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İlk kalemi ekle"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsim"
           }
         }
       }
     },
-    "İlk taksit" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "First installment"
+    "İsimsiz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unnamed"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İlk taksit"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsimsiz"
           }
         }
       }
     },
-    "İsim" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Name"
+    "Kalem": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Item"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İsim"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalem"
           }
         }
       }
     },
-    "İsimsiz" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unnamed"
+    "Kalem ekle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Item"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İsimsiz"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalem ekle"
           }
         }
       }
     },
-    "Kalem" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Item"
+    "Kalem ve tüm kayıtları silinsin mi?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this item and all its entries?"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kalem"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalem ve tüm kayıtları silinsin mi?"
           }
         }
       }
     },
-    "Kalem ekle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add Item"
+    "Kalemi düzenle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Item"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kalem ekle"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalemi düzenle"
           }
         }
       }
     },
-    "Kalem ve tüm kayıtları silinsin mi?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete this item and all its entries?"
+    "Kalemi sil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete Item"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kalem ve tüm kayıtları silinsin mi?"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalemi sil"
           }
         }
       }
     },
-    "Kalemi düzenle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edit Item"
+    "Kalemler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Items"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kalemi düzenle"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalemler"
           }
         }
       }
     },
-    "Kalemi sil" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete Item"
+    "Kalemler sekmesinden kalem ekleyin.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add items from the Items tab."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kalemi sil"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalemler sekmesinden kalem ekleyin."
           }
         }
       }
     },
-    "Kalemler" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Items"
+    "Kart": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Card"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kalemler"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart"
           }
         }
       }
     },
-    "Kalemler sekmesinden kalem ekleyin." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add items from the Items tab."
+    "Kart ekstresi, nakit avans ve kredi taksitlerinin bankaya göre aylık toplamı.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly total of card statements, cash advances and loan installments, by bank."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kalemler sekmesinden kalem ekleyin."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart ekstresi, nakit avans ve kredi taksitlerinin bankaya göre aylık toplamı."
           }
         }
       }
     },
-    "Kart" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Card"
+    "Kart ve kredi · bu ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cards and loans · this month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kart"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart ve kredi · bu ay"
           }
         }
       }
     },
-    "Kart ekstresi, nakit avans ve kredi taksitlerinin bankaya göre aylık toplamı." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly total of card statements, cash advances and loan installments, by bank."
+    "Kart ve kredi ödemeleri": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Card and loan payments"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kart ekstresi, nakit avans ve kredi taksitlerinin bankaya göre aylık toplamı."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart ve kredi ödemeleri"
           }
         }
       }
     },
-    "Kart ve kredi · bu ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cards and loans · this month"
+    "Kartlarınızı, kredilerinizi, maaşları ve düzenli ödemeleri kalem olarak ekleyin. Sonra her ay tutarları girersiniz.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add your cards, loans, salaries and recurring payments as items. Then enter the amounts each month."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kart ve kredi · bu ay"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartlarınızı, kredilerinizi, maaşları ve düzenli ödemeleri kalem olarak ekleyin. Sonra her ay tutarları girersiniz."
           }
         }
       }
     },
-    "Kart ve kredi ödemeleri" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Card and loan payments"
+    "Kaydet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kart ve kredi ödemeleri"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydet"
           }
         }
       }
     },
-    "Kartlarınızı, kredilerinizi, maaşları ve düzenli ödemeleri kalem olarak ekleyin. Sonra her ay tutarları girersiniz." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add your cards, loans, salaries and recurring payments as items. Then enter the amounts each month."
+    "Kime ait": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belongs to"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kartlarınızı, kredilerinizi, maaşları ve düzenli ödemeleri kalem olarak ekleyin. Sonra her ay tutarları girersiniz."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kime ait"
           }
         }
       }
     },
-    "Kaydet" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Save"
+    "Kira": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rent"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kaydet"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kira"
           }
         }
       }
     },
-    "Kime ait" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Belongs to"
+    "Kira, kredi taksidi, maaş ve döviz gönderimleri gibi her ay tekrar eden kalemler için açın.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on for items that repeat every month, like rent, loan installments, salary and foreign currency transfers."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kime ait"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kira, kredi taksidi, maaş ve döviz gönderimleri gibi her ay tekrar eden kalemler için açın."
           }
         }
       }
     },
-    "Kira" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rent"
+    "Kişi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Person"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kira"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişi"
           }
         }
       }
     },
-    "Kira, kredi taksidi, maaş ve döviz gönderimleri gibi her ay tekrar eden kalemler için açın." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Turn on for items that repeat every month, like rent, loan installments, salary and foreign currency transfers."
+    "Kişi ekle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Person"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kira, kredi taksidi, maaş ve döviz gönderimleri gibi her ay tekrar eden kalemler için açın."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişi ekle"
           }
         }
       }
     },
-    "Kişi" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Person"
+    "Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Person colors are used in the summary, lists and table. A deleted person's items move to Shared."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kişi"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer."
           }
         }
       }
     },
-    "Kişi ekle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add Person"
+    "Kişi silinsin mi?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this person?"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kişi ekle"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişi silinsin mi?"
           }
         }
       }
     },
-    "Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Person colors are used in the summary, lists and table. A deleted person's items move to Shared."
+    "Kişiler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "People"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişiler"
           }
         }
       }
     },
-    "Kişi silinsin mi?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete this person?"
+    "Konut / Tasarruf": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Housing / Savings"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kişi silinsin mi?"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konut / Tasarruf"
           }
         }
       }
     },
-    "Kişiler" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "People"
+    "Kopyalama": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kişiler"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopyalama"
           }
         }
       }
     },
-    "Konut / Tasarruf" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Housing / Savings"
+    "Kredi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Konut / Tasarruf"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kredi"
           }
         }
       }
     },
-    "Kopyalama" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copy"
+    "Kur alınamadı. İnternet bağlantınızı kontrol edip yeniden deneyin.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't get exchange rates. Check your internet connection and try again."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopyalama"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kur alınamadı. İnternet bağlantınızı kontrol edip yeniden deneyin."
           }
         }
       }
     },
-    "Kredi" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Loan"
+    "Kurlar %@ karşılığı olarak, TCMB kurlarından çapraz hesaplanır.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rates are shown in %@, cross-calculated from CBRT rates."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kredi"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurlar %@ karşılığı olarak, TCMB kurlarından çapraz hesaplanır."
           }
         }
       }
     },
-    "Kur alınamadı. İnternet bağlantınızı kontrol edip yeniden deneyin." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Couldn't get exchange rates. Check your internet connection and try again."
+    "Kuru yenile": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh Rates"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kur alınamadı. İnternet bağlantınızı kontrol edip yeniden deneyin."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kuru yenile"
           }
         }
       }
     },
-    "Kuru yenile" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Refresh Rates"
+    "Maaş": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salary"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kuru yenile"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maaş"
           }
         }
       }
     },
-    "Maaş" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Salary"
+    "Nakit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cash"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Maaş"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nakit"
           }
         }
       }
     },
-    "Nakit" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cash"
+    "Nakit Avans": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cash Advance"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nakit"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nakit Avans"
           }
         }
       }
     },
-    "Nakit Avans" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cash Advance"
+    "Net": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nakit Avans"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net"
           }
         }
       }
     },
-    "Net" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Net"
+    "Net %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Net"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net %@"
           }
         }
       }
     },
-    "Net ve birikimli bakiye" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Net and running balance"
+    "Net ve birikimli bakiye": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net and running balance"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Net ve birikimli bakiye"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net ve birikimli bakiye"
           }
         }
       }
     },
-    "Not (isteğe bağlı)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Note (optional)"
+    "Not (isteğe bağlı)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note (optional)"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not (isteğe bağlı)"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not (isteğe bağlı)"
           }
         }
       }
     },
-    "Ödendi" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paid"
+    "Ortak": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shared"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ödendi"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ortak"
           }
         }
       }
     },
-    "Ödendi · %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paid · %@"
+    "Para birimi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Currency"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ödendi · %@"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para birimi"
           }
         }
       }
     },
-    "Ödendi olarak işaretle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mark as Paid"
+    "Para birimi ara": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search currencies"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ödendi olarak işaretle"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para birimi ara"
           }
         }
       }
     },
-    "Ödenmemiş gider" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unpaid expenses"
+    "Rapor": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Report"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ödenmemiş gider"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rapor"
           }
         }
       }
     },
-    "Ödenmemiş: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unpaid: %@"
+    "Renk": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Color"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ödenmemiş: %@"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Renk"
           }
         }
       }
     },
-    "Önceki ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Previous Month"
+    "Seçili ayın altı ay öncesinden altı ay sonrasına aylık net bakiye": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly net from six months before to six months after the selected month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Önceki ay"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçili ayın altı ay öncesinden altı ay sonrasına aylık net bakiye"
           }
         }
       }
     },
-    "Örnek veri Excel tablonuzun Ağustos–Kasım 2026 sütunlarından alınmıştır." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sample data comes from the August–November 2026 columns of your spreadsheet."
+    "Seçin": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Örnek veri Excel tablonuzun Ağustos–Kasım 2026 sütunlarından alınmıştır."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçin"
           }
         }
       }
     },
-    "Ortak" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Shared"
+    "Sil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ortak"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sil"
           }
         }
       }
     },
-    "Özet" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Summary"
+    "Sola kaydırın: ödendi. Sağa kaydırın: bu ay hesaba katma. Düzenli kalemler kayıt girilene kadar tahmini görünür.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Swipe left: paid. Swipe right: skip this month. Recurring items show as estimates until you enter an amount."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Özet"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sola kaydırın: ödendi. Sağa kaydırın: bu ay hesaba katma. Düzenli kalemler kayıt girilene kadar tahmini görünür."
           }
         }
       }
     },
-    "Para birimi" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Currency"
+    "Son 6 ay ort. net": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6-month avg. net"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para birimi"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son 6 ay ort. net"
           }
         }
       }
     },
-    "Para birimi ara" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search currencies"
+    "Son ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "End month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para birimi ara"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son ay"
           }
         }
       }
     },
-    "Rapor" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Report"
+    "son ay: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "until %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rapor"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "son ay: %@"
           }
         }
       }
     },
-    "Renk" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Color"
+    "Son ödeme günü": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due day"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Renk"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son ödeme günü"
           }
         }
       }
     },
-    "Seçili ayın altı ay öncesinden altı ay sonrasına aylık net bakiye" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly net from six months before to six months after the selected month"
+    "Son: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Latest: %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seçili ayın altı ay öncesinden altı ay sonrasına aylık net bakiye"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son: %@"
           }
         }
       }
     },
-    "Seçin" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choose"
+    "Sonraki ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next Month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seçin"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonraki ay"
           }
         }
       }
     },
-    "Sil" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete"
+    "SÖT %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due %lld"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sil"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SÖT %lld"
           }
         }
       }
     },
-    "Sıfır" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zero"
+    "Sıfır": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zero"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sıfır"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıfır"
           }
         }
       }
     },
-    "Sırayı değiştirmek için Düzenle'ye dokunup kalemleri sürükleyin. Aylar ve Tablo ekranları bu sırayı kullanır." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To change the order, tap Edit and drag items. The Months and Table screens use this order."
+    "Sırayı değiştirmek için Düzenle'ye dokunup kalemleri sürükleyin. Aylar ve Tablo ekranları bu sırayı kullanır.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To change the order, tap Edit and drag items. The Months and Table screens use this order."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sırayı değiştirmek için Düzenle'ye dokunup kalemleri sürükleyin. Aylar ve Tablo ekranları bu sırayı kullanır."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sırayı değiştirmek için Düzenle'ye dokunup kalemleri sürükleyin. Aylar ve Tablo ekranları bu sırayı kullanır."
           }
         }
       }
     },
-    "Sola kaydırın: ödendi. Sağa kaydırın: bu ay hesaba katma. Düzenli kalemler kayıt girilene kadar tahmini görünür." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe left: paid. Swipe right: skip this month. Recurring items show as estimates until you enter an amount."
+    "Tablo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Table"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sola kaydırın: ödendi. Sağa kaydırın: bu ay hesaba katma. Düzenli kalemler kayıt girilene kadar tahmini görünür."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tablo"
           }
         }
       }
     },
-    "Son 6 ay ort. net" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "6-month avg. net"
+    "Taksit %lld/%lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installment %1$lld/%2$lld"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Son 6 ay ort. net"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taksit %lld/%lld"
           }
         }
       }
     },
-    "Son ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "End month"
+    "Taksitlendir": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Split into installments"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Son ay"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taksitlendir"
           }
         }
       }
     },
-    "son ay: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "until %@"
+    "Tamam": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "son ay: %@"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamam"
           }
         }
       }
     },
-    "Son ödeme günü" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Due day"
+    "Tutar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Son ödeme günü"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutar"
           }
         }
       }
     },
-    "Son: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Latest: %@"
+    "Tutar %lld aya bölünür: %@ – %@. İlk taksit dışındakiler bekliyor olarak eklenir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The amount is split across %1$lld months: %2$@ – %3$@. Installments after the first are added as pending."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Son: %@"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutar %lld aya bölünür: %@ – %@. İlk taksit dışındakiler bekliyor olarak eklenir."
           }
         }
       }
     },
-    "Sonraki ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Next Month"
+    "Tutarı %@ olarak girin": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter the amount in %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sonraki ay"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutarı %@ olarak girin"
           }
         }
       }
     },
-    "SÖT %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Due %lld"
+    "Tüm kalemler ve kayıtlar silinsin mi?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all items and entries?"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SÖT %lld"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm kalemler ve kayıtlar silinsin mi?"
           }
         }
       }
     },
-    "Tablo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Table"
+    "Tüm kalemleri sil": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete All Items"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tablo"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm kalemleri sil"
           }
         }
       }
     },
-    "Taksit %lld/%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Installment %1$lld/%2$lld"
+    "Tümü": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Taksit %lld/%lld"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tümü"
           }
         }
       }
     },
-    "Taksitlendir" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Split into installments"
+    "Tür": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Taksitlendir"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tür"
           }
         }
       }
     },
-    "Tamam" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
+    "Uygulama dili": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App language"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tamam"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulama dili"
           }
         }
       }
     },
-    "Tüm kalemler ve kayıtlar silinsin mi?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete all items and entries?"
+    "Vazgeç": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tüm kalemler ve kayıtlar silinsin mi?"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vazgeç"
           }
         }
       }
     },
-    "Tüm kalemleri sil" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete All Items"
+    "Yeni kalem": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Item"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tüm kalemleri sil"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni kalem"
           }
         }
       }
     },
-    "Tümü" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All"
+    "Yeni kalem oluştur": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create New Item"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tümü"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni kalem oluştur"
           }
         }
       }
     },
-    "Tür" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Type"
+    "Yeni kayıt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Entry"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tür"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni kayıt"
           }
         }
       }
     },
-    "Tutar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Amount"
+    "Yeni kayıt, %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New entry, %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tutar"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni kayıt, %@"
           }
         }
       }
     },
-    "Tutar %lld aya bölünür: %@ – %@. İlk taksit dışındakiler bekliyor olarak eklenir." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The amount is split across %1$lld months: %2$@ – %3$@. Installments after the first are added as pending."
+    "Yok": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "None"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tutar %lld aya bölünür: %@ – %@. İlk taksit dışındakiler bekliyor olarak eklenir."
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yok"
           }
         }
       }
     },
-    "Tutarı %@ olarak girin" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter the amount in %@"
+    "Yön": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direction"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tutarı %@ olarak girin"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yön"
           }
         }
       }
     },
-    "Uygulama dili" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App language"
+    "Çubuk: o ayın neti. Çizgi: dönem başından bu yana toplam. Çizgi aşağı iniyorsa borç birikiyor.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bars: that month's net. Line: running total since the start of the range. A falling line means debt is building up."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uygulama dili"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çubuk: o ayın neti. Çizgi: dönem başından bu yana toplam. Çizgi aşağı iniyorsa borç birikiyor."
           }
         }
       }
     },
-    "Vazgeç" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
+    "Ödendi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paid"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vazgeç"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödendi"
           }
         }
       }
     },
-    "Yeni kalem" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New Item"
+    "Ödendi olarak işaretle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mark as Paid"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni kalem"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödendi olarak işaretle"
           }
         }
       }
     },
-    "Yeni kalem oluştur" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Create New Item"
+    "Ödendi · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paid · %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni kalem oluştur"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödendi · %@"
           }
         }
       }
     },
-    "Yeni kayıt" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New Entry"
+    "Ödenmemiş gider": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unpaid expenses"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni kayıt"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödenmemiş gider"
           }
         }
       }
     },
-    "Yeni kayıt, %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New entry, %@"
+    "Ödenmemiş: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unpaid: %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni kayıt, %@"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödenmemiş: %@"
           }
         }
       }
     },
-    "Yok" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "None"
+    "Önceki ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous Month"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yok"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önceki ay"
           }
         }
       }
     },
-    "Yön" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Direction"
+    "Örnek veri Excel tablonuzun Ağustos–Kasım 2026 sütunlarından alınmıştır.": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sample data comes from the August–November 2026 columns of your spreadsheet."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yön"
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Örnek veri Excel tablonuzun Ağustos–Kasım 2026 sütunlarından alınmıştır."
+          }
+        }
+      }
+    },
+    "Özet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summary"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Özet"
+          }
+        }
+      }
+    },
+    "Özet, rapor ve toplamlar bu para biriminde gösterilir. Kalemler kendi para biriminde kalır. Çevrim TCMB kurlarıyla yapılır.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summary, report and totals are shown in this currency. Items keep their own currency. Conversion uses CBRT rates."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Özet, rapor ve toplamlar bu para biriminde gösterilir. Kalemler kendi para biriminde kalır. Çevrim TCMB kurlarıyla yapılır."
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }
