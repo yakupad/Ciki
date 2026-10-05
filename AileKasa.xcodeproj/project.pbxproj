@@ -23,10 +23,13 @@
 		7A1725054A9F45E999509DD1 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF1F1B0F36098DF07CED85 /* SummaryView.swift */; };
 		8DFD584AE6BE4D59062D96DA /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FACBB2EBD83D23072F141 /* SampleData.swift */; };
 		92C7396DBF5331918C6D77C0 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6B9255677382C25259368 /* MonthView.swift */; };
+		A0944AF3F16391CCBEAA5214 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128E29828B745A6E14E2A0B8 /* AccountsView.swift */; };
+		A0FE83D16A4BCC46B3405143 /* IBAN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B643CE6449F36528DFEFE8 /* IBAN.swift */; };
 		A4605A5C0CD5195231BBE609 /* AileKasaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00421585ED1E78C6759F399 /* AileKasaApp.swift */; };
 		A7A90DBB43D120CEF353500E /* LedgerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E54240F3A7688A35718035E /* LedgerTests.swift */; };
 		AA55576D29CFA86EC0F0AECA /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C0360FDA7D7F7C4891006 /* Theme.swift */; };
 		C5A650BC8E668BCF89689E77 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE4EAB9FD57FE0B9337309 /* Ledger.swift */; };
+		C7D7A6B8097922B4F70F8949 /* AccountEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75866A4AF5A5BFF8940968EE /* AccountEditorView.swift */; };
 		E07431D4B0F4613F7AC15868 /* ManagedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D6E11BF4B6EFDD0226CB07 /* ManagedObjects.swift */; };
 		EBDBC50349DF9F81C5958608 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D3C6BF42C3C050E1945CD /* ReportView.swift */; };
 		F4F9E3B0CD8F209EAB74D8CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B29F45C26A72024D0C01D39 /* Assets.xcassets */; };
@@ -47,8 +50,10 @@
 /* Begin PBXFileReference section */
 		049E1400C0B096A7CE1067C8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		067F984FF3F9E5C13B39DD21 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		09B643CE6449F36528DFEFE8 /* IBAN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBAN.swift; sourceTree = "<group>"; };
 		0CDFEC99EBEAF499761D8668 /* RateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateService.swift; sourceTree = "<group>"; };
 		0E54240F3A7688A35718035E /* LedgerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerTests.swift; sourceTree = "<group>"; };
+		128E29828B745A6E14E2A0B8 /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
 		1382447340E34870395B9EB1 /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		28E63C32539B4258CAEB70F4 /* AileKasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AileKasa.xcdatamodel; sourceTree = "<group>"; };
 		297B56781C8751F38C52D76E /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
@@ -58,7 +63,9 @@
 		522D3C6BF42C3C050E1945CD /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		5422B3C12F07B8F5B71DCFD1 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		73E6A6C56F6A67A1B3124A2F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		75866A4AF5A5BFF8940968EE /* AccountEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditorView.swift; sourceTree = "<group>"; };
 		7C3C0360FDA7D7F7C4891006 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		84E6424CB96B8C22DA94C23F /* AileKasa 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AileKasa 2.xcdatamodel"; sourceTree = "<group>"; };
 		8603ECFF11175CDD147E306D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		8ABF1F1B0F36098DF07CED85 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		923D41B0C6186B2BB45CE533 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -103,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				5422B3C12F07B8F5B71DCFD1 /* AppLanguage.swift */,
+				09B643CE6449F36528DFEFE8 /* IBAN.swift */,
 				36BE4EAB9FD57FE0B9337309 /* Ledger.swift */,
 				1382447340E34870395B9EB1 /* Money.swift */,
 				0CDFEC99EBEAF499761D8668 /* RateService.swift */,
@@ -117,6 +125,15 @@
 				7C3C0360FDA7D7F7C4891006 /* Theme.swift */,
 			);
 			path = Design;
+			sourceTree = "<group>";
+		};
+		265B29FF914364C61850FA58 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				75866A4AF5A5BFF8940968EE /* AccountEditorView.swift */,
+				128E29828B745A6E14E2A0B8 /* AccountsView.swift */,
+			);
+			path = Accounts;
 			sourceTree = "<group>";
 		};
 		48B80A627D1502B499745E18 /* Persistence */ = {
@@ -172,6 +189,7 @@
 		73114F89C8894DCBAB58FCA4 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				265B29FF914364C61850FA58 /* Accounts */,
 				12A387B7CAF9BBC763ECA114 /* Entry */,
 				946E4C7553DF91233128B911 /* Grid */,
 				AF3A8CF42BA3B62F7721AF1E /* Items */,
@@ -343,6 +361,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7D7A6B8097922B4F70F8949 /* AccountEditorView.swift in Sources */,
+				A0944AF3F16391CCBEAA5214 /* AccountsView.swift in Sources */,
 				34745761170CFF8C0E063307 /* AileKasa.xcdatamodeld in Sources */,
 				A4605A5C0CD5195231BBE609 /* AileKasaApp.swift in Sources */,
 				74B3735C9BCAFE0C810950E2 /* AppLanguage.swift in Sources */,
@@ -350,6 +370,7 @@
 				261B4DFE8CC8073DEBB10DAA /* EntryEditorView.swift in Sources */,
 				F934919C210F6940A3C3594F /* Enums.swift in Sources */,
 				5AE7E86FDA126D8ABE2FFD6E /* GridView.swift in Sources */,
+				A0FE83D16A4BCC46B3405143 /* IBAN.swift in Sources */,
 				6C01AAE9A57A54567F253DAB /* ItemEditorView.swift in Sources */,
 				1293DF560FD0A99057CDDB9F /* ItemsView.swift in Sources */,
 				C5A650BC8E668BCF89689E77 /* Ledger.swift in Sources */,
@@ -626,9 +647,10 @@
 		1FED16E908139EE1CFA6D051 /* AileKasa.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				84E6424CB96B8C22DA94C23F /* AileKasa 2.xcdatamodel */,
 				28E63C32539B4258CAEB70F4 /* AileKasa.xcdatamodel */,
 			);
-			currentVersion = 28E63C32539B4258CAEB70F4 /* AileKasa.xcdatamodel */;
+			currentVersion = 84E6424CB96B8C22DA94C23F /* AileKasa 2.xcdatamodel */;
 			path = AileKasa.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -107,6 +107,12 @@ struct EntryEditorView: View {
                         .disabled(!isNew)
                 }
 
+                if let payee = item?.payee {
+                    Section("Ödeme bilgisi") {
+                        PayeeCard(account: payee)
+                    }
+                }
+
                 Section {
                     Picker("Durum", selection: $status) {
                         ForEach(EntryStatus.allCases) { Text($0.title).tag($0) }

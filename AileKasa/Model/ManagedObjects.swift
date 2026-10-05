@@ -10,6 +10,7 @@ nonisolated final class Household: NSManagedObject {
     @NSManaged var createdAt: Date?
     @NSManaged var people: NSSet?
     @NSManaged var items: NSSet?
+    @NSManaged var accounts: NSSet?
 }
 
 @objc(Person)
@@ -20,6 +21,7 @@ nonisolated final class Person: NSManagedObject {
     @NSManaged var sortOrder: Int16
     @NSManaged var household: Household?
     @NSManaged var items: NSSet?
+    @NSManaged var accounts: NSSet?
 }
 
 @objc(LedgerItem)
@@ -41,7 +43,26 @@ nonisolated final class LedgerItem: NSManagedObject {
     @NSManaged var createdAt: Date?
     @NSManaged var household: Household?
     @NSManaged var owner: Person?
+    @NSManaged var payee: Account?
     @NSManaged var entries: NSSet?
+}
+
+/// Banka hesabı: ailenin kendi hesabı ya da ödeme yapılan kişi/kurumun hesabı.
+@objc(Account)
+nonisolated final class Account: NSManagedObject {
+    @NSManaged var uuid: UUID?
+    @NSManaged var title: String?
+    @NSManaged var holderName: String?
+    @NSManaged var bank: String?
+    @NSManaged var iban: String?
+    @NSManaged var currencyCode: String?
+    @NSManaged var isOwn: Bool
+    @NSManaged var note: String?
+    @NSManaged var sortOrder: Int32
+    @NSManaged var createdAt: Date?
+    @NSManaged var household: Household?
+    @NSManaged var owner: Person?
+    @NSManaged var items: NSSet?
 }
 
 @objc(LedgerEntry)
@@ -96,7 +117,7 @@ nonisolated extension LedgerItem {
 
     var bankName: String? {
         let trimmed = (bank ?? "").trimmingCharacters(in: .whitespaces)
-        return trimmed.isEmpty ? nil : trimmed
+        return trimmed.isEmpty ? nil : Banks.canonical(trimmed)
     }
 
     /// Kalemin kendi adı; boşsa türün adı ("Kart").
@@ -128,6 +149,41 @@ nonisolated extension LedgerItem {
         if recurringStart != 0, month.key < recurringStart { return false }
         if recurringEnd != 0, month.key > recurringEnd { return false }
         return true
+    }
+}
+
+nonisolated extension Account {
+    var currency: Currency {
+        get { currencyCode.map(Currency.init(code:)) ?? .tl }
+        set { currencyCode = newValue.code }
+    }
+
+    var bankName: String? {
+        let trimmed = (bank ?? "").trimmingCharacters(in: .whitespaces)
+        return trimmed.isEmpty ? nil : Banks.canonical(trimmed)
+    }
+
+    /// Listede görünen ad: hesap adı, yoksa alıcı adı, yoksa banka.
+    var displayTitle: String {
+        for candidate in [title, holderName, bankName] {
+            let trimmed = (candidate ?? "").trimmingCharacters(in: .whitespaces)
+            if !trimmed.isEmpty { return trimmed }
+        }
+        return String(localized: "Adsız hesap")
+    }
+
+    var formattedIBAN: String { IBAN.formatted(iban ?? "") }
+
+    var itemsArray: [LedgerItem] {
+        ((items as? Set<LedgerItem>) ?? []).sorted { $0.sortOrder < $1.sortOrder }
+    }
+
+    /// Paylaşım ve kopyalama için: ad, banka, IBAN.
+    var shareText: String {
+        [holderName, bankName, iban.map(IBAN.formatted)]
+            .compactMap { $0?.trimmingCharacters(in: .whitespaces) }
+            .filter { !$0.isEmpty }
+            .joined(separator: "\n")
     }
 }
 

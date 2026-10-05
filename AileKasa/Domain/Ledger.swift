@@ -192,7 +192,9 @@ struct MonthTotals: Identifiable {
 
 extension Ledger {
     static func totals(for months: [Month], items: [LedgerItem], rates: RateTable) -> [MonthTotals] {
-        months.map { month in
+        // Aynı bankanın farklı yazımları tek başlıkta toplanır.
+        var bankTitles: [String: String] = [:]
+        return months.map { month in
             var totals = MonthTotals(month: month)
             for line in lines(for: month, items: items, rates: rates) where line.counts {
                 guard let value = line.signedValue else { continue }
@@ -200,7 +202,10 @@ extension Ledger {
                     totals.expense -= value
                     if line.status == .pending { totals.pendingExpense -= value }
                     if line.item.kind.isBankProduct {
-                        totals.debtByBank[line.item.bankName ?? String(localized: "Diğer"), default: 0] -= value
+                        let name = line.item.bankName ?? String(localized: "Diğer")
+                        let title = bankTitles[Banks.key(name)] ?? name
+                        bankTitles[Banks.key(name)] = title
+                        totals.debtByBank[title, default: 0] -= value
                     }
                 } else {
                     totals.incoming += value

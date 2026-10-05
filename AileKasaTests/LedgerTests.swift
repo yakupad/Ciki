@@ -242,4 +242,44 @@ struct LedgerTests {
         let summary = Ledger.summary(of: Ledger.lines(for: october, items: [card], rates: table))
         #expect(summary.missingRateCount == 1)
     }
+
+    @Test func ibanValidationAndFormatting() {
+        #expect(IBAN.validate("TR33 0006 1005 1978 6457 8413 26") == .valid)
+        #expect(IBAN.validate("tr330006100519786457841326") == .valid)
+        #expect(IBAN.validate("TR330006100519786457841327") == .invalid)
+        #expect(IBAN.validate("TR3300061") == .incomplete(expected: 26))
+        #expect(IBAN.validate("DE89370400440532013000") == .valid)
+        #expect(IBAN.validate("") == .empty)
+        #expect(IBAN.formatted("TR330006100519786457841326") == "TR33 0006 1005 1978 6457 8413 26")
+        #expect(IBAN.normalized(" tr33-0006 1005 ") == "TR3300061005")
+    }
+
+    @Test func bankIsDetectedFromTurkishIBAN() {
+        #expect(Banks.name(forIBAN: "TR71 0006 7012 3456 7890 1234 56") == "YapıKredi")
+        #expect(Banks.name(forIBAN: "DE89370400440532013000") == nil)
+    }
+
+    @Test func bankNamesIgnoreCaseAndSpaces() {
+        #expect(Banks.key("Yapı Kredi") == Banks.key("YapıKredi"))
+        #expect(Banks.key(" İş Bankası ") == Banks.key("İşBankası"))
+        #expect(Banks.canonical("yapı kredi") == "YapıKredi")
+        #expect(Banks.canonical("Benim Bankam") == "Benim Bankam")
+    }
+
+    @Test func monthGroupsMergeDifferentBankSpellings() {
+        let first = makeItem()
+        first.bank = "Yapı Kredi"
+        let second = makeItem(kind: .cashAdvance)
+        second.bank = "YAPIKREDİ"
+        let custom1 = makeItem()
+        custom1.bank = "Benim Bankam"
+        let custom2 = makeItem()
+        custom2.bank = "benimbankam"
+        for item in [first, second, custom1, custom2] {
+            context.upsertEntry(item: item, month: october, amount: 100, status: .pending, rates: rates)
+        }
+        let groups = MonthView.groups(from: Ledger.lines(for: october, items: [first, second, custom1, custom2], rates: rates))
+        #expect(groups.map(\.title) == ["YapıKredi", "Benim Bankam"])
+        #expect(groups.map(\.lines.count) == [2, 2])
+    }
 }

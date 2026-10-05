@@ -1,5 +1,6 @@
 import SwiftUI
 import CoreData
+import UIKit
 
 struct MonthView: View {
     @Environment(AppState.self) private var app
@@ -75,6 +76,11 @@ struct MonthView: View {
                                 }
                             }
                             .contextMenu {
+                                if let iban = line.item.payee?.iban, !iban.isEmpty {
+                                    Button("IBAN'ı kopyala", systemImage: "doc.on.doc") {
+                                        UIPasteboard.general.string = IBAN.normalized(iban)
+                                    }
+                                }
                                 Button("Kalemi düzenle", systemImage: "pencil") { route = .item(line.item) }
                             }
                     }
@@ -130,31 +136,40 @@ struct MonthView: View {
     }
 
     struct Group: Identifiable {
+        let key: String
         let title: String
         var lines: [LedgerLine]
-        var id: String { title }
+        var id: String { key }
         var total: Decimal { lines.filter(\.counts).compactMap(\.signedValue).reduce(0, +) }
     }
 
     /// Giderler bankaya göre, gelir ve alacaklar ayrı grupta toplanır.
+    /// Banka adlarında büyük/küçük harf ve boşluk farkı yok sayılır; başlıkta ilk görülen yazım kullanılır.
     static func groups(from lines: [LedgerLine]) -> [Group] {
+        let incomeKey = "#income"
+        let otherKey = "#other"
         var order: [String] = []
+        var titles: [String: String] = [
+            incomeKey: String(localized: "Gelir ve alacaklar"),
+            otherKey: String(localized: "Diğer giderler"),
+        ]
         var map: [String: [LedgerLine]] = [:]
-        let incomeTitle = String(localized: "Gelir ve alacaklar")
-        let otherTitle = String(localized: "Diğer giderler")
         for line in lines {
-            let title: String
+            let key: String
             if line.direction != .expense {
-                title = incomeTitle
+                key = incomeKey
+            } else if let bank = line.item.bankName {
+                key = Banks.key(bank)
+                if titles[key] == nil { titles[key] = bank }
             } else {
-                title = line.item.bankName ?? otherTitle
+                key = otherKey
             }
-            if map[title] == nil { order.append(title) }
-            map[title, default: []].append(line)
+            if map[key] == nil { order.append(key) }
+            map[key, default: []].append(line)
         }
-        let sorted = order.filter { $0 != otherTitle && $0 != incomeTitle }
-            + [otherTitle, incomeTitle].filter { map[$0] != nil }
-        return sorted.map { Group(title: $0, lines: map[$0] ?? []) }
+        let sorted = order.filter { $0 != otherKey && $0 != incomeKey }
+            + [otherKey, incomeKey].filter { map[$0] != nil }
+        return sorted.map { Group(key: $0, title: titles[$0] ?? $0, lines: map[$0] ?? []) }
     }
 }
 

@@ -113,6 +113,22 @@
         }
       }
     },
+    "%@ rehberden silinir. Bağlı kalemler silinmez.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ will be removed from your accounts. Linked items are kept."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ rehberden silinir. Bağlı kalemler silinmez."
+          }
+        }
+      }
+    },
     "%@ – %@, toplam %lld ay.": {
       "localizations": {
         "en": {
@@ -281,6 +297,22 @@
         }
       }
     },
+    "%lld/%lld karakter": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld/%2$lld characters"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld/%lld karakter"
+          }
+        }
+      }
+    },
     "%lldB": {
       "comment": "Grafik ekseni: bin TL kısaltması",
       "localizations": {
@@ -394,6 +426,54 @@
         }
       }
     },
+    "Ad soyad ya da unvan": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full name or company name"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad soyad ya da unvan"
+          }
+        }
+      }
+    },
+    "Ad, banka ya da IBAN ara": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search name, bank or IBAN"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad, banka ya da IBAN ara"
+          }
+        }
+      }
+    },
+    "Adsız hesap": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untitled account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adsız hesap"
+          }
+        }
+      }
+    },
     "Aile / Gönderim": {
       "localizations": {
         "en": {
@@ -422,6 +502,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Alacak"
+          }
+        }
+      }
+    },
+    "Alıcı adı": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account holder"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alıcı adı"
+          }
+        }
+      }
+    },
+    "Alıcı adını kopyala": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy Account Holder"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alıcı adını kopyala"
           }
         }
       }
@@ -618,6 +730,22 @@
         }
       }
     },
+    "Banka bilgisi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bank details"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Banka bilgisi"
+          }
+        }
+      }
+    },
     "Banka seç": {
       "localizations": {
         "en": {
@@ -646,6 +774,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Banka yok"
+          }
+        }
+      }
+    },
+    "Bağlı kalemler silinmez, yalnızca ödeme hesabı bağlantısı kalkar.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Linked items are kept; only their payment account link is removed."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlı kalemler silinmez, yalnızca ödeme hesabı bağlantısı kalkar."
           }
         }
       }
@@ -726,6 +870,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bitti"
+          }
+        }
+      }
+    },
+    "Bizim hesap": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Our account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bizim hesap"
           }
         }
       }
@@ -854,6 +1014,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bu ayın kaydını sil"
+          }
+        }
+      }
+    },
+    "Bu hesaba ödenen kalemler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Items paid to this account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu hesaba ödenen kalemler"
           }
         }
       }
@@ -1014,6 +1190,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Döviz kuru · TCMB satış"
+          }
+        }
+      }
+    },
+    "Düzenle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenle"
           }
         }
       }
@@ -1436,6 +1628,22 @@
         }
       }
     },
+    "Henüz hesap yok": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No accounts yet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz hesap yok"
+          }
+        }
+      }
+    },
     "Henüz kalem yok": {
       "localizations": {
         "en": {
@@ -1532,6 +1740,118 @@
         }
       }
     },
+    "Hesabı düzenle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesabı düzenle"
+          }
+        }
+      }
+    },
+    "Hesabı sil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete Account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesabı sil"
+          }
+        }
+      }
+    },
+    "Hesap adı": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account name"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap adı"
+          }
+        }
+      }
+    },
+    "Hesap ekle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap ekle"
+          }
+        }
+      }
+    },
+    "Hesap silinsin mi?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this account?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap silinsin mi?"
+          }
+        }
+      }
+    },
+    "Hesap türü": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account type"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap türü"
+          }
+        }
+      }
+    },
+    "Hesaplar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accounts"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesaplar"
+          }
+        }
+      }
+    },
     "Hücreye dokunarak tutarı düzenleyin. Üstü çizili: ödendi. Soluk: hariç. İtalik: düzenli ödemeden tahmini.": {
       "localizations": {
         "en": {
@@ -1544,6 +1864,102 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hücreye dokunarak tutarı düzenleyin. Üstü çizili: ödendi. Soluk: hariç. İtalik: düzenli ödemeden tahmini."
+          }
+        }
+      }
+    },
+    "IBAN": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IBAN"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IBAN"
+          }
+        }
+      }
+    },
+    "IBAN geçerli": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valid IBAN"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IBAN geçerli"
+          }
+        }
+      }
+    },
+    "IBAN hatalı görünüyor. Rakamları kontrol edin.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This IBAN doesn't look right. Check the digits."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IBAN hatalı görünüyor. Rakamları kontrol edin."
+          }
+        }
+      }
+    },
+    "IBAN'ı kopyala": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy IBAN"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IBAN'ı kopyala"
+          }
+        }
+      }
+    },
+    "IBAN'ı kopyalamak için dokunun": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap to copy the IBAN"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IBAN'ı kopyalamak için dokunun"
+          }
+        }
+      }
+    },
+    "IBAN'ı yazın ya da yapıştırın. TR IBAN'larında banka otomatik bulunur.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type or paste the IBAN. For Turkish IBANs the bank is filled in automatically."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IBAN'ı yazın ya da yapıştırın. TR IBAN'larında banka otomatik bulunur."
           }
         }
       }
@@ -1836,6 +2252,22 @@
         }
       }
     },
+    "Kendi hesaplarınızı ve ödeme yaptığınız kişi ve kurumların IBAN'larını burada saklayın. Bir hesaba dokununca IBAN kopyalanır.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep your own accounts and the IBANs of people and companies you pay here. Tap an account to copy its IBAN."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kendi hesaplarınızı ve ödeme yaptığınız kişi ve kurumların IBAN'larını burada saklayın. Bir hesaba dokununca IBAN kopyalanır."
+          }
+        }
+      }
+    },
     "Kime ait": {
       "localizations": {
         "en": {
@@ -1864,6 +2296,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kira"
+          }
+        }
+      }
+    },
+    "Kira, aidat ya da gönderim gibi ödemelerde alıcının IBAN'ını seçin. Kayıt ekranında tek dokunuşla kopyalanır.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For payments like rent, building fees or transfers, choose the recipient's IBAN. You can copy it with one tap from the entry screen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kira, aidat ya da gönderim gibi ödemelerde alıcının IBAN'ını seçin. Kayıt ekranında tek dokunuşla kopyalanır."
           }
         }
       }
@@ -1992,6 +2440,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kopyalama"
+          }
+        }
+      }
+    },
+    "Kopyalandı": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopyalandı"
           }
         }
       }
@@ -2156,6 +2620,22 @@
         }
       }
     },
+    "Not": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not"
+          }
+        }
+      }
+    },
     "Not (isteğe bağlı)": {
       "localizations": {
         "en": {
@@ -2188,6 +2668,22 @@
         }
       }
     },
+    "Ortak hesaplar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shared accounts"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ortak hesaplar"
+          }
+        }
+      }
+    },
     "Para birimi": {
       "localizations": {
         "en": {
@@ -2216,6 +2712,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Para birimi ara"
+          }
+        }
+      }
+    },
+    "Paylaş": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaş"
           }
         }
       }
@@ -2669,6 +3181,38 @@
         }
       }
     },
+    "Yeni hesap": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni hesap"
+          }
+        }
+      }
+    },
+    "Yeni hesap ekle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add New Account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni hesap ekle"
+          }
+        }
+      }
+    },
     "Yeni kalem": {
       "localizations": {
         "en": {
@@ -2781,6 +3325,70 @@
         }
       }
     },
+    "Ödeme bilgisi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment details"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme bilgisi"
+          }
+        }
+      }
+    },
+    "Ödeme hesabı": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme hesabı"
+          }
+        }
+      }
+    },
+    "Ödeme yapılan": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payee"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme yapılan"
+          }
+        }
+      }
+    },
+    "Ödeme yapılanlar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payees"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödeme yapılanlar"
+          }
+        }
+      }
+    },
     "Ödendi": {
       "localizations": {
         "en": {
@@ -2873,6 +3481,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Önceki ay"
+          }
+        }
+      }
+    },
+    "Ör. açıklamaya daire numarasını yaz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. add the flat number to the description"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ör. açıklamaya daire numarasını yaz"
+          }
+        }
+      }
+    },
+    "Ör. Ev sahibi, Aidat": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. Landlord, Building fee"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ör. Ev sahibi, Aidat"
+          }
+        }
+      }
+    },
+    "Ör. Maaş hesabı": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. Salary account"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ör. Maaş hesabı"
           }
         }
       }

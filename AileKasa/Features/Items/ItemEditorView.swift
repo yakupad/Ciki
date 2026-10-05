@@ -7,6 +7,8 @@ struct ItemEditorView: View {
 
     @FetchRequest(sortDescriptors: [SortDescriptor(\Person.sortOrder)])
     private var people: FetchedResults<Person>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\Account.sortOrder), SortDescriptor(\Account.createdAt)])
+    private var accounts: FetchedResults<Account>
 
     private let item: LedgerItem?
     private let onSave: ((LedgerItem) -> Void)?
@@ -24,6 +26,8 @@ struct ItemEditorView: View {
     @State private var hasEnd: Bool
     @State private var recurringEnd: Month
     @State private var isArchived: Bool
+    @State private var payee: Account?
+    @State private var isCreatingAccount: Bool
     @State private var confirmDelete: Bool
 
     init(item: LedgerItem?, defaultDirection: Direction? = nil, onSave: ((LedgerItem) -> Void)? = nil) {
@@ -48,6 +52,8 @@ struct ItemEditorView: View {
         self.hasEnd = (item?.recurringEnd ?? 0) != 0
         self.recurringEnd = item.flatMap { $0.recurringEnd == 0 ? nil : Month(key: $0.recurringEnd) } ?? start.adding(11)
         self.isArchived = item?.isArchived ?? false
+        self.payee = item?.payee
+        self.isCreatingAccount = false
         self.confirmDelete = false
     }
 
@@ -101,6 +107,27 @@ struct ItemEditorView: View {
                     Picker("Son ödeme günü", selection: $dueDay) {
                         Text("Yok").tag(0)
                         ForEach(1...31, id: \.self) { Text("\($0)").tag($0) }
+                    }
+                }
+
+                if direction == .expense {
+                    Section {
+                        Picker("Ödeme hesabı", selection: $payee) {
+                            Text("Yok").tag(Account?.none)
+                            ForEach(accounts, id: \.objectID) { account in
+                                Text(verbatim: account.displayTitle).tag(Optional(account))
+                            }
+                        }
+                        if let payee, let iban = payee.iban, !iban.isEmpty {
+                            Text(verbatim: IBAN.formatted(iban))
+                                .font(.system(.footnote, design: .monospaced))
+                                .foregroundStyle(.secondary)
+                        }
+                        Button("Yeni hesap ekle", systemImage: "plus.circle") { isCreatingAccount = true }
+                    } header: {
+                        Text("Ödeme bilgisi")
+                    } footer: {
+                        Text("Kira, aidat ya da gönderim gibi ödemelerde alıcının IBAN'ını seçin. Kayıt ekranında tek dokunuşla kopyalanır.")
                     }
                 }
 
@@ -159,6 +186,9 @@ struct ItemEditorView: View {
             .onChange(of: recurringStart) { _, start in
                 if recurringEnd < start { recurringEnd = start }
             }
+            .sheet(isPresented: $isCreatingAccount) {
+                AccountEditorView(account: nil)
+            }
             .confirmationDialog("Kalem ve tüm kayıtları silinsin mi?", isPresented: $confirmDelete, titleVisibility: .visible) {
                 Button("Sil", role: .destructive) { delete() }
             }
@@ -196,6 +226,7 @@ struct ItemEditorView: View {
         target.recurringStart = isRecurring ? recurringStart.key : 0
         target.recurringEnd = isRecurring && hasEnd ? recurringEnd.key : 0
         target.isArchived = isArchived
+        target.payee = direction == .expense ? payee : nil
         context.saveIfNeeded()
         onSave?(target)
         dismiss()

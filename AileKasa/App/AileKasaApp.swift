@@ -35,20 +35,35 @@ final class AppState {
 struct RootView: View {
     @Environment(AppState.self) private var app
     @State private var route: EditorRoute?
+    @State private var tab = RootView.initialTab
+
+    /// DEBUG derlemede `-startTab 4` ile açılış sekmesi seçilebilir (ekran görüntüsü için).
+    private static var initialTab: Int {
+        #if DEBUG
+        let arguments = CommandLine.arguments
+        if let index = arguments.firstIndex(of: "-startTab"), index + 1 < arguments.count {
+            return Int(arguments[index + 1]) ?? 0
+        }
+        #endif
+        return 0
+    }
 
     var body: some View {
-        TabView {
-            Tab("Özet", systemImage: "square.grid.2x2.fill") {
+        TabView(selection: $tab) {
+            Tab("Özet", systemImage: "square.grid.2x2.fill", value: 0) {
                 NavigationStack { SummaryView() }
             }
-            Tab("Aylar", systemImage: "calendar") {
+            Tab("Aylar", systemImage: "calendar", value: 1) {
                 NavigationStack { MonthView() }
             }
-            Tab("Tablo", systemImage: "tablecells") {
+            Tab("Tablo", systemImage: "tablecells", value: 2) {
                 NavigationStack { GridView() }
             }
-            Tab("Kalemler", systemImage: "list.bullet.rectangle") {
+            Tab("Kalemler", systemImage: "list.bullet.rectangle", value: 3) {
                 NavigationStack { ItemsView() }
+            }
+            Tab("Hesaplar", systemImage: "building.columns", value: 4) {
+                NavigationStack { AccountsView() }
             }
         }
         .tabBarMinimizeBehavior(.onScrollDown)

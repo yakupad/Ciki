@@ -28,7 +28,7 @@ xcodebuild -project AileKasa.xcodeproj -scheme AileKasa \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle** ile Ağustos–Kasım 2026 örnek verisi yüklenir. Simülatörde `-loadSampleData` başlatma argümanı aynı işi açılışta yapar; `-openReport` doğrudan rapor ekranını açar.
+Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle** ile Ağustos–Kasım 2026 örnek verisi yüklenir. Simülatörde `-loadSampleData` başlatma argümanı aynı işi açılışta yapar; `-openReport` doğrudan rapor ekranını, `-startTab 0…4` istenen sekmeyi açar.
 
 ## Excel'deki her şeyin uygulamadaki karşılığı
 
@@ -54,6 +54,7 @@ Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle**
 | **Tablo** | Excel düzeni: satırlar kalemler, sütunlar aylar. Seçili ay vurgulu, hücreye dokununca düzenleme. |
 | **Kalemler** | Düzenli ödemeler, düzenli gelirler, diğer kalemler ve arşiv. Üstte USD, EUR ve kalemlerde kullanılan dövizlerin kuru; dokununca aranabilir tüm kurlar listesi açılır. Düzenle ile sürükleyerek sıralanır. |
 | **Kayıt ekle** | Tutar, kalem, ay, durum, not. Geçen ay, son girilen, son 3 ay ortalaması ve düzenli tutar öneri olarak sunulur. Taksitlendir açılırsa tutar aylara bölünür. |
+| **Hesaplar** | IBAN rehberi: kişilerin kendi hesapları ve ödeme yapılan kişi/kurumlar. Dokununca IBAN kopyalanır; alıcı adı kopyalama ve paylaşma basılı tutunca. IBAN mod-97 ile doğrulanır, TR IBAN'ında banka otomatik bulunur. Kaleme ödeme hesabı bağlanırsa kayıt ekranında IBAN tek dokunuşla kopyalanır. |
 | **Rapor** | Özet'ten açılır. Son 6 ay ortalama net, ödenmemiş gider, en yüksek gider ayı; net ve birikimli bakiye grafiği; bankaya göre kart ve kredi ödemeleri; ay ay tablo. |
 | **Ayarlar** | Hane adı, kişi adları ve renkleri, kur bilgisi. |
 
@@ -99,20 +100,27 @@ erDiagram
   HOUSEHOLD ||--o{ LEDGER_ITEM : items
   PERSON ||--o{ LEDGER_ITEM : owns
   LEDGER_ITEM ||--o{ LEDGER_ENTRY : entries
+  HOUSEHOLD ||--o{ ACCOUNT : accounts
+  PERSON ||--o{ ACCOUNT : owns
+  ACCOUNT ||--o{ LEDGER_ITEM : "paid to"
   HOUSEHOLD { string name }
   PERSON { string name  string colorHex  int sortOrder }
   LEDGER_ITEM { string name  string bank  string kind  string direction  string currency  int dueDay  bool isRecurring  decimal recurringAmount  int recurringStart  int recurringEnd  bool isArchived }
   LEDGER_ENTRY { int monthKey  decimal amount  string status  decimal rate  date paidAt  string note }
+  ACCOUNT { string title  string holderName  string bank  string iban  string currency  bool isOwn  string note }
 ```
 
 - **Household (Hane):** tek kayıt. İleride eşle paylaşılan kök nesne.
 - **Person (Kişi):** Deniz ve Ece. Sahibi olmayan kalem "Ortak" sayılır.
 - **LedgerItem (Kalem):** kart, nakit avans, kredi, kira, konut taksidi, maaş, alacak, aile gönderimi vb. Düzenliyse aylık tutar ve başlangıç/bitiş ayı taşır.
+- **Account (Hesap):** IBAN rehberi kaydı. `isOwn` ailenin kendi hesabı mı yoksa ödeme yapılan kişi/kurum mu olduğunu belirtir. Kalemler `payee` ile bir hesaba bağlanabilir.
 - **LedgerEntry (Kayıt):** bir kalemin bir aydaki tutarı ve durumu. `monthKey = yıl × 12 + (ay − 1)`.
 
 ### Teknik kararlar
 
 - **Core Data + NSPersistentCloudKitContainer.** iOS 27 SDK'sında SwiftData yalnızca özel (private) iCloud veritabanını destekliyor. Eşle ortak kullanım için CKShare gerekiyor, bu yüzden Core Data seçildi. Tüm öznitelikler isteğe bağlı, benzersizlik kısıtı yok (CloudKit şartı).
+- **Model sürümleri.** Veri modeli sürümlüdür (`AileKasa 2.xcdatamodel` güncel). Yeni alanlar yeni sürümle eklenir, mevcut veriler otomatik (lightweight) taşınır.
+- **Banka adları** büyük/küçük harf ve boşluk farkı yok sayılarak eşleştirilir; bilinen bankalar listedeki yazımla gösterilir.
 - **Tutarlar `Decimal`.** Kuruş yuvarlama hatası olmaz. Taksit bölmede artan kuruşlar son taksite eklenir.
 - **Gösterim para birimi.** TCMB kurları TL karşılığı olarak gelir; TL ara birimdir. Gösterim birimi TL değilse çapraz kurla çevrilir (ör. USD → EUR = USD/TL ÷ EUR/TL). Seçim cihaza özeldir, her kişi kendi telefonunda farklı birim seçebilir. Ödenmiş döviz kayıtlarının TL karşılığı ödeme günündeki kurla sabittir.
 - **Döviz.** Ödenmemiş kayıtlar güncel kurla, ödenmiş kayıtlar ödeme günündeki kurla TL'ye çevrilir. Kaynak: `https://www.tcmb.gov.tr/kurlar/today.xml`. Döviz satış kuru kullanılır, yayımlanmayan birimlerde efektif satış. JPY gibi 100 birimlik kurlar bire indirilir. Çevrimdışıyken son alınan kurlar kullanılır.
@@ -135,7 +143,7 @@ AileKasa/
   Persistence/    PersistenceController, kayıt işlemleri, örnek veri
   Domain/         Ledger (hesaplama), Money (biçimlendirme), RateService (TCMB)
   Design/         Renkler, ortak bileşenler
-  Features/       Summary, Month, Grid, Items, Entry, Report, Settings
+  Features/       Summary, Month, Grid, Items, Accounts, Entry, Report, Settings
 AileKasaTests/    Hesaplama, taksit, kur, öneri, sıralama ve rapor testleri
 ```
 

@@ -153,6 +153,31 @@ nonisolated enum Banks {
                       "Ziraat", "VakıfBank", "Halkbank", "QNB", "DenizBank",
                       "TEB", "ING", "Kuveyt Türk", "Papara"]
 
+    /// Karşılaştırma anahtarı: büyük/küçük harf ve boşluklar yok sayılır ("Yapı Kredi" = "yapıkredi").
+    static func key(_ name: String) -> String {
+        name.lowercased(with: Locale(identifier: "tr_TR")).filter { !$0.isWhitespace }
+    }
+
+    /// Bilinen bir bankaysa listedeki yazımı döner, değilse girilen adı.
+    static func canonical(_ name: String) -> String {
+        let target = key(name)
+        return all.first { key($0) == target } ?? name
+    }
+
+    /// TR IBAN'ın 5–9. hanelerindeki banka kodundan banka adı.
+    static func name(forIBAN iban: String) -> String? {
+        let compact = IBAN.normalized(iban)
+        guard compact.hasPrefix("TR"), compact.count >= 9 else { return nil }
+        let code = String(compact.dropFirst(4).prefix(5))
+        return codes[code]
+    }
+
+    private static let codes: [String: String] = [
+        "00010": "Ziraat", "00012": "Halkbank", "00015": "VakıfBank", "00032": "TEB",
+        "00046": "Akbank", "00062": "Garanti", "00064": "İşBankası", "00067": "YapıKredi",
+        "00099": "ING", "00111": "QNB", "00134": "DenizBank", "00205": "Kuveyt Türk",
+    ]
+
     static func initials(for bank: String) -> String {
         switch bank {
         case "YapıKredi": return "YK"
