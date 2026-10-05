@@ -1852,6 +1852,22 @@
         }
       }
     },
+    "Hesaplar ve IBAN'lar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accounts and IBANs"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesaplar ve IBAN'lar"
+          }
+        }
+      }
+    },
     "Hücreye dokunarak tutarı düzenleyin. Üstü çizili: ödendi. Soluk: hariç. İtalik: düzenli ödemeden tahmini.": {
       "localizations": {
         "en": {
@@ -2408,6 +2424,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kişiler"
+          }
+        }
+      }
+    },
+    "Kişilerin kendi hesapları ve ödeme yapılan kişi ya da kurumların IBAN'ları. Dokununca IBAN kopyalanır.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "People's own accounts and the IBANs of people or companies you pay. Tap one to copy its IBAN."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişilerin kendi hesapları ve ödeme yapılan kişi ya da kurumların IBAN'ları. Dokununca IBAN kopyalanır."
           }
         }
       }

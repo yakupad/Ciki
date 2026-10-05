@@ -37,7 +37,7 @@ struct RootView: View {
     @State private var route: EditorRoute?
     @State private var tab = RootView.initialTab
 
-    /// DEBUG derlemede `-startTab 4` ile açılış sekmesi seçilebilir (ekran görüntüsü için).
+    /// DEBUG derlemede `-startTab 3` ile açılış sekmesi seçilebilir (ekran görüntüsü için).
     private static var initialTab: Int {
         #if DEBUG
         let arguments = CommandLine.arguments
@@ -61,9 +61,6 @@ struct RootView: View {
             }
             Tab("Kalemler", systemImage: "list.bullet.rectangle", value: 3) {
                 NavigationStack { ItemsView() }
-            }
-            Tab("Hesaplar", systemImage: "building.columns", value: 4) {
-                NavigationStack { AccountsView() }
             }
         }
         .tabBarMinimizeBehavior(.onScrollDown)

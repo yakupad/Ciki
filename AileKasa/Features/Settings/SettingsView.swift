@@ -11,6 +11,8 @@ struct SettingsView: View {
     private var people: FetchedResults<Person>
     @FetchRequest(sortDescriptors: [SortDescriptor(\Household.createdAt)])
     private var households: FetchedResults<Household>
+    @FetchRequest(sortDescriptors: [])
+    private var accounts: FetchedResults<Account>
 
     @State private var confirmWipe = false
     @State private var personToDelete: Person?
@@ -48,6 +50,21 @@ struct SettingsView: View {
                     }
                 } footer: {
                     Text("Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer.")
+                }
+
+                Section {
+                    NavigationLink {
+                        AccountsView()
+                    } label: {
+                        LabeledContent {
+                            Text("\(accounts.count)")
+                                .monospacedDigit()
+                        } label: {
+                            Label("Hesaplar ve IBAN'lar", systemImage: "building.columns")
+                        }
+                    }
+                } footer: {
+                    Text("Kişilerin kendi hesapları ve ödeme yapılan kişi ya da kurumların IBAN'ları. Dokununca IBAN kopyalanır.")
                 }
 
                 Section {
