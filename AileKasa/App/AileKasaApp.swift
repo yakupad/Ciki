@@ -138,6 +138,7 @@ struct RootView: View {
                 NavigationStack { ItemsView() }
             }
         }
+        .measuresWideLayout()
         .tabViewStyle(.sidebarAdaptable)
         .tabBarMinimizeBehavior(.onScrollDown)
         // Yeni kayıt her sekmede aynı yerde: sekme çubuğunun üstünde.

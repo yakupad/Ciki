@@ -18,7 +18,7 @@ Excel'de tutulan aylık borç, gelir ve ödeme tablosunun iPhone uygulaması. De
 
 - **iPhone ve iPhone Duo dış ekranı:** tek sütun, altta sekme çubuğu.
 - **iPad, Mac ve iPhone Duo iç ekranı** (geniş boyut sınıfı): kenar çubuğuna açılabilen sekmeler, iki sütunlu Özet, yan yana grafikler, okunur genişlikte listeler.
-- Düzen boyut sınıfına göre seçilir; Duo katlanıp açıldığında ya da iPad'de bölünmüş ekranda kendiliğinden değişir.
+- Düzen pencere genişliğine göre seçilir (600 pt ve üstü iki sütun). Duo'nun iç ekranı iPhone olduğu için boyut sınıfı "dar" görünebilir; genişlik ölçüldüğü için yine iki sütunlu açılır. Duo katlanıp açıldığında ya da iPad'de bölünmüş ekranda kendiliğinden değişir.
 
 ## Kurulum
 

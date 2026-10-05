@@ -15,7 +15,7 @@ struct ReportView: View {
 
     @State private var filter: OwnerFilter = .all
     @State private var range: ReportRange = .year
-    @Environment(\.horizontalSizeClass) private var sizeClass
+    @Environment(\.isWideLayout) private var isWide
 
     enum ReportRange: String, CaseIterable, Identifiable {
         case half, year, plan
@@ -52,7 +52,7 @@ struct ReportView: View {
                 .pickerStyle(.segmented)
 
                 StatsRow(totals: totals, now: now)
-                if sizeClass == .regular {
+                if isWide {
                     HStack(alignment: .top, spacing: 14) {
                         NetTrendChart(totals: totals, now: now)
                         DebtChart(totals: totals, now: now)

@@ -16,7 +16,7 @@ struct SummaryView: View {
     private var entries: FetchedResults<LedgerEntry>
 
     @State private var route: EditorRoute?
-    @Environment(\.horizontalSizeClass) private var sizeClass
+    @Environment(\.isWideLayout) private var isWide
     @State private var showReport = false
 
     var body: some View {
@@ -29,7 +29,7 @@ struct SummaryView: View {
             Group {
                 if items.isEmpty {
                     emptyState
-                } else if sizeClass == .regular {
+                } else if isWide {
                     // iPad, iPhone Duo iç ekranı ve Mac: solda özet, sağda ödenecekler.
                     HStack(alignment: .top, spacing: 16) {
                         VStack(alignment: .leading, spacing: 14) {
