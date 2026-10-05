@@ -37,6 +37,7 @@ struct SettingsView: View {
                     ForEach(people, id: \.objectID) { person in
                         HStack {
                             TextField("İsim", text: binding(person, \.name))
+                            RelationMenu(person: person)
                             ColorPicker("Renk", selection: colorBinding(person), supportsOpacity: false)
                                 .labelsHidden()
                                 .frame(minWidth: 44, minHeight: 44)
@@ -51,7 +52,7 @@ struct SettingsView: View {
                         Text("Seçilmedi").tag("")
                         ForEach(people, id: \.objectID) { person in
                             if let id = person.uuid?.uuidString {
-                                Text(verbatim: person.displayName).tag(id)
+                                Text(verbatim: person.displayNameWithRelation).tag(id)
                             }
                         }
                     }
@@ -316,4 +317,31 @@ struct SettingsView: View {
         .environment(RateService())
         .environment(AppLock())
         .environment(ReminderScheduler())
+}
+
+/// Kişi satırındaki yakınlık seçimi: "Eş", "Anne", "Arkadaş"… ya da boş.
+private struct RelationMenu: View {
+    @ObservedObject var person: Person
+    @Environment(\.managedObjectContext) private var context
+
+    var body: some View {
+        Menu {
+            Picker("Yakınlık", selection: Binding(
+                get: { person.relation },
+                set: { person.relation = $0; context.saveIfNeeded() }
+            )) {
+                Text("Belirtilmedi").tag(PersonRelation?.none)
+                ForEach(PersonRelation.allCases) { relation in
+                    Text(verbatim: relation.title).tag(Optional(relation))
+                }
+            }
+        } label: {
+            Text(verbatim: person.relation?.title ?? String(localized: "Yakınlık"))
+                .font(.subheadline)
+                .foregroundStyle(person.relation == nil ? Color.ikincil : Color.petrol)
+                .frame(minHeight: 44)
+        }
+        .accessibilityLabel(Text("Yakınlık"))
+        .accessibilityValue(Text(verbatim: person.relation?.title ?? String(localized: "Belirtilmedi")))
+    }
 }

@@ -148,6 +148,35 @@ nonisolated enum EntryStatus: String, CaseIterable, Identifiable, Sendable {
     }
 }
 
+/// Kişinin haneyle yakınlığı; yalnızca gösterim içindir, hesaplamaya girmez.
+nonisolated enum PersonRelation: String, CaseIterable, Identifiable, Sendable {
+    case partner = "es"
+    case mother = "anne"
+    case father = "baba"
+    case sibling = "kardes"
+    case child = "cocuk"
+    case relative = "akraba"
+    case friend = "arkadas"
+    case housemate = "evArkadasi"
+    case other = "diger"
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .partner: String(localized: "Eş")
+        case .mother: String(localized: "Anne")
+        case .father: String(localized: "Baba")
+        case .sibling: String(localized: "Kardeş")
+        case .child: String(localized: "Çocuk")
+        case .relative: String(localized: "Akraba")
+        case .friend: String(localized: "Arkadaş")
+        case .housemate: String(localized: "Ev arkadaşı")
+        case .other: String(localized: "Diğer")
+        }
+    }
+}
+
 nonisolated enum Banks {
     static let all = ["YapıKredi", "İşBankası", "Garanti", "Akbank", "Enpara",
                       "Ziraat", "VakıfBank", "Halkbank", "QNB", "DenizBank",

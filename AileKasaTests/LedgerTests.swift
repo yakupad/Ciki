@@ -528,4 +528,17 @@ struct LedgerTests {
         #expect(snapshot.upcoming.first?.key == nil)
         #expect(snapshot.upcoming.first?.id.isEmpty == false)
     }
+
+    @Test func personRelationIsOptionalAndShownWithName() {
+        let household = householdWithPeople()
+        let ece = household.peopleArray[1]
+        #expect(ece.relation == nil)
+        #expect(ece.displayNameWithRelation == "Ece")
+        ece.relation = .partner
+        context.saveIfNeeded()
+        #expect(ece.relationRaw == "es")
+        #expect(ece.displayNameWithRelation == "Ece · \(PersonRelation.partner.title)")
+        ece.relation = nil
+        #expect(ece.relationRaw == nil)
+    }
 }

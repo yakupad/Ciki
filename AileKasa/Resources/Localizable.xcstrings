@@ -682,6 +682,22 @@
         }
       }
     },
+    "Akraba": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relative"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akraba"
+          }
+        }
+      }
+    },
     "Alacak": {
       "localizations": {
         "en": {
@@ -730,6 +746,22 @@
         }
       }
     },
+    "Anne": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mother"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anne"
+          }
+        }
+      }
+    },
     "Aralık": {
       "localizations": {
         "en": {
@@ -742,6 +774,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aralık"
+          }
+        }
+      }
+    },
+    "Arkadaş": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Friend"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arkadaş"
           }
         }
       }
@@ -954,6 +1002,22 @@
         }
       }
     },
+    "Baba": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Father"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Baba"
+          }
+        }
+      }
+    },
     "Banka": {
       "localizations": {
         "en": {
@@ -1078,6 +1142,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bekliyor"
+          }
+        }
+      }
+    },
+    "Belirtilmedi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not set"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belirtilmedi"
           }
         }
       }
@@ -2026,6 +2106,22 @@
         }
       }
     },
+    "Ev arkadaşı": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Housemate"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ev arkadaşı"
+          }
+        }
+      }
+    },
     "Evimiz": {
       "localizations": {
         "en": {
@@ -2071,6 +2167,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Excel'de tuttuğunuz borç, gelir ve ödeme tablosunun telefondaki hali."
+          }
+        }
+      }
+    },
+    "Eş": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partner"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eş"
           }
         }
       }
@@ -3257,6 +3369,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdan ve iCloud'unuzdan silinir. Haneyi başkalarıyla paylaştıysanız onların telefonlarından da kalkar. Başkasının size paylaştığı hane silinmez. Bu işlem geri alınamaz."
+          }
+        }
+      }
+    },
+    "Kardeş": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sibling"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kardeş"
           }
         }
       }
@@ -5054,6 +5182,22 @@
         }
       }
     },
+    "Yakınlık": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relationship"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yakınlık"
+          }
+        }
+      }
+    },
     "Yeni hesap": {
       "localizations": {
         "en": {
@@ -5178,6 +5322,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yön"
+          }
+        }
+      }
+    },
+    "Çocuk": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Child"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çocuk"
           }
         }
       }

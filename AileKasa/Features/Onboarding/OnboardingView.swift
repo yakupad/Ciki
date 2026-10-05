@@ -31,6 +31,7 @@ struct OnboardingView: View {
     }
     @State private var householdName = ""
     @State private var names = ["", ""]
+    @State private var relations: [PersonRelation?] = [nil, nil]
     @FocusState private var focusedField: Int?
 
     var body: some View {
@@ -116,14 +117,30 @@ struct OnboardingView: View {
                             .focused($focusedField, equals: index)
                             .submitLabel(.next)
                             .onSubmit { focusedField = index + 1 < names.count ? index + 1 : nil }
+                        if index > 0 {
+                            Menu {
+                                Picker("Yakınlık", selection: $relations[index]) {
+                                    Text("Belirtilmedi").tag(PersonRelation?.none)
+                                    ForEach(PersonRelation.allCases) { Text(verbatim: $0.title).tag(Optional($0)) }
+                                }
+                            } label: {
+                                Text(verbatim: relations[index]?.title ?? String(localized: "Yakınlık"))
+                                    .font(.subheadline)
+                                    .foregroundStyle(relations[index] == nil ? Color.ikincil : Color.petrol)
+                                    .frame(minHeight: 44)
+                            }
+                            .accessibilityLabel(Text("Yakınlık"))
+                        }
                     }
                 }
                 .onDelete { offsets in
                     names.remove(atOffsets: offsets)
-                    if names.isEmpty { names = [""] }
+                    relations.remove(atOffsets: offsets)
+                    if names.isEmpty { names = [""]; relations = [nil] }
                 }
                 Button("Kişi ekle", systemImage: "person.badge.plus") {
                     names.append("")
+                    relations.append(nil)
                     focusedField = names.count - 1
                 }
             } header: {
@@ -235,7 +252,12 @@ struct OnboardingView: View {
     private func createHousehold() {
         let household = context.currentHousehold()
         if let name = householdName.trimmedOrNil { household.name = name }
-        let people = names.compactMap(\.trimmedOrNil).map { context.addPerson(named: $0, to: household) }
+        let people = zip(names, relations).compactMap { name, relation -> Person? in
+            guard let name = name.trimmedOrNil else { return nil }
+            let person = context.addPerson(named: name, to: household)
+            person.relation = relation
+            return person
+        }
         context.saveIfNeeded()
         if let me = people.first?.uuid?.uuidString { deviceOwnerID = me }
         step = .privacy

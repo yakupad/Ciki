@@ -58,7 +58,7 @@ struct AccountEditorView: View {
                     if isOwn {
                         Picker("Kişi", selection: $owner) {
                             ForEach(people, id: \.objectID) { person in
-                                Text(verbatim: person.displayName).tag(Optional(person))
+                                Text(verbatim: person.displayNameWithRelation).tag(Optional(person))
                             }
                             Text("Ortak").tag(Person?.none)
                         }

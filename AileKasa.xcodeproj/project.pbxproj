@@ -219,6 +219,7 @@
 		D3A6B9255677382C25259368 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
 		DA7A18F75BFF4E9E5E54D784 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		DB3DB836129A99718E8A087E /* AileKasa.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AileKasa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECA3F955270B4AEC75211939 /* AileKasa 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AileKasa 4.xcdatamodel"; sourceTree = "<group>"; };
 		F4B30F93860E3B98E2204CB9 /* ItemEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEditorView.swift; sourceTree = "<group>"; };
 		F4F35CA4E03D191841BC1494 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F89903DFD30975F16949A985 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
@@ -1313,9 +1314,10 @@
 			children = (
 				84E6424CB96B8C22DA94C23F /* AileKasa 2.xcdatamodel */,
 				7D7D6990AF5D6DEA2A644CFB /* AileKasa 3.xcdatamodel */,
+				ECA3F955270B4AEC75211939 /* AileKasa 4.xcdatamodel */,
 				28E63C32539B4258CAEB70F4 /* AileKasa.xcdatamodel */,
 			);
-			currentVersion = 7D7D6990AF5D6DEA2A644CFB /* AileKasa 3.xcdatamodel */;
+			currentVersion = ECA3F955270B4AEC75211939 /* AileKasa 4.xcdatamodel */;
 			path = AileKasa.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

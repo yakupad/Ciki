@@ -85,7 +85,7 @@ struct ItemEditorView: View {
                 Section("Kime ait") {
                     Picker("Kişi", selection: $owner) {
                         ForEach(people, id: \.objectID) { person in
-                            Text(person.displayName).tag(Optional(person))
+                            Text(person.displayNameWithRelation).tag(Optional(person))
                         }
                         Text("Ortak").tag(Person?.none)
                     }

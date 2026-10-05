@@ -160,14 +160,14 @@ erDiagram
   PERSON ||--o{ ACCOUNT : owns
   ACCOUNT ||--o{ LEDGER_ITEM : "paid to"
   HOUSEHOLD { string name }
-  PERSON { string name  string colorHex  int sortOrder }
+  PERSON { string name  string relation  string colorHex  int sortOrder }
   LEDGER_ITEM { string name  string bank  string kind  string direction  string currency  int dueDay  bool isRecurring  decimal recurringAmount  int recurringStart  int recurringEnd  bool isArchived }
   LEDGER_ENTRY { int monthKey  decimal amount  string status  decimal rate  date paidAt  string note }
   ACCOUNT { string title  string holderName  string bank  string iban  string currency  bool isOwn  string note }
 ```
 
 - **Household (Hane):** tek kayıt. Hane üyeleriyle (eş, aile, ev arkadaşları) paylaşılan kök nesne.
-- **Person (Kişi):** Deniz ve Ece. Sahibi olmayan kalem "Ortak" sayılır.
+- **Person (Kişi):** Hanedeki kişiler (sınırsız). İsteğe bağlı yakınlık etiketi: Eş, Anne, Baba, Kardeş, Çocuk, Akraba, Arkadaş, Ev arkadaşı, Diğer; yalnızca gösterim içindir. Sahibi olmayan kalem "Ortak" sayılır.
 - **LedgerItem (Kalem):** kart, nakit avans, kredi, kira, konut taksidi, maaş, alacak, aile gönderimi vb. Düzenliyse aylık tutar ve başlangıç/bitiş ayı taşır.
 - **Account (Hesap):** IBAN rehberi kaydı. `isOwn` ailenin kendi hesabı mı yoksa ödeme yapılan kişi/kurum mu olduğunu belirtir. Kalemler `payee` ile bir hesaba bağlanabilir.
 - **Değişiklik kaydı.** Her telefon için "Bu telefonu kullanan" kişi seçilir (cihaza özel). Kayıt ve kalem değişikliklerinde `updatedBy` ve `updatedAt` yazılır.
@@ -178,7 +178,7 @@ erDiagram
 - **İki depo.** `AileKasa.sqlite` kendi verilerimizi iCloud özel veritabanında, `AileKasa-shared.sqlite` başkasının paylaştığı haneyi paylaşılan veritabanında tutar. Depolar arası ilişki kurulamadığı için yeni kayıtlar `place(_:in:)` ile hanenin bulunduğu depoya yazılır.
 - **Etkin hane.** Paylaşılan hane varsa o, yoksa en eski yerel hane. iCloud'dan gelen değişikliklerden sonra `HouseholdSync` fazladan haneleri birleştirir.
 - **Core Data + NSPersistentCloudKitContainer.** iOS 27 SDK'sında SwiftData yalnızca özel (private) iCloud veritabanını destekliyor. Başkalarıyla ortak kullanım için CKShare gerekiyor, bu yüzden Core Data seçildi. Tüm öznitelikler isteğe bağlı, benzersizlik kısıtı yok (CloudKit şartı).
-- **Model sürümleri.** Veri modeli sürümlüdür (`AileKasa 3.xcdatamodel` güncel; 1. sürümden taşıma test edilir). Yeni alanlar yeni sürümle eklenir, mevcut veriler otomatik (lightweight) taşınır.
+- **Model sürümleri.** Veri modeli sürümlüdür (`AileKasa 4.xcdatamodel` güncel; 1. sürümden taşıma test edilir). Yeni alanlar yeni sürümle eklenir, mevcut veriler otomatik (lightweight) taşınır.
 - **Banka adları** büyük/küçük harf ve boşluk farkı yok sayılarak eşleştirilir; bilinen bankalar listedeki yazımla gösterilir.
 - **Tutarlar `Decimal`.** Kuruş yuvarlama hatası olmaz. Taksit bölmede artan kuruşlar son taksite eklenir.
 - **Gösterim para birimi.** TCMB kurları TL karşılığı olarak gelir; TL ara birimdir. Gösterim birimi TL değilse çapraz kurla çevrilir (ör. USD → EUR = USD/TL ÷ EUR/TL). Seçim cihaza özeldir, her kişi kendi telefonunda farklı birim seçebilir. Ödenmiş döviz kayıtlarının TL karşılığı ödeme günündeki kurla sabittir.

@@ -18,6 +18,7 @@ nonisolated final class Person: NSManagedObject {
     @NSManaged var uuid: UUID?
     @NSManaged var name: String?
     @NSManaged var colorHex: String?
+    @NSManaged var relationRaw: String?
     @NSManaged var sortOrder: Int16
     @NSManaged var household: Household?
     @NSManaged var items: NSSet?
@@ -98,6 +99,16 @@ nonisolated extension Person {
     var displayName: String {
         let trimmed = (name ?? "").trimmingCharacters(in: .whitespaces)
         return trimmed.isEmpty ? String(localized: "İsimsiz") : trimmed
+    }
+
+    var relation: PersonRelation? {
+        get { relationRaw.flatMap(PersonRelation.init(rawValue:)) }
+        set { relationRaw = newValue?.rawValue }
+    }
+
+    /// Seçicilerde: "Ece · Eş"; yakınlık seçilmemişse yalnızca ad.
+    var displayNameWithRelation: String {
+        relation.map { "\(displayName) · \($0.title)" } ?? displayName
     }
 }
 
