@@ -30,6 +30,7 @@ enum SampleData {
             item.owner = owner
             item.dueDay = dueDay
             item.sortOrder = order
+            context.place(item, in: household)
             item.household = household
             if let recurring {
                 item.isRecurring = true

@@ -169,7 +169,9 @@ struct AccountEditorView: View {
             let created = Account(context: context)
             created.uuid = UUID()
             created.createdAt = .now
-            created.household = context.currentHousehold()
+            let household = context.currentHousehold()
+            context.place(created, in: household)
+            created.household = household
             return created
         }()
         target.isOwn = isOwn

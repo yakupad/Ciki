@@ -4,12 +4,14 @@ import Combine
 
 @main
 struct AileKasaApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     private let persistence = PersistenceController.shared
     @State private var appState = AppState()
     @State private var rates = RateService()
     @State private var lock = AppLock()
     @State private var reminders = ReminderScheduler()
     @State private var rescheduleTask: Task<Void, Never>?
+    @State private var resolveTask: Task<Void, Never>?
     @Environment(\.scenePhase) private var scenePhase
     private let lockWindow = LockWindow()
 
@@ -41,6 +43,12 @@ struct AileKasaApp: App {
                 .onReceive(NotificationCenter.default.publisher(for: NSManagedObjectContext.didSaveObjectsNotification)) { _ in
                     scheduleReminders()
                 }
+                .onReceive(NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)) { _ in
+                    resolveHouseholds()
+                }
+                .onReceive(NotificationCenter.default.publisher(for: CloudSharing.didAcceptShare)) { _ in
+                    resolveHouseholds()
+                }
                 .onChange(of: reminders.isEnabled) { scheduleReminders() }
                 .onChange(of: reminders.daysBefore) { scheduleReminders() }
                 .onChange(of: reminders.hour) { scheduleReminders() }
@@ -64,6 +72,18 @@ extension AileKasaApp {
         lockWindow.update(visible: lock.isEnabled && (lock.isLocked || scenePhase != .active), lock: lock)
     }
 
+    /// iCloud'dan gelen değişikliklerden sonra fazladan hane kayıtlarını birleştirir.
+    private func resolveHouseholds() {
+        resolveTask?.cancel()
+        resolveTask = Task {
+            try? await Task.sleep(for: .seconds(1))
+            guard !Task.isCancelled else { return }
+            if case .localDataNeedsDecision(let id) = HouseholdSync.resolve(in: persistence.viewContext) {
+                appState.localHouseholdToResolve = id
+            }
+        }
+    }
+
     /// Kayıt değişikliklerinde art arda gelen çağrıları birleştirip widget özetini ve hatırlatmaları yeniler.
     private func scheduleReminders() {
         rescheduleTask?.cancel()
@@ -80,6 +100,8 @@ extension AileKasaApp {
 @Observable
 final class AppState {
     var month: Month = .current
+    /// Eşin hanesine katıldıktan sonra bu cihazda kalan, kayıt içeren yerel hane.
+    var localHouseholdToResolve: NSManagedObjectID?
 }
 
 struct RootView: View {
@@ -121,7 +143,42 @@ struct RootView: View {
             }
         }
         .sheet(item: $route) { EditorSheet(route: $0) }
+        .modifier(LocalHouseholdDecision())
         .tint(.petrol)
+    }
+}
+
+/// Eşin hanesine katılınca bu cihazdaki eski kayıtlar için karar.
+private struct LocalHouseholdDecision: ViewModifier {
+    @Environment(AppState.self) private var app
+    @Environment(\.managedObjectContext) private var context
+
+    func body(content: Content) -> some View {
+        content.confirmationDialog(
+            "Bu cihazdaki kayıtlar",
+            isPresented: Binding(get: { app.localHouseholdToResolve != nil },
+                                 set: { if !$0 { app.localHouseholdToResolve = nil } }),
+            titleVisibility: .visible
+        ) {
+            Button("Ortak haneye kopyala") { resolve(copy: true) }
+            Button("Bu cihazdakileri sil", role: .destructive) { resolve(copy: false) }
+            Button("Sonra karar ver", role: .cancel) {}
+        } message: {
+            Text("Eşinizin hanesine katıldınız. Bu cihazda daha önce girdiğiniz kalemler ya da hesaplar var. Ortak haneye kopyalarsanız eşiniz de görür; silerseniz yalnızca ortak hane kalır.")
+        }
+    }
+
+    private func resolve(copy: Bool) {
+        guard let id = app.localHouseholdToResolve,
+              let local = try? context.existingObject(with: id) as? Household else { return }
+        let shared = context.currentHousehold()
+        if copy, shared != local {
+            HouseholdSync.copy(local, into: shared, in: context)
+        } else {
+            context.delete(local)
+            context.saveIfNeeded()
+        }
+        app.localHouseholdToResolve = nil
     }
 }
 

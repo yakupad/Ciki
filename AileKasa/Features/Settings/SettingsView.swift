@@ -24,7 +24,7 @@ struct SettingsView: View {
         @Bindable var reminders = reminders
         NavigationStack {
             Form {
-                if let household = households.first {
+                if let household = households.first(where: \.isInSharedStore) ?? households.first {
                     Section("Hane") {
                         TextField("Hane adı", text: binding(household, \.name))
                     }
@@ -168,11 +168,7 @@ struct SettingsView: View {
                     Text("Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için.")
                 }
 
-                Section("iCloud") {
-                    Label("Eşinizle paylaşım bir sonraki aşamada eklenecek. Şu an veriler yalnızca bu cihazda.", systemImage: "icloud.slash")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
+                SharingSection()
 
                 #if DEBUG
                 Section {
@@ -229,7 +225,9 @@ struct SettingsView: View {
         person.name = ""
         person.colorHex = palette.first { !used.contains($0) } ?? palette[people.count % palette.count]
         person.sortOrder = Int16((people.map(\.sortOrder).max() ?? -1) + 1)
-        person.household = households.first ?? context.currentHousehold()
+        let household = context.currentHousehold()
+        context.place(person, in: household)
+        person.household = household
         context.saveIfNeeded()
     }
 

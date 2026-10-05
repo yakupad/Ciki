@@ -30,6 +30,19 @@ xcodebuild -project AileKasa.xcodeproj -scheme AileKasa \
 
 Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle** ile Ağustos–Kasım 2026 örnek verisi yüklenir. Simülatörde `-loadSampleData` başlatma argümanı aynı işi açılışta yapar; `-openReport` doğrudan rapor ekranını, `-startTab 0…3` istenen sekmeyi açar.
 
+## iCloud ile ortak kullanım kurulumu
+
+1. Xcode'da **AileKasa** ve **AileKasaWidget** hedefleri için *Signing & Capabilities → Team* seçin.
+2. *iCloud* yeteneğinde `iCloud.com.yakupad.AileKasa` container'ının işaretli olduğunu kontrol edin; yoksa **+** ile oluşturun.
+3. Uygulamayı iki ayrı Apple ID'li iki iPhone'a yükleyin.
+4. İlk telefonda **Ayarlar → iCloud ile ortak kullanım → Eşinizle paylaşın** ile daveti gönderin.
+5. İkinci telefonda davet bağlantısını açın. O telefonda daha önce girilmiş kayıtlar varsa uygulama "ortak haneye kopyala" ya da "sil" diye sorar.
+6. TestFlight ya da App Store'a göndermeden önce [CloudKit Console](https://icloud.developer.apple.com)'da şemayı *Production*'a aktarın (*Deploy Schema Changes*).
+
+iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca yerel olarak çalışır.
+
+> `xcodegen generate` Xcode'da seçilen Team'i sıfırlar. Kalıcı olması için `project.yml` içinde `DEVELOPMENT_TEAM` ayarlanmalıdır.
+
 ## Excel'deki her şeyin uygulamadaki karşılığı
 
 | Excel'de | Uygulamada | Ne işe yarar |
@@ -119,6 +132,8 @@ erDiagram
 
 ### Teknik kararlar
 
+- **İki depo.** `AileKasa.sqlite` kendi verilerimizi iCloud özel veritabanında, `AileKasa-shared.sqlite` eşin paylaştığı haneyi paylaşılan veritabanında tutar. Depolar arası ilişki kurulamadığı için yeni kayıtlar `place(_:in:)` ile hanenin bulunduğu depoya yazılır.
+- **Etkin hane.** Paylaşılan hane varsa o, yoksa en eski yerel hane. iCloud'dan gelen değişikliklerden sonra `HouseholdSync` fazladan haneleri birleştirir.
 - **Core Data + NSPersistentCloudKitContainer.** iOS 27 SDK'sında SwiftData yalnızca özel (private) iCloud veritabanını destekliyor. Eşle ortak kullanım için CKShare gerekiyor, bu yüzden Core Data seçildi. Tüm öznitelikler isteğe bağlı, benzersizlik kısıtı yok (CloudKit şartı).
 - **Model sürümleri.** Veri modeli sürümlüdür (`AileKasa 2.xcdatamodel` güncel). Yeni alanlar yeni sürümle eklenir, mevcut veriler otomatik (lightweight) taşınır.
 - **Banka adları** büyük/küçük harf ve boşluk farkı yok sayılarak eşleştirilir; bilinen bankalar listedeki yazımla gösterilir.
@@ -173,11 +188,13 @@ AileKasaTests/    Hesaplama, kur, IBAN, hatırlatma, CSV ve rapor testleri
 - [x] Ay ay toplam ve borç seyri raporu
 
 ### Aşama 3 · Ortak kullanım
-- [ ] CloudKit container (`iCloud.com.yakupad.AileKasa`) ve yetkiler
-- [ ] iCloud eşitleme
-- [ ] Haneyi eşle paylaşma (CKShare)
+- [x] CloudKit yetkileri ve iki depo (özel + paylaşılan)
+- [x] iCloud eşitleme
+- [x] Haneyi eşle paylaşma (CKShare, `UICloudSharingController`)
+- [x] Daveti kabul etme, yerel kayıtları ortak haneye kopyalama ya da silme
+- [x] Aynı Apple ID'li ikinci cihazda oluşan fazladan haneyi birleştirme
+- [ ] CloudKit container'ının hesapta açılması ve iki cihazla uçtan uca deneme
 - [ ] Kim, neyi değiştirdi bilgisi
-- [ ] Çakışma testleri
 
 ### Aşama 4 · Cila ✅
 - [x] Son ödeme gününden önce bildirim

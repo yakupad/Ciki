@@ -339,4 +339,72 @@ struct LedgerTests {
         #expect(rows[1].hasSuffix(";-300;"))
         #expect(rows[3].hasSuffix(";700;0"))
     }
+
+    @Test func duplicateHouseholdsMergeIntoTheOneWithData() throws {
+        let original = context.currentHousehold()
+        let card = makeItem()
+        card.household = original
+        card.owner = original.peopleArray.first
+        context.saveIfNeeded()
+
+        // İkinci cihazda ilk açılışta oluşan boş hane iCloud'dan gelmiş gibi.
+        let duplicate = Household(context: context)
+        duplicate.uuid = UUID()
+        duplicate.createdAt = .now.addingTimeInterval(60)
+        let denizCopy = Person(context: context)
+        denizCopy.name = "Deniz"
+        denizCopy.household = duplicate
+        let account = Account(context: context)
+        account.household = duplicate
+        account.owner = denizCopy
+        context.saveIfNeeded()
+
+        #expect(HouseholdSync.resolve(in: context) == .nothing)
+        let households = try context.fetch(NSFetchRequest<Household>(entityName: "Household"))
+        #expect(households.count == 1)
+        let kept = try #require(households.first)
+        #expect(kept == original)
+        #expect(kept.peopleArray.map(\.displayName) == ["Deniz", "Ece"])
+        #expect(account.household == kept)
+        #expect(account.owner == kept.peopleArray.first)
+    }
+
+    @Test func copyMovesItemsEntriesAndAccountsIntoTargetHousehold() throws {
+        let target = context.currentHousehold()
+        let source = Household(context: context)
+        source.uuid = UUID()
+        source.createdAt = .now
+        let ece = Person(context: context)
+        ece.name = "ece"
+        ece.household = source
+        let deniz = Person(context: context)
+        deniz.name = "Deniz"
+        deniz.household = source
+        let landlord = Account(context: context)
+        landlord.title = "Ev sahibi"
+        landlord.iban = "TR330006100519786457841326"
+        landlord.household = source
+        let rent = makeItem(kind: .rent)
+        rent.household = source
+        rent.owner = deniz
+        rent.payee = landlord
+        context.upsertEntry(item: rent, month: october, amount: 46764, status: .paid, rates: rates)
+        let eceCard = makeItem()
+        eceCard.household = source
+        eceCard.owner = ece
+        context.saveIfNeeded()
+
+        HouseholdSync.copy(source, into: target, in: context)
+
+        #expect(source.isDeleted || source.managedObjectContext == nil)
+        #expect(target.peopleArray.map(\.displayName) == ["Deniz", "Ece", "Deniz"])
+        let copiedRent = try #require(target.itemsArray.first { $0.kind == .rent })
+        #expect(copiedRent.owner?.displayName == "Deniz")
+        #expect(copiedRent.payee?.title == "Ev sahibi")
+        #expect(copiedRent.entry(for: october)?.amountValue == 46764)
+        #expect(copiedRent.entry(for: october)?.status == .paid)
+        let copiedCard = try #require(target.itemsArray.first { $0.kind == .card })
+        #expect(copiedCard.owner?.displayName == "Ece")
+        #expect(target.accountsArray.count == 1)
+    }
 }

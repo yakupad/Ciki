@@ -346,6 +346,22 @@
         }
       }
     },
+    "(siz)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "(you)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "(siz)"
+          }
+        }
+      }
+    },
     "0": {
       "localizations": {
         "en": {
@@ -566,6 +582,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aile / Gönderim"
+          }
+        }
+      }
+    },
+    "Aile Kasası": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aile Kasası"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aile Kasası"
           }
         }
       }
@@ -986,6 +1018,22 @@
         }
       }
     },
+    "Bilinmiyor": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bilinmiyor"
+          }
+        }
+      }
+    },
     "Birikimli": {
       "localizations": {
         "en": {
@@ -1178,6 +1226,22 @@
         }
       }
     },
+    "Bu cihazda iCloud'a giriş yapılmamış. Veriler yalnızca bu cihazda.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You're not signed in to iCloud on this device. Data stays on this device only."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihazda iCloud'a giriş yapılmamış. Veriler yalnızca bu cihazda."
+          }
+        }
+      }
+    },
     "Bu cihazda parola ya da Face ID ayarlı değil. Önce iOS Ayarlar'dan bir parola belirleyin.": {
       "localizations": {
         "en": {
@@ -1190,6 +1254,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bu cihazda parola ya da Face ID ayarlı değil. Önce iOS Ayarlar'dan bir parola belirleyin."
+          }
+        }
+      }
+    },
+    "Bu cihazdaki kayıtlar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data on this device"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihazdaki kayıtlar"
+          }
+        }
+      }
+    },
+    "Bu cihazdakileri sil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete Data on This Device"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihazdakileri sil"
+          }
+        }
+      }
+    },
+    "Bu hane size paylaşıldı. Eklediğiniz ve değiştirdiğiniz her şey diğer kişide de görünür.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This household was shared with you. Everything you add or change also appears for the other person."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu hane size paylaşıldı. Eklediğiniz ve değiştirdiğiniz her şey diğer kişide de görünür."
           }
         }
       }
@@ -1270,6 +1382,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dahil et"
+          }
+        }
+      }
+    },
+    "Davet bekliyor": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invitation pending"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Davet bekliyor"
+          }
+        }
+      }
+    },
+    "Davet kabul edildikten sonra iki telefon aynı kalemleri, kayıtları ve hesapları görür ve düzenler. Gösterim para birimi, kilit ve hatırlatmalar her cihazda ayrı ayarlanır.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Once the invitation is accepted, both phones see and edit the same items, entries and accounts. Display currency, lock and reminders are set separately on each device."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Davet kabul edildikten sonra iki telefon aynı kalemleri, kayıtları ve hesapları görür ve düzenler. Gösterim para birimi, kilit ve hatırlatmalar her cihazda ayrı ayarlanır."
+          }
+        }
+      }
+    },
+    "Davetli": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invitee"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Davetli"
           }
         }
       }
@@ -1546,6 +1706,22 @@
         }
       }
     },
+    "Evimiz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Our Home"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evimiz"
+          }
+        }
+      }
+    },
     "Excel örnek verisini yükle": {
       "extractionState": "stale",
       "localizations": {
@@ -1563,7 +1739,24 @@
         }
       }
     },
+    "Eşinizin hanesine katıldınız. Bu cihazda daha önce girdiğiniz kalemler ya da hesaplar var. Ortak haneye kopyalarsanız eşiniz de görür; silerseniz yalnızca ortak hane kalır.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You've joined your partner's household. This device has items or accounts you entered earlier. Copy them to the shared household so your partner sees them too, or delete them to keep only the shared household."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşinizin hanesine katıldınız. Bu cihazda daha önce girdiğiniz kalemler ya da hesaplar var. Ortak haneye kopyalarsanız eşiniz de görür; silerseniz yalnızca ortak hane kalır."
+          }
+        }
+      }
+    },
     "Eşinizle paylaşım bir sonraki aşamada eklenecek. Şu an veriler yalnızca bu cihazda.": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -1575,6 +1768,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Eşinizle paylaşım bir sonraki aşamada eklenecek. Şu an veriler yalnızca bu cihazda."
+          }
+        }
+      }
+    },
+    "Eşinizle paylaşın": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share with Your Partner"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşinizle paylaşın"
           }
         }
       }
@@ -1848,6 +2057,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hane adı"
+          }
+        }
+      }
+    },
+    "Hanenizi paylaştığınızda eşinize Mesajlar, WhatsApp ya da e-posta ile bir davet gönderilir. Eşiniz daveti açınca tüm kayıtlar onun telefonuna da gelir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When you share your household, your partner gets an invitation by Messages, WhatsApp or email. Once they open it, all your data appears on their phone too."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hanenizi paylaştığınızda eşinize Mesajlar, WhatsApp ya da e-posta ile bir davet gönderilir. Eşiniz daveti açınca tüm kayıtlar onun telefonuna da gelir."
+          }
+        }
+      }
+    },
+    "Haneyi paylaşan": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Owner"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haneyi paylaşan"
           }
         }
       }
@@ -2269,6 +2510,7 @@
       }
     },
     "iCloud": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -2280,6 +2522,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "iCloud"
+          }
+        }
+      }
+    },
+    "iCloud durumu kontrol ediliyor…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking iCloud status…"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud durumu kontrol ediliyor…"
+          }
+        }
+      }
+    },
+    "iCloud ile ortak kullanım": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share with iCloud"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud ile ortak kullanım"
           }
         }
       }
@@ -2552,6 +2826,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Karşılık (%@)"
+          }
+        }
+      }
+    },
+    "Katıldı": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Joined"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Katıldı"
           }
         }
       }
@@ -3100,6 +3390,22 @@
         }
       }
     },
+    "Ortak haneye kopyala": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy to Shared Household"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ortak haneye kopyala"
+          }
+        }
+      }
+    },
     "Ortak hesaplar": {
       "localizations": {
         "en": {
@@ -3160,6 +3466,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Paylaş"
+          }
+        }
+      }
+    },
+    "Paylaşım başlatılamadı. İnternet bağlantınızı ve iCloud hesabınızı kontrol edip yeniden deneyin.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't start sharing. Check your internet connection and iCloud account, then try again."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaşım başlatılamadı. İnternet bağlantınızı ve iCloud hesabınızı kontrol edip yeniden deneyin."
+          }
+        }
+      }
+    },
+    "Paylaşımı yönet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manage Sharing"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaşımı yönet"
           }
         }
       }
@@ -3400,6 +3738,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Son: %@"
+          }
+        }
+      }
+    },
+    "Sonra karar ver": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decide Later"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonra karar ver"
           }
         }
       }
@@ -3833,6 +4187,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Çubuk: o ayın neti. Çizgi: dönem başından bu yana toplam. Çizgi aşağı iniyorsa borç birikiyor."
+          }
+        }
+      }
+    },
+    "Çıkarıldı": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removed"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkarıldı"
           }
         }
       }

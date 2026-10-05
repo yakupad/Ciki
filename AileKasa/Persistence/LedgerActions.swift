@@ -7,6 +7,7 @@ extension NSManagedObjectContext {
                      status: EntryStatus, note: String? = nil, rates: RateTable) -> LedgerEntry {
         let entry = item.entry(for: month) ?? {
             let created = LedgerEntry(context: self)
+            place(created, in: item.household)
             created.uuid = UUID()
             created.createdAt = .now
             created.monthKey = month.key

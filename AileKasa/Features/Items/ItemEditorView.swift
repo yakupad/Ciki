@@ -209,7 +209,9 @@ struct ItemEditorView: View {
             created.uuid = UUID()
             created.createdAt = .now
             created.sortOrder = context.nextItemSortOrder()
-            created.household = context.currentHousehold()
+            let household = context.currentHousehold()
+            context.place(created, in: household)
+            created.household = household
             return created
         }()
         let trimmedName = name.trimmingCharacters(in: .whitespaces)
@@ -249,14 +251,23 @@ struct CurrencyLabel: View {
     let currency: Currency
 
     var body: some View {
-        HStack(spacing: 10) {
-            Text(currency.symbol)
-                .font(.system(.body, design: .rounded).weight(.semibold))
-                .frame(minWidth: 36, alignment: .leading)
-            Text(verbatim: currency.title)
-                .fontWeight(.semibold)
-            Text(verbatim: currency.name)
-                .foregroundStyle(.secondary)
+        // Dar yerlerde (ör. seçicinin sağındaki değer) yalnızca simge ve kod gösterilir.
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 10) {
+                symbol
+                Text(verbatim: currency.title).fontWeight(.semibold)
+                Text(verbatim: currency.name).foregroundStyle(.secondary).lineLimit(1)
+            }
+            HStack(spacing: 6) {
+                Text(verbatim: currency.symbol)
+                Text(verbatim: currency.title).fontWeight(.semibold)
+            }
         }
+    }
+
+    private var symbol: some View {
+        Text(currency.symbol)
+            .font(.system(.body, design: .rounded).weight(.semibold))
+            .frame(minWidth: 36, alignment: .leading)
     }
 }

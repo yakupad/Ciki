@@ -54,6 +54,7 @@ struct SummaryView: View {
         #if DEBUG
         .onAppear {
             if CommandLine.arguments.contains("-openReport") { showReport = true }
+            if CommandLine.arguments.contains("-openSettings") { route = .settings }
         }
         #endif
     }
