@@ -4,11 +4,11 @@ import CoreData
 enum HouseholdSync {
     enum Outcome: Equatable {
         case nothing
-        /// Eşin hanesine katıldık ama bu cihazda kendi kayıtlarımız var; kullanıcıya sorulmalı.
+        /// Paylaşılan bir haneye katıldık ama bu cihazda kendi kayıtlarımız var; kullanıcıya sorulmalı.
         case localDataNeedsDecision(NSManagedObjectID)
     }
 
-    /// - Eşin paylaştığı hane varsa: bu cihazdaki boş haneler silinir; dolu hane için karar istenir.
+    /// - Paylaşılan bir hane varsa: bu cihazdaki boş haneler silinir; dolu hane için karar istenir.
     /// - Yoksa: aynı depodaki fazladan haneler (ör. ikinci cihazda ilk açılışta oluşan) en eskisine taşınır.
     @discardableResult
     static func resolve(in context: NSManagedObjectContext) -> Outcome {
@@ -58,7 +58,7 @@ enum HouseholdSync {
         context.delete(source)
     }
 
-    /// Farklı depolardaki haneler arasında kopyalama: bu cihazdaki kayıtlar eşin paylaştığı haneye kopyalanır,
+    /// Farklı depolardaki haneler arasında kopyalama: bu cihazdaki kayıtlar paylaşılan haneye kopyalanır,
     /// ardından yerel hane silinir. Depolar arası ilişki kurulamadığı için nesneler taşınmaz, kopyalanır.
     static func copy(_ source: Household, into target: Household, in context: NSManagedObjectContext) {
         var people: [NSManagedObjectID: Person] = [:]

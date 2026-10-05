@@ -2,7 +2,7 @@ import SwiftUI
 import CloudKit
 import CoreData
 
-/// Ayarlar'daki iCloud bölümü: haneyi eşle paylaşma ve katılımcılar.
+/// Ayarlar'daki iCloud bölümü: haneyi başkalarıyla paylaşma ve katılımcılar.
 struct SharingSection: View {
     @Environment(\.managedObjectContext) private var context
 
@@ -46,7 +46,7 @@ struct SharingSection: View {
                     Task { await startSharing() }
                 } label: {
                     HStack {
-                        Label("Eşinizle paylaşın", systemImage: "person.2.fill")
+                        Label("Kişi davet et", systemImage: "person.2.fill")
                         if isWorking {
                             Spacer()
                             ProgressView()
@@ -66,11 +66,11 @@ struct SharingSection: View {
         if let errorMessage {
             Text(errorMessage).foregroundStyle(Color.gider)
         } else if let share, share.currentUserParticipant?.role != .owner {
-            Text("Bu hane size paylaşıldı. Eklediğiniz ve değiştirdiğiniz her şey diğer kişide de görünür.")
+            Text("Bu hane size paylaşıldı. Eklediğiniz ve değiştirdiğiniz her şey hanedeki diğer kişilerde de görünür.")
         } else if share != nil {
-            Text("Davet kabul edildikten sonra iki telefon aynı kalemleri, kayıtları ve hesapları görür ve düzenler. Gösterim para birimi, kilit ve hatırlatmalar her cihazda ayrı ayarlanır.")
+            Text("Daveti kabul eden herkes aynı kalemleri, kayıtları ve hesapları görür ve düzenler. Gösterim para birimi, kilit ve hatırlatmalar her cihazda ayrı ayarlanır.")
         } else {
-            Text("Hanenizi paylaştığınızda eşinize Mesajlar, WhatsApp ya da e-posta ile bir davet gönderilir. Eşiniz daveti açınca tüm kayıtlar onun telefonuna da gelir.")
+            Text("Eşinizi, annenizi, babanızı, kardeşlerinizi ya da ev arkadaşlarınızı davet edebilirsiniz; birden fazla kişi olabilir. Davet Mesajlar, WhatsApp ya da e-postayla gider; daveti açan herkesin telefonuna tüm kayıtlar gelir.")
         }
     }
 

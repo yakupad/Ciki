@@ -60,7 +60,7 @@ Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle**
 1. Xcode → Settings → Accounts'ta Apple ID ekli olsun. Team (`D677J9K7QY`) `project.yml`'da tanımlı.
 2. *iCloud* yeteneğinde `iCloud.com.yakupad.AileKasa` container'ının işaretli olduğunu kontrol edin; yoksa **+** ile oluşturun.
 3. Uygulamayı iki ayrı Apple ID'li iki iPhone'a yükleyin.
-4. İlk telefonda **Ayarlar → iCloud ile ortak kullanım → Eşinizle paylaşın** ile daveti gönderin.
+4. İlk telefonda **Ayarlar → iCloud ile ortak kullanım → Kişi davet et** ile daveti gönderin. Eş, anne, baba, kardeş ya da ev arkadaşı; birden fazla kişi davet edilebilir.
 5. İkinci telefonda davet bağlantısını açın. O telefonda daha önce girilmiş kayıtlar varsa uygulama "ortak haneye kopyala" ya da "sil" diye sorar.
 6. TestFlight ya da App Store'a göndermeden önce [CloudKit Console](https://icloud.developer.apple.com)'da şemayı *Production*'a aktarın (*Deploy Schema Changes*).
 
@@ -108,7 +108,7 @@ iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca 
 | **Kalemler** | Düzenli ödemeler, düzenli gelirler, diğer kalemler ve arşiv. Üstte USD, EUR ve kalemlerde kullanılan dövizlerin kuru; dokununca aranabilir tüm kurlar listesi açılır. Düzenle ile sürükleyerek sıralanır. |
 | **Kayıt ekle** | Tutar, kalem, ay, durum, not. Geçen ay, son girilen, son 3 ay ortalaması ve düzenli tutar öneri olarak sunulur. Taksitlendir açılırsa tutar aylara bölünür. |
 | **Hesaplar** (Ayarlar → Kişiler'in altında) | IBAN rehberi: kişilerin kendi hesapları ve ödeme yapılan kişi/kurumlar. Dokununca IBAN kopyalanır; alıcı adı kopyalama ve paylaşma basılı tutunca. IBAN mod-97 ile doğrulanır, TR IBAN'ında banka otomatik bulunur. Kaleme ödeme hesabı bağlanırsa kayıt ekranında IBAN tek dokunuşla kopyalanır. |
-| **İlk açılış** | Tanıtım, hane adı ve kişiler, Face ID kilidi ve hatırlatma tercihi. "Eşim beni davet etti" seçeneği kişi oluşturmadan geçer ve davet bağlantısını bekler. Verisi olan kurulumlarda gösterilmez. |
+| **İlk açılış** | Tanıtım, hane adı ve kişiler, Face ID kilidi ve hatırlatma tercihi. "Bir davet aldım" seçeneği kişi oluşturmadan geçer ve davet bağlantısını bekler. Verisi olan kurulumlarda gösterilmez. |
 | **Rapor** | Özet'ten açılır. Son 6 ay ortalama net, ödenmemiş gider, en yüksek gider ayı; net ve birikimli bakiye grafiği; bankaya göre kart ve kredi ödemeleri; ay ay tablo. |
 | **Widget** | Ana ekran (küçük, orta) ve kilit ekranı. Ay sonu net ve sıradaki ödemeler. Uygulama kilidi açıksa tutarları göstermez. |
 | **Apple Watch** | Özet (ay sonu net, gelir, gider, ödenmemiş) ve sıradaki ödemeler; ödeme "Ödendi" işaretlenip iPhone'a gönderilir. Kadran komplikasyonları: sıradaki ödeme ve ayın neti. iPhone'da kilit açıksa tutarlar gizlenir. |
@@ -166,7 +166,7 @@ erDiagram
   ACCOUNT { string title  string holderName  string bank  string iban  string currency  bool isOwn  string note }
 ```
 
-- **Household (Hane):** tek kayıt. İleride eşle paylaşılan kök nesne.
+- **Household (Hane):** tek kayıt. Hane üyeleriyle (eş, aile, ev arkadaşları) paylaşılan kök nesne.
 - **Person (Kişi):** Deniz ve Ece. Sahibi olmayan kalem "Ortak" sayılır.
 - **LedgerItem (Kalem):** kart, nakit avans, kredi, kira, konut taksidi, maaş, alacak, aile gönderimi vb. Düzenliyse aylık tutar ve başlangıç/bitiş ayı taşır.
 - **Account (Hesap):** IBAN rehberi kaydı. `isOwn` ailenin kendi hesabı mı yoksa ödeme yapılan kişi/kurum mu olduğunu belirtir. Kalemler `payee` ile bir hesaba bağlanabilir.
@@ -175,9 +175,9 @@ erDiagram
 
 ### Teknik kararlar
 
-- **İki depo.** `AileKasa.sqlite` kendi verilerimizi iCloud özel veritabanında, `AileKasa-shared.sqlite` eşin paylaştığı haneyi paylaşılan veritabanında tutar. Depolar arası ilişki kurulamadığı için yeni kayıtlar `place(_:in:)` ile hanenin bulunduğu depoya yazılır.
+- **İki depo.** `AileKasa.sqlite` kendi verilerimizi iCloud özel veritabanında, `AileKasa-shared.sqlite` başkasının paylaştığı haneyi paylaşılan veritabanında tutar. Depolar arası ilişki kurulamadığı için yeni kayıtlar `place(_:in:)` ile hanenin bulunduğu depoya yazılır.
 - **Etkin hane.** Paylaşılan hane varsa o, yoksa en eski yerel hane. iCloud'dan gelen değişikliklerden sonra `HouseholdSync` fazladan haneleri birleştirir.
-- **Core Data + NSPersistentCloudKitContainer.** iOS 27 SDK'sında SwiftData yalnızca özel (private) iCloud veritabanını destekliyor. Eşle ortak kullanım için CKShare gerekiyor, bu yüzden Core Data seçildi. Tüm öznitelikler isteğe bağlı, benzersizlik kısıtı yok (CloudKit şartı).
+- **Core Data + NSPersistentCloudKitContainer.** iOS 27 SDK'sında SwiftData yalnızca özel (private) iCloud veritabanını destekliyor. Başkalarıyla ortak kullanım için CKShare gerekiyor, bu yüzden Core Data seçildi. Tüm öznitelikler isteğe bağlı, benzersizlik kısıtı yok (CloudKit şartı).
 - **Model sürümleri.** Veri modeli sürümlüdür (`AileKasa 3.xcdatamodel` güncel; 1. sürümden taşıma test edilir). Yeni alanlar yeni sürümle eklenir, mevcut veriler otomatik (lightweight) taşınır.
 - **Banka adları** büyük/küçük harf ve boşluk farkı yok sayılarak eşleştirilir; bilinen bankalar listedeki yazımla gösterilir.
 - **Tutarlar `Decimal`.** Kuruş yuvarlama hatası olmaz. Taksit bölmede artan kuruşlar son taksite eklenir.
@@ -236,7 +236,7 @@ AileKasaTests/    Hesaplama, kur, IBAN, hatırlatma, CSV ve rapor testleri
 ### Aşama 3 · Ortak kullanım
 - [x] CloudKit yetkileri ve iki depo (özel + paylaşılan)
 - [x] iCloud eşitleme
-- [x] Haneyi eşle paylaşma (CKShare, `UICloudSharingController`)
+- [x] Haneyi bir ya da birden fazla kişiyle paylaşma (CKShare, `UICloudSharingController`)
 - [x] Daveti kabul etme, yerel kayıtları ortak haneye kopyalama ya da silme
 - [x] Aynı Apple ID'li ikinci cihazda oluşan fazladan haneyi birleştirme
 - [ ] CloudKit container'ının hesapta açılması ve iki cihazla uçtan uca deneme

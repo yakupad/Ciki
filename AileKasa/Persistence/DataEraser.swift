@@ -3,7 +3,7 @@ import UserNotifications
 import WidgetKit
 
 /// "Tüm verilerimi sil": bu cihazdaki (ve iCloud açıksa kendi iCloud'umuzdaki) haneyi siler,
-/// cihaza özel ayarları sıfırlar. Eşin paylaştığı hane silinmez; ondan ayrılmak paylaşım ekranından yapılır.
+/// cihaza özel ayarları sıfırlar. Başkasının paylaştığı hane silinmez; ondan ayrılmak paylaşım ekranından yapılır.
 enum DataEraser {
     static func eraseOwnData(in context: NSManagedObjectContext) {
         let request = NSFetchRequest<Household>(entityName: "Household")

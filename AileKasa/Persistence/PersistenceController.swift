@@ -14,7 +14,7 @@ final class PersistenceController {
     }()
 
     static let cloudContainerID = "iCloud.com.yakupad.AileKasa"
-    /// Eşin paylaştığı hanenin tutulduğu depo dosyası.
+    /// Başkasının paylaştığı hanenin tutulduğu depo dosyası.
     nonisolated static let sharedStoreFileName = "AileKasa-shared.sqlite"
 
     /// Model bir kez yüklenir; aynı süreçte birden fazla container (testler, önizlemeler)
@@ -68,7 +68,7 @@ final class PersistenceController {
             privateOptions.databaseScope = .private
             privateDescription.cloudKitContainerOptions = privateOptions
 
-            // Eşimizin bizimle paylaştığı hane: iCloud paylaşılan veritabanı, ayrı dosyada.
+            // Başkasının bizimle paylaştığı hane: iCloud paylaşılan veritabanı, ayrı dosyada.
             guard let sharedDescription = privateDescription.copy() as? NSPersistentStoreDescription,
                   let directory = privateDescription.url?.deletingLastPathComponent() else {
                 fatalError("Paylaşılan depo tanımı oluşturulamadı")
@@ -101,7 +101,7 @@ final class PersistenceController {
 }
 
 extension NSManagedObjectContext {
-    /// Etkin hane: eşin paylaştığı hane varsa o, yoksa bu cihazdaki en eski hane.
+    /// Etkin hane: paylaşılan bir hane varsa o, yoksa bu cihazdaki en eski hane.
     /// Hiç yoksa boş olarak oluşturulur; kişiler ilk açılış ekranında eklenir.
     @discardableResult
     func currentHousehold() -> Household {
@@ -138,7 +138,7 @@ extension NSManagedObjectContext {
     }
 
     /// Yeni nesneyi hanenin bulunduğu depoya yerleştirir. Depolar arası ilişki kurulamadığı için
-    /// eşin paylaştığı haneye eklenen her kayıt paylaşılan depoya yazılmalıdır.
+    /// paylaşılan haneye eklenen her kayıt paylaşılan depoya yazılmalıdır.
     func place(_ object: NSManagedObject, in household: Household?) {
         guard let store = household?.objectID.persistentStore, object.objectID.isTemporaryID else { return }
         assign(object, to: store)

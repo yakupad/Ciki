@@ -8,7 +8,7 @@ struct PrivacyView: View {
                 PrivacyRow(symbol: "iphone", title: "Cihazınızda",
                            text: "Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdaki veritabanında durur. iOS cihaz şifrelemesiyle korunur.")
                 PrivacyRow(symbol: "icloud", title: "Kendi iCloud hesabınızda",
-                           text: "iCloud açıksa aynı veriler sizin özel iCloud alanınıza eşitlenir. Eşinizle paylaşırsanız ortak hane yalnızca davet ettiğiniz kişiyle paylaşılır. Uygulamanın geliştiricisi bu verilere erişemez.")
+                           text: "iCloud açıksa aynı veriler sizin özel iCloud alanınıza eşitlenir. Haneyi paylaşırsanız yalnızca davet ettiğiniz kişilerle paylaşılır. Uygulamanın geliştiricisi bu verilere erişemez.")
                 PrivacyRow(symbol: "network", title: "İnternete giden tek istek",
                            text: "Döviz kurları için TCMB'nin herkese açık kur dosyası indirilir (tcmb.gov.tr). Bu istekte sizinle ilgili hiçbir bilgi gönderilmez.")
                 PrivacyRow(symbol: "hand.raised.fill", title: "Toplanmayanlar",

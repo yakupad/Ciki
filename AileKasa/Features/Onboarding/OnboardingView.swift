@@ -70,8 +70,8 @@ struct OnboardingView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     Feature(symbol: "calendar", title: "Her ay tek bakışta",
                             text: "Kartlar, krediler, kira ve maaşlar; geçmiş, bu ay ve gelecek aylar.")
-                    Feature(symbol: "person.2.fill", title: "Eşinizle ortak",
-                            text: "iCloud ile iki telefon aynı kayıtları görür ve düzenler.")
+                    Feature(symbol: "person.2.fill", title: "Birlikte kullanın",
+                            text: "Eşiniz, aileniz ya da ev arkadaşlarınız iCloud ile aynı kayıtları görür ve düzenler.")
                     Feature(symbol: "lock.shield.fill", title: "Verileriniz sizde",
                             text: "Kayıtlar yalnızca cihazınızda ve kendi iCloud hesabınızda durur. Reklam ya da analiz yok.")
                 }
@@ -82,7 +82,7 @@ struct OnboardingView: View {
         .safeAreaInset(edge: .bottom) {
             VStack(spacing: 12) {
                 PrimaryButton("Başla") { step = .people }
-                Button("Eşim beni davet etti") { step = .invited }
+                Button("Bir davet aldım") { step = .invited }
                     .font(.body.weight(.semibold))
             }
             .padding(24)
@@ -154,7 +154,7 @@ struct OnboardingView: View {
     private func placeholder(for index: Int) -> String {
         switch index {
         case 0: String(localized: "Adınız")
-        case 1: String(localized: "Eşinizin adı (isteğe bağlı)")
+        case 1: String(localized: "Diğer kişinin adı (isteğe bağlı)")
         default: String(localized: "Ad")
         }
     }
@@ -209,9 +209,9 @@ struct OnboardingView: View {
                 Text("Davet bağlantısını açın")
                     .font(.largeTitle.bold())
                     .accessibilityAddTraits(.isHeader)
-                Text("Eşinizin Mesajlar, WhatsApp ya da e-postayla gönderdiği davet bağlantısına bu telefonda dokunun. Ortak hane birkaç saniye içinde gelir.")
+                Text("Size Mesajlar, WhatsApp ya da e-postayla gönderilen davet bağlantısına bu telefonda dokunun. Ortak hane birkaç saniye içinde gelir.")
                     .font(.body)
-                Text("Davet gelmediyse eşinizden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Eşinizle paylaşın adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı.")
+                Text("Davet gelmediyse haneyi kuran kişiden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Kişi davet et adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı.")
                     .font(.callout)
                     .foregroundStyle(Color.ikincil)
             }

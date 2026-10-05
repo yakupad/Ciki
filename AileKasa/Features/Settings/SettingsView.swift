@@ -266,7 +266,7 @@ struct SettingsView: View {
                     dismiss()
                 }
             } message: {
-                Text("Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdan ve iCloud'unuzdan silinir. Haneyi eşinizle paylaştıysanız onun telefonundan da kalkar. Eşinizin size paylaştığı hane silinmez. Bu işlem geri alınamaz.")
+                Text("Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdan ve iCloud'unuzdan silinir. Haneyi başkalarıyla paylaştıysanız onların telefonlarından da kalkar. Başkasının size paylaştığı hane silinmez. Bu işlem geri alınamaz.")
             }
             .confirmationDialog("Tüm kalemler ve kayıtlar silinsin mi?", isPresented: $confirmWipe, titleVisibility: .visible) {
                 Button("Hepsini sil", role: .destructive) { SampleData.wipe(context) }

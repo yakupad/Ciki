@@ -36,7 +36,7 @@ final class SceneDelegate: NSObject, UIWindowSceneDelegate {
     }
 }
 
-/// Haneyi eşle paylaşma, daveti kabul etme ve paylaşım durumunu okuma.
+/// Haneyi başkalarıyla paylaşma, daveti kabul etme ve paylaşım durumunu okuma.
 enum CloudSharing {
     /// Davet kabul edildikten sonra uygulamanın kullanıcıya soracağı durum.
     static let didAcceptShare = Notification.Name("CloudSharing.didAcceptShare")

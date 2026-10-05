@@ -122,7 +122,7 @@ extension AileKasaApp {
 @Observable
 final class AppState {
     var month: Month = .current
-    /// Eşin hanesine katıldıktan sonra bu cihazda kalan, kayıt içeren yerel hane.
+    /// Paylaşılan bir haneye katıldıktan sonra bu cihazda kalan, kayıt içeren yerel hane.
     var localHouseholdToResolve: NSManagedObjectID?
 }
 
@@ -175,7 +175,7 @@ struct RootView: View {
     }
 }
 
-/// Eşin hanesine katılınca bu cihazdaki eski kayıtlar için karar.
+/// Paylaşılan bir haneye katılınca bu cihazdaki eski kayıtlar için karar.
 private struct LocalHouseholdDecision: ViewModifier {
     @Environment(AppState.self) private var app
     @Environment(\.managedObjectContext) private var context
@@ -191,7 +191,7 @@ private struct LocalHouseholdDecision: ViewModifier {
             Button("Bu cihazdakileri sil", role: .destructive) { resolve(copy: false) }
             Button("Sonra karar ver", role: .cancel) {}
         } message: {
-            Text("Eşinizin hanesine katıldınız. Bu cihazda daha önce girdiğiniz kalemler ya da hesaplar var. Ortak haneye kopyalarsanız eşiniz de görür; silerseniz yalnızca ortak hane kalır.")
+            Text("Paylaşılan bir haneye katıldınız. Bu cihazda daha önce girdiğiniz kalemler ya da hesaplar var. Ortak haneye kopyalarsanız hanedeki herkes görür; silerseniz yalnızca ortak hane kalır.")
         }
     }
 

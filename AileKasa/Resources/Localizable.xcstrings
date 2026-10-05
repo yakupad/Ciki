@@ -1146,6 +1146,22 @@
         }
       }
     },
+    "Bir davet aldım": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I Was Invited"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir davet aldım"
+          }
+        }
+      }
+    },
     "Birikimli": {
       "localizations": {
         "en": {
@@ -1158,6 +1174,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Birikimli"
+          }
+        }
+      }
+    },
+    "Birlikte kullanın": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use it together"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birlikte kullanın"
           }
         }
       }
@@ -1418,18 +1450,18 @@
         }
       }
     },
-    "Bu hane size paylaşıldı. Eklediğiniz ve değiştirdiğiniz her şey diğer kişide de görünür.": {
+    "Bu hane size paylaşıldı. Eklediğiniz ve değiştirdiğiniz her şey hanedeki diğer kişilerde de görünür.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This household was shared with you. Everything you add or change also appears for the other person."
+            "value": "This household was shared with you. Everything you add or change also appears for the other people in it."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu hane size paylaşıldı. Eklediğiniz ve değiştirdiğiniz her şey diğer kişide de görünür."
+            "value": "Bu hane size paylaşıldı. Eklediğiniz ve değiştirdiğiniz her şey hanedeki diğer kişilerde de görünür."
           }
         }
       }
@@ -1594,34 +1626,34 @@
         }
       }
     },
-    "Davet gelmediyse eşinizden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Eşinizle paylaşın adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı.": {
+    "Davet gelmediyse haneyi kuran kişiden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Kişi davet et adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "If you haven't received it, ask your partner to go to Settings → Share with iCloud → Share with Your Partner in Aile Kasası. Both phones need to be signed in to iCloud."
+            "value": "If you haven't received it, ask the person who set up the household to go to Settings → Share with iCloud → Invite People in Aile Kasası. Both phones need to be signed in to iCloud."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Davet gelmediyse eşinizden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Eşinizle paylaşın adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı."
+            "value": "Davet gelmediyse haneyi kuran kişiden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Kişi davet et adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı."
           }
         }
       }
     },
-    "Davet kabul edildikten sonra iki telefon aynı kalemleri, kayıtları ve hesapları görür ve düzenler. Gösterim para birimi, kilit ve hatırlatmalar her cihazda ayrı ayarlanır.": {
+    "Daveti kabul eden herkes aynı kalemleri, kayıtları ve hesapları görür ve düzenler. Gösterim para birimi, kilit ve hatırlatmalar her cihazda ayrı ayarlanır.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Once the invitation is accepted, both phones see and edit the same items, entries and accounts. Display currency, lock and reminders are set separately on each device."
+            "value": "Everyone who accepts the invitation sees and edits the same items, entries and accounts. Display currency, lock and reminders are set separately on each device."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Davet kabul edildikten sonra iki telefon aynı kalemleri, kayıtları ve hesapları görür ve düzenler. Gösterim para birimi, kilit ve hatırlatmalar her cihazda ayrı ayarlanır."
+            "value": "Daveti kabul eden herkes aynı kalemleri, kayıtları ve hesapları görür ve düzenler. Gösterim para birimi, kilit ve hatırlatmalar her cihazda ayrı ayarlanır."
           }
         }
       }
@@ -1718,6 +1750,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Diğer kalemler"
+          }
+        }
+      }
+    },
+    "Diğer kişinin adı (isteğe bağlı)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another person's name (optional)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diğer kişinin adı (isteğe bağlı)"
           }
         }
       }
@@ -2027,115 +2075,34 @@
         }
       }
     },
-    "Eşim beni davet etti": {
+    "Eşiniz, aileniz ya da ev arkadaşlarınız iCloud ile aynı kayıtları görür ve düzenler.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "My Partner Invited Me"
+            "value": "Your partner, family or housemates see and edit the same entries with iCloud."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Eşim beni davet etti"
+            "value": "Eşiniz, aileniz ya da ev arkadaşlarınız iCloud ile aynı kayıtları görür ve düzenler."
           }
         }
       }
     },
-    "Eşinizin adı (isteğe bağlı)": {
+    "Eşinizi, annenizi, babanızı, kardeşlerinizi ya da ev arkadaşlarınızı davet edebilirsiniz; birden fazla kişi olabilir. Davet Mesajlar, WhatsApp ya da e-postayla gider; daveti açan herkesin telefonuna tüm kayıtlar gelir.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Partner's name (optional)"
+            "value": "You can invite your partner, parents, siblings or housemates, and more than one person. The invitation goes by Messages, WhatsApp or email; everyone who opens it gets all the entries on their phone."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Eşinizin adı (isteğe bağlı)"
-          }
-        }
-      }
-    },
-    "Eşinizin hanesine katıldınız. Bu cihazda daha önce girdiğiniz kalemler ya da hesaplar var. Ortak haneye kopyalarsanız eşiniz de görür; silerseniz yalnızca ortak hane kalır.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You've joined your partner's household. This device has items or accounts you entered earlier. Copy them to the shared household so your partner sees them too, or delete them to keep only the shared household."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eşinizin hanesine katıldınız. Bu cihazda daha önce girdiğiniz kalemler ya da hesaplar var. Ortak haneye kopyalarsanız eşiniz de görür; silerseniz yalnızca ortak hane kalır."
-          }
-        }
-      }
-    },
-    "Eşinizin Mesajlar, WhatsApp ya da e-postayla gönderdiği davet bağlantısına bu telefonda dokunun. Ortak hane birkaç saniye içinde gelir.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "On this phone, tap the invitation link your partner sent by Messages, WhatsApp or email. The shared household arrives within a few seconds."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eşinizin Mesajlar, WhatsApp ya da e-postayla gönderdiği davet bağlantısına bu telefonda dokunun. Ortak hane birkaç saniye içinde gelir."
-          }
-        }
-      }
-    },
-    "Eşinizle ortak": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shared with your partner"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eşinizle ortak"
-          }
-        }
-      }
-    },
-    "Eşinizle paylaşım bir sonraki aşamada eklenecek. Şu an veriler yalnızca bu cihazda.": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sharing with your partner is coming in a later update. For now, data stays on this device."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eşinizle paylaşım bir sonraki aşamada eklenecek. Şu an veriler yalnızca bu cihazda."
-          }
-        }
-      }
-    },
-    "Eşinizle paylaşın": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Share with Your Partner"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eşinizle paylaşın"
+            "value": "Eşinizi, annenizi, babanızı, kardeşlerinizi ya da ev arkadaşlarınızı davet edebilirsiniz; birden fazla kişi olabilir. Davet Mesajlar, WhatsApp ya da e-postayla gider; daveti açan herkesin telefonuna tüm kayıtlar gelir."
           }
         }
       }
@@ -2521,22 +2488,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hanede kimler var?"
-          }
-        }
-      }
-    },
-    "Hanenizi paylaştığınızda eşinize Mesajlar, WhatsApp ya da e-posta ile bir davet gönderilir. Eşiniz daveti açınca tüm kayıtlar onun telefonuna da gelir.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When you share your household, your partner gets an invitation by Messages, WhatsApp or email. Once they open it, all your data appears on their phone too."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hanenizi paylaştığınızda eşinize Mesajlar, WhatsApp ya da e-posta ile bir davet gönderilir. Eşiniz daveti açınca tüm kayıtlar onun telefonuna da gelir."
           }
         }
       }
@@ -3022,18 +2973,18 @@
         }
       }
     },
-    "iCloud açıksa aynı veriler sizin özel iCloud alanınıza eşitlenir. Eşinizle paylaşırsanız ortak hane yalnızca davet ettiğiniz kişiyle paylaşılır. Uygulamanın geliştiricisi bu verilere erişemez.": {
+    "iCloud açıksa aynı veriler sizin özel iCloud alanınıza eşitlenir. Haneyi paylaşırsanız yalnızca davet ettiğiniz kişilerle paylaşılır. Uygulamanın geliştiricisi bu verilere erişemez.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "If iCloud is on, the same data syncs to your private iCloud space. If you share with your partner, the household is shared only with the person you invite. The app's developer can't access this data."
+            "value": "If iCloud is on, the same data syncs to your private iCloud space. If you share your household, it's shared only with the people you invite. The app's developer can't access this data."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "iCloud açıksa aynı veriler sizin özel iCloud alanınıza eşitlenir. Eşinizle paylaşırsanız ortak hane yalnızca davet ettiğiniz kişiyle paylaşılır. Uygulamanın geliştiricisi bu verilere erişemez."
+            "value": "iCloud açıksa aynı veriler sizin özel iCloud alanınıza eşitlenir. Haneyi paylaşırsanız yalnızca davet ettiğiniz kişilerle paylaşılır. Uygulamanın geliştiricisi bu verilere erişemez."
           }
         }
       }
@@ -3050,22 +3001,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "iCloud durumu kontrol ediliyor…"
-          }
-        }
-      }
-    },
-    "iCloud ile iki telefon aynı kayıtları görür ve düzenler.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "With iCloud, both phones see and edit the same entries."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "iCloud ile iki telefon aynı kayıtları görür ve düzenler."
           }
         }
       }
@@ -3310,18 +3245,18 @@
         }
       }
     },
-    "Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdan ve iCloud'unuzdan silinir. Haneyi eşinizle paylaştıysanız onun telefonundan da kalkar. Eşinizin size paylaştığı hane silinmez. Bu işlem geri alınamaz.": {
+    "Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdan ve iCloud'unuzdan silinir. Haneyi başkalarıyla paylaştıysanız onların telefonlarından da kalkar. Başkasının size paylaştığı hane silinmez. Bu işlem geri alınamaz.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Items, entries, people and IBANs are deleted from this device and your iCloud. If you shared your household with your partner, it's removed from their phone too. A household your partner shared with you isn't deleted. This can't be undone."
+            "value": "Items, entries, people and IBANs are deleted from this device and your iCloud. If you shared your household, it's removed from the other people's phones too. A household someone else shared with you isn't deleted. This can't be undone."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdan ve iCloud'unuzdan silinir. Haneyi eşinizle paylaştıysanız onun telefonundan da kalkar. Eşinizin size paylaştığı hane silinmez. Bu işlem geri alınamaz."
+            "value": "Kalemler, kayıtlar, kişiler ve IBAN'lar bu cihazdan ve iCloud'unuzdan silinir. Haneyi başkalarıyla paylaştıysanız onların telefonlarından da kalkar. Başkasının size paylaştığı hane silinmez. Bu işlem geri alınamaz."
           }
         }
       }
@@ -3722,6 +3657,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kişi"
+          }
+        }
+      }
+    },
+    "Kişi davet et": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invite People"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişi davet et"
           }
         }
       }
@@ -4206,6 +4157,22 @@
         }
       }
     },
+    "Paylaşılan bir haneye katıldınız. Bu cihazda daha önce girdiğiniz kalemler ya da hesaplar var. Ortak haneye kopyalarsanız hanedeki herkes görür; silerseniz yalnızca ortak hane kalır.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You've joined a shared household. This device has items or accounts you entered earlier. Copy them to the shared household so everyone in it can see them, or delete them to keep only the shared household."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaşılan bir haneye katıldınız. Bu cihazda daha önce girdiğiniz kalemler ya da hesaplar var. Ortak haneye kopyalarsanız hanedeki herkes görür; silerseniz yalnızca ortak hane kalır."
+          }
+        }
+      }
+    },
     "Paylaşım başlatılamadı. İnternet bağlantınızı ve iCloud hesabınızı kontrol edip yeniden deneyin.": {
       "localizations": {
         "en": {
@@ -4426,6 +4393,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sistem seçiliyse telefonun açık ya da koyu mod ayarı izlenir. Bu ayar yalnızca bu telefon için geçerlidir."
+          }
+        }
+      }
+    },
+    "Size Mesajlar, WhatsApp ya da e-postayla gönderilen davet bağlantısına bu telefonda dokunun. Ortak hane birkaç saniye içinde gelir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On this phone, tap the invitation link you received by Messages, WhatsApp or email. The shared household arrives within a few seconds."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Size Mesajlar, WhatsApp ya da e-postayla gönderilen davet bağlantısına bu telefonda dokunun. Ortak hane birkaç saniye içinde gelir."
           }
         }
       }
