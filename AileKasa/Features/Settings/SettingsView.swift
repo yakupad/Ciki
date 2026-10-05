@@ -12,6 +12,7 @@ struct SettingsView: View {
     private var households: FetchedResults<Household>
 
     @State private var confirmWipe = false
+    @State private var personToDelete: Person?
 
     var body: some View {
         NavigationStack {
@@ -30,10 +31,21 @@ struct SettingsView: View {
                                 .labelsHidden()
                         }
                     }
+                    .onDelete { offsets in
+                        personToDelete = offsets.first.map { people[$0] }
+                    }
+                    .onMove(perform: movePeople)
+                    Button("Kişi ekle", systemImage: "person.badge.plus", action: addPerson)
                 } header: {
-                    Text("Kişiler")
+                    HStack {
+                        Text("Kişiler")
+                        Spacer()
+                        if people.count > 1 {
+                            EditButton().font(.footnote)
+                        }
+                    }
                 } footer: {
-                    Text("Kişi renkleri özet, liste ve tabloda kullanılır.")
+                    Text("Kişi renkleri özet, liste ve tabloda kullanılır. Silinen kişinin kalemleri Ortak'a geçer.")
                 }
 
                 Section {
@@ -85,6 +97,15 @@ struct SettingsView: View {
                     }
                 }
             }
+            .confirmationDialog("Kişi silinsin mi?", isPresented: Binding(
+                get: { personToDelete != nil },
+                set: { if !$0 { personToDelete = nil } }
+            ), titleVisibility: .visible, presenting: personToDelete) { person in
+                Button("\(person.displayName) kişisini sil", role: .destructive) { delete(person) }
+            } message: { person in
+                let count = (person.items as? Set<LedgerItem>)?.count ?? 0
+                Text("\(person.displayName) adına \(count) kalem var. Kalemler ve kayıtları silinmez, Ortak'a geçer.")
+            }
             .confirmationDialog("Tüm kalemler ve kayıtlar silinsin mi?", isPresented: $confirmWipe, titleVisibility: .visible) {
                 Button("Hepsini sil", role: .destructive) { SampleData.wipe(context) }
             }
@@ -97,6 +118,34 @@ struct SettingsView: View {
             get: { object[keyPath: keyPath] ?? "" },
             set: { object[keyPath: keyPath] = $0 }
         )
+    }
+
+    /// Yeni kişiye sıradaki paletten, kullanılmayan bir renk verilir.
+    private func addPerson() {
+        let palette = ["3D5FD9", "C23F7B", "D9822B", "2E9E6B", "7A4FD1", "1F8FB0", "B5452E", "6B7A2E"]
+        let used = Set(people.compactMap { $0.colorHex?.uppercased() })
+        let person = Person(context: context)
+        person.uuid = UUID()
+        person.name = ""
+        person.colorHex = palette.first { !used.contains($0) } ?? palette[people.count % palette.count]
+        person.sortOrder = Int16((people.map(\.sortOrder).max() ?? -1) + 1)
+        person.household = households.first ?? context.currentHousehold()
+        context.saveIfNeeded()
+    }
+
+    private func movePeople(from source: IndexSet, to destination: Int) {
+        var ordered = Array(people)
+        ordered.move(fromOffsets: source, toOffset: destination)
+        for (index, person) in ordered.enumerated() {
+            person.sortOrder = Int16(index)
+        }
+        context.saveIfNeeded()
+    }
+
+    private func delete(_ person: Person) {
+        context.delete(person)
+        context.saveIfNeeded()
+        personToDelete = nil
     }
 
     private func colorBinding(_ person: Person) -> Binding<Color> {

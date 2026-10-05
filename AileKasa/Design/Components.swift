@@ -137,14 +137,37 @@ struct OwnerFilterPicker: View {
     let people: [Person]
 
     var body: some View {
+        // Tümü + kişiler + Ortak beş seçeneği geçerse bölümlü seçici sıkışır; menüye geçilir.
+        if people.count <= 3 {
+            picker.pickerStyle(.segmented)
+        } else {
+            HStack {
+                Text("Kişi").foregroundStyle(.secondary)
+                Spacer()
+                picker.pickerStyle(.menu)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 6)
+            .background(Color.kart, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        }
+    }
+
+    private var picker: some View {
+        pickerBody
+            // Seçili kişi silinirse filtre "Tümü"ne döner.
+            .onChange(of: people.map(\.objectID)) { _, ids in
+                if case .person(let id) = selection, !ids.contains(id) { selection = .all }
+            }
+    }
+
+    private var pickerBody: some View {
         Picker("Kişi", selection: $selection) {
             Text("Tümü").tag(OwnerFilter.all)
             ForEach(people, id: \.objectID) { person in
-                Text(person.displayName).tag(OwnerFilter.person(person.objectID))
+                Text(verbatim: person.displayName).tag(OwnerFilter.person(person.objectID))
             }
             Text("Ortak").tag(OwnerFilter.shared)
         }
-        .pickerStyle(.segmented)
     }
 }
 

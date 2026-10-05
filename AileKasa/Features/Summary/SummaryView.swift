@@ -72,7 +72,8 @@ struct SummaryView: View {
 
     private func peopleRow(_ summary: MonthSummary) -> some View {
         let shared = summary.net(for: nil)
-        return HStack(spacing: 8) {
+        // Üçlü ızgara: kişi sayısı arttıkça alt satıra geçer.
+        return LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
             ForEach(people, id: \.objectID) { person in
                 PersonTile(name: person.displayName, color: person.color, value: summary.net(for: person))
             }
