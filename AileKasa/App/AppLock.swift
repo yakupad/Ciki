@@ -32,6 +32,18 @@ final class AppLock {
         }
     }
 
+    /// Kilit düğmesinin simgesi: Face ID, Touch ID (ör. iPhone Duo, Mac) ya da parola.
+    var methodSymbol: String {
+        let context = LAContext()
+        _ = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+        switch context.biometryType {
+        case .faceID: return "faceid"
+        case .touchID: return "touchid"
+        case .opticID: return "opticid"
+        default: return "lock.open.fill"
+        }
+    }
+
     func setEnabled(_ enabled: Bool) async {
         if enabled {
             guard await authenticate(reason: String(localized: "Kilidi açmak için kimliğinizi doğrulayın")) else { return }
@@ -123,7 +135,7 @@ struct LockScreen: View {
                     Button {
                         Task { await lock.unlock() }
                     } label: {
-                        Label("Kilidi aç", systemImage: "faceid")
+                        Label("Kilidi aç", systemImage: lock.methodSymbol)
                             .padding(.horizontal, 8)
                     }
                     .buttonStyle(.borderedProminent)
