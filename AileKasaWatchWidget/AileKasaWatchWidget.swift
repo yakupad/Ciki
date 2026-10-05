@@ -9,7 +9,7 @@ struct AileKasaWatchWidget: Widget {
             ComplicationView(entry: entry)
                 .containerBackground(.clear, for: .widget)
         }
-        .configurationDisplayName("Aile Kasası")
+        .configurationDisplayName("Çıkı")
         .description("Sıradaki ödeme ve ayın neti.")
         .supportedFamilies([.accessoryRectangular, .accessoryInline, .accessoryCircular, .accessoryCorner])
     }
@@ -50,7 +50,7 @@ struct ComplicationView: View {
             if let next {
                 Text(verbatim: "\(next.title) · \(dueText(next.dueDate))")
             } else {
-                Text("Aile Kasası")
+                Text("Çıkı")
             }
         case .accessoryCircular:
             VStack(spacing: 0) {
@@ -63,7 +63,7 @@ struct ComplicationView: View {
         case .accessoryCorner:
             Image(systemName: "creditcard.fill")
                 .widgetLabel {
-                    Text(verbatim: next.map { "\($0.title) · \(dueText($0.dueDate))" } ?? "Aile Kasası")
+                    Text(verbatim: next.map { "\($0.title) · \(dueText($0.dueDate))" } ?? "Çıkı")
                 }
         default:
             VStack(alignment: .leading, spacing: 1) {
@@ -74,7 +74,7 @@ struct ComplicationView: View {
                     Text(verbatim: hidden ? String(localized: "Tutar gizli") : next.amount)
                         .privacySensitive()
                 } else {
-                    Text(verbatim: snapshot?.monthTitle ?? "Aile Kasası").font(.headline)
+                    Text(verbatim: snapshot?.monthTitle ?? "Çıkı").font(.headline)
                     Text("Bu ay bekleyen ödeme yok")
                 }
                 if let snapshot, !hidden {

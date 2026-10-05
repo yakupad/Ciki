@@ -56,14 +56,15 @@ struct OnboardingView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 28) {
                 VStack(alignment: .leading, spacing: 12) {
-                    Image(systemName: "wallet.bifold.fill")
-                        .font(.system(size: 44))
-                        .foregroundStyle(Color.petrol)
+                    Image("AppLogo")
+                        .resizable()
+                        .frame(width: 72, height: 72)
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                         .accessibilityHidden(true)
-                    Text("Aile Kasası'na hoş geldiniz")
+                    Text("Çıkı'ya hoş geldiniz")
                         .font(.largeTitle.bold())
                         .accessibilityAddTraits(.isHeader)
-                    Text("Excel'de tuttuğunuz borç, gelir ve ödeme tablosunun telefondaki hali.")
+                    Text("Ortak bütçe, borç ve ödeme takibi. Excel tablosuna gerek kalmadan.")
                         .font(.title3)
                         .foregroundStyle(Color.ikincil)
                 }
@@ -76,6 +77,11 @@ struct OnboardingView: View {
                     Feature(symbol: "lock.shield.fill", title: "Verileriniz sizde",
                             text: "Kayıtlar yalnızca cihazınızda ve kendi iCloud hesabınızda durur. Reklam ya da analiz yok.")
                 }
+
+                Text("Çıkı: eskiden paranın bağlanıp saklandığı düğümlü mendil.")
+                    .font(.footnote)
+                    .italic()
+                    .foregroundStyle(Color.ikincil)
             }
             .padding(24)
             .readableWidth(560)
@@ -228,7 +234,7 @@ struct OnboardingView: View {
                     .accessibilityAddTraits(.isHeader)
                 Text("Size Mesajlar, WhatsApp ya da e-postayla gönderilen davet bağlantısına bu telefonda dokunun. Ortak hane birkaç saniye içinde gelir.")
                     .font(.body)
-                Text("Davet gelmediyse haneyi kuran kişiden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Kişi davet et adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı.")
+                Text("Davet gelmediyse haneyi kuran kişiden Çıkı'da Ayarlar → iCloud ile ortak kullanım → Kişi davet et adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı.")
                     .font(.callout)
                     .foregroundStyle(Color.ikincil)
             }

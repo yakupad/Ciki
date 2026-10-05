@@ -26,12 +26,12 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasa
         GENERATE_INFOPLIST_FILE: YES
-        INFOPLIST_KEY_CFBundleDisplayName: "Aile Kasası"
+        INFOPLIST_KEY_CFBundleDisplayName: "Çıkı"
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
-        INFOPLIST_KEY_NSFaceIDUsageDescription: "Aile Kasası'nı açarken kimliğinizi doğrulamak için Face ID kullanılır."
+        INFOPLIST_KEY_NSFaceIDUsageDescription: "Çıkı'yı açarken kimliğinizi doğrulamak için Face ID kullanılır."
         TARGETED_DEVICE_FAMILY: "1,2,6"
         SUPPORTS_MACCATALYST: YES
         SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
@@ -72,7 +72,7 @@ targets:
     info:
       path: AileKasaWidget/Info.plist
       properties:
-        CFBundleDisplayName: Aile Kasası
+        CFBundleDisplayName: Çıkı
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     entitlements:
@@ -111,7 +111,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasa.watchkitapp
         GENERATE_INFOPLIST_FILE: YES
-        INFOPLIST_KEY_CFBundleDisplayName: "Aile Kasası"
+        INFOPLIST_KEY_CFBundleDisplayName: "Çıkı"
         INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.yakupad.AileKasa
         INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp: NO
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
@@ -132,7 +132,7 @@ targets:
     info:
       path: AileKasaWatchWidget/Info.plist
       properties:
-        CFBundleDisplayName: Aile Kasası
+        CFBundleDisplayName: Çıkı
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     entitlements:

@@ -1,22 +1,6 @@
 {
   "sourceLanguage": "tr",
   "strings": {
-    "Aile Kasası": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aile Kasası"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aile Kasası"
-          }
-        }
-      }
-    },
     "Ay sonu net": {
       "localizations": {
         "en": {
@@ -157,6 +141,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yarın"
+          }
+        }
+      }
+    },
+    "Çıkı": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkı"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkı"
           }
         }
       }

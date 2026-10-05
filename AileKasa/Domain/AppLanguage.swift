@@ -1,6 +1,6 @@
 import Foundation
 
-/// Uygulamanın o an kullandığı dil. iOS Ayarlar → Aile Kasası → Dil ile değiştirilir.
+/// Uygulamanın o an kullandığı dil. iOS Ayarlar → Çıkı → Dil ile değiştirilir.
 nonisolated enum AppLanguage: Sendable {
     case turkish
     case english

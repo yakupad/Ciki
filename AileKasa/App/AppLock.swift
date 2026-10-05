@@ -61,7 +61,7 @@ final class AppLock {
 
     func unlock() async {
         guard isLocked, !isAuthenticating else { return }
-        if await authenticate(reason: String(localized: "Aile Kasası'nı açmak için kimliğinizi doğrulayın")) {
+        if await authenticate(reason: String(localized: "Çıkı'yı açmak için kimliğinizi doğrulayın")) {
             isLocked = false
         }
     }
@@ -129,7 +129,7 @@ struct LockScreen: View {
                 Image(systemName: "lock.fill")
                     .font(.system(size: 44, weight: .semibold))
                     .foregroundStyle(Color.petrol)
-                Text("Aile Kasası kilitli")
+                Text("Çıkı kilitli")
                     .font(.title2.weight(.bold))
                 if lock.isLocked {
                     Button {

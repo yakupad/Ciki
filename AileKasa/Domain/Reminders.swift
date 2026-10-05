@@ -79,7 +79,7 @@ final class ReminderScheduler {
         if enabled {
             let granted = (try? await center.requestAuthorization(options: [.alert, .sound, .badge])) ?? false
             guard granted else {
-                errorMessage = String(localized: "Bildirim izni verilmedi. iOS Ayarlar → Bildirimler → Aile Kasası'ndan açabilirsiniz.")
+                errorMessage = String(localized: "Bildirim izni verilmedi. iOS Ayarlar → Bildirimler → Çıkı'dan açabilirsiniz.")
                 isEnabled = false
                 defaults.set(false, forKey: "reminders.enabled")
                 return

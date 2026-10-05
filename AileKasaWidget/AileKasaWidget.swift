@@ -14,7 +14,7 @@ struct SummaryWidget: Widget {
             SummaryWidgetView(entry: entry)
                 .containerBackground(WidgetColors.background, for: .widget)
         }
-        .configurationDisplayName("Aile Kasası")
+        .configurationDisplayName("Çıkı")
         .description("Bu ayın neti ve yaklaşan ödemeler.")
         .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular, .accessoryInline])
     }
@@ -213,7 +213,7 @@ private struct LockedView: View {
 
     var body: some View {
         if family == .accessoryInline {
-            Text("Aile Kasası")
+            Text("Çıkı")
         } else {
             VStack(spacing: 6) {
                 Image(systemName: isEmpty ? "tray" : "lock.fill")

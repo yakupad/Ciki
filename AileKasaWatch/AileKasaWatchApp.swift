@@ -163,7 +163,7 @@ private struct WaitingView: View {
                 .font(.title2)
                 .foregroundStyle(WatchColors.petrol)
                 .accessibilityHidden(true)
-            Text("iPhone'da Aile Kasası'nı açın")
+            Text("iPhone'da Çıkı'yı açın")
                 .font(.headline)
                 .multilineTextAlignment(.center)
             Text("Veriler iPhone'dan gelir.")

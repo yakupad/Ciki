@@ -618,70 +618,6 @@
         }
       }
     },
-    "Aile Kasası": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aile Kasası"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aile Kasası"
-          }
-        }
-      }
-    },
-    "Aile Kasası kilitli": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aile Kasası is locked"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aile Kasası kilitli"
-          }
-        }
-      }
-    },
-    "Aile Kasası'na hoş geldiniz": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Welcome to Aile Kasası"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aile Kasası'na hoş geldiniz"
-          }
-        }
-      }
-    },
-    "Aile Kasası'nı açmak için kimliğinizi doğrulayın": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verify your identity to open Aile Kasası"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aile Kasası'nı açmak için kimliğinizi doğrulayın"
-          }
-        }
-      }
-    },
     "Akraba": {
       "localizations": {
         "en": {
@@ -1162,18 +1098,18 @@
         }
       }
     },
-    "Bildirim izni verilmedi. iOS Ayarlar → Bildirimler → Aile Kasası'ndan açabilirsiniz.": {
+    "Bildirim izni verilmedi. iOS Ayarlar → Bildirimler → Çıkı'dan açabilirsiniz.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Notifications aren't allowed. Turn them on in iOS Settings → Notifications → Aile Kasası."
+            "value": "Notifications aren't allowed. Turn them on in iOS Settings → Notifications → Çıkı."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bildirim izni verilmedi. iOS Ayarlar → Bildirimler → Aile Kasası'ndan açabilirsiniz."
+            "value": "Bildirim izni verilmedi. iOS Ayarlar → Bildirimler → Çıkı'dan açabilirsiniz."
           }
         }
       }
@@ -1706,18 +1642,18 @@
         }
       }
     },
-    "Davet gelmediyse haneyi kuran kişiden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Kişi davet et adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı.": {
+    "Davet gelmediyse haneyi kuran kişiden Çıkı'da Ayarlar → iCloud ile ortak kullanım → Kişi davet et adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "If you haven't received it, ask the person who set up the household to go to Settings → Share with iCloud → Invite People in Aile Kasası. Both phones need to be signed in to iCloud."
+            "value": "If you haven't received it, ask the person who set up the household to go to Settings → Share with iCloud → Invite People in Çıkı. Both phones need to be signed in to iCloud."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Davet gelmediyse haneyi kuran kişiden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Kişi davet et adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı."
+            "value": "Davet gelmediyse haneyi kuran kişiden Çıkı'da Ayarlar → iCloud ile ortak kullanım → Kişi davet et adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı."
           }
         }
       }
@@ -2151,22 +2087,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Excel örnek verisini yükle"
-          }
-        }
-      }
-    },
-    "Excel'de tuttuğunuz borç, gelir ve ödeme tablosunun telefondaki hali.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The spreadsheet of debts, income and payments you kept, now on your phone."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Excel'de tuttuğunuz borç, gelir ve ödeme tablosunun telefondaki hali."
           }
         }
       }
@@ -4205,6 +4125,22 @@
         }
       }
     },
+    "Ortak bütçe, borç ve ödeme takibi. Excel tablosuna gerek kalmadan.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shared budget, debt and payment tracking, without a spreadsheet."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ortak bütçe, borç ve ödeme takibi. Excel tablosuna gerek kalmadan."
+          }
+        }
+      }
+    },
     "Ortak haneye kopyala": {
       "localizations": {
         "en": {
@@ -5370,6 +5306,86 @@
           "stringUnit": {
             "state": "translated",
             "value": "Çıkarıldı"
+          }
+        }
+      }
+    },
+    "Çıkı": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkı"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkı"
+          }
+        }
+      }
+    },
+    "Çıkı kilitli": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkı is locked"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkı kilitli"
+          }
+        }
+      }
+    },
+    "Çıkı'ya hoş geldiniz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Çıkı"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkı'ya hoş geldiniz"
+          }
+        }
+      }
+    },
+    "Çıkı'yı açmak için kimliğinizi doğrulayın": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verify your identity to open Çıkı"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkı'yı açmak için kimliğinizi doğrulayın"
+          }
+        }
+      }
+    },
+    "Çıkı: eskiden paranın bağlanıp saklandığı düğümlü mendil.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkı: the knotted cloth people once tied their money in."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıkı: eskiden paranın bağlanıp saklandığı düğümlü mendil."
           }
         }
       }

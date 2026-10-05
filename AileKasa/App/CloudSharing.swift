@@ -61,7 +61,7 @@ enum CloudSharing {
     /// Haneyi ve ona bağlı kişileri, kalemleri, kayıtları ve hesapları paylaşır.
     static func createShare(for household: Household) async throws -> CKShare {
         let (_, share, _) = try await persistence.container.share([household], to: nil)
-        share[CKShare.SystemFieldKey.title] = household.name ?? String(localized: "Aile Kasası")
+        share[CKShare.SystemFieldKey.title] = household.name ?? String(localized: "Çıkı")
         return share
     }
 
@@ -95,7 +95,7 @@ private final class SharingDelegate: NSObject, UICloudSharingControllerDelegate 
     static let shared = SharingDelegate()
 
     func itemTitle(for csc: UICloudSharingController) -> String? {
-        csc.share?[CKShare.SystemFieldKey.title] as? String ?? String(localized: "Aile Kasası")
+        csc.share?[CKShare.SystemFieldKey.title] as? String ?? String(localized: "Çıkı")
     }
 
     func cloudSharingController(_ csc: UICloudSharingController, failedToSaveShareWithError error: Error) {

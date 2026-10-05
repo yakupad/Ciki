@@ -1,14 +1,18 @@
-<p align="center"><img src="docs/icon.png" width="96" alt="Aile Kasası ikonu"></p>
+<p align="center"><img src="docs/icon.png" width="96" alt="Çıkı ikonu"></p>
 
-# Aile Kasası
+# Çıkı
 
-Excel'de tutulan aylık borç, gelir ve ödeme tablosunun iPhone uygulaması. Deniz ve Ece aynı veriyi kendi telefonlarında görür. Geçmiş, bu ay ve gelecek aylar tek bakışta okunur.
+*Çıkı: eskiden paranın bağlanıp saklandığı düğümlü mendil.*
+
+Ortak bütçe, borç ve ödeme takibi. Excel'de tutulan aylık borç, gelir ve ödeme tablosundan doğdu. Hanedeki herkes (eş, aile, ev arkadaşları) aynı veriyi kendi telefonunda görür; geçmiş, bu ay ve gelecek aylar tek bakışta okunur.
+
+> Proje klasörü, bundle ID (`com.yakupad.AileKasa`) ve iCloud container'ı eski "Aile Kasası" adını taşır; kullanıcıya görünmez ve iCloud verisini korumak için değiştirilmez.
 
 <img src="docs/ozet.png" width="300" alt="Özet ekranı, Ekim 2026">
 
 - **Platform:** iPhone, iPad ve Mac (Mac Catalyst, Mac görünümü), iOS / iPadOS / macOS 27, SwiftUI. iPhone Duo'nun dış ve iç ekranına uyumlu.
 - **Veri:** Core Data + NSPersistentCloudKitContainer (iCloud paylaşımına hazır)
-- **Diller:** Türkçe ve İngilizce (iOS Ayarlar → Aile Kasası → Dil)
+- **Diller:** Türkçe ve İngilizce (iOS Ayarlar → Çıkı → Dil)
 - **Görünüm:** Açık ve koyu mod; Ayarlar → Görünüm'den Sistem / Açık / Koyu seçilebilir.
 - **Para birimleri:** TL ve TCMB'nin yayımladığı 21 döviz (USD, EUR, GBP, CHF, JPY, SAR, AED, AZN…)
 - **Gösterim para birimi:** Toplamlar TL, EUR, USD ya da desteklenen herhangi bir birimde gösterilebilir (Ayarlar → Para birimi).

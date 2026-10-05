@@ -97,22 +97,6 @@
         }
       }
     },
-    "iPhone'da Aile Kasası'nı açın": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Aile Kasası on iPhone"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "iPhone'da Aile Kasası'nı açın"
-          }
-        }
-      }
-    },
     "iPhone'da uygulama kilidi açık olduğu için saatte tutar gösterilmez.": {
       "localizations": {
         "en": {
@@ -125,6 +109,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "iPhone'da uygulama kilidi açık olduğu için saatte tutar gösterilmez."
+          }
+        }
+      }
+    },
+    "iPhone'da Çıkı'yı açın": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Çıkı on iPhone"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone'da Çıkı'yı açın"
           }
         }
       }
