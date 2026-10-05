@@ -20,6 +20,17 @@ Excel'de tutulan aylık borç, gelir ve ödeme tablosunun iPhone uygulaması. De
 - **iPad, Mac ve iPhone Duo iç ekranı** (geniş boyut sınıfı): kenar çubuğuna açılabilen sekmeler, iki sütunlu Özet, yan yana grafikler, okunur genişlikte listeler.
 - Düzen pencere genişliğine göre seçilir (600 pt ve üstü iki sütun). Duo'nun iç ekranı iPhone olduğu için boyut sınıfı "dar" görünebilir; genişlik ölçüldüğü için yine iki sütunlu açılır. Duo katlanıp açıldığında ya da iPad'de bölünmüş ekranda kendiliğinden değişir.
 
+### iPhone Duo'da test
+
+iOS 27.1 simülatöründe *iPhone Duo* kullanılır. Katlama Xcode'un Device Hub penceresindeki düğmelerle yapılır; `simctl`'de bu komut yoktur. Komut satırından denemek için [hinge](https://github.com/artemnovichkov/hinge) aracı kullanılabilir. Araç, simülatörün içinde Device Hub'ın menteşe kaydırıcısıyla aynı olayı gönderir:
+
+```sh
+hinge open    # 180°, iç ekran
+hinge half    # 90°, yarım katlı
+hinge close   # 0°, dış ekran
+xcrun simctl io booted screenshot --display=<ekran UUID> duo.png   # ekranlar: simctl io booted enumerate
+```
+
 ## Kurulum
 
 ```sh
