@@ -18,6 +18,8 @@ struct SummaryView: View {
     @State private var route: EditorRoute?
     @Environment(\.isWideLayout) private var isWide
     @State private var showReport = false
+    /// Büyük yazı boyutlarında kişi kutuları daha az sütuna iner, tutarlar kırpılmaz.
+    @ScaledMetric(relativeTo: .footnote) private var personTileWidth: CGFloat = 104
 
     var body: some View {
         @Bindable var app = app
@@ -125,7 +127,7 @@ struct SummaryView: View {
     private func peopleRow(_ summary: MonthSummary) -> some View {
         let shared = summary.net(for: nil)
         // Üçlü ızgara: kişi sayısı arttıkça alt satıra geçer.
-        return LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
+        return LazyVGrid(columns: [GridItem(.adaptive(minimum: personTileWidth), spacing: 8)], spacing: 8) {
             ForEach(people, id: \.objectID) { person in
                 PersonTile(name: person.displayName, color: person.color, value: summary.net(for: person))
             }
@@ -159,13 +161,13 @@ struct SummaryView: View {
         }
         .font(.caption.weight(.semibold))
         .textCase(.uppercase)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.ikincil)
         .padding(.top, 6)
 
         if pending.isEmpty {
             Text("\(month.title) için bekleyen ödeme yok.")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color.ikincil)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
                 .background(Color.kart, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
@@ -199,7 +201,7 @@ private struct NetCard: View {
             Text("Ay sonu net")
                 .font(.caption.weight(.semibold))
                 .textCase(.uppercase)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color.ikincil)
             Text(Money.string(summary.net, sign: .always, fractions: false))
                 .font(.amount(34))
                 .foregroundStyle(Color.amount(summary.net))
@@ -216,12 +218,12 @@ private struct NetCard: View {
 
             HStack(alignment: .firstTextBaseline) {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Gelir + alacak").font(.caption2.weight(.semibold)).foregroundStyle(.secondary)
+                    Text("Gelir + alacak").font(.caption2.weight(.semibold)).foregroundStyle(Color.ikincil)
                     Text(Money.string(incoming, fractions: false)).font(.amount(15, weight: .semibold)).foregroundStyle(Color.gelir)
                 }
                 Spacer()
                 VStack(alignment: .trailing, spacing: 2) {
-                    Text("Gider").font(.caption2.weight(.semibold)).foregroundStyle(.secondary)
+                    Text("Gider").font(.caption2.weight(.semibold)).foregroundStyle(Color.ikincil)
                     Text(Money.string(summary.expense, fractions: false)).font(.amount(15, weight: .semibold)).foregroundStyle(Color.gider)
                 }
             }
@@ -229,7 +231,7 @@ private struct NetCard: View {
             if summary.unpaidExpense > 0 {
                 Text("Ödenmemiş: \(Money.string(summary.unpaidExpense, fractions: false))")
                     .font(.footnote)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.ikincil)
             }
             if summary.missingRateCount > 0 {
                 Label("\(summary.missingRateCount) döviz kalemi kur olmadığı için toplama girmedi.", systemImage: "exclamationmark.triangle.fill")
@@ -239,6 +241,7 @@ private struct NetCard: View {
         }
         .padding(16)
         .background(Color.kart, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -251,17 +254,17 @@ private struct PersonTile: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 5) {
                 Circle().fill(color).frame(width: 8, height: 8)
-                Text(name).font(.caption.weight(.semibold)).foregroundStyle(.secondary).lineLimit(1)
+                Text(name).font(.caption.weight(.semibold)).foregroundStyle(Color.ikincil)
             }
             Text(Money.string(value, sign: .always, fractions: false))
                 .font(.amount(14))
                 .foregroundStyle(Color.amount(value))
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
         .background(Color.kart, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -280,7 +283,7 @@ private struct UpcomingRow: View {
                     }
                     Text(line.item.ownerName)
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.ikincil)
                 }
             }
             Spacer()
@@ -295,6 +298,13 @@ private struct UpcomingRow: View {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 10)
+        // Satır tek öğe olarak okunur; "ödendi" işareti ekran okuyucu eylemi olarak sunulur.
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(verbatim: line.item.fullTitle))
+        .accessibilityValue(Text(verbatim: "\(Money.string(-line.amount, currency: line.currency)), \(line.item.ownerName)"))
+        .accessibilityHint(Text("Kaydı açmak için dokunun"))
+        .accessibilityAddTraits(.isButton)
+        .accessibilityAction(named: Text("Ödendi olarak işaretle"), markPaid)
     }
 }
 
@@ -317,7 +327,7 @@ struct NetChart: View {
             }
             .font(.caption2.weight(.semibold))
             .textCase(.uppercase)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.ikincil)
 
             Chart(points) { point in
                 BarMark(
@@ -327,6 +337,8 @@ struct NetChart: View {
                 .foregroundStyle(point.net < 0 ? Color.gider : Color.gelir)
                 .opacity(opacity(for: point.month))
                 .cornerRadius(3)
+                .accessibilityLabel(Text(verbatim: point.month.title))
+                .accessibilityValue(Text(verbatim: Money.string(point.net, sign: .always, fractions: false)))
             }
             .chartXAxis {
                 AxisMarks { value in

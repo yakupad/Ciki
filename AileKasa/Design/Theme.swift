@@ -3,11 +3,17 @@ import UIKit
 
 extension Color {
     static let petrol = Color(light: 0x0E5F59, dark: 0x43B5A9)
-    static let petrolSoft = Color(light: 0xD6EAE6, dark: 0x16332F)
-    static let gelir = Color(light: 0x1C8A57, dark: 0x4CC48A)
-    static let gider = Color(light: 0xCF4438, dark: 0xF0736A)
-    static let uyari = Color(light: 0xD98E10, dark: 0xF0B04A)
-    static let odendi = Color(light: 0x8C9692, dark: 0x6E7C78)
+    /// Vurgulu zemin (ör. tabloda seçili ay); üzerindeki gelir/gider yazıları 4,5:1'i geçer.
+    static let petrolSoft = Color(light: 0xEAF4F2, dark: 0x152825)
+    // Metin olarak kullanılan renkler açık ve koyu zeminde en az 4,5:1 kontrast verir (WCAG AA).
+    static let gelir = Color(light: 0x197E4F, dark: 0x4CC48A)
+    static let gider = Color(light: 0xC34035, dark: 0xF0736A)
+    static let uyari = Color(light: 0x98630B, dark: 0xF0B04A)
+    static let odendi = Color(light: 0x69706D, dark: 0x8A9793)
+    /// Gelir, gider ve uyarı renginin üzerindeki yazı: açık modda beyaz, koyu modda siyah.
+    static let vurguUstu = Color(light: 0xFFFFFF, dark: 0x000000)
+    /// İkincil metin: sistem grisinden biraz koyu, kart ve zeminde en az 4,5:1 kontrast.
+    static let ikincil = Color(light: 0x5E6A66, dark: 0x9AA7A3)
     static let zemin = Color(light: 0xF3F5F2, dark: 0x0D1312)
     static let kart = Color(light: 0xFFFFFF, dark: 0x161E1C)
 
@@ -36,7 +42,7 @@ extension Color {
     }
 
     static func amount(_ value: Decimal) -> Color {
-        value < 0 ? .gider : (value > 0 ? .gelir : .secondary)
+        value < 0 ? .gider : (value > 0 ? .gelir : .ikincil)
     }
 }
 
@@ -54,8 +60,20 @@ extension Person {
 }
 
 extension Font {
-    /// Büyük tutarlar: SF Pro Rounded, sabit genişlikli rakamlar.
+    /// Tutarlar: SF Pro Rounded, sabit genişlikli rakamlar. Boyut en yakın metin stiline bağlanır,
+    /// böylece telefonun yazı boyutu (Dynamic Type) ayarıyla birlikte büyür.
     static func amount(_ size: CGFloat, weight: Font.Weight = .bold) -> Font {
-        .system(size: size, weight: weight, design: .rounded).monospacedDigit()
+        let style: Font.TextStyle = switch size {
+        case 30...: .largeTitle
+        case 24..<30: .title
+        case 20..<24: .title2
+        case 17..<20: .body
+        case 16..<17: .callout
+        case 15..<16: .subheadline
+        case 13..<15: .footnote
+        case 12..<13: .caption
+        default: .caption2
+        }
+        return .system(style, design: .rounded, weight: weight).monospacedDigit()
     }
 }

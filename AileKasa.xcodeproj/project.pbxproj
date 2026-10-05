@@ -35,6 +35,7 @@
 		8DFD584AE6BE4D59062D96DA /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FACBB2EBD83D23072F141 /* SampleData.swift */; };
 		8E5BEB31E92B4FE720F2232A /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F469415488FB967EC16B717 /* WidgetSnapshot.swift */; };
 		92C7396DBF5331918C6D77C0 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6B9255677382C25259368 /* MonthView.swift */; };
+		956E7C4082F2E7340FC0C21D /* WatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158E11053FC4F44738425B85 /* WatchSync.swift */; };
 		9C16FA63A39CD4DE30DAAEFC /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 38679DED757F7F6E23FC7A95 /* PrivacyInfo.xcprivacy */; };
 		A0944AF3F16391CCBEAA5214 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128E29828B745A6E14E2A0B8 /* AccountsView.swift */; };
 		A0FE83D16A4BCC46B3405143 /* IBAN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B643CE6449F36528DFEFE8 /* IBAN.swift */; };
@@ -49,6 +50,7 @@
 		BF00D3DD33A9FCFA24FAEBB9 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37479CD0137E22FA470048CF /* ActivityView.swift */; };
 		C5A650BC8E668BCF89689E77 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE4EAB9FD57FE0B9337309 /* Ledger.swift */; };
 		C7D7A6B8097922B4F70F8949 /* AccountEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75866A4AF5A5BFF8940968EE /* AccountEditorView.swift */; };
+		CE495A4196CE23AE83EBA110 /* AccessibilityAuditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7089DDFF36271D5303D7F0CF /* AccessibilityAuditTests.swift */; };
 		D00A65ADB011D9D8B5B512B5 /* SharingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8BB8235D14C1AD706178E /* SharingSection.swift */; };
 		D6694541AF656DF2688F6B21 /* AppLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F33F0DD0EBA1F5E00520535 /* AppLock.swift */; };
 		E07431D4B0F4613F7AC15868 /* ManagedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D6E11BF4B6EFDD0226CB07 /* ManagedObjects.swift */; };
@@ -61,6 +63,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3B87E6706813F25D84811069 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B66C6BFDA007F8FCC2C70479 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28B101539C7455E05FA7D8DC;
+			remoteInfo = AileKasa;
+		};
 		841EC210828E3805B7AE7634 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B66C6BFDA007F8FCC2C70479 /* Project object */;
@@ -101,6 +110,7 @@
 		0E54240F3A7688A35718035E /* LedgerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerTests.swift; sourceTree = "<group>"; };
 		128E29828B745A6E14E2A0B8 /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
 		1382447340E34870395B9EB1 /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
+		158E11053FC4F44738425B85 /* WatchSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSync.swift; sourceTree = "<group>"; };
 		15D2B0D738A74AE954FEE383 /* DataEraser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEraser.swift; sourceTree = "<group>"; };
 		1CC8BB8235D14C1AD706178E /* SharingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingSection.swift; sourceTree = "<group>"; };
 		28E63C32539B4258CAEB70F4 /* AileKasa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AileKasa.xcdatamodel; sourceTree = "<group>"; };
@@ -110,6 +120,7 @@
 		2FD18C997936E44EDC992236 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		33A73338249BCEB0E4A174C5 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
 		36BE4EAB9FD57FE0B9337309 /* Ledger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ledger.swift; sourceTree = "<group>"; };
+		371F4808D451ACB57E422A7B /* AileKasaUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AileKasaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37479CD0137E22FA470048CF /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		3808D80CBAD5C543B7A851C4 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		383383A075B0649FDBA26C37 /* AileKasaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AileKasaWidget.swift; sourceTree = "<group>"; };
@@ -120,6 +131,7 @@
 		5422B3C12F07B8F5B71DCFD1 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		5F469415488FB967EC16B717 /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
 		64C8E04AC786FFB847445396 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7089DDFF36271D5303D7F0CF /* AccessibilityAuditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityAuditTests.swift; sourceTree = "<group>"; };
 		7120561EDE1C6D7415B103E9 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
 		73E6A6C56F6A67A1B3124A2F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		75866A4AF5A5BFF8940968EE /* AccountEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditorView.swift; sourceTree = "<group>"; };
@@ -233,6 +245,7 @@
 			children = (
 				DB3DB836129A99718E8A087E /* AileKasa.app */,
 				A80159089CAD251EE5DBBC89 /* AileKasaTests.xctest */,
+				371F4808D451ACB57E422A7B /* AileKasaUITests.xctest */,
 				B8951FDEC117FFCB744EB9FA /* AileKasaWidget.appex */,
 			);
 			name = Products;
@@ -297,6 +310,7 @@
 				3808D80CBAD5C543B7A851C4 /* Appearance.swift */,
 				7F33F0DD0EBA1F5E00520535 /* AppLock.swift */,
 				FEF5883766A3BCE9C9952191 /* CloudSharing.swift */,
+				158E11053FC4F44738425B85 /* WatchSync.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -334,6 +348,14 @@
 			path = Items;
 			sourceTree = "<group>";
 		};
+		B58E672FC89FA289B9F1B62E /* AileKasaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7089DDFF36271D5303D7F0CF /* AccessibilityAuditTests.swift */,
+			);
+			path = AileKasaUITests;
+			sourceTree = "<group>";
+		};
 		CCAE82D7CAE7F9315D14CEB0 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +388,7 @@
 			children = (
 				4F4982B7E0CD557736CC9564 /* AileKasa */,
 				58000B150220F323A41FF979 /* AileKasaTests */,
+				B58E672FC89FA289B9F1B62E /* AileKasaUITests */,
 				F9A4365460B463EB0656EA92 /* AileKasaWidget */,
 				4BB47C1A1A49EC18896ED104 /* Products */,
 			);
@@ -386,6 +409,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1C050A48528E137D0CE34C47 /* AileKasaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4ACACAF58B5E2BAC0560A459 /* Build configuration list for PBXNativeTarget "AileKasaUITests" */;
+			buildPhases = (
+				0D24AC4CA491C7932BC21BDF /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4FC643BDAAF4F71EECEE5766 /* PBXTargetDependency */,
+			);
+			name = AileKasaUITests;
+			packageProductDependencies = (
+			);
+			productName = AileKasaUITests;
+			productReference = 371F4808D451ACB57E422A7B /* AileKasaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		28B101539C7455E05FA7D8DC /* AileKasa */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3DA2D6E501BCC39904EE923 /* Build configuration list for PBXNativeTarget "AileKasa" */;
@@ -451,6 +492,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					1C050A48528E137D0CE34C47 = {
+						DevelopmentTeam = D677J9K7QY;
+						TestTargetID = 28B101539C7455E05FA7D8DC;
+					};
 					28B101539C7455E05FA7D8DC = {
 						DevelopmentTeam = D677J9K7QY;
 						ProvisioningStyle = Automatic;
@@ -481,6 +526,7 @@
 			targets = (
 				28B101539C7455E05FA7D8DC /* AileKasa */,
 				2A1CF72D902A8D1A5ADECD3B /* AileKasaTests */,
+				1C050A48528E137D0CE34C47 /* AileKasaUITests */,
 				D23DCBF72BC6553086AA1031 /* AileKasaWidget */,
 			);
 		};
@@ -510,6 +556,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0D24AC4CA491C7932BC21BDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE495A4196CE23AE83EBA110 /* AccessibilityAuditTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		69DC609648968CFD3E41BE1B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -570,6 +624,7 @@
 				D00A65ADB011D9D8B5B512B5 /* SharingSection.swift in Sources */,
 				7A1725054A9F45E999509DD1 /* SummaryView.swift in Sources */,
 				AA55576D29CFA86EC0F0AECA /* Theme.swift in Sources */,
+				956E7C4082F2E7340FC0C21D /* WatchSync.swift in Sources */,
 				BA27CFF9F446CAF7CFCF35D4 /* WidgetPublisher.swift in Sources */,
 				BA0364217FD8C7644914AB80 /* WidgetSnapshot.swift in Sources */,
 			);
@@ -578,6 +633,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4FC643BDAAF4F71EECEE5766 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28B101539C7455E05FA7D8DC /* AileKasa */;
+			targetProxy = 3B87E6706813F25D84811069 /* PBXContainerItemProxy */;
+		};
 		8ACA1FDF8BC60F49C15D269F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D23DCBF72BC6553086AA1031 /* AileKasaWidget */;
@@ -868,9 +928,54 @@
 			};
 			name = Release;
 		};
+		F10966599EB09AD8CFA6EDCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.AileKasaUITests;
+				SDKROOT = iphoneos;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AileKasa;
+			};
+			name = Release;
+		};
+		FE120AFBED549D503C520DD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.AileKasaUITests;
+				SDKROOT = iphoneos;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AileKasa;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4ACACAF58B5E2BAC0560A459 /* Build configuration list for PBXNativeTarget "AileKasaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE120AFBED549D503C520DD5 /* Debug */,
+				F10966599EB09AD8CFA6EDCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		B3DA2D6E501BCC39904EE923 /* Build configuration list for PBXNativeTarget "AileKasa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -39,6 +39,7 @@ struct SettingsView: View {
                             TextField("İsim", text: binding(person, \.name))
                             ColorPicker("Renk", selection: colorBinding(person), supportsOpacity: false)
                                 .labelsHidden()
+                                .frame(minWidth: 44, minHeight: 44)
                         }
                     }
                     .onDelete { offsets in
@@ -59,7 +60,9 @@ struct SettingsView: View {
                         Text("Kişiler")
                         Spacer()
                         if people.count > 1 {
-                            EditButton().font(.footnote)
+                            EditButton()
+                                .font(.footnote)
+                                .frame(minWidth: 44, minHeight: 44)
                         }
                     }
                 } footer: {

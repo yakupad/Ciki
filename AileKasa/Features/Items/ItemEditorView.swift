@@ -121,7 +121,7 @@ struct ItemEditorView: View {
                         if let payee, let iban = payee.iban, !iban.isEmpty {
                             Text(verbatim: IBAN.formatted(iban))
                                 .font(.system(.footnote, design: .monospaced))
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(Color.ikincil)
                         }
                         Button("Yeni hesap ekle", systemImage: "plus.circle") { isCreatingAccount = true }
                     } header: {
@@ -141,7 +141,7 @@ struct ItemEditorView: View {
                                 .keyboardType(.decimalPad)
                                 .multilineTextAlignment(.trailing)
                                 .font(.amount(17, weight: .semibold))
-                            Text(currency.symbol).foregroundStyle(.secondary)
+                            Text(currency.symbol).foregroundStyle(Color.ikincil)
                         }
                         MonthStepperRow(title: "Başlangıç", month: $recurringStart)
                         Toggle("Bitiş ayı var", isOn: $hasEnd.animation())
@@ -258,7 +258,7 @@ struct CurrencyLabel: View {
             HStack(spacing: 10) {
                 symbol
                 Text(verbatim: currency.title).fontWeight(.semibold)
-                Text(verbatim: currency.name).foregroundStyle(.secondary).lineLimit(1)
+                Text(verbatim: currency.name).foregroundStyle(Color.ikincil).lineLimit(1)
             }
             HStack(spacing: 6) {
                 Text(verbatim: currency.symbol)

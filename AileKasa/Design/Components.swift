@@ -4,7 +4,12 @@ import CoreData
 /// Kalemin solundaki rozet: banka baş harfleri ya da tür simgesi.
 struct ItemBadge: View {
     let item: LedgerItem
-    var size: CGFloat = 30
+    /// Yazı boyutuyla birlikte büyür (Dynamic Type).
+    @ScaledMetric(relativeTo: .body) private var size: CGFloat = 30
+
+    init(item: LedgerItem) {
+        self.item = item
+    }
 
     var body: some View {
         ZStack {
@@ -44,7 +49,7 @@ struct DueChip: View {
 
     var body: some View {
         Text(label)
-            .font(.system(size: 10, weight: .bold))
+            .font(.caption2.weight(.bold))
             .padding(.horizontal, 6)
             .padding(.vertical, 3)
             .background(background, in: RoundedRectangle(cornerRadius: 6, style: .continuous))
@@ -78,7 +83,7 @@ struct DueChip: View {
     }
 
     private var foreground: Color {
-        state == 1 ? .secondary : .black
+        state == 1 ? .ikincil : .vurguUstu
     }
 }
 
@@ -142,7 +147,7 @@ struct OwnerFilterPicker: View {
             picker.pickerStyle(.segmented)
         } else {
             HStack {
-                Text("Kişi").foregroundStyle(.secondary)
+                Text("Kişi").foregroundStyle(Color.ikincil)
                 Spacer()
                 picker.pickerStyle(.menu)
             }

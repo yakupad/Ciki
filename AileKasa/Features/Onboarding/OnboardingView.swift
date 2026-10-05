@@ -64,7 +64,7 @@ struct OnboardingView: View {
                         .accessibilityAddTraits(.isHeader)
                     Text("Excel'de tuttuğunuz borç, gelir ve ödeme tablosunun telefondaki hali.")
                         .font(.title3)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.ikincil)
                 }
 
                 VStack(alignment: .leading, spacing: 20) {
@@ -213,7 +213,7 @@ struct OnboardingView: View {
                     .font(.body)
                 Text("Davet gelmediyse eşinizden Aile Kasası'nda Ayarlar → iCloud ile ortak kullanım → Eşinizle paylaşın adımını yapmasını isteyin. İki telefonda da iCloud'a giriş yapılmış olmalı.")
                     .font(.callout)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.ikincil)
             }
             .padding(24)
             .readableWidth(560)
@@ -256,7 +256,7 @@ private struct Feature: View {
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 4) {
                 Text(title).font(.headline)
-                Text(text).foregroundStyle(.secondary)
+                Text(text).foregroundStyle(Color.ikincil)
             }
         }
         .accessibilityElement(children: .combine)

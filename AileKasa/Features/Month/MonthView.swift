@@ -91,6 +91,7 @@ struct MonthView: View {
                         Text(Money.string(group.total))
                             .monospacedDigit()
                     }
+                    .foregroundStyle(Color.ikincil)
                 }
             }
 
@@ -189,7 +190,7 @@ struct EntryRow: View {
                     .lineLimit(1)
                 Text(subtitle)
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.ikincil)
                     .lineLimit(1)
             }
             Spacer(minLength: 8)
@@ -201,12 +202,11 @@ struct EntryRow: View {
                 if line.currency != Money.baseCurrency, let value = line.signedValue {
                     Text("≈ " + Money.string(value, fractions: false))
                         .font(.caption2)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.ikincil)
                         .monospacedDigit()
                 }
             }
         }
-        .opacity(line.status == .excluded ? 0.55 : 1)
         .accessibilityElement(children: .combine)
         .accessibilityValue(line.status.title)
     }

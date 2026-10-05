@@ -103,12 +103,28 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasaTests
 
+  AileKasaUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - AileKasaUITests
+    dependencies:
+      - target: AileKasa
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasaUITests
+        SWIFT_DEFAULT_ACTOR_ISOLATION: nonisolated
+        TARGETED_DEVICE_FAMILY: "1,2"
+
 schemes:
   AileKasa:
     build:
       targets:
         AileKasa: all
         AileKasaTests: [test]
+        AileKasaUITests: [test]
     test:
       targets:
         - AileKasaTests
+        - AileKasaUITests

@@ -225,7 +225,7 @@ private struct NewEntryAccessory: View {
                 if placement != .inline {
                     Spacer()
                     Text(month.title)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.ikincil)
                         .monospacedDigit()
                 }
             }

@@ -31,7 +31,7 @@ struct SharingSection: View {
         case nil:
             HStack {
                 ProgressView()
-                Text("iCloud durumu kontrol ediliyor…").foregroundStyle(.secondary)
+                Text("iCloud durumu kontrol ediliyor…").foregroundStyle(Color.ikincil)
             }
         case .available?:
             if let share {
@@ -57,7 +57,7 @@ struct SharingSection: View {
             }
         case .some:
             Label("Bu cihazda iCloud'a giriş yapılmamış. Veriler yalnızca bu cihazda.", systemImage: "icloud.slash")
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color.ikincil)
         }
     }
 
@@ -106,7 +106,7 @@ private struct ParticipantRow: View {
                 Text(verbatim: participant.displayName + (isMe ? " " + String(localized: "(siz)") : ""))
                 Text(roleText)
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.ikincil)
             }
         }
     }

@@ -70,7 +70,7 @@ struct ItemsView: View {
                     move(items, from: source, to: destination)
                 }
             } header: {
-                Text(title)
+                Text(title).foregroundStyle(Color.ikincil)
             } footer: {
                 if showsReorderHint {
                     Text("Sırayı değiştirmek için Düzenle'ye dokunup kalemleri sürükleyin. Aylar ve Tablo ekranları bu sırayı kullanır.")
@@ -100,7 +100,7 @@ private struct ItemRow: View {
             ItemBadge(item: item)
             VStack(alignment: .leading, spacing: 3) {
                 Text(item.fullTitle).font(.subheadline.weight(.semibold))
-                Text(subtitle).font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                Text(subtitle).font(.caption).foregroundStyle(Color.ikincil).lineLimit(1)
             }
             Spacer()
             if item.isRecurring, let amount = item.recurringAmountValue {
@@ -111,7 +111,7 @@ private struct ItemRow: View {
                     if item.currency != rates.base, let rate = rates.rate(for: item.currency) {
                         Text("≈ " + Money.string(amount * rate, fractions: false))
                             .font(.caption2)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Color.ikincil)
                             .monospacedDigit()
                     }
                 }
@@ -162,18 +162,19 @@ struct RateCard: View {
                     Text("Döviz kuru · TCMB satış")
                         .font(.caption2.weight(.semibold))
                         .textCase(.uppercase)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.ikincil)
                     ViewThatFits(in: .horizontal) {
                         HStack(spacing: 14) { rateTexts }
                         VStack(alignment: .leading, spacing: 2) { rateTexts }
                     }
+                    .fixedSize(horizontal: false, vertical: true)
                     if let error = rates.errorMessage {
                         Text(error).font(.caption).foregroundStyle(Color.gider)
                     } else if let updated = rates.updatedAt {
                         let date = updated.formatted(.dateTime.day().month().hour().minute().locale(Money.locale))
                         Text("Güncellendi: \(date)")
                             .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Color.ikincil)
                     }
                 }
             }
@@ -185,6 +186,8 @@ struct RateCard: View {
                 }
                 .labelStyle(.iconOnly)
                 .buttonStyle(.borderless)
+                .frame(minWidth: 44, minHeight: 44)
+                .contentShape(Rectangle())
             }
         }
     }
@@ -194,7 +197,6 @@ struct RateCard: View {
         ForEach(shown) { currency in
             Text(verbatim: "\(currency.symbol) \(rates.table.rate(for: currency).map { Money.string($0) } ?? "—")")
                 .font(.amount(16, weight: .semibold))
-                .lineLimit(1)
         }
     }
 }

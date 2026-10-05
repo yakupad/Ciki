@@ -172,7 +172,7 @@ struct AccountRow: View {
                 if let subtitle {
                     Text(verbatim: subtitle)
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.ikincil)
                         .lineLimit(1)
                 }
                 if let iban = account.iban, !iban.isEmpty {
@@ -201,7 +201,7 @@ struct AccountRow: View {
 struct BankBadge: View {
     let bank: String?
     var symbol = "building.columns.fill"
-    var size: CGFloat = 30
+    @ScaledMetric(relativeTo: .body) private var size: CGFloat = 30
 
     var body: some View {
         ZStack {

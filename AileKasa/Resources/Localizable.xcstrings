@@ -3470,6 +3470,22 @@
         }
       }
     },
+    "Kaydı açmak için dokunun": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap to open the entry"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydı açmak için dokunun"
+          }
+        }
+      }
+    },
     "Kayıt ekledikçe ya da ödendi işaretledikçe burada görünür.": {
       "localizations": {
         "en": {
@@ -3498,6 +3514,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kayıt listesi"
+          }
+        }
+      }
+    },
+    "Kayıt yok": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No entry"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayıt yok"
           }
         }
       }

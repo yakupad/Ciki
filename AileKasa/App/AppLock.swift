@@ -145,7 +145,7 @@ struct LockScreen: View {
                 if let error = lock.errorMessage {
                     Text(error)
                         .font(.footnote)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.ikincil)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
                 }

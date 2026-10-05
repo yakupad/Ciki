@@ -71,6 +71,14 @@ iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca 
 - **Gizlilik bildirimi:** `AileKasa/Resources/PrivacyInfo.xcprivacy` ve `AileKasaWidget/PrivacyInfo.xcprivacy`. Takip yok, toplanan veri türü yok; UserDefaults gerekçesi `CA92.1` (uygulamanın kendi ayarları) ve `1C8F.1` (widget ile App Group).
 - **Uygulama içinde:** Face ID kilidi, uygulama değiştiricide ve widget'ta tutar gizleme, bildirimde tutar gizleme, Ayarlar → Gizlilik → *Verileriniz nerede?* ve *Tüm verilerimi sil*.
 
+## Erişilebilirlik
+
+- **Kontrast:** Metin renkleri açık ve koyu zeminde en az 4,5:1 (WCAG AA). İkincil metinler için sistem grisi yerine `Color.ikincil` kullanılır.
+- **Dynamic Type:** Tutarlar metin stillerine bağlıdır (`Font.amount`); rozetler, tablo satır ve sütunları `@ScaledMetric` ile büyür. Büyük yazıda kişi kutuları daha az sütuna iner.
+- **VoiceOver:** Özet kartları tek öğe okunur; ödenecekler satırında "Ödendi olarak işaretle" eylemi; grafik çubukları ve tablo hücreleri ay, kalem ve tutarla okunur.
+- **Dokunma alanları:** Simge düğmeleri en az 44 × 44 pt.
+- **Denetim testleri:** `AileKasaUITests` her ana ekranda `performAccessibilityAudit()` çalıştırır. Cam çubukların altında ya da ekran kenarında yarım kalan öğeler ve eşiğe çok yakın bulgular uyarı olarak yazılır (`A11Y-WARN`).
+
 ## Excel'deki her şeyin uygulamadaki karşılığı
 
 | Excel'de | Uygulamada | Ne işe yarar |

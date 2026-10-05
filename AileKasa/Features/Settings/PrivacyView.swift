@@ -39,7 +39,7 @@ private struct PrivacyRow: View {
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 4) {
                 Text(title).font(.headline)
-                Text(text).font(.subheadline).foregroundStyle(.secondary)
+                Text(text).font(.subheadline).foregroundStyle(Color.ikincil)
             }
         }
         .padding(.vertical, 4)

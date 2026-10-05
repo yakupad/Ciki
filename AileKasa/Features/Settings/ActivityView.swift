@@ -70,18 +70,18 @@ private struct ActivityRow: View {
                     Spacer()
                     Text(verbatim: (entry.updatedAt ?? .now).formatted(.dateTime.hour().minute().locale(Money.locale)))
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.ikincil)
                         .monospacedDigit()
                 }
                 Text(verbatim: "\(entry.month.title) · \(Money.string(entry.amountValue * item.direction.sign, currency: item.currency)) · \(entry.status.title)")
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.ikincil)
                     .lineLimit(1)
                 HStack(spacing: 5) {
                     Circle().fill(color).frame(width: 7, height: 7)
                     Text(verbatim: entry.updatedBy ?? String(localized: "Bilinmeyen kişi"))
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(entry.updatedBy == nil ? .secondary : .primary)
+                        .foregroundStyle(entry.updatedBy == nil ? Color.ikincil : Color.primary)
                 }
             }
         }

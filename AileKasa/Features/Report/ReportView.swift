@@ -115,20 +115,20 @@ private struct StatTile: View {
             Text(title)
                 .font(.caption2.weight(.semibold))
                 .textCase(.uppercase)
-                .foregroundStyle(.secondary)
-                .lineLimit(1)
+                .foregroundStyle(Color.ikincil)
+                .fixedSize(horizontal: false, vertical: true)
             Text(value)
                 .font(.amount(17))
                 .foregroundStyle(color)
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
+                .fixedSize(horizontal: false, vertical: true)
             Text(caption ?? " ")
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color.ikincil)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(12)
         .background(Color.kart, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -162,6 +162,8 @@ private struct NetTrendChart: View {
                         .foregroundStyle(point.net < 0 ? Color.gider : Color.gelir)
                         .opacity(point.month > now ? 0.3 : 0.6)
                         .cornerRadius(3)
+                        .accessibilityLabel(Text(verbatim: point.month.title))
+                        .accessibilityValue(Text(verbatim: Money.string(Decimal(point.net), sign: .always, fractions: false)))
                 }
                 ForEach(points) { point in
                     LineMark(x: .value("Ay", "\(point.month.key)"), y: .value("Birikimli", point.cumulative))
@@ -203,13 +205,15 @@ private struct DebtChart: View {
             if slices.isEmpty {
                 Text("Bu aralıkta kart veya kredi kaydı yok.")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.ikincil)
                     .frame(maxWidth: .infinity, minHeight: 120)
             } else {
                 Chart(slices) { slice in
                     BarMark(x: .value("Ay", "\(slice.month.key)"), y: .value("Tutar", slice.value))
                         .foregroundStyle(by: .value("Banka", slice.bank))
                         .opacity(slice.month > now ? 0.45 : 1)
+                        .accessibilityLabel(Text(verbatim: "\(slice.bank), \(slice.month.title)"))
+                        .accessibilityValue(Text(verbatim: Money.string(Decimal(slice.value), fractions: false)))
                 }
                 .chartForegroundStyleScale(domain: banks, range: banks.map { Color(light: Banks.colorHex(for: $0), dark: Banks.darkColorHex(for: $0)) })
                 .chartLegend(position: .bottom, alignment: .leading)
@@ -231,11 +235,11 @@ private struct ChartCard<Content: View>: View {
             Text(title)
                 .font(.caption.weight(.semibold))
                 .textCase(.uppercase)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color.ikincil)
             content
             Text(caption)
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color.ikincil)
         }
         .padding(14)
         .background(Color.kart, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
@@ -322,17 +326,17 @@ private struct MonthTable: View {
             Text(month).frame(width: 52, alignment: .leading)
             Text(incoming).frame(maxWidth: .infinity, alignment: .trailing)
             Text(expense).frame(maxWidth: .infinity, alignment: .trailing)
-                .foregroundStyle(header ? Color.secondary : Color.gider)
+                .foregroundStyle(header ? Color.ikincil : Color.gider)
             Text(net).frame(maxWidth: .infinity, alignment: .trailing)
-                .foregroundStyle(header ? Color.secondary : netColor)
+                .foregroundStyle(header ? Color.ikincil : netColor)
             Text(cumulative).frame(maxWidth: .infinity, alignment: .trailing)
-                .foregroundStyle(header ? Color.secondary : cumulativeColor)
+                .foregroundStyle(header ? Color.ikincil : cumulativeColor)
         }
-        .font(header ? .caption2.weight(.semibold) : .system(size: 12, weight: .medium, design: .rounded))
+        .font(header ? .caption2.weight(.semibold) : .system(.caption, design: .rounded, weight: .medium))
         .monospacedDigit()
         .lineLimit(1)
         .minimumScaleFactor(0.7)
-        .foregroundStyle(header ? .secondary : .primary)
+        .foregroundStyle(header ? Color.ikincil : Color.primary)
         .padding(.horizontal, 12)
         .padding(.vertical, header ? 8 : 9)
     }

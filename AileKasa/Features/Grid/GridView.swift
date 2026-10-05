@@ -18,10 +18,12 @@ struct GridView: View {
 
     @Environment(\.isWideLayout) private var isWide
 
-    private let rowHeight: CGFloat = 40
-    private let columnWidth: CGFloat = 92
-    /// Geniş ekranda (iPad, Mac, iPhone Duo iç ekranı) kalem adları kısalmasın diye daha geniş.
-    private var titleWidth: CGFloat { isWide ? 190 : 124 }
+    // Yazı boyutu büyüdükçe satır ve sütunlar da büyür (Dynamic Type).
+    @ScaledMetric(relativeTo: .caption) private var rowHeight: CGFloat = 40
+    @ScaledMetric(relativeTo: .caption) private var columnWidth: CGFloat = 92
+    /// Kalem sütunu da yazı boyutuyla genişler; geniş ekranda (iPad, Mac, iPhone Duo iç ekranı) daha geniştir.
+    @ScaledMetric(relativeTo: .caption) private var baseTitleWidth: CGFloat = 124
+    private var titleWidth: CGFloat { isWide ? baseTitleWidth * 1.5 : baseTitleWidth }
 
     var body: some View {
         @Bindable var app = app
@@ -59,7 +61,7 @@ struct GridView: View {
 
                     Text("Hücreye dokunarak tutarı düzenleyin. Üstü çizili: ödendi. Soluk: hariç. İtalik: düzenli ödemeden tahmini.")
                         .font(.footnote)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.ikincil)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
@@ -84,8 +86,7 @@ struct GridView: View {
                         .frame(width: 6, height: 6)
                     Text(item.fullTitle)
                         .font(.caption.weight(.semibold))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.8)
+                        .lineLimit(2)
                 }
                 .padding(.horizontal, 10)
                 .frame(width: titleWidth, height: rowHeight, alignment: .leading)
@@ -113,6 +114,10 @@ struct GridView: View {
                     .overlay(alignment: .bottom) { Divider() }
                     .contentShape(Rectangle())
                     .onTapGesture { route = .entry(item: item, month: month) }
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(Text(verbatim: "\(item.fullTitle), \(month.title)"))
+                    .accessibilityValue(Text(verbatim: cellDescription(table.lines[item.objectID]?[month.key])))
+                    .accessibilityAddTraits(.isButton)
             }
             Text(Money.compact(net))
                 .font(.amount(12))
@@ -132,17 +137,22 @@ struct GridView: View {
             .overlay(alignment: .bottom) { Divider() }
     }
 
+    private func cellDescription(_ line: LedgerLine?) -> String {
+        guard let line else { return String(localized: "Kayıt yok") }
+        let amount = Money.string(line.amount * line.direction.sign, currency: line.currency)
+        return line.isProjected ? "\(amount), \(String(localized: "Düzenli · tahmini"))" : "\(amount), \(line.status.title)"
+    }
+
     @ViewBuilder
     private func cell(_ line: LedgerLine?) -> some View {
         if let line {
             let value = line.amount * line.direction.sign
             Text(line.currency == Money.baseCurrency ? Money.compact(value) : Money.string(value, currency: line.currency, fractions: false))
-                .font(.system(size: 12, weight: line.status == .pending ? .semibold : .regular, design: .rounded))
+                .font(.system(.caption, design: .rounded, weight: line.status == .pending ? .semibold : .regular))
                 .monospacedDigit()
                 .italic(line.isProjected)
                 .strikethrough(line.status != .pending, pattern: line.status == .excluded ? .dash : .solid)
                 .foregroundStyle(line.status == .pending ? Color.amount(value) : Color.odendi)
-                .opacity(line.status == .excluded ? 0.5 : 1)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
                 .padding(.horizontal, 8)

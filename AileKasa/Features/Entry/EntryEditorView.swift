@@ -68,7 +68,7 @@ struct EntryEditorView: View {
                             .focused($amountFocused)
                         Text(amountCaption)
                             .font(.footnote)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Color.ikincil)
                             .multilineTextAlignment(.center)
                     }
                     .frame(maxWidth: .infinity)

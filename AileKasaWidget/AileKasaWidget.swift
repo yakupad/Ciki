@@ -49,9 +49,10 @@ struct SnapshotProvider: TimelineProvider {
 enum WidgetColors {
     static let background = Color(light: 0xF3F5F2, dark: 0x0D1312)
     static let petrol = Color(light: 0x0E5F59, dark: 0x43B5A9)
-    static let gelir = Color(light: 0x1C8A57, dark: 0x4CC48A)
-    static let gider = Color(light: 0xCF4438, dark: 0xF0736A)
-    static let uyari = Color(light: 0xD98E10, dark: 0xF0B04A)
+    static let gelir = Color(light: 0x197E4F, dark: 0x4CC48A)
+    static let gider = Color(light: 0xC34035, dark: 0xF0736A)
+    static let uyari = Color(light: 0x98630B, dark: 0xF0B04A)
+    static let vurguUstu = Color(light: 0xFFFFFF, dark: 0x000000)
 }
 
 struct SummaryWidgetView: View {
@@ -241,7 +242,7 @@ struct DueLabel: View {
             .padding(.vertical, 2)
             .background(isUrgent ? WidgetColors.uyari : Color.secondary.opacity(0.15),
                         in: RoundedRectangle(cornerRadius: 4, style: .continuous))
-            .foregroundStyle(isUrgent ? Color.black : Color.secondary)
+            .foregroundStyle(isUrgent ? WidgetColors.vurguUstu : Color.secondary)
     }
 
     static func text(for date: Date, now: Date) -> String {
