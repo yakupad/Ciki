@@ -503,4 +503,29 @@ struct LedgerTests {
         #expect(UserDefaults.standard.bool(forKey: OnboardingView.completedKey) == false)
         #expect(UserDefaults.standard.string(forKey: DeviceOwner.key) == nil)
     }
+
+    @Test func watchMarkPaidFindsTheItemAndMonth() throws {
+        let household = householdWithPeople()
+        let card = makeItem()
+        card.household = household
+        context.upsertEntry(item: card, month: october, amount: 28988, status: .pending, rates: rates)
+        try context.obtainPermanentIDs(for: [card])
+        context.saveIfNeeded()
+
+        let key = "\(card.objectID.uriRepresentation().absoluteString)|\(october.key)"
+        WatchSync.markPaid(key: key, in: context)
+        #expect(card.entry(for: october)?.status == .paid)
+
+        // Bozuk ya da bilinmeyen anahtar hiçbir şeyi değiştirmez.
+        WatchSync.markPaid(key: "x-coredata://bilinmeyen|\(october.key)", in: context)
+        WatchSync.markPaid(key: "bozuk", in: context)
+        #expect(card.entry(for: october)?.status == .paid)
+    }
+
+    @Test func snapshotDecodesWithoutPaymentKeysFromOlderVersions() throws {
+        let old = #"{"monthTitle":"Ekim 2026","net":"−1 ₺","netIsNegative":true,"incoming":"0","expense":"1","unpaid":"1","upcoming":[{"title":"Kira","owner":"Deniz","amount":"−1 ₺","dueDate":0}],"isPrivate":false,"updatedAt":0}"#
+        let snapshot = try #require(WidgetSnapshot.decode(Data(old.utf8)))
+        #expect(snapshot.upcoming.first?.key == nil)
+        #expect(snapshot.upcoming.first?.id.isEmpty == false)
+    }
 }

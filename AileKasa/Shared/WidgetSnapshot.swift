@@ -1,12 +1,16 @@
 import Foundation
 
-/// Uygulamanın widget için App Group'a yazdığı özet. Tutarlar yazılırken biçimlendirilir.
+/// Uygulamanın widget ve Apple Watch için hazırladığı özet. Tutarlar yazılırken biçimlendirilir.
 nonisolated struct WidgetSnapshot: Codable, Equatable, Sendable {
-    struct Payment: Codable, Equatable, Sendable {
+    struct Payment: Codable, Equatable, Sendable, Identifiable {
+        /// Kalemin ve ayın kimliği; saatten "ödendi" işareti gelince kaydı bulmak için. Eski özetlerde yok.
+        var key: String? = nil
         let title: String
         let owner: String
         let amount: String
         let dueDate: Date
+
+        var id: String { key ?? "\(title)-\(dueDate.timeIntervalSince1970)" }
     }
 
     var monthTitle: String
@@ -30,8 +34,16 @@ nonisolated struct WidgetSnapshot: Codable, Equatable, Sendable {
     }
 
     func save() {
-        guard let data = try? JSONEncoder().encode(self) else { return }
+        guard let data = encoded() else { return }
         UserDefaults(suiteName: Self.appGroup)?.set(data, forKey: Self.key)
+    }
+
+    func encoded() -> Data? {
+        try? JSONEncoder().encode(self)
+    }
+
+    static func decode(_ data: Data) -> WidgetSnapshot? {
+        try? JSONDecoder().decode(WidgetSnapshot.self, from: data)
     }
 
     static let placeholder = WidgetSnapshot(

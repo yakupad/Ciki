@@ -21,6 +21,10 @@ Excel'de tutulan aylık borç, gelir ve ödeme tablosunun iPhone uygulaması. De
 - **iPhone Duo iç ekranı:** Özet, `ArrangementView` (`.split`) ile iki bölmeye ayrılır; iOS bölmeleri katlanma çizgisinin iki yanına yerleştirir. Kitap duruşunda özet solda, ödenecekler sağda; masa üstü duruşta özet üstte, ödenecekler altta. Mac'te `ArrangementView` olmadığı için yan yana düzen kullanılır.
 - Düzen pencere genişliğine göre seçilir (600 pt ve üstü iki sütun). Duo'nun iç ekranı iPhone olduğu için boyut sınıfı "dar" görünebilir; genişlik ölçüldüğü için yine iki sütunlu açılır. Duo katlanıp açıldığında ya da iPad'de bölünmüş ekranda kendiliğinden değişir.
 
+### Apple Watch'ta test
+
+Saat uygulaması özeti iPhone'dan alır. Simülatörde `simctl install` ile ayrı yüklenen saat uygulaması iPhone'da "yüklü" görünmez ve özet gönderilmez; eşli simülatörlerde Xcode'un Çalıştır düğmesiyle (AileKasaWatch şeması) ya da gerçek cihazlarla denenmelidir. Ekranları bağlantısız görmek için DEBUG'da `-sampleSnapshot` ve `-watchPage 1` argümanları vardır.
+
 ### iPhone Duo'da test
 
 iOS 27.1 simülatöründe *iPhone Duo* kullanılır. Katlama Xcode'un Device Hub penceresindeki düğmelerle yapılır; `simctl`'de bu komut yoktur. Komut satırından denemek için [hinge](https://github.com/artemnovichkov/hinge) aracı kullanılabilir. Araç, simülatörün içinde Device Hub'ın menteşe kaydırıcısıyla aynı olayı gönderir:
@@ -107,6 +111,7 @@ iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca 
 | **İlk açılış** | Tanıtım, hane adı ve kişiler, Face ID kilidi ve hatırlatma tercihi. "Eşim beni davet etti" seçeneği kişi oluşturmadan geçer ve davet bağlantısını bekler. Verisi olan kurulumlarda gösterilmez. |
 | **Rapor** | Özet'ten açılır. Son 6 ay ortalama net, ödenmemiş gider, en yüksek gider ayı; net ve birikimli bakiye grafiği; bankaya göre kart ve kredi ödemeleri; ay ay tablo. |
 | **Widget** | Ana ekran (küçük, orta) ve kilit ekranı. Ay sonu net ve sıradaki ödemeler. Uygulama kilidi açıksa tutarları göstermez. |
+| **Apple Watch** | Özet (ay sonu net, gelir, gider, ödenmemiş) ve sıradaki ödemeler; ödeme "Ödendi" işaretlenip iPhone'a gönderilir. Kadran komplikasyonları: sıradaki ödeme ve ayın neti. iPhone'da kilit açıksa tutarlar gizlenir. |
 | **Ayarlar** | Hane adı, kişi adları ve renkleri, kur bilgisi. |
 
 ### Etkileşim ilkeleri
@@ -182,6 +187,7 @@ erDiagram
 - **Kilit.** Face ID / Touch ID / cihaz parolası (`LocalAuthentication`). Kilit ekranı ayrı bir `UIWindow`'da gösterilir; açık sayfalar da uygulama değiştiricide gizlenir.
 - **Hatırlatmalar.** Bu ay ve sonraki iki ayın bekleyen, son ödeme günü olan giderleri için yerel bildirim (en fazla 60). Her kayıt değişikliğinde yeniden planlanır.
 - **Widget.** Uygulama bu ayın özetini `group.com.yakupad.AileKasa` App Group'una JSON olarak yazar; widget yalnızca bu özeti okur, veri tabanına erişmez. Gerçek cihazda App Group için Xcode'da Team seçili olmalıdır.
+- **Apple Watch.** iPhone, widget özetini WatchConnectivity ile saate gönderir (`updateApplicationContext`); saat bunu kendi App Group'una yazar, komplikasyonlar oradan okur. Saatteki "Ödendi" işareti iPhone yakındaysa anında (`sendMessage`), değilse kuyruğa alınarak (`transferUserInfo`) iletilir; iPhone kaydı ödendi yapar ve yeni özeti geri gönderir. Mac Catalyst derlemesine Watch uygulaması gömülmez.
 - **CSV.** Türkçede `;` ayraç ve `,` ondalık, İngilizcede `,` ve `.`. Excel'in Türkçe karakterleri tanıması için UTF-8 BOM eklenir.
 - **Swift 6, varsayılan MainActor izolasyonu.** Core Data alt sınıfları `nonisolated`.
 
@@ -204,6 +210,8 @@ AileKasa/
   Shared/         Uygulama ve widget'ın ortak kullandığı özet modeli
   Features/       Summary, Month, Grid, Items, Accounts, Entry, Report, Settings
 AileKasaWidget/   Widget eklentisi (WidgetKit)
+AileKasaWatch/    Apple Watch uygulaması
+AileKasaWatchWidget/  Saat kadranı komplikasyonları
 AileKasaTests/    Hesaplama, kur, IBAN, hatırlatma, CSV ve rapor testleri
 ```
 

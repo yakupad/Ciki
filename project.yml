@@ -60,6 +60,8 @@ targets:
         aps-environment: development
     dependencies:
       - target: AileKasaWidget
+      - target: AileKasaWatch
+        platformFilter: iOS
 
   AileKasaWidget:
     type: app-extension
@@ -90,6 +92,62 @@ targets:
         MACOSX_DEPLOYMENT_TARGET: "27.0"
         CODE_SIGN_STYLE: Automatic
         SKIP_INSTALL: YES
+
+  AileKasaWatch:
+    type: application
+    platform: watchOS
+    deploymentTarget: "27.0"
+    sources:
+      - AileKasaWatch
+      - AileKasa/Shared
+    entitlements:
+      path: AileKasaWatch/AileKasaWatch.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.yakupad.AileKasa
+    dependencies:
+      - target: AileKasaWatchWidget
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasa.watchkitapp
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: "Aile Kasası"
+        INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.yakupad.AileKasa
+        INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp: NO
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SKIP_INSTALL: YES
+        CODE_SIGN_STYLE: Automatic
+
+  AileKasaWatchWidget:
+    type: app-extension
+    platform: watchOS
+    deploymentTarget: "27.0"
+    sources:
+      - AileKasaWatchWidget
+      - AileKasa/Shared
+    info:
+      path: AileKasaWatchWidget/Info.plist
+      properties:
+        CFBundleDisplayName: Aile Kasası
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: AileKasaWatchWidget/AileKasaWatchWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.yakupad.AileKasa
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasa.watchkitapp.Complications
+        GENERATE_INFOPLIST_FILE: YES
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SKIP_INSTALL: YES
+        CODE_SIGN_STYLE: Automatic
 
   AileKasaTests:
     type: bundle.unit-test

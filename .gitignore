@@ -4,3 +4,4 @@ DerivedData/
 build/
 *.xcuserstate
 build*/
+build_watch/

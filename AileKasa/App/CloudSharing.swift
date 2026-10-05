@@ -6,6 +6,15 @@ import UIKit
 /// `windowScene(_:userDidAcceptCloudKitShareWith:)` yalnızca sahne temsilcisine gelir.
 final class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        // Saatten gelen "ödendi" işareti uygulamayı arka planda uyandırabilir; oturum en başta kurulur.
+        #if canImport(WatchConnectivity) && !targetEnvironment(macCatalyst)
+        WatchSync.shared.activate()
+        #endif
+        return true
+    }
+
+    func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         let configuration = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)

@@ -18,7 +18,8 @@ enum WidgetPublisher {
                 guard let due = Calendar.current.date(from: DateComponents(year: month.year, month: month.month, day: day)) else {
                     return nil
                 }
-                return WidgetSnapshot.Payment(title: line.item.fullTitle, owner: line.item.ownerName,
+                let key = "\(line.item.objectID.uriRepresentation().absoluteString)|\(line.month.key)"
+                return WidgetSnapshot.Payment(key: key, title: line.item.fullTitle, owner: line.item.ownerName,
                                               amount: Money.string(-line.amount, currency: line.currency),
                                               dueDate: due)
             }
@@ -40,5 +41,8 @@ enum WidgetPublisher {
         }
         snapshot.save()
         WidgetCenter.shared.reloadAllTimelines()
+        #if canImport(WatchConnectivity) && !targetEnvironment(macCatalyst)
+        WatchSync.shared.send(snapshot)
+        #endif
     }
 }
