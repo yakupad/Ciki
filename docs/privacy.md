@@ -34,7 +34,7 @@ Görünüm, gösterim para birimi, kilit ve hatırlatma seçimleri yalnızca o c
 
 ## Apple Watch ve widget'lar
 
-Saat uygulaması ve widget'lar, telefonunuzdaki özet bilgileri cihazlarınız arasında doğrudan kullanır. Bu bilgiler başka bir yere gönderilmez. Face ID kilidi açıkken uygulama değiştiricide ve widget'ta tutarlar görünmez.
+Saat uygulaması ve widget'lar, telefonunuzdaki özet bilgileri cihazlarınız arasında doğrudan kullanır. Bu bilgiler başka bir yere gönderilmez. Face ID kilidi açıkken uygulama değiştiricide ve iPhone widget'larında tutarlar görünmez. Apple Watch bu kilitten bağımsızdır; saatteki tutarları saatin kendi şifresi korur.
 
 ## Verilerinizi silme
 
@@ -88,7 +88,7 @@ Appearance, display currency, lock and reminder choices are stored only on that 
 
 ## Apple Watch and widgets
 
-The watch app and widgets use summary information from your iPhone directly between your devices. It is not sent anywhere else. When the Face ID lock is on, amounts are hidden in the app switcher and in widgets.
+The watch app and widgets use summary information from your iPhone directly between your devices. It is not sent anywhere else. When the Face ID lock is on, amounts are hidden in the app switcher and in iPhone widgets. Apple Watch is independent of this lock; your watch passcode protects the amounts there.
 
 ## Deleting your data
 

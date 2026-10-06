@@ -19,16 +19,13 @@ struct WatchRootView: View {
 
     var body: some View {
         NavigationStack {
+            // Saat, iPhone'daki uygulama kilidinden bağımsızdır; tutarlar her zaman gösterilir.
             if let snapshot = store.snapshot {
-                if snapshot.isPrivate {
-                    PrivateView()
-                } else {
-                    TabView(selection: $page) {
-                        SummaryPage(snapshot: snapshot).tag(0)
-                        PaymentsPage().tag(1)
-                    }
-                    .tabViewStyle(.verticalPage)
+                TabView(selection: $page) {
+                    SummaryPage(snapshot: snapshot).tag(0)
+                    PaymentsPage().tag(1)
                 }
+                .tabViewStyle(.verticalPage)
             } else {
                 WaitingView()
             }
@@ -167,23 +164,6 @@ private struct WaitingView: View {
                 .font(.headline)
                 .multilineTextAlignment(.center)
             Text("Veriler iPhone'dan gelir.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-        }
-    }
-}
-
-private struct PrivateView: View {
-    var body: some View {
-        VStack(spacing: 8) {
-            Image(systemName: "lock.fill")
-                .font(.title2)
-                .foregroundStyle(WatchColors.petrol)
-                .accessibilityHidden(true)
-            Text("Tutarlar gizli")
-                .font(.headline)
-            Text("iPhone'da uygulama kilidi açık olduğu için saatte tutar gösterilmez.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

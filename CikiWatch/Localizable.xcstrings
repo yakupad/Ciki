@@ -97,22 +97,6 @@
         }
       }
     },
-    "iPhone'da uygulama kilidi açık olduğu için saatte tutar gösterilmez.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Amounts aren't shown on the watch because the app lock is on on your iPhone."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "iPhone'da uygulama kilidi açık olduğu için saatte tutar gösterilmez."
-          }
-        }
-      }
-    },
     "iPhone'da Çıkı'yı açın": {
       "localizations": {
         "en": {
@@ -141,22 +125,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "İşaret iPhone'a gönderilir. iPhone yakında değilse bağlanınca iletilir."
-          }
-        }
-      }
-    },
-    "Tutarlar gizli": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Amounts hidden"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tutarlar gizli"
           }
         }
       }

@@ -65,22 +65,6 @@
         }
       }
     },
-    "Tutar gizli": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Amount hidden"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tutar gizli"
-          }
-        }
-      }
-    },
     "Yarın": {
       "localizations": {
         "en": {

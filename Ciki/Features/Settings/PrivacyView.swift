@@ -18,7 +18,7 @@ struct PrivacyView: View {
                 PrivacyRow(symbol: "gearshape", title: "Bu telefona özel ayarlar",
                            text: "Görünüm, gösterim para birimi, kilit, hatırlatmalar ve \"bu telefonu kullanan\" seçimi yalnızca bu telefonda saklanır, eşitlenmez.")
                 PrivacyRow(symbol: "lock.fill", title: "Ekstra koruma",
-                           text: "Face ID kilidi açıkken uygulama değiştiricide ve widget'ta tutarlar görünmez. Bildirimlerde tutarı gizlemek için Hatırlatmalar bölümünü kullanın.")
+                           text: "Face ID kilidi açıkken uygulama değiştiricide ve iPhone widget'larında tutarlar görünmez. Apple Watch bu kilitten bağımsızdır; saatte tutarları saatin kendi şifresi korur. Bildirimlerde tutarı gizlemek için Hatırlatmalar bölümünü kullanın.")
             }
         }
         .navigationTitle("Verileriniz nerede?")

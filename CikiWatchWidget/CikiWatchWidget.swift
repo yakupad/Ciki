@@ -43,7 +43,8 @@ struct ComplicationView: View {
     var body: some View {
         let snapshot = entry.snapshot
         let next = snapshot?.upcoming.first
-        let hidden = snapshot?.isPrivate ?? false
+        // Saat, iPhone'daki uygulama kilidinden bağımsızdır: tutarlar her zaman gösterilir.
+        // Bilek kilitliyken watchOS `privacySensitive` alanları kendisi gizler.
 
         switch family {
         case .accessoryInline:
@@ -71,13 +72,13 @@ struct ComplicationView: View {
                     Text(verbatim: "\(next.title) · \(dueText(next.dueDate))")
                         .font(.headline)
                         .lineLimit(1)
-                    Text(verbatim: hidden ? String(localized: "Tutar gizli") : next.amount)
+                    Text(verbatim: next.amount)
                         .privacySensitive()
                 } else {
                     Text(verbatim: snapshot?.monthTitle ?? "Çıkı").font(.headline)
                     Text("Bu ay bekleyen ödeme yok")
                 }
-                if let snapshot, !hidden {
+                if let snapshot {
                     Text(verbatim: "\(snapshot.monthTitle): \(snapshot.net)")
                         .foregroundStyle(.secondary)
                         .privacySensitive()

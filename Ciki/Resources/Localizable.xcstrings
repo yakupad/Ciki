@@ -2250,18 +2250,18 @@
         }
       }
     },
-    "Face ID kilidi açıkken uygulama değiştiricide ve widget'ta tutarlar görünmez. Bildirimlerde tutarı gizlemek için Hatırlatmalar bölümünü kullanın." : {
+    "Face ID kilidi açıkken uygulama değiştiricide ve iPhone widget'larında tutarlar görünmez. Apple Watch bu kilitten bağımsızdır; saatte tutarları saatin kendi şifresi korur. Bildirimlerde tutarı gizlemek için Hatırlatmalar bölümünü kullanın." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "With the Face ID lock on, amounts are hidden in the app switcher and widget. To hide amounts in notifications, use the Reminders section."
+            "value" : "When the Face ID lock is on, amounts are hidden in the app switcher and in iPhone widgets. Apple Watch is independent of this lock; your watch passcode protects the amounts there. To hide amounts in notifications, use the Reminders section."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Face ID kilidi açıkken uygulama değiştiricide ve widget'ta tutarlar görünmez. Bildirimlerde tutarı gizlemek için Hatırlatmalar bölümünü kullanın."
+            "value" : "Face ID kilidi açıkken uygulama değiştiricide ve iPhone widget'larında tutarlar görünmez. Apple Watch bu kilitten bağımsızdır; saatte tutarları saatin kendi şifresi korur. Bildirimlerde tutarı gizlemek için Hatırlatmalar bölümünü kullanın."
           }
         }
       }
