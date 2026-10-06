@@ -24,12 +24,19 @@ existing = ASC.get("/v1/appInfos/#{INFO}/appInfoLocalizations")["data"].to_h { |
   puts "✓ uygulama bilgisi #{locale}"
 end
 
+# Telif hakkı satırı (App Store "©" işaretini kendisi ekler)
+VERSIONS.each_value do |version|
+  ASC.patch("/v1/appStoreVersions/#{version}", { data: { type: "appStoreVersions", id: version,
+    attributes: { copyright: File.read("#{DIR}/copyright.txt").strip } } })
+end
+puts "✓ telif hakkı"
+
 # Sürüm metinleri (açıklama, anahtar kelimeler, tanıtım metni). İlk sürümde "Yenilikler" alanı kabul edilmez.
 VERSIONS.each do |platform, version|
   locs = ASC.get("/v1/appStoreVersions/#{version}/appStoreVersionLocalizations")["data"].to_h { |l| [l["attributes"]["locale"], l["id"]] }
   %w[tr en-US].each do |locale|
     attrs = { description: text(locale, "description"), keywords: text(locale, "keywords"), promotionalText: text(locale, "promotional_text"),
-              supportUrl: text(locale, "support_url") }
+              supportUrl: text(locale, "support_url"), marketingUrl: text(locale, "marketing_url") }
     if (id = locs[locale])
       ASC.patch("/v1/appStoreVersionLocalizations/#{id}", { data: { type: "appStoreVersionLocalizations", id: id, attributes: attrs } })
     else

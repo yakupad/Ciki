@@ -11,6 +11,8 @@ Hanenin ortak bütçe defteri. Kartlarınızı, kredilerinizi, kirayı, faturala
 
 ---
 
+<a id="english"></a>
+
 Your household's shared budget book. Keep your cards, loans, rent, bills and salaries in one place, and see past, current and upcoming months at a glance. Use it together with your partner, family or housemates over iCloud.
 
 - [Privacy Policy](/Ciki/privacy/#english)
