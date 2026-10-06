@@ -82,8 +82,8 @@ struct SummaryView: View {
                 .padding(.horizontal)
                 .padding(.bottom, 24)
         }
-        #if targetEnvironment(macCatalyst)
-        // ArrangementView Mac'te yok; Mac'te iki bölme yan yana.
+        #if targetEnvironment(macCatalyst) || NO_ARRANGEMENT_VIEW
+        // ArrangementView Mac'te ve iOS 27.0 SDK'sında yok (bkz. project.yml); orada iki bölme yan yana.
         HStack(alignment: .top, spacing: 0) {
             overviewPane
             paymentsPane
