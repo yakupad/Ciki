@@ -6,7 +6,7 @@
 
 Ortak bütçe, borç ve ödeme takibi. Excel'de tutulan aylık borç, gelir ve ödeme tablosundan doğdu. Hanedeki herkes (eş, aile, ev arkadaşları) aynı veriyi kendi telefonunda görür; geçmiş, bu ay ve gelecek aylar tek bakışta okunur.
 
-> Proje klasörü, bundle ID (`com.yakupad.AileKasa`) ve iCloud container'ı eski "Aile Kasası" adını taşır; kullanıcıya görünmez ve iCloud verisini korumak için değiştirilmez.
+> Teknik kimliklerde "ı" harfi kullanılamadığı için proje, hedefler ve kimlikler **Ciki** yazılır: `com.yakupad.Ciki`, `group.com.yakupad.Ciki`, `iCloud.com.yakupad.Ciki`.
 
 <p>
 <img src="docs/screens/ozet.png" width="200" alt="Özet">
@@ -33,7 +33,7 @@ Ortak bütçe, borç ve ödeme takibi. Excel'de tutulan aylık borç, gelir ve �
 
 ### Apple Watch'ta test
 
-Saat uygulaması özeti iPhone'dan alır. Simülatörde `simctl install` ile ayrı yüklenen saat uygulaması iPhone'da "yüklü" görünmez ve özet gönderilmez; eşli simülatörlerde Xcode'un Çalıştır düğmesiyle (AileKasaWatch şeması) ya da gerçek cihazlarla denenmelidir. Ekranları bağlantısız görmek için DEBUG'da `-sampleSnapshot` ve `-watchPage 1` argümanları vardır.
+Saat uygulaması özeti iPhone'dan alır. Simülatörde `simctl install` ile ayrı yüklenen saat uygulaması iPhone'da "yüklü" görünmez ve özet gönderilmez; eşli simülatörlerde Xcode'un Çalıştır düğmesiyle (CikiWatch şeması) ya da gerçek cihazlarla denenmelidir. Ekranları bağlantısız görmek için DEBUG'da `-sampleSnapshot` ve `-watchPage 1` argümanları vardır.
 
 ### iPhone Duo'da test
 
@@ -53,13 +53,13 @@ xcrun simctl io booted screenshot --display=<ekran UUID> duo.png   # ekranlar: s
 ```sh
 brew install xcodegen      # bir kez
 xcodegen generate          # project.yml değişince
-open AileKasa.xcodeproj
+open Ciki.xcodeproj
 ```
 
 Testler:
 
 ```sh
-xcodebuild -project AileKasa.xcodeproj -scheme AileKasa \
+xcodebuild -project Ciki.xcodeproj -scheme Ciki \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
@@ -68,7 +68,7 @@ Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle**
 ## iCloud ile ortak kullanım kurulumu
 
 1. Xcode → Settings → Accounts'ta Apple ID ekli olsun. Team (`D677J9K7QY`) `project.yml`'da tanımlı.
-2. *iCloud* yeteneğinde `iCloud.com.yakupad.AileKasa` container'ının işaretli olduğunu kontrol edin; yoksa **+** ile oluşturun.
+2. *iCloud* yeteneğinde `iCloud.com.yakupad.Ciki` container'ının işaretli olduğunu kontrol edin; yoksa **+** ile oluşturun.
 3. Uygulamayı iki ayrı Apple ID'li iki iPhone'a yükleyin.
 4. İlk telefonda **Ayarlar → iCloud ile ortak kullanım → Kişi davet et** ile daveti gönderin. Eş, anne, baba, kardeş ya da ev arkadaşı; birden fazla kişi davet edilebilir.
 5. İkinci telefonda davet bağlantısını açın. O telefonda daha önce girilmiş kayıtlar varsa uygulama "ortak haneye kopyala" ya da "sil" diye sorar.
@@ -82,7 +82,7 @@ iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca 
 - **Toplanan veri yok.** App Store gizlilik etiketi: *Veri Toplanmıyor*. Reklam, analiz ve takip yok.
 - **Veriler** cihazda (Core Data, iOS veri koruması) ve kullanıcının kendi iCloud'unda (CloudKit özel ve paylaşılan veritabanı) durur; geliştirici erişemez.
 - **Tek ağ isteği:** TCMB kur dosyası (`tcmb.gov.tr`), kişisel bilgi içermez.
-- **Gizlilik bildirimi:** `AileKasa/Resources/PrivacyInfo.xcprivacy` ve `AileKasaWidget/PrivacyInfo.xcprivacy`. Takip yok, toplanan veri türü yok; UserDefaults gerekçesi `CA92.1` (uygulamanın kendi ayarları) ve `1C8F.1` (widget ile App Group).
+- **Gizlilik bildirimi:** `Ciki/Resources/PrivacyInfo.xcprivacy` ve `CikiWidget/PrivacyInfo.xcprivacy`. Takip yok, toplanan veri türü yok; UserDefaults gerekçesi `CA92.1` (uygulamanın kendi ayarları) ve `1C8F.1` (widget ile App Group).
 - **Uygulama içinde:** Face ID kilidi, uygulama değiştiricide ve widget'ta tutar gizleme, bildirimde tutar gizleme, Ayarlar → Gizlilik → *Verileriniz nerede?* ve *Tüm verilerimi sil*.
 
 ## Erişilebilirlik
@@ -91,7 +91,7 @@ iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca 
 - **Dynamic Type:** Tutarlar metin stillerine bağlıdır (`Font.amount`); rozetler, tablo satır ve sütunları `@ScaledMetric` ile büyür. Büyük yazıda kişi kutuları daha az sütuna iner.
 - **VoiceOver:** Özet kartları tek öğe okunur; ödenecekler satırında "Ödendi olarak işaretle" eylemi; grafik çubukları ve tablo hücreleri ay, kalem ve tutarla okunur.
 - **Dokunma alanları:** Simge düğmeleri en az 44 × 44 pt.
-- **Denetim testleri:** `AileKasaUITests` her ana ekranda `performAccessibilityAudit()` çalıştırır. Cam çubukların altında ya da ekran kenarında yarım kalan öğeler ve eşiğe çok yakın bulgular uyarı olarak yazılır (`A11Y-WARN`).
+- **Denetim testleri:** `CikiUITests` her ana ekranda `performAccessibilityAudit()` çalıştırır. Cam çubukların altında ya da ekran kenarında yarım kalan öğeler ve eşiğe çok yakın bulgular uyarı olarak yazılır (`A11Y-WARN`).
 
 ## Excel'deki her şeyin uygulamadaki karşılığı
 
@@ -148,7 +148,7 @@ iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca 
 | Ece | `#C23F7B` | | Kişi rengi (Ayarlar'dan değiştirilebilir) |
 | Zemin | `#F3F5F2` | `#0D1312` | Yeşile çalan nötr gri |
 
-Renkler `AileKasa/Design/Theme.swift` içinde tanımlıdır.
+Renkler `Ciki/Design/Theme.swift` içinde tanımlıdır.
 
 ### Tipografi
 
@@ -185,10 +185,10 @@ erDiagram
 
 ### Teknik kararlar
 
-- **İki depo.** `AileKasa.sqlite` kendi verilerimizi iCloud özel veritabanında, `AileKasa-shared.sqlite` başkasının paylaştığı haneyi paylaşılan veritabanında tutar. Depolar arası ilişki kurulamadığı için yeni kayıtlar `place(_:in:)` ile hanenin bulunduğu depoya yazılır.
+- **İki depo.** `Ciki.sqlite` kendi verilerimizi iCloud özel veritabanında, `Ciki-shared.sqlite` başkasının paylaştığı haneyi paylaşılan veritabanında tutar. Depolar arası ilişki kurulamadığı için yeni kayıtlar `place(_:in:)` ile hanenin bulunduğu depoya yazılır.
 - **Etkin hane.** Paylaşılan hane varsa o, yoksa en eski yerel hane. iCloud'dan gelen değişikliklerden sonra `HouseholdSync` fazladan haneleri birleştirir.
 - **Core Data + NSPersistentCloudKitContainer.** iOS 27 SDK'sında SwiftData yalnızca özel (private) iCloud veritabanını destekliyor. Başkalarıyla ortak kullanım için CKShare gerekiyor, bu yüzden Core Data seçildi. Tüm öznitelikler isteğe bağlı, benzersizlik kısıtı yok (CloudKit şartı).
-- **Model sürümleri.** Veri modeli sürümlüdür (`AileKasa 4.xcdatamodel` güncel; 1. sürümden taşıma test edilir). Yeni alanlar yeni sürümle eklenir, mevcut veriler otomatik (lightweight) taşınır.
+- **Model sürümleri.** Veri modeli sürümlüdür (`Ciki 4.xcdatamodel` güncel; 1. sürümden taşıma test edilir). Yeni alanlar yeni sürümle eklenir, mevcut veriler otomatik (lightweight) taşınır.
 - **Banka adları** büyük/küçük harf ve boşluk farkı yok sayılarak eşleştirilir; bilinen bankalar listedeki yazımla gösterilir.
 - **Tutarlar `Decimal`.** Kuruş yuvarlama hatası olmaz. Taksit bölmede artan kuruşlar son taksite eklenir.
 - **Gösterim para birimi.** TCMB kurları TL karşılığı olarak gelir; TL ara birimdir. Gösterim birimi TL değilse çapraz kurla çevrilir (ör. USD → EUR = USD/TL ÷ EUR/TL). Seçim cihaza özeldir, her kişi kendi telefonunda farklı birim seçebilir. Ödenmiş döviz kayıtlarının TL karşılığı ödeme günündeki kurla sabittir.
@@ -196,7 +196,7 @@ erDiagram
 - **Yerelleştirme.** Metinler `Localizable.xcstrings` (kaynak dil Türkçe) içinde. Tutar ve tarih biçimi uygulama diline göre: Türkçe `18989`, İngilizce `18989`.
 - **Kilit.** Face ID / Touch ID / cihaz parolası (`LocalAuthentication`). Kilit ekranı ayrı bir `UIWindow`'da gösterilir; açık sayfalar da uygulama değiştiricide gizlenir.
 - **Hatırlatmalar.** Bu ay ve sonraki iki ayın bekleyen, son ödeme günü olan giderleri için yerel bildirim (en fazla 60). Her kayıt değişikliğinde yeniden planlanır.
-- **Widget.** Uygulama bu ayın özetini `group.com.yakupad.AileKasa` App Group'una JSON olarak yazar; widget yalnızca bu özeti okur, veri tabanına erişmez. Gerçek cihazda App Group için Xcode'da Team seçili olmalıdır.
+- **Widget.** Uygulama bu ayın özetini `group.com.yakupad.Ciki` App Group'una JSON olarak yazar; widget yalnızca bu özeti okur, veri tabanına erişmez. Gerçek cihazda App Group için Xcode'da Team seçili olmalıdır.
 - **Apple Watch.** iPhone, widget özetini WatchConnectivity ile saate gönderir (`updateApplicationContext`); saat bunu kendi App Group'una yazar, komplikasyonlar oradan okur. Saatteki "Ödendi" işareti iPhone yakındaysa anında (`sendMessage`), değilse kuyruğa alınarak (`transferUserInfo`) iletilir; iPhone kaydı ödendi yapar ve yeni özeti geri gönderir. Mac Catalyst derlemesine Watch uygulaması gömülmez.
 - **CSV.** Türkçede `;` ayraç ve `,` ondalık, İngilizcede `,` ve `.`. Excel'in Türkçe karakterleri tanıması için UTF-8 BOM eklenir.
 - **Swift 6, varsayılan MainActor izolasyonu.** Core Data alt sınıfları `nonisolated`.
@@ -211,7 +211,7 @@ erDiagram
 ### Klasör yapısı
 
 ```
-AileKasa/
+Ciki/
   App/            Uygulama girişi, sekmeler, AppState
   Model/          Core Data modeli, Month, enum'lar
   Persistence/    PersistenceController, kayıt işlemleri, örnek veri
@@ -219,10 +219,10 @@ AileKasa/
   Design/         Renkler, ortak bileşenler
   Shared/         Uygulama ve widget'ın ortak kullandığı özet modeli
   Features/       Summary, Month, Grid, Items, Accounts, Entry, Report, Settings
-AileKasaWidget/   Widget eklentisi (WidgetKit)
-AileKasaWatch/    Apple Watch uygulaması
-AileKasaWatchWidget/  Saat kadranı komplikasyonları
-AileKasaTests/    Hesaplama, kur, IBAN, hatırlatma, CSV ve rapor testleri
+CikiWidget/   Widget eklentisi (WidgetKit)
+CikiWatch/    Apple Watch uygulaması
+CikiWatchWidget/  Saat kadranı komplikasyonları
+CikiTests/    Hesaplama, kur, IBAN, hatırlatma, CSV ve rapor testleri
 ```
 
 ## Yol haritası

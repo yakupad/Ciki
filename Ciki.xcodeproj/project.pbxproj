@@ -1,0 +1,1328 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		006499BF362118F99BC342C6 /* CikiWatchWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 33D41DF4E9F9E6E84CAD0DF4 /* CikiWatchWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0298310AFBB976538016CCC4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6DA17A4A3D13570B672FAFCA /* Localizable.xcstrings */; };
+		05DF1F5F79124EA90C6244FE /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD2B05B821AEAAB1B715B4D /* Appearance.swift */; };
+		06E1624A50236EB0C77F89A3 /* CikiWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B13EA76E2AE6C2AC98E55828 /* CikiWatch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		073ADEDCBCE6178883A590B6 /* EntryEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17B740325531EE5EB003759 /* EntryEditorView.swift */; };
+		0D22113E3A4A1A954FA50663 /* CSVExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F43C0A8A9FA642ED3AF200 /* CSVExport.swift */; };
+		113FC50A09F2C7DACD5AEA06 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CD8B9267987C195160107D /* Ledger.swift */; };
+		11BE5CC82D20AF45F4DCB714 /* ManagedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08D6670F39CAC265A24B926 /* ManagedObjects.swift */; };
+		196BA9878583584B90CC9525 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C213E4AD83119BFB1BF0A093 /* PrivacyInfo.xcprivacy */; };
+		1C79AC6DADD36463EB3713ED /* CikiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A673A96DCCDE9C450C393 /* CikiApp.swift */; };
+		1E4E639EDFADFEFA1790CFCC /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
+		20EC917C042BAC8C5A6F015E /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A2EC34B0F4DE41F0B07050 /* ActivityView.swift */; };
+		27E6616805F7CF8DEC8A283F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 253E6EBB807152CD7AFF5CDF /* InfoPlist.xcstrings */; };
+		30A26733EEFF5AD1353C1618 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7E88C3EE3096B592C46CCE /* Month.swift */; };
+		33512D94C42A261C18F6931D /* LedgerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F523D234502A9CE7621D4 /* LedgerActions.swift */; };
+		35BBFC76CA72FFCC19CF3EDE /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE32E7FF0B5E4FBFB2A0CFBE /* Money.swift */; };
+		373BA4EDC2D18803D823CCBA /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 670ECEF6F7DABDF2B082FC0F /* PrivacyInfo.xcprivacy */; };
+		37B08892F33CF5D2D077AD25 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 93D19DB573A7030D1017B5FA /* Localizable.xcstrings */; };
+		40BB3A18717BC227A9E56DC1 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6282C95195E4A421255F4E /* Theme.swift */; };
+		40FF49A264E95AA7A68665E1 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EFAE6A3573CE66482F19D0 /* PersistenceController.swift */; };
+		424BE7FE61A80BE523991617 /* WatchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9FFE9812A0B85A6B08004 /* WatchStore.swift */; };
+		44504E944C31ADBD71323B4E /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58BBEB10E4AD5EB21DC94B3 /* AccountsView.swift */; };
+		46D6C9BC976E44AC8B6CDC06 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA153FAD077DD14B33A89 /* Components.swift */; };
+		47A091DCA99DAAA55813F0AD /* HouseholdSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB05686DF2E8767ED1EB67F /* HouseholdSync.swift */; };
+		4D489F5BA9C20BD12F70359C /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E756BA2CAEBC4F68C8F0E3FC /* PrivacyView.swift */; };
+		56CB458193ECBD3CD082D76D /* AccessibilityAuditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF99398CA2987926E7A2CB6 /* AccessibilityAuditTests.swift */; };
+		5820F4B9FDBE2A484384F5FC /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC67ADC5E3BF84474B4EB5C /* SampleData.swift */; };
+		5F365FB3BDDBF9FA14509DB2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BABF2E112C89B90A4178F51 /* SettingsView.swift */; };
+		6252EBB5553C5681DC3DE74B /* CikiWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 98FC8FE7931CBD346914560A /* CikiWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		637FEC061347420CBC778C83 /* DataEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0EAF804F5B2C100E6EE0E /* DataEraser.swift */; };
+		6404A858752DFF0EDCCF3BC7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3B63C9F9965A2789A0D3289F /* PrivacyInfo.xcprivacy */; };
+		6DA4122D62A5BA97E61446AE /* CikiWatchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01139B0FD7775CA6E049110F /* CikiWatchWidget.swift */; };
+		6FAB374197D2B1F203279D4D /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
+		75F3B9C3F67CF9F93D4B7F26 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFB8AED1A660F28B0CEBEA3 /* MonthView.swift */; };
+		796AD74958FEC481DBDB2CDE /* AppLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C51E84022FCDB84E37FF13 /* AppLock.swift */; };
+		800192826582883EDF34855F /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C883597180558BCEBA4BBE /* ExportView.swift */; };
+		81B608A44FD146C0074AA740 /* CikiWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99BE031D327C1604A200B23 /* CikiWatchApp.swift */; };
+		852C7D001EFB518DBB2CC88D /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
+		86850EF598A903BF99FEC5EB /* CikiWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB126094CFCCC925E35DF1D /* CikiWidget.swift */; };
+		8743FD1A8080C860C9932C4E /* SharingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED8C8CF41D4EEE70C62C92 /* SharingSection.swift */; };
+		90E0708AADA9E4D5C7104784 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 809A497B8582C2B81502B625 /* Assets.xcassets */; };
+		9474A9B8D65366A2FAE9ADFD /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735307CB5599BD58183B2C87 /* AppLanguage.swift */; };
+		94BD020A8A27952BB76433F1 /* Ciki.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51B197CF3C926D8990009B01 /* Ciki.xcdatamodeld */; };
+		960D57098460F81E2F7EFBF2 /* WidgetPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF41E4A0B815161210029CD /* WidgetPublisher.swift */; };
+		9F2CE1F9EFDD5F81464A3DCB /* WatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F969F42D9BC0196D7D0E96B /* WatchSync.swift */; };
+		A231EF93B2A6B5AAFBD15306 /* RateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E50AA49D65BDDCB6745DCB /* RateService.swift */; };
+		A4577566E45EA99B260EA877 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
+		A6EB181FB750C2AB98D205FB /* AccountEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2576A105665BD3E0828FE6FA /* AccountEditorView.swift */; };
+		AA90C89646BEB5F94B110EA0 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43D98ED6D1C947C1D5CF2DF /* SummaryView.swift */; };
+		B069B776E87ECA4DA51F899A /* ItemEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0C6F38A3E9C64FFAFE107 /* ItemEditorView.swift */; };
+		B17F7E4DFE6A7DCF2A76EB0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F16C648B54B8AC82112F0C /* Assets.xcassets */; };
+		B31C96356B8E84C8EA1FC62A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6D21D2D8AF914328F23796B9 /* Localizable.xcstrings */; };
+		B5AE26A89B92F33CF952C326 /* DeviceOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033423DE3BA43609B3C52A6 /* DeviceOwner.swift */; };
+		B5B41FB2317780F88F93277E /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92251F93CE72375C8F0D170F /* ReportView.swift */; };
+		C6D3723FEEBBCCC809636BDC /* IBAN.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3517F6BA36212FF2842DD4 /* IBAN.swift */; };
+		C8BA80D107B81A5D2EBF4416 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF13F6A92984DE7B1D4CA77 /* Reminders.swift */; };
+		CAF73DE1D100E17A50C07317 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 330EFD0EBA942483ADC5EDD7 /* Localizable.xcstrings */; };
+		D010AFC30CDFEF21CA1EFC0C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0304B2E5767AE62A85DF7B /* Enums.swift */; };
+		D2217FB3713C4430E65FE84A /* CloudSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F656656581FF93EB77C56 /* CloudSharing.swift */; };
+		DFB7F5231904AA9B6173F01E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 2026FF0C60952C16D6747ED0 /* PrivacyInfo.xcprivacy */; };
+		DFCD54F44261880102C316C8 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D05711B5BA87E93D46DFB2 /* Layout.swift */; };
+		F0BB27F1C7452F9B44DD8C5E /* LedgerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855E2E16A16C9B4189115E7 /* LedgerTests.swift */; };
+		F2984F80F0CA4CA43DB68F9E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EB3973B1E2F04667E36186 /* OnboardingView.swift */; };
+		F334CDE03E137897883AF716 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47F8BA4D76D9190BEE06704 /* GridView.swift */; };
+		F4BFF45E7FAFA77C85B72619 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7503D6EAEACABBA273915DA1 /* ItemsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2648F60067B3944323C03FF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D05DD6F9A853AE02F5228CE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0DCA7D866EAF818F8C8B1F3;
+			remoteInfo = CikiWidget;
+		};
+		7163B67A258AD13CD33A0B83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D05DD6F9A853AE02F5228CE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF2EFD923F78C24849EF6554;
+			remoteInfo = CikiWatch;
+		};
+		74A4A3A0564EF14EF58D9938 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D05DD6F9A853AE02F5228CE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 73AE0158A4CBAD98B56E45EE;
+			remoteInfo = CikiWatchWidget;
+		};
+		A887ECEB5DD39FF45B0B9D73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D05DD6F9A853AE02F5228CE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11EB049E588CF312F8AB558F;
+			remoteInfo = Ciki;
+		};
+		B738D97D4A4EE00C4F848D66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D05DD6F9A853AE02F5228CE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11EB049E588CF312F8AB558F;
+			remoteInfo = Ciki;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2065617C84307D6634BA9CF8 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				06E1624A50236EB0C77F89A3 /* CikiWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C1313716654F723F5C02848 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6252EBB5553C5681DC3DE74B /* CikiWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE59B819C8A151F77C692A87 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				006499BF362118F99BC342C6 /* CikiWatchWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		005A673A96DCCDE9C450C393 /* CikiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CikiApp.swift; sourceTree = "<group>"; };
+		01139B0FD7775CA6E049110F /* CikiWatchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CikiWatchWidget.swift; sourceTree = "<group>"; };
+		03F43C0A8A9FA642ED3AF200 /* CSVExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVExport.swift; sourceTree = "<group>"; };
+		05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
+		0855E2E16A16C9B4189115E7 /* LedgerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerTests.swift; sourceTree = "<group>"; };
+		087DA3CED54A1503310691F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0CB8C1B13709303B3733E5CB /* Ciki.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ciki.xcdatamodel; sourceTree = "<group>"; };
+		0FB3C7D9794927C82279EB20 /* CikiUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CikiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D9FFE9812A0B85A6B08004 /* WatchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStore.swift; sourceTree = "<group>"; };
+		1B9644BDC8E7E0D892FC2C07 /* Ciki 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Ciki 4.xcdatamodel"; sourceTree = "<group>"; };
+		2026FF0C60952C16D6747ED0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		22EFAE6A3573CE66482F19D0 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		253E6EBB807152CD7AFF5CDF /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		2576A105665BD3E0828FE6FA /* AccountEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditorView.swift; sourceTree = "<group>"; };
+		28C883597180558BCEBA4BBE /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
+		2AF99398CA2987926E7A2CB6 /* AccessibilityAuditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityAuditTests.swift; sourceTree = "<group>"; };
+		2BCDDD364E25F3D9A2871538 /* CikiTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CikiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F16C648B54B8AC82112F0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		330EFD0EBA942483ADC5EDD7 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		33D41DF4E9F9E6E84CAD0DF4 /* CikiWatchWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CikiWatchWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		33EB3973B1E2F04667E36186 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		3B63C9F9965A2789A0D3289F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		3E5C45BEE8551539293B6E62 /* Ciki.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ciki.entitlements; sourceTree = "<group>"; };
+		3EC67ADC5E3BF84474B4EB5C /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		45747D7F2C8DF2991B743C38 /* CikiWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CikiWatch.entitlements; sourceTree = "<group>"; };
+		52B0C6F38A3E9C64FFAFE107 /* ItemEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEditorView.swift; sourceTree = "<group>"; };
+		56A2EC34B0F4DE41F0B07050 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		5A3CB58304B58A6C6B921D99 /* Ciki 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Ciki 3.xcdatamodel"; sourceTree = "<group>"; };
+		670ECEF6F7DABDF2B082FC0F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		6CB05686DF2E8767ED1EB67F /* HouseholdSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseholdSync.swift; sourceTree = "<group>"; };
+		6D21D2D8AF914328F23796B9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		6DA17A4A3D13570B672FAFCA /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		71C0EAF804F5B2C100E6EE0E /* DataEraser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEraser.swift; sourceTree = "<group>"; };
+		735307CB5599BD58183B2C87 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
+		7503D6EAEACABBA273915DA1 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
+		75C5C31C761AE52F79F794F3 /* Ciki 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Ciki 2.xcdatamodel"; sourceTree = "<group>"; };
+		76E50AA49D65BDDCB6745DCB /* RateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateService.swift; sourceTree = "<group>"; };
+		7DF13F6A92984DE7B1D4CA77 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
+		809A497B8582C2B81502B625 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		92251F93CE72375C8F0D170F /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		93D19DB573A7030D1017B5FA /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		98FC8FE7931CBD346914560A /* CikiWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = CikiWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BABF2E112C89B90A4178F51 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9F969F42D9BC0196D7D0E96B /* WatchSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSync.swift; sourceTree = "<group>"; };
+		A01FA153FAD077DD14B33A89 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		A43D98ED6D1C947C1D5CF2DF /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		A4D05711B5BA87E93D46DFB2 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		A7CD8B9267987C195160107D /* Ledger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ledger.swift; sourceTree = "<group>"; };
+		AAF41E4A0B815161210029CD /* WidgetPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPublisher.swift; sourceTree = "<group>"; };
+		B13EA76E2AE6C2AC98E55828 /* CikiWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CikiWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B17B740325531EE5EB003759 /* EntryEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryEditorView.swift; sourceTree = "<group>"; };
+		B3B7F63332DC141A742E2284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BAD2B05B821AEAAB1B715B4D /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		BE32E7FF0B5E4FBFB2A0CFBE /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
+		BE3517F6BA36212FF2842DD4 /* IBAN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBAN.swift; sourceTree = "<group>"; };
+		BE7E88C3EE3096B592C46CCE /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		BEFB8AED1A660F28B0CEBEA3 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		C08D6670F39CAC265A24B926 /* ManagedObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjects.swift; sourceTree = "<group>"; };
+		C213E4AD83119BFB1BF0A093 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C47F8BA4D76D9190BEE06704 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		CC0304B2E5767AE62A85DF7B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		CEB126094CFCCC925E35DF1D /* CikiWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CikiWidget.swift; sourceTree = "<group>"; };
+		CEED8C8CF41D4EEE70C62C92 /* SharingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingSection.swift; sourceTree = "<group>"; };
+		D033423DE3BA43609B3C52A6 /* DeviceOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOwner.swift; sourceTree = "<group>"; };
+		D99BE031D327C1604A200B23 /* CikiWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CikiWatchApp.swift; sourceTree = "<group>"; };
+		D9C51E84022FCDB84E37FF13 /* AppLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLock.swift; sourceTree = "<group>"; };
+		DB6282C95195E4A421255F4E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		DB9D2E4B841EFBB9C3C84736 /* Ciki.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Ciki.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE4F523D234502A9CE7621D4 /* LedgerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerActions.swift; sourceTree = "<group>"; };
+		E367A30D8A525526A873BF61 /* CikiWatchWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CikiWatchWidget.entitlements; sourceTree = "<group>"; };
+		E3A41978C85F5786BDA1D215 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E53DE4749329E77D5597AD1D /* CikiWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CikiWidget.entitlements; sourceTree = "<group>"; };
+		E756BA2CAEBC4F68C8F0E3FC /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
+		EA7F656656581FF93EB77C56 /* CloudSharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSharing.swift; sourceTree = "<group>"; };
+		F58BBEB10E4AD5EB21DC94B3 /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0244D36C94A76F8D7592DB8E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BAD2B05B821AEAAB1B715B4D /* Appearance.swift */,
+				D9C51E84022FCDB84E37FF13 /* AppLock.swift */,
+				005A673A96DCCDE9C450C393 /* CikiApp.swift */,
+				EA7F656656581FF93EB77C56 /* CloudSharing.swift */,
+				9F969F42D9BC0196D7D0E96B /* WatchSync.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		173FDF9EDFCC28B8EB2C76DB /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				C47F8BA4D76D9190BEE06704 /* GridView.swift */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		1F2428B6C3277A39A07EC375 /* Ciki */ = {
+			isa = PBXGroup;
+			children = (
+				3E5C45BEE8551539293B6E62 /* Ciki.entitlements */,
+				E3A41978C85F5786BDA1D215 /* Info.plist */,
+				0244D36C94A76F8D7592DB8E /* App */,
+				54539D66E70822966A78D334 /* Design */,
+				9610D69AD2BB882080A68DAD /* Domain */,
+				A363B1187EBEB56FA156B7CC /* Features */,
+				BAB661A59DED3E2BFB6BD8B2 /* Model */,
+				82D783D770D1E6C923FD9935 /* Persistence */,
+				FF52476647EBCD11795C3AD2 /* Resources */,
+				D8379741DA0087008F1EED04 /* Shared */,
+			);
+			path = Ciki;
+			sourceTree = "<group>";
+		};
+		286EFE4E487E5E638A39B998 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				2576A105665BD3E0828FE6FA /* AccountEditorView.swift */,
+				F58BBEB10E4AD5EB21DC94B3 /* AccountsView.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		399494B0AC9A67BC689F090F /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				52B0C6F38A3E9C64FFAFE107 /* ItemEditorView.swift */,
+				7503D6EAEACABBA273915DA1 /* ItemsView.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		3B907346024A38E7345ABE1C /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				92251F93CE72375C8F0D170F /* ReportView.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		48539BDFA0515450E3CFCFFB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				56A2EC34B0F4DE41F0B07050 /* ActivityView.swift */,
+				28C883597180558BCEBA4BBE /* ExportView.swift */,
+				E756BA2CAEBC4F68C8F0E3FC /* PrivacyView.swift */,
+				9BABF2E112C89B90A4178F51 /* SettingsView.swift */,
+				CEED8C8CF41D4EEE70C62C92 /* SharingSection.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		4E5B65B6C2A731387FBDEF3B /* CikiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2AF99398CA2987926E7A2CB6 /* AccessibilityAuditTests.swift */,
+			);
+			path = CikiUITests;
+			sourceTree = "<group>";
+		};
+		4F84E95CAF9A3345EA81E188 = {
+			isa = PBXGroup;
+			children = (
+				1F2428B6C3277A39A07EC375 /* Ciki */,
+				602AA87221DB426C1868AC8B /* CikiTests */,
+				4E5B65B6C2A731387FBDEF3B /* CikiUITests */,
+				6B1276F0465FE33201A48610 /* CikiWatch */,
+				B12C230E5753F32B5BDBA739 /* CikiWatchWidget */,
+				F66594F287D3C33CC44130D4 /* CikiWidget */,
+				5BFA3DF2B234F747E4F0C8BC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		54539D66E70822966A78D334 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				A01FA153FAD077DD14B33A89 /* Components.swift */,
+				A4D05711B5BA87E93D46DFB2 /* Layout.swift */,
+				DB6282C95195E4A421255F4E /* Theme.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		5BFA3DF2B234F747E4F0C8BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB9D2E4B841EFBB9C3C84736 /* Ciki.app */,
+				2BCDDD364E25F3D9A2871538 /* CikiTests.xctest */,
+				0FB3C7D9794927C82279EB20 /* CikiUITests.xctest */,
+				B13EA76E2AE6C2AC98E55828 /* CikiWatch.app */,
+				33D41DF4E9F9E6E84CAD0DF4 /* CikiWatchWidget.appex */,
+				98FC8FE7931CBD346914560A /* CikiWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		602AA87221DB426C1868AC8B /* CikiTests */ = {
+			isa = PBXGroup;
+			children = (
+				0855E2E16A16C9B4189115E7 /* LedgerTests.swift */,
+			);
+			path = CikiTests;
+			sourceTree = "<group>";
+		};
+		6B1276F0465FE33201A48610 /* CikiWatch */ = {
+			isa = PBXGroup;
+			children = (
+				30F16C648B54B8AC82112F0C /* Assets.xcassets */,
+				45747D7F2C8DF2991B743C38 /* CikiWatch.entitlements */,
+				D99BE031D327C1604A200B23 /* CikiWatchApp.swift */,
+				330EFD0EBA942483ADC5EDD7 /* Localizable.xcstrings */,
+				C213E4AD83119BFB1BF0A093 /* PrivacyInfo.xcprivacy */,
+				17D9FFE9812A0B85A6B08004 /* WatchStore.swift */,
+			);
+			path = CikiWatch;
+			sourceTree = "<group>";
+		};
+		82D783D770D1E6C923FD9935 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				71C0EAF804F5B2C100E6EE0E /* DataEraser.swift */,
+				D033423DE3BA43609B3C52A6 /* DeviceOwner.swift */,
+				6CB05686DF2E8767ED1EB67F /* HouseholdSync.swift */,
+				DE4F523D234502A9CE7621D4 /* LedgerActions.swift */,
+				22EFAE6A3573CE66482F19D0 /* PersistenceController.swift */,
+				3EC67ADC5E3BF84474B4EB5C /* SampleData.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		9610D69AD2BB882080A68DAD /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				735307CB5599BD58183B2C87 /* AppLanguage.swift */,
+				03F43C0A8A9FA642ED3AF200 /* CSVExport.swift */,
+				BE3517F6BA36212FF2842DD4 /* IBAN.swift */,
+				A7CD8B9267987C195160107D /* Ledger.swift */,
+				BE32E7FF0B5E4FBFB2A0CFBE /* Money.swift */,
+				76E50AA49D65BDDCB6745DCB /* RateService.swift */,
+				7DF13F6A92984DE7B1D4CA77 /* Reminders.swift */,
+				AAF41E4A0B815161210029CD /* WidgetPublisher.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A363B1187EBEB56FA156B7CC /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				286EFE4E487E5E638A39B998 /* Accounts */,
+				E43AD36228135621E5667EBF /* Entry */,
+				173FDF9EDFCC28B8EB2C76DB /* Grid */,
+				399494B0AC9A67BC689F090F /* Items */,
+				A4E2AFFBB1DA3FCC7428D6F1 /* Month */,
+				CF5B3C523D1F278DC5609D5E /* Onboarding */,
+				3B907346024A38E7345ABE1C /* Report */,
+				48539BDFA0515450E3CFCFFB /* Settings */,
+				A706999708B417BD4BABFD6F /* Summary */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		A4E2AFFBB1DA3FCC7428D6F1 /* Month */ = {
+			isa = PBXGroup;
+			children = (
+				BEFB8AED1A660F28B0CEBEA3 /* MonthView.swift */,
+			);
+			path = Month;
+			sourceTree = "<group>";
+		};
+		A706999708B417BD4BABFD6F /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				A43D98ED6D1C947C1D5CF2DF /* SummaryView.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		B12C230E5753F32B5BDBA739 /* CikiWatchWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E367A30D8A525526A873BF61 /* CikiWatchWidget.entitlements */,
+				01139B0FD7775CA6E049110F /* CikiWatchWidget.swift */,
+				087DA3CED54A1503310691F7 /* Info.plist */,
+				6DA17A4A3D13570B672FAFCA /* Localizable.xcstrings */,
+				670ECEF6F7DABDF2B082FC0F /* PrivacyInfo.xcprivacy */,
+			);
+			path = CikiWatchWidget;
+			sourceTree = "<group>";
+		};
+		BAB661A59DED3E2BFB6BD8B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC0304B2E5767AE62A85DF7B /* Enums.swift */,
+				C08D6670F39CAC265A24B926 /* ManagedObjects.swift */,
+				BE7E88C3EE3096B592C46CCE /* Month.swift */,
+				51B197CF3C926D8990009B01 /* Ciki.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF5B3C523D1F278DC5609D5E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				33EB3973B1E2F04667E36186 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		D8379741DA0087008F1EED04 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		E43AD36228135621E5667EBF /* Entry */ = {
+			isa = PBXGroup;
+			children = (
+				B17B740325531EE5EB003759 /* EntryEditorView.swift */,
+			);
+			path = Entry;
+			sourceTree = "<group>";
+		};
+		F66594F287D3C33CC44130D4 /* CikiWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E53DE4749329E77D5597AD1D /* CikiWidget.entitlements */,
+				CEB126094CFCCC925E35DF1D /* CikiWidget.swift */,
+				B3B7F63332DC141A742E2284 /* Info.plist */,
+				6D21D2D8AF914328F23796B9 /* Localizable.xcstrings */,
+				2026FF0C60952C16D6747ED0 /* PrivacyInfo.xcprivacy */,
+			);
+			path = CikiWidget;
+			sourceTree = "<group>";
+		};
+		FF52476647EBCD11795C3AD2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				809A497B8582C2B81502B625 /* Assets.xcassets */,
+				253E6EBB807152CD7AFF5CDF /* InfoPlist.xcstrings */,
+				93D19DB573A7030D1017B5FA /* Localizable.xcstrings */,
+				3B63C9F9965A2789A0D3289F /* PrivacyInfo.xcprivacy */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		11EB049E588CF312F8AB558F /* Ciki */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 735DADDAF3FAE259BC348D27 /* Build configuration list for PBXNativeTarget "Ciki" */;
+			buildPhases = (
+				1F9A6EE7DF2EAC141B9D9EBB /* Sources */,
+				9AE24061573E0874A8DCCBF5 /* Resources */,
+				4C1313716654F723F5C02848 /* Embed Foundation Extensions */,
+				2065617C84307D6634BA9CF8 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADAFD1301C165CE3106A8CDE /* PBXTargetDependency */,
+				6689FDF53D555740ACF07AB3 /* PBXTargetDependency */,
+			);
+			name = Ciki;
+			packageProductDependencies = (
+			);
+			productName = Ciki;
+			productReference = DB9D2E4B841EFBB9C3C84736 /* Ciki.app */;
+			productType = "com.apple.product-type.application";
+		};
+		73AE0158A4CBAD98B56E45EE /* CikiWatchWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9EC8CADE269525F28B4BFEE3 /* Build configuration list for PBXNativeTarget "CikiWatchWidget" */;
+			buildPhases = (
+				D2E8F3B097A81DA3547DC6FF /* Sources */,
+				75DCB22A322D911CE29C73FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CikiWatchWidget;
+			packageProductDependencies = (
+			);
+			productName = CikiWatchWidget;
+			productReference = 33D41DF4E9F9E6E84CAD0DF4 /* CikiWatchWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		8A637AA62A783123A1452F08 /* CikiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15FA25282F44292C18BCA599 /* Build configuration list for PBXNativeTarget "CikiUITests" */;
+			buildPhases = (
+				DDF3C9CA435BB40C68C0390F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F7AE9421A046FE489988FAC4 /* PBXTargetDependency */,
+			);
+			name = CikiUITests;
+			packageProductDependencies = (
+			);
+			productName = CikiUITests;
+			productReference = 0FB3C7D9794927C82279EB20 /* CikiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		AF2EFD923F78C24849EF6554 /* CikiWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4805181BD1CD091502532405 /* Build configuration list for PBXNativeTarget "CikiWatch" */;
+			buildPhases = (
+				8986774724C2765F0FA64647 /* Sources */,
+				E0B18234065CBBA3027138E2 /* Resources */,
+				EE59B819C8A151F77C692A87 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CC011640668672EB5536899 /* PBXTargetDependency */,
+			);
+			name = CikiWatch;
+			packageProductDependencies = (
+			);
+			productName = CikiWatch;
+			productReference = B13EA76E2AE6C2AC98E55828 /* CikiWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B584F6C22C1A35BEBDB28BCA /* CikiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54636B4FE21907F90E71E836 /* Build configuration list for PBXNativeTarget "CikiTests" */;
+			buildPhases = (
+				9268ADF141A1CF940E6E9875 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7896438C3757A8A7194B70E /* PBXTargetDependency */,
+			);
+			name = CikiTests;
+			packageProductDependencies = (
+			);
+			productName = CikiTests;
+			productReference = 2BCDDD364E25F3D9A2871538 /* CikiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F0DCA7D866EAF818F8C8B1F3 /* CikiWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EBBEA4CAB48FD4965E145D1 /* Build configuration list for PBXNativeTarget "CikiWidget" */;
+			buildPhases = (
+				23E88B58CDDF1BA6CB2F872C /* Sources */,
+				C12C2673776DD292BFCA0519 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CikiWidget;
+			packageProductDependencies = (
+			);
+			productName = CikiWidget;
+			productReference = 98FC8FE7931CBD346914560A /* CikiWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D05DD6F9A853AE02F5228CE1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					11EB049E588CF312F8AB558F = {
+						DevelopmentTeam = D677J9K7QY;
+						ProvisioningStyle = Automatic;
+					};
+					73AE0158A4CBAD98B56E45EE = {
+						DevelopmentTeam = D677J9K7QY;
+						ProvisioningStyle = Automatic;
+					};
+					8A637AA62A783123A1452F08 = {
+						DevelopmentTeam = D677J9K7QY;
+						TestTargetID = 11EB049E588CF312F8AB558F;
+					};
+					AF2EFD923F78C24849EF6554 = {
+						DevelopmentTeam = D677J9K7QY;
+						ProvisioningStyle = Automatic;
+					};
+					B584F6C22C1A35BEBDB28BCA = {
+						DevelopmentTeam = D677J9K7QY;
+					};
+					F0DCA7D866EAF818F8C8B1F3 = {
+						DevelopmentTeam = D677J9K7QY;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AC87B463C8559A2C579D5228 /* Build configuration list for PBXProject "Ciki" */;
+			developmentRegion = tr;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				tr,
+			);
+			mainGroup = 4F84E95CAF9A3345EA81E188;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5BFA3DF2B234F747E4F0C8BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				11EB049E588CF312F8AB558F /* Ciki */,
+				B584F6C22C1A35BEBDB28BCA /* CikiTests */,
+				8A637AA62A783123A1452F08 /* CikiUITests */,
+				AF2EFD923F78C24849EF6554 /* CikiWatch */,
+				73AE0158A4CBAD98B56E45EE /* CikiWatchWidget */,
+				F0DCA7D866EAF818F8C8B1F3 /* CikiWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		75DCB22A322D911CE29C73FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0298310AFBB976538016CCC4 /* Localizable.xcstrings in Resources */,
+				373BA4EDC2D18803D823CCBA /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AE24061573E0874A8DCCBF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90E0708AADA9E4D5C7104784 /* Assets.xcassets in Resources */,
+				27E6616805F7CF8DEC8A283F /* InfoPlist.xcstrings in Resources */,
+				37B08892F33CF5D2D077AD25 /* Localizable.xcstrings in Resources */,
+				6404A858752DFF0EDCCF3BC7 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C12C2673776DD292BFCA0519 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B31C96356B8E84C8EA1FC62A /* Localizable.xcstrings in Resources */,
+				DFB7F5231904AA9B6173F01E /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0B18234065CBBA3027138E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B17F7E4DFE6A7DCF2A76EB0D /* Assets.xcassets in Resources */,
+				CAF73DE1D100E17A50C07317 /* Localizable.xcstrings in Resources */,
+				196BA9878583584B90CC9525 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F9A6EE7DF2EAC141B9D9EBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6EB181FB750C2AB98D205FB /* AccountEditorView.swift in Sources */,
+				44504E944C31ADBD71323B4E /* AccountsView.swift in Sources */,
+				20EC917C042BAC8C5A6F015E /* ActivityView.swift in Sources */,
+				9474A9B8D65366A2FAE9ADFD /* AppLanguage.swift in Sources */,
+				796AD74958FEC481DBDB2CDE /* AppLock.swift in Sources */,
+				05DF1F5F79124EA90C6244FE /* Appearance.swift in Sources */,
+				0D22113E3A4A1A954FA50663 /* CSVExport.swift in Sources */,
+				94BD020A8A27952BB76433F1 /* Ciki.xcdatamodeld in Sources */,
+				1C79AC6DADD36463EB3713ED /* CikiApp.swift in Sources */,
+				D2217FB3713C4430E65FE84A /* CloudSharing.swift in Sources */,
+				46D6C9BC976E44AC8B6CDC06 /* Components.swift in Sources */,
+				637FEC061347420CBC778C83 /* DataEraser.swift in Sources */,
+				B5AE26A89B92F33CF952C326 /* DeviceOwner.swift in Sources */,
+				073ADEDCBCE6178883A590B6 /* EntryEditorView.swift in Sources */,
+				D010AFC30CDFEF21CA1EFC0C /* Enums.swift in Sources */,
+				800192826582883EDF34855F /* ExportView.swift in Sources */,
+				F334CDE03E137897883AF716 /* GridView.swift in Sources */,
+				47A091DCA99DAAA55813F0AD /* HouseholdSync.swift in Sources */,
+				C6D3723FEEBBCCC809636BDC /* IBAN.swift in Sources */,
+				B069B776E87ECA4DA51F899A /* ItemEditorView.swift in Sources */,
+				F4BFF45E7FAFA77C85B72619 /* ItemsView.swift in Sources */,
+				DFCD54F44261880102C316C8 /* Layout.swift in Sources */,
+				113FC50A09F2C7DACD5AEA06 /* Ledger.swift in Sources */,
+				33512D94C42A261C18F6931D /* LedgerActions.swift in Sources */,
+				11BE5CC82D20AF45F4DCB714 /* ManagedObjects.swift in Sources */,
+				35BBFC76CA72FFCC19CF3EDE /* Money.swift in Sources */,
+				30A26733EEFF5AD1353C1618 /* Month.swift in Sources */,
+				75F3B9C3F67CF9F93D4B7F26 /* MonthView.swift in Sources */,
+				F2984F80F0CA4CA43DB68F9E /* OnboardingView.swift in Sources */,
+				40FF49A264E95AA7A68665E1 /* PersistenceController.swift in Sources */,
+				4D489F5BA9C20BD12F70359C /* PrivacyView.swift in Sources */,
+				A231EF93B2A6B5AAFBD15306 /* RateService.swift in Sources */,
+				C8BA80D107B81A5D2EBF4416 /* Reminders.swift in Sources */,
+				B5B41FB2317780F88F93277E /* ReportView.swift in Sources */,
+				5820F4B9FDBE2A484384F5FC /* SampleData.swift in Sources */,
+				5F365FB3BDDBF9FA14509DB2 /* SettingsView.swift in Sources */,
+				8743FD1A8080C860C9932C4E /* SharingSection.swift in Sources */,
+				AA90C89646BEB5F94B110EA0 /* SummaryView.swift in Sources */,
+				40BB3A18717BC227A9E56DC1 /* Theme.swift in Sources */,
+				9F2CE1F9EFDD5F81464A3DCB /* WatchSync.swift in Sources */,
+				960D57098460F81E2F7EFBF2 /* WidgetPublisher.swift in Sources */,
+				6FAB374197D2B1F203279D4D /* WidgetSnapshot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23E88B58CDDF1BA6CB2F872C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86850EF598A903BF99FEC5EB /* CikiWidget.swift in Sources */,
+				A4577566E45EA99B260EA877 /* WidgetSnapshot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8986774724C2765F0FA64647 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81B608A44FD146C0074AA740 /* CikiWatchApp.swift in Sources */,
+				424BE7FE61A80BE523991617 /* WatchStore.swift in Sources */,
+				852C7D001EFB518DBB2CC88D /* WidgetSnapshot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9268ADF141A1CF940E6E9875 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0BB27F1C7452F9B44DD8C5E /* LedgerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2E8F3B097A81DA3547DC6FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA4122D62A5BA97E61446AE /* CikiWatchWidget.swift in Sources */,
+				1E4E639EDFADFEFA1790CFCC /* WidgetSnapshot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDF3C9CA435BB40C68C0390F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56CB458193ECBD3CD082D76D /* AccessibilityAuditTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6689FDF53D555740ACF07AB3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = AF2EFD923F78C24849EF6554 /* CikiWatch */;
+			targetProxy = 7163B67A258AD13CD33A0B83 /* PBXContainerItemProxy */;
+		};
+		7CC011640668672EB5536899 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 73AE0158A4CBAD98B56E45EE /* CikiWatchWidget */;
+			targetProxy = 74A4A3A0564EF14EF58D9938 /* PBXContainerItemProxy */;
+		};
+		A7896438C3757A8A7194B70E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 11EB049E588CF312F8AB558F /* Ciki */;
+			targetProxy = A887ECEB5DD39FF45B0B9D73 /* PBXContainerItemProxy */;
+		};
+		ADAFD1301C165CE3106A8CDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0DCA7D866EAF818F8C8B1F3 /* CikiWidget */;
+			targetProxy = 2648F60067B3944323C03FF0 /* PBXContainerItemProxy */;
+		};
+		F7AE9421A046FE489988FAC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 11EB049E588CF312F8AB558F /* Ciki */;
+			targetProxy = B738D97D4A4EE00C4F848D66 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0CADC4ED3ACE87090282BD5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Ciki/Ciki.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Ciki/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Çıkı'yı açarken kimliğinizi doğrulamak için Face ID kullanılır.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.Ciki;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Release;
+		};
+		1B8910D7A63F70FF3D79EB16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CikiWidget/CikiWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CikiWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.Ciki.Widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Debug;
+		};
+		2C2134120AE83A6482B2F535 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.CikiTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ciki.app/Ciki";
+			};
+			name = Debug;
+		};
+		41B50229D663A7942AB9D16E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CikiWatchWidget/CikiWatchWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CikiWatchWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.Ciki.watchkitapp.Complications;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
+			};
+			name = Release;
+		};
+		5C6B27F482C0F1A2631A2540 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CikiWatch/CikiWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.yakupad.Ciki;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.Ciki.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
+			};
+			name = Debug;
+		};
+		6DC3A0E4AB6E18682D910119 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Ciki/Ciki.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Ciki/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Çıkı'yı açarken kimliğinizi doğrulamak için Face ID kullanılır.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.Ciki;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Debug;
+		};
+		7F13D011112B71C14DAA1B04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_LANGUAGE = tr;
+				DEVELOPMENT_TEAM = D677J9K7QY;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		84433E7335925094344372FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.CikiUITests;
+				SDKROOT = iphoneos;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Ciki;
+			};
+			name = Debug;
+		};
+		9136BF071187DC56A931660E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CikiWidget/CikiWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CikiWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.Ciki.Widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Release;
+		};
+		98487C458319E50046532751 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_LANGUAGE = tr;
+				DEVELOPMENT_TEAM = D677J9K7QY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		AD9ACC8F1CFA5120C709555B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CikiWatchWidget/CikiWatchWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CikiWatchWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.Ciki.watchkitapp.Complications;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
+			};
+			name = Debug;
+		};
+		C949FF31AB00BEF9CCA12546 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.CikiUITests;
+				SDKROOT = iphoneos;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Ciki;
+			};
+			name = Release;
+		};
+		DD2C42D17A557BC58F902088 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CikiWatch/CikiWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.yakupad.Ciki;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.Ciki.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
+			};
+			name = Release;
+		};
+		FB641F4190B19FB51692658E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.CikiTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ciki.app/Ciki";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		15FA25282F44292C18BCA599 /* Build configuration list for PBXNativeTarget "CikiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84433E7335925094344372FB /* Debug */,
+				C949FF31AB00BEF9CCA12546 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4805181BD1CD091502532405 /* Build configuration list for PBXNativeTarget "CikiWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C6B27F482C0F1A2631A2540 /* Debug */,
+				DD2C42D17A557BC58F902088 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4EBBEA4CAB48FD4965E145D1 /* Build configuration list for PBXNativeTarget "CikiWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B8910D7A63F70FF3D79EB16 /* Debug */,
+				9136BF071187DC56A931660E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		54636B4FE21907F90E71E836 /* Build configuration list for PBXNativeTarget "CikiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C2134120AE83A6482B2F535 /* Debug */,
+				FB641F4190B19FB51692658E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		735DADDAF3FAE259BC348D27 /* Build configuration list for PBXNativeTarget "Ciki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DC3A0E4AB6E18682D910119 /* Debug */,
+				0CADC4ED3ACE87090282BD5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9EC8CADE269525F28B4BFEE3 /* Build configuration list for PBXNativeTarget "CikiWatchWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD9ACC8F1CFA5120C709555B /* Debug */,
+				41B50229D663A7942AB9D16E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AC87B463C8559A2C579D5228 /* Build configuration list for PBXProject "Ciki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98487C458319E50046532751 /* Debug */,
+				7F13D011112B71C14DAA1B04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		51B197CF3C926D8990009B01 /* Ciki.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				75C5C31C761AE52F79F794F3 /* Ciki 2.xcdatamodel */,
+				5A3CB58304B58A6C6B921D99 /* Ciki 3.xcdatamodel */,
+				1B9644BDC8E7E0D892FC2C07 /* Ciki 4.xcdatamodel */,
+				0CB8C1B13709303B3733E5CB /* Ciki.xcdatamodel */,
+			);
+			currentVersion = 1B9644BDC8E7E0D892FC2C07 /* Ciki 4.xcdatamodel */;
+			path = Ciki.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D05DD6F9A853AE02F5228CE1 /* Project object */;
+}

@@ -1,4 +1,4 @@
-name: AileKasa
+name: Ciki
 options:
   bundleIdPrefix: com.yakupad
   deploymentTarget:
@@ -17,14 +17,14 @@ settings:
     SWIFT_EMIT_LOC_STRINGS: YES
 
 targets:
-  AileKasa:
+  Ciki:
     type: application
     platform: iOS
     sources:
-      - AileKasa
+      - Ciki
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasa
+        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.Ciki
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: "Çıkı"
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
@@ -43,46 +43,46 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         CODE_SIGN_STYLE: Automatic
     info:
-      path: AileKasa/Info.plist
+      path: Ciki/Info.plist
       properties:
         CKSharingSupported: true
         UIBackgroundModes:
           - remote-notification
     entitlements:
-      path: AileKasa/AileKasa.entitlements
+      path: Ciki/Ciki.entitlements
       properties:
         com.apple.security.application-groups:
-          - group.com.yakupad.AileKasa
+          - group.com.yakupad.Ciki
         com.apple.developer.icloud-container-identifiers:
-          - iCloud.com.yakupad.AileKasa
+          - iCloud.com.yakupad.Ciki
         com.apple.developer.icloud-services:
           - CloudKit
         aps-environment: development
     dependencies:
-      - target: AileKasaWidget
-      - target: AileKasaWatch
+      - target: CikiWidget
+      - target: CikiWatch
         platformFilter: iOS
 
-  AileKasaWidget:
+  CikiWidget:
     type: app-extension
     platform: iOS
     sources:
-      - AileKasaWidget
-      - AileKasa/Shared
+      - CikiWidget
+      - Ciki/Shared
     info:
-      path: AileKasaWidget/Info.plist
+      path: CikiWidget/Info.plist
       properties:
         CFBundleDisplayName: Çıkı
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     entitlements:
-      path: AileKasaWidget/AileKasaWidget.entitlements
+      path: CikiWidget/CikiWidget.entitlements
       properties:
         com.apple.security.application-groups:
-          - group.com.yakupad.AileKasa
+          - group.com.yakupad.Ciki
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasa.Widget
+        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.Ciki.Widget
         GENERATE_INFOPLIST_FILE: YES
         MARKETING_VERSION: "0.1.0"
         CURRENT_PROJECT_VERSION: "1"
@@ -93,26 +93,26 @@ targets:
         CODE_SIGN_STYLE: Automatic
         SKIP_INSTALL: YES
 
-  AileKasaWatch:
+  CikiWatch:
     type: application
     platform: watchOS
     deploymentTarget: "27.0"
     sources:
-      - AileKasaWatch
-      - AileKasa/Shared
+      - CikiWatch
+      - Ciki/Shared
     entitlements:
-      path: AileKasaWatch/AileKasaWatch.entitlements
+      path: CikiWatch/CikiWatch.entitlements
       properties:
         com.apple.security.application-groups:
-          - group.com.yakupad.AileKasa
+          - group.com.yakupad.Ciki
     dependencies:
-      - target: AileKasaWatchWidget
+      - target: CikiWatchWidget
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasa.watchkitapp
+        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.Ciki.watchkitapp
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: "Çıkı"
-        INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.yakupad.AileKasa
+        INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.yakupad.Ciki
         INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp: NO
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
@@ -122,67 +122,67 @@ targets:
         SKIP_INSTALL: YES
         CODE_SIGN_STYLE: Automatic
 
-  AileKasaWatchWidget:
+  CikiWatchWidget:
     type: app-extension
     platform: watchOS
     deploymentTarget: "27.0"
     sources:
-      - AileKasaWatchWidget
-      - AileKasa/Shared
+      - CikiWatchWidget
+      - Ciki/Shared
     info:
-      path: AileKasaWatchWidget/Info.plist
+      path: CikiWatchWidget/Info.plist
       properties:
         CFBundleDisplayName: Çıkı
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     entitlements:
-      path: AileKasaWatchWidget/AileKasaWatchWidget.entitlements
+      path: CikiWatchWidget/CikiWatchWidget.entitlements
       properties:
         com.apple.security.application-groups:
-          - group.com.yakupad.AileKasa
+          - group.com.yakupad.Ciki
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasa.watchkitapp.Complications
+        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.Ciki.watchkitapp.Complications
         GENERATE_INFOPLIST_FILE: YES
         MARKETING_VERSION: "0.1.0"
         CURRENT_PROJECT_VERSION: "1"
         SKIP_INSTALL: YES
         CODE_SIGN_STYLE: Automatic
 
-  AileKasaTests:
+  CikiTests:
     type: bundle.unit-test
     platform: iOS
     sources:
-      - AileKasaTests
+      - CikiTests
     dependencies:
-      - target: AileKasa
+      - target: Ciki
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
-        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasaTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.CikiTests
 
-  AileKasaUITests:
+  CikiUITests:
     type: bundle.ui-testing
     platform: iOS
     sources:
-      - AileKasaUITests
+      - CikiUITests
     dependencies:
-      - target: AileKasa
+      - target: Ciki
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
-        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.AileKasaUITests
+        PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.CikiUITests
         SWIFT_DEFAULT_ACTOR_ISOLATION: nonisolated
         TARGETED_DEVICE_FAMILY: "1,2"
 
 schemes:
-  AileKasa:
+  Ciki:
     build:
       targets:
-        AileKasa: all
-        AileKasaTests: [test]
-        AileKasaUITests: [test]
+        Ciki: all
+        CikiTests: [test]
+        CikiUITests: [test]
     test:
       targets:
-        - AileKasaTests
-        - AileKasaUITests
+        - CikiTests
+        - CikiUITests
