@@ -8,7 +8,13 @@ Ortak bütçe, borç ve ödeme takibi. Excel'de tutulan aylık borç, gelir ve �
 
 > Proje klasörü, bundle ID (`com.yakupad.AileKasa`) ve iCloud container'ı eski "Aile Kasası" adını taşır; kullanıcıya görünmez ve iCloud verisini korumak için değiştirilmez.
 
-<img src="docs/ozet.png" width="300" alt="Özet ekranı, Ekim 2026">
+<p>
+<img src="docs/screens/ozet.png" width="200" alt="Özet">
+<img src="docs/screens/aylar.png" width="200" alt="Aylar">
+<img src="docs/screens/rapor.png" width="200" alt="Rapor">
+<img src="docs/screens/watch.png" width="150" alt="Apple Watch">
+</p>
+<img src="docs/screens/ipad.png" width="620" alt="iPad">
 
 - **Platform:** iPhone, iPad ve Mac (Mac Catalyst, Mac görünümü), iOS / iPadOS / macOS 27, SwiftUI. iPhone Duo'nun dış ve iç ekranına uyumlu.
 - **Veri:** Core Data + NSPersistentCloudKitContainer (iCloud paylaşımına hazır)
