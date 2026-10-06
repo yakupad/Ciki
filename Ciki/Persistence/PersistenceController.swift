@@ -1,4 +1,5 @@
 import CoreData
+import OSLog
 import CloudKit
 #if targetEnvironment(macCatalyst)
 import Security
@@ -41,6 +42,12 @@ final class PersistenceController {
         #endif
     }()
 
+    #if DEBUG
+    /// `-initializeCloudKitSchema`: Core Data modelindeki tüm kayıt tiplerini CloudKit Development şemasına yazar.
+    /// Ardından CloudKit Console'dan "Deploy Schema Changes" ile Production'a aktarılır.
+    static let initializesCloudKitSchema = CommandLine.arguments.contains("-initializeCloudKitSchema")
+    #endif
+
     let container: NSPersistentCloudKitContainer
     private(set) var privateStore: NSPersistentStore?
     private(set) var sharedStore: NSPersistentStore?
@@ -79,6 +86,12 @@ final class PersistenceController {
             sharedDescription.cloudKitContainerOptions = sharedOptions
 
             container.persistentStoreDescriptions = [privateDescription, sharedDescription]
+            #if DEBUG
+            // Şema kurulumu yalnızca özel veritabanıyla yapılır; paylaşılan veritabanı aynı kayıt tiplerini kullanır.
+            if Self.initializesCloudKitSchema {
+                container.persistentStoreDescriptions = [privateDescription]
+            }
+            #endif
         }
 
         container.loadPersistentStores { _, error in
@@ -93,6 +106,17 @@ final class PersistenceController {
                 privateStore = store
             }
         }
+
+        #if DEBUG
+        if Self.initializesCloudKitSchema && privateDescription.cloudKitContainerOptions != nil {
+            do {
+                try container.initializeCloudKitSchema(options: [])
+                Logger(subsystem: "com.yakupad.Ciki", category: "CloudKit").notice("Şema Development ortamına yüklendi")
+            } catch {
+                Logger(subsystem: "com.yakupad.Ciki", category: "CloudKit").error("Şema yüklenemedi: \(error, privacy: .public)")
+            }
+        }
+        #endif
 
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump

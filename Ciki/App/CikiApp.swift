@@ -128,6 +128,8 @@ final class AppState {
 
 struct RootView: View {
     @Environment(AppState.self) private var app
+    @Environment(AppLock.self) private var lock
+    @Environment(ReminderScheduler.self) private var reminders
     @State private var route: EditorRoute?
     @AppStorage(OnboardingView.completedKey) private var isOnboarded = false
     @State private var tab = RootView.initialTab
@@ -169,7 +171,10 @@ struct RootView: View {
         .sheet(item: $route) { EditorSheet(route: $0) }
         .modifier(LocalHouseholdDecision())
         .fullScreenCover(isPresented: Binding(get: { !isOnboarded }, set: { isOnboarded = !$0 })) {
+            // Mac Catalyst'te tam ekran sunum ortam nesnelerini devralmıyor; açıkça aktarılır.
             OnboardingView()
+                .environment(lock)
+                .environment(reminders)
         }
         .tint(.petrol)
     }

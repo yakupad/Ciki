@@ -142,6 +142,15 @@ iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca 
 - "Geçen aydan kopyala" ekstre satırlarını yeni aya taşır.
 - Tüm tutarlar sabit genişlikli rakamlarla yazılır, sütunlar hizalı kalır.
 
+## CloudKit şeması
+
+Uygulama iCloud'a ilk kez yazdığında kayıt tipleri **Development** ortamında oluşur. Mağaza sürümleri ise **Production** ortamını kullanır. Model her değiştiğinde:
+
+1. İmzalı bir DEBUG derlemesini `-initializeCloudKitSchema` argümanıyla çalıştırın. Bu argüman tüm kayıt tiplerini Development şemasına yazar. Mac'te `open -n Ciki.app --args -initializeCloudKitSchema` kullanın; doğrudan çalıştırılan ikili, argümanları kaybederek yeniden başlatılır.
+2. [CloudKit Console](https://icloud.developer.apple.com/) → `iCloud.com.yakupad.Ciki` → **Deploy Schema Changes** ile Production'a aktarın.
+
+Production'a eklenen alanlar ve tipler sonradan silinemez; yalnızca yeni alan eklenebilir.
+
 ## App Store sayfası
 
 `AppStore/` klasöründe mağaza için gereken her şey var:
