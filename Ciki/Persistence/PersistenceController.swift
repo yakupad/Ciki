@@ -94,6 +94,7 @@ final class PersistenceController {
             #endif
         }
 
+        logCloudKitEvents()
         container.loadPersistentStores { _, error in
             if let error {
                 fatalError("Veri deposu açılamadı: \(error)")
@@ -121,6 +122,36 @@ final class PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         container.viewContext.transactionAuthor = "app"
+    }
+}
+
+extension PersistenceController {
+    /// iCloud eşitleme olaylarını (kurulum, içe/dışa aktarma) sistem günlüğüne yazar.
+    /// Hata metinleri herkese açık yazılır; kayıt içeriği yazılmaz. Console uygulamasında "com.yakupad.Ciki" ile süzülür.
+    private func logCloudKitEvents() {
+        let logger = Logger(subsystem: "com.yakupad.Ciki", category: "CloudKit")
+        // Kurulum olayları depolar yüklenirken gelebilir; depo adı olay anında koordinatörden okunur.
+        let coordinator = container.persistentStoreCoordinator
+        let sharedName = Self.sharedStoreFileName
+        NotificationCenter.default.addObserver(forName: NSPersistentCloudKitContainer.eventChangedNotification,
+                                               object: container, queue: nil) { notification in
+            guard let event = notification.userInfo?[NSPersistentCloudKitContainer.eventNotificationUserInfoKey]
+                    as? NSPersistentCloudKitContainer.Event, event.endDate != nil else { return }
+            let store = event.storeIdentifier
+            let kind = switch event.type {
+            case .setup: "kurulum"
+            case .import: "içe aktarma"
+            case .export: "dışa aktarma"
+            @unknown default: "bilinmeyen"
+            }
+            let url = coordinator.persistentStores.first { $0.identifier == store }?.url
+            let database = url?.lastPathComponent == sharedName ? "paylaşılan" : "özel"
+            if let error = event.error {
+                logger.error("\(database, privacy: .public) depo, \(kind, privacy: .public) başarısız: \(error, privacy: .public)")
+            } else {
+                logger.notice("\(database, privacy: .public) depo, \(kind, privacy: .public) tamam")
+            }
+        }
     }
 }
 
