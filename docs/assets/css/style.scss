@@ -1,0 +1,67 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+// Çıkı renkleri (uygulamadaki paletle aynı)
+:root {
+  --zemin: #F4F6F5;
+  --kart: #FFFFFF;
+  --metin: #1B2321;
+  --ikincil: #5E6A66;
+  --petrol: #167269;
+  --amber: #B07A1E;
+  --cizgi: #DDE4E2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --zemin: #0E1514;
+    --kart: #152825;
+    --metin: #E7EEEC;
+    --ikincil: #9AA7A3;
+    --petrol: #5FC2B5;
+    --amber: #F2B04A;
+    --cizgi: #24413C;
+  }
+}
+
+body {
+  background: var(--zemin);
+  color: var(--ikincil);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  color: var(--metin);
+  font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+a, a small { color: var(--petrol); }
+a:hover, a:focus { color: var(--metin); }
+
+header h1 a { color: var(--metin); }
+header img { border-radius: 22%; width: 96px; height: 96px; }
+header p { color: var(--ikincil); }
+
+section {
+  background: var(--kart);
+  border: 1px solid var(--cizgi);
+  border-radius: 16px;
+  padding: 24px 32px;
+}
+
+hr { background: var(--cizgi); }
+em { color: var(--ikincil); }
+code { background: var(--zemin); color: var(--metin); border-color: var(--cizgi); }
+
+footer { color: var(--ikincil); }
+
+// Dar ekranda başlık üstte, içerik tam genişlikte
+@media print, screen and (max-width: 960px) {
+  section { padding: 20px; border-radius: 12px; }
+}
+@media print, screen and (max-width: 480px) {
+  body { padding: 16px; }
+  section { padding: 16px; }
+}
