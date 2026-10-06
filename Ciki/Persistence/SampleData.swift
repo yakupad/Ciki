@@ -8,10 +8,14 @@ enum SampleData {
     static func load(into context: NSManagedObjectContext) {
         let household = context.currentHousehold()
         household.name = String(localized: "Evimiz")
-        if household.peopleArray.isEmpty {
-            context.addPerson(named: "Deniz", to: household).relation = nil
-            context.addPerson(named: "Ece", to: household).relation = .partner
+        // Önceki kişiler (gerçek isimler olabilir) tanıtım görsellerine sızmasın diye her zaman kurgusal haneyle başla.
+        wipe(context)
+        for person in household.peopleArray {
+            context.delete(person)
         }
+        context.processPendingChanges()
+        context.addPerson(named: "Deniz", to: household).relation = nil
+        context.addPerson(named: "Ece", to: household).relation = .partner
         let people = household.peopleArray
         let deniz = people.first
         let ece = people.dropFirst().first

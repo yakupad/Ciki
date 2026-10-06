@@ -1,0 +1,1210 @@
+{
+  "app": {
+    "name": "Çıkı",
+    "bundleId": "com.yakupad.Ciki",
+    "primaryLocale": "tr"
+  },
+  "dataNote": "Görsellerdeki kişi, banka ve tutarlar kurgusaldır (örnek hane: Deniz ve Ece).",
+  "defaultProductPage": {
+    "screenshotOrder": [
+      "ozet",
+      "aylar",
+      "tablo",
+      "karsilama",
+      "rapor",
+      "kalemler"
+    ],
+    "header": "header-urun",
+    "searchResults": "search-varsayilan"
+  },
+  "customProductPages": [
+    {
+      "id": "aile",
+      "name": {
+        "tr": "Aile bütçesi",
+        "en": "Family budget"
+      },
+      "audience": "Bütçesini eşiyle ya da ailesiyle birlikte yöneten haneler",
+      "keywords": {
+        "tr": [
+          "aile bütçesi",
+          "ev bütçesi",
+          "ortak bütçe",
+          "eş"
+        ],
+        "en": [
+          "family budget",
+          "household budget",
+          "shared budget",
+          "couples"
+        ]
+      },
+      "promotional_text": {
+        "tr": "Ailenin bütün ödemeleri tek yerde. Eşinizle iCloud üzerinden aynı kayıtları görün, kimin neyi ödediğini bilin.",
+        "en": "All of your family's payments in one place. See the same entries as your partner over iCloud and know who paid what."
+      },
+      "order": [
+        "karsilama",
+        "ozet",
+        "aylar",
+        "rapor",
+        "tablo",
+        "kalemler"
+      ],
+      "header": "header-urun",
+      "searchResults": "search-aile",
+      "deepLink": null,
+      "deepLinkNote": "İsteğe bağlı: uygulama ilgili ekranı açan bir bağlantı desteklediğinde eklenir."
+    },
+    {
+      "id": "ev-arkadaslari",
+      "name": {
+        "tr": "Ev arkadaşları",
+        "en": "Housemates"
+      },
+      "audience": "Kira, aidat ve faturaları ev arkadaşlarıyla paylaşanlar",
+      "keywords": {
+        "tr": [
+          "ev arkadaşı",
+          "kira paylaşımı",
+          "fatura bölüşme",
+          "aidat"
+        ],
+        "en": [
+          "housemates",
+          "roommates",
+          "split rent",
+          "split bills"
+        ]
+      },
+      "promotional_text": {
+        "tr": "Kira, aidat ve faturalar ortak kalem olsun. Herkes kendi telefonundan görsün, ödendi işaretlesin.",
+        "en": "Make rent, building fees and bills shared items. Everyone sees them on their own phone and marks them paid."
+      },
+      "order": [
+        "aylar",
+        "karsilama",
+        "ozet",
+        "tablo",
+        "kalemler",
+        "rapor"
+      ],
+      "header": "header-urun",
+      "searchResults": "search-ev-arkadaslari",
+      "deepLink": null,
+      "deepLinkNote": "İsteğe bağlı: uygulama ilgili ekranı açan bir bağlantı desteklediğinde eklenir."
+    },
+    {
+      "id": "kart-borc",
+      "name": {
+        "tr": "Kart ve borç takibi",
+        "en": "Card and debt tracking"
+      },
+      "audience": "Kredi kartı ekstresi, nakit avans ve kredi taksitlerini takip edenler",
+      "keywords": {
+        "tr": [
+          "kredi kartı",
+          "ekstre",
+          "kredi taksiti",
+          "borç takibi"
+        ],
+        "en": [
+          "credit card",
+          "debt tracker",
+          "loan payments",
+          "statement"
+        ]
+      },
+      "promotional_text": {
+        "tr": "Kart ekstreleri, nakit avans ve kredi taksitleri bankaya göre düzenli. Son ödeme günü gelmeden hatırlatma alın.",
+        "en": "Card statements, cash advances and loan installments, organized by bank. Get reminded before each due day."
+      },
+      "order": [
+        "aylar",
+        "rapor",
+        "ozet",
+        "tablo",
+        "kalemler",
+        "karsilama"
+      ],
+      "header": "header-urun",
+      "searchResults": "search-kart-borc",
+      "deepLink": null,
+      "deepLinkNote": "İsteğe bağlı: uygulama ilgili ekranı açan bir bağlantı desteklediğinde eklenir."
+    },
+    {
+      "id": "doviz",
+      "name": {
+        "tr": "Döviz ödemeleri",
+        "en": "Foreign currency payments"
+      },
+      "audience": "Euro ya da dolarla düzenli ödeme yapan, yurt dışına para gönderenler",
+      "keywords": {
+        "tr": [
+          "döviz",
+          "euro",
+          "dolar",
+          "kur",
+          "iban"
+        ],
+        "en": [
+          "currency",
+          "euro",
+          "dollar",
+          "exchange rate",
+          "iban"
+        ]
+      },
+      "promotional_text": {
+        "tr": "Euro ve dolar ödemeleri TCMB kuruyla TL'ye çevrilir. Ödenenin kuru sabitlenir, IBAN'lar tek dokunuşla kopyalanır.",
+        "en": "Euro and dollar payments are converted at central bank rates. Paid rates stay fixed, and IBANs copy with one tap."
+      },
+      "order": [
+        "kalemler",
+        "ozet",
+        "aylar",
+        "rapor",
+        "tablo",
+        "karsilama"
+      ],
+      "header": "header-urun",
+      "searchResults": "search-doviz",
+      "deepLink": null,
+      "deepLinkNote": "İsteğe bağlı: uygulama ilgili ekranı açan bir bağlantı desteklediğinde eklenir."
+    }
+  ],
+  "productPageOptimization": [
+    {
+      "id": "test-1-ilk-mesaj",
+      "name": "İlk ekran görüntüsünün mesajı",
+      "hypothesis": "Excel alışkanlığına ya da birlikte kullanıma vurgu yapan ilk görsel, genel özet görseline göre daha çok indirme getirir.",
+      "locales": [
+        "tr"
+      ],
+      "traffic": {
+        "control": 25,
+        "A": 25,
+        "B": 25,
+        "C": 25
+      },
+      "control": {
+        "order": [
+          "ozet",
+          "aylar",
+          "tablo",
+          "karsilama",
+          "rapor",
+          "kalemler"
+        ]
+      },
+      "treatments": {
+        "A": {
+          "order": [
+            "tablo",
+            "ozet",
+            "aylar",
+            "karsilama",
+            "rapor",
+            "kalemler"
+          ],
+          "message": "Excel tablon artık cebinde"
+        },
+        "B": {
+          "order": [
+            "karsilama",
+            "ozet",
+            "aylar",
+            "tablo",
+            "rapor",
+            "kalemler"
+          ],
+          "message": "Hanece, birlikte"
+        },
+        "C": {
+          "order": [
+            "aylar",
+            "ozet",
+            "tablo",
+            "karsilama",
+            "rapor",
+            "kalemler"
+          ],
+          "message": "Ödendi mi? Kaydır, geç"
+        }
+      },
+      "metric": "Dönüşüm oranı (ürün sayfası görüntülemesinden indirmeye)",
+      "duration": "En az 14 gün; anlamlı sonuç için en fazla 90 gün",
+      "decision": "Kontrolden en az %90 güvenle daha iyi olan varyasyon varsayılan sıra yapılır."
+    },
+    {
+      "id": "test-2-baslik-gorseli",
+      "name": "Ürün sayfası başlık görseli",
+      "hypothesis": "Uygulamanın ekranlarını gösteren başlık, marka (ikon) odaklı başlığa göre daha çok indirme getirir.",
+      "locales": [
+        "tr",
+        "en-US"
+      ],
+      "traffic": {
+        "control": 50,
+        "A": 50
+      },
+      "control": {
+        "header": "header-urun"
+      },
+      "treatments": {
+        "A": {
+          "header": "header-marka"
+        }
+      },
+      "metric": "Dönüşüm oranı",
+      "duration": "En az 14 gün",
+      "decision": "Kazanan başlık varsayılan olur ve Asset Library'de birincil olarak işaretlenir."
+    },
+    {
+      "id": "test-3-ikon",
+      "name": "Uygulama ikonu (ileride)",
+      "hypothesis": "Amber bağın daha baskın olduğu bir ikon aramada daha çok dikkat çeker.",
+      "status": "Beklemede: alternatif ikonun uygulama paketine eklenip yeni bir sürümle gönderilmesi gerekir."
+    }
+  ],
+  "assets": [
+    {
+      "id": "tr/iPhone-6.9/ozet",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "tr",
+      "screen": "ozet",
+      "file": "screenshots/tr/iPhone-6.9/01-ozet.jpg",
+      "headline": "Ay sonunu bugünden gör",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPhone-6.9/aylar",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "tr",
+      "screen": "aylar",
+      "file": "screenshots/tr/iPhone-6.9/02-aylar.jpg",
+      "headline": "Ödendi mi? Kaydır, geç",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPhone-6.9/tablo",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "tr",
+      "screen": "tablo",
+      "file": "screenshots/tr/iPhone-6.9/03-tablo.jpg",
+      "headline": "Excel tablon artık cebinde",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPhone-6.9/karsilama",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "tr",
+      "screen": "karsilama",
+      "file": "screenshots/tr/iPhone-6.9/04-karsilama.jpg",
+      "headline": "Hanece, birlikte",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPhone-6.9/rapor",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "tr",
+      "screen": "rapor",
+      "file": "screenshots/tr/iPhone-6.9/05-rapor.jpg",
+      "headline": "Paran nereye gidiyor, gör",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPhone-6.9/kalemler",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "tr",
+      "screen": "kalemler",
+      "file": "screenshots/tr/iPhone-6.9/06-kalemler.jpg",
+      "headline": "TL, dolar, euro bir arada",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPhone-6.3/ozet",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "tr",
+      "screen": "ozet",
+      "file": "screenshots/tr/iPhone-6.3/01-ozet.jpg",
+      "headline": "Ay sonunu bugünden gör",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPhone-6.3/aylar",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "tr",
+      "screen": "aylar",
+      "file": "screenshots/tr/iPhone-6.3/02-aylar.jpg",
+      "headline": "Ödendi mi? Kaydır, geç",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPhone-6.3/tablo",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "tr",
+      "screen": "tablo",
+      "file": "screenshots/tr/iPhone-6.3/03-tablo.jpg",
+      "headline": "Excel tablon artık cebinde",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPhone-6.3/karsilama",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "tr",
+      "screen": "karsilama",
+      "file": "screenshots/tr/iPhone-6.3/04-karsilama.jpg",
+      "headline": "Hanece, birlikte",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPhone-6.3/rapor",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "tr",
+      "screen": "rapor",
+      "file": "screenshots/tr/iPhone-6.3/05-rapor.jpg",
+      "headline": "Paran nereye gidiyor, gör",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPhone-6.3/kalemler",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "tr",
+      "screen": "kalemler",
+      "file": "screenshots/tr/iPhone-6.3/06-kalemler.jpg",
+      "headline": "TL, dolar, euro bir arada",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "tr/iPad-13/ozet",
+      "type": "screenshot",
+      "device": "iPad-13",
+      "size": "2064x2752",
+      "locale": "tr",
+      "screen": "ozet",
+      "file": "screenshots/tr/iPad-13/01-ozet.jpg",
+      "headline": "Ay sonunu bugünden gör",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "tr/iPad-13/tablo",
+      "type": "screenshot",
+      "device": "iPad-13",
+      "size": "2064x2752",
+      "locale": "tr",
+      "screen": "tablo",
+      "file": "screenshots/tr/iPad-13/02-tablo.jpg",
+      "headline": "Excel tablon artık cebinde",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "tr/iPad-13/rapor",
+      "type": "screenshot",
+      "device": "iPad-13",
+      "size": "2064x2752",
+      "locale": "tr",
+      "screen": "rapor",
+      "file": "screenshots/tr/iPad-13/03-rapor.jpg",
+      "headline": "Paran nereye gidiyor, gör",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "tr/Mac/ozet",
+      "type": "screenshot",
+      "device": "Mac",
+      "size": "2880x1800",
+      "locale": "tr",
+      "screen": "ozet",
+      "file": "screenshots/tr/Mac/01-ozet.jpg",
+      "headline": "Ay sonunu bugünden gör",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "tr/Mac/aylar",
+      "type": "screenshot",
+      "device": "Mac",
+      "size": "2880x1800",
+      "locale": "tr",
+      "screen": "aylar",
+      "file": "screenshots/tr/Mac/02-aylar.jpg",
+      "headline": "Ödendi mi? Kaydır, geç",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "tr/Mac/tablo",
+      "type": "screenshot",
+      "device": "Mac",
+      "size": "2880x1800",
+      "locale": "tr",
+      "screen": "tablo",
+      "file": "screenshots/tr/Mac/03-tablo.jpg",
+      "headline": "Excel tablon artık cebinde",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "tr/iPhone-Duo-Inner/ozet",
+      "type": "screenshot",
+      "device": "iPhone-Duo-Inner",
+      "size": "2853x2007",
+      "locale": "tr",
+      "screen": "ozet",
+      "file": "screenshots/tr/iPhone-Duo-Inner/01-ozet.jpg",
+      "headline": "Ay sonunu bugünden gör",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ],
+      "note": "App Store Connect'te bu cihaz için yükleme 'bu yıl içinde' açılacak."
+    },
+    {
+      "id": "tr/iPhone-Duo-Outer/ozet",
+      "type": "screenshot",
+      "device": "iPhone-Duo-Outer",
+      "size": "1398x2034",
+      "locale": "tr",
+      "screen": "ozet",
+      "file": "screenshots/tr/iPhone-Duo-Outer/01-ozet.jpg",
+      "headline": "Ay sonunu bugünden gör",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ],
+      "note": "App Store Connect'te bu cihaz için yükleme 'bu yıl içinde' açılacak."
+    },
+    {
+      "id": "tr/Watch/ozet",
+      "type": "screenshot",
+      "device": "Apple Watch Ultra",
+      "size": "422x514",
+      "locale": "tr",
+      "file": "screenshots/tr/Watch/01-ozet.jpg",
+      "usage": [
+        "default"
+      ]
+    },
+    {
+      "id": "tr/Watch/odemeler",
+      "type": "screenshot",
+      "device": "Apple Watch Ultra",
+      "size": "422x514",
+      "locale": "tr",
+      "file": "screenshots/tr/Watch/02-odemeler.jpg",
+      "usage": [
+        "default"
+      ]
+    },
+    {
+      "id": "tr/creative/header-urun",
+      "type": "productPageHeader",
+      "size": "3840x1646",
+      "locale": "tr",
+      "file": "creative/tr/header-urun-3840x1646.jpg",
+      "headline": null,
+      "usage": [
+        "default",
+        "ppo:test-2-baslik-gorseli",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "tr/creative/header-marka",
+      "type": "productPageHeader",
+      "size": "3840x1646",
+      "locale": "tr",
+      "file": "creative/tr/header-marka-3840x1646.jpg",
+      "headline": "Çıkı",
+      "usage": [
+        "ppo:test-2-baslik-gorseli"
+      ]
+    },
+    {
+      "id": "tr/creative/search-varsayilan",
+      "type": "searchResults",
+      "size": "3840x2560",
+      "locale": "tr",
+      "file": "creative/tr/search-varsayilan-3840x2560.jpg",
+      "headline": "Ay sonunu bugünden gör",
+      "usage": [
+        "default"
+      ]
+    },
+    {
+      "id": "tr/creative/universal",
+      "type": "universal",
+      "size": "5244x2950",
+      "locale": "tr",
+      "file": "creative/tr/universal-5244x2950.jpg",
+      "headline": "Hanenin bütçesi, tek bir çıkıda",
+      "usage": [
+        "default"
+      ]
+    },
+    {
+      "id": "tr/creative/search-aile",
+      "type": "searchResults",
+      "size": "3840x2560",
+      "locale": "tr",
+      "file": "creative/tr/search-aile-3840x2560.jpg",
+      "headline": "Ailenin bütçesi, birlikte",
+      "usage": [
+        "cpp:aile"
+      ]
+    },
+    {
+      "id": "tr/creative/search-ev-arkadaslari",
+      "type": "searchResults",
+      "size": "3840x2560",
+      "locale": "tr",
+      "file": "creative/tr/search-ev-arkadaslari-3840x2560.jpg",
+      "headline": "Kira ve faturalar, ortak",
+      "usage": [
+        "cpp:ev-arkadaslari"
+      ]
+    },
+    {
+      "id": "tr/creative/search-kart-borc",
+      "type": "searchResults",
+      "size": "3840x2560",
+      "locale": "tr",
+      "file": "creative/tr/search-kart-borc-3840x2560.jpg",
+      "headline": "Kart ve kredi borcunu yönet",
+      "usage": [
+        "cpp:kart-borc"
+      ]
+    },
+    {
+      "id": "tr/creative/search-doviz",
+      "type": "searchResults",
+      "size": "3840x2560",
+      "locale": "tr",
+      "file": "creative/tr/search-doviz-3840x2560.jpg",
+      "headline": "Döviz ödemeleri, TL karşılığıyla",
+      "usage": [
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.9/ozet",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "en-US",
+      "screen": "ozet",
+      "file": "screenshots/en-US/iPhone-6.9/01-ozet.jpg",
+      "headline": "See your month-end today",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.9/aylar",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "en-US",
+      "screen": "aylar",
+      "file": "screenshots/en-US/iPhone-6.9/02-aylar.jpg",
+      "headline": "Paid? Just swipe",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.9/tablo",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "en-US",
+      "screen": "tablo",
+      "file": "screenshots/en-US/iPhone-6.9/03-tablo.jpg",
+      "headline": "Your spreadsheet, in your pocket",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.9/karsilama",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "en-US",
+      "screen": "karsilama",
+      "file": "screenshots/en-US/iPhone-6.9/04-karsilama.jpg",
+      "headline": "Shared with your household",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.9/rapor",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "en-US",
+      "screen": "rapor",
+      "file": "screenshots/en-US/iPhone-6.9/05-rapor.jpg",
+      "headline": "See where your money goes",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.9/kalemler",
+      "type": "screenshot",
+      "device": "iPhone-6.9",
+      "size": "1320x2868",
+      "locale": "en-US",
+      "screen": "kalemler",
+      "file": "screenshots/en-US/iPhone-6.9/06-kalemler.jpg",
+      "headline": "Lira, dollar and euro together",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.3/ozet",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "en-US",
+      "screen": "ozet",
+      "file": "screenshots/en-US/iPhone-6.3/01-ozet.jpg",
+      "headline": "See your month-end today",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.3/aylar",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "en-US",
+      "screen": "aylar",
+      "file": "screenshots/en-US/iPhone-6.3/02-aylar.jpg",
+      "headline": "Paid? Just swipe",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.3/tablo",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "en-US",
+      "screen": "tablo",
+      "file": "screenshots/en-US/iPhone-6.3/03-tablo.jpg",
+      "headline": "Your spreadsheet, in your pocket",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.3/karsilama",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "en-US",
+      "screen": "karsilama",
+      "file": "screenshots/en-US/iPhone-6.3/04-karsilama.jpg",
+      "headline": "Shared with your household",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.3/rapor",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "en-US",
+      "screen": "rapor",
+      "file": "screenshots/en-US/iPhone-6.3/05-rapor.jpg",
+      "headline": "See where your money goes",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-6.3/kalemler",
+      "type": "screenshot",
+      "device": "iPhone-6.3",
+      "size": "1206x2622",
+      "locale": "en-US",
+      "screen": "kalemler",
+      "file": "screenshots/en-US/iPhone-6.3/06-kalemler.jpg",
+      "headline": "Lira, dollar and euro together",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz",
+        "ppo:test-1-ilk-mesaj"
+      ]
+    },
+    {
+      "id": "en-US/iPad-13/ozet",
+      "type": "screenshot",
+      "device": "iPad-13",
+      "size": "2064x2752",
+      "locale": "en-US",
+      "screen": "ozet",
+      "file": "screenshots/en-US/iPad-13/01-ozet.jpg",
+      "headline": "See your month-end today",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "en-US/iPad-13/tablo",
+      "type": "screenshot",
+      "device": "iPad-13",
+      "size": "2064x2752",
+      "locale": "en-US",
+      "screen": "tablo",
+      "file": "screenshots/en-US/iPad-13/02-tablo.jpg",
+      "headline": "Your spreadsheet, in your pocket",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "en-US/iPad-13/rapor",
+      "type": "screenshot",
+      "device": "iPad-13",
+      "size": "2064x2752",
+      "locale": "en-US",
+      "screen": "rapor",
+      "file": "screenshots/en-US/iPad-13/03-rapor.jpg",
+      "headline": "See where your money goes",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "en-US/Mac/ozet",
+      "type": "screenshot",
+      "device": "Mac",
+      "size": "2880x1800",
+      "locale": "en-US",
+      "screen": "ozet",
+      "file": "screenshots/en-US/Mac/01-ozet.jpg",
+      "headline": "See your month-end today",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "en-US/Mac/aylar",
+      "type": "screenshot",
+      "device": "Mac",
+      "size": "2880x1800",
+      "locale": "en-US",
+      "screen": "aylar",
+      "file": "screenshots/en-US/Mac/02-aylar.jpg",
+      "headline": "Paid? Just swipe",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "en-US/Mac/tablo",
+      "type": "screenshot",
+      "device": "Mac",
+      "size": "2880x1800",
+      "locale": "en-US",
+      "screen": "tablo",
+      "file": "screenshots/en-US/Mac/03-tablo.jpg",
+      "headline": "Your spreadsheet, in your pocket",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "en-US/iPhone-Duo-Inner/ozet",
+      "type": "screenshot",
+      "device": "iPhone-Duo-Inner",
+      "size": "2853x2007",
+      "locale": "en-US",
+      "screen": "ozet",
+      "file": "screenshots/en-US/iPhone-Duo-Inner/01-ozet.jpg",
+      "headline": "See your month-end today",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ],
+      "note": "App Store Connect'te bu cihaz için yükleme 'bu yıl içinde' açılacak."
+    },
+    {
+      "id": "en-US/iPhone-Duo-Outer/ozet",
+      "type": "screenshot",
+      "device": "iPhone-Duo-Outer",
+      "size": "1398x2034",
+      "locale": "en-US",
+      "screen": "ozet",
+      "file": "screenshots/en-US/iPhone-Duo-Outer/01-ozet.jpg",
+      "headline": "See your month-end today",
+      "usage": [
+        "default",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ],
+      "note": "App Store Connect'te bu cihaz için yükleme 'bu yıl içinde' açılacak."
+    },
+    {
+      "id": "en-US/Watch/ozet",
+      "type": "screenshot",
+      "device": "Apple Watch Ultra",
+      "size": "422x514",
+      "locale": "en-US",
+      "file": "screenshots/en-US/Watch/01-ozet.jpg",
+      "usage": [
+        "default"
+      ]
+    },
+    {
+      "id": "en-US/Watch/odemeler",
+      "type": "screenshot",
+      "device": "Apple Watch Ultra",
+      "size": "422x514",
+      "locale": "en-US",
+      "file": "screenshots/en-US/Watch/02-odemeler.jpg",
+      "usage": [
+        "default"
+      ]
+    },
+    {
+      "id": "en-US/creative/header-urun",
+      "type": "productPageHeader",
+      "size": "3840x1646",
+      "locale": "en-US",
+      "file": "creative/en-US/header-urun-3840x1646.jpg",
+      "headline": null,
+      "usage": [
+        "default",
+        "ppo:test-2-baslik-gorseli",
+        "cpp:aile",
+        "cpp:ev-arkadaslari",
+        "cpp:kart-borc",
+        "cpp:doviz"
+      ]
+    },
+    {
+      "id": "en-US/creative/header-marka",
+      "type": "productPageHeader",
+      "size": "3840x1646",
+      "locale": "en-US",
+      "file": "creative/en-US/header-marka-3840x1646.jpg",
+      "headline": "Çıkı",
+      "usage": [
+        "ppo:test-2-baslik-gorseli"
+      ]
+    },
+    {
+      "id": "en-US/creative/search-varsayilan",
+      "type": "searchResults",
+      "size": "3840x2560",
+      "locale": "en-US",
+      "file": "creative/en-US/search-varsayilan-3840x2560.jpg",
+      "headline": "See your month-end today",
+      "usage": [
+        "default"
+      ]
+    },
+    {
+      "id": "en-US/creative/universal",
+      "type": "universal",
+      "size": "5244x2950",
+      "locale": "en-US",
+      "file": "creative/en-US/universal-5244x2950.jpg",
+      "headline": "Your household budget, all tied together",
+      "usage": [
+        "default"
+      ]
+    },
+    {
+      "id": "en-US/creative/search-aile",
+      "type": "searchResults",
+      "size": "3840x2560",
+      "locale": "en-US",
+      "file": "creative/en-US/search-aile-3840x2560.jpg",
+      "headline": "Your family budget, together",
+      "usage": [
+        "cpp:aile"
+      ]
+    },
+    {
+      "id": "en-US/creative/search-ev-arkadaslari",
+      "type": "searchResults",
+      "size": "3840x2560",
+      "locale": "en-US",
+      "file": "creative/en-US/search-ev-arkadaslari-3840x2560.jpg",
+      "headline": "Rent and bills, shared",
+      "usage": [
+        "cpp:ev-arkadaslari"
+      ]
+    },
+    {
+      "id": "en-US/creative/search-kart-borc",
+      "type": "searchResults",
+      "size": "3840x2560",
+      "locale": "en-US",
+      "file": "creative/en-US/search-kart-borc-3840x2560.jpg",
+      "headline": "Stay on top of card debt",
+      "usage": [
+        "cpp:kart-borc"
+      ]
+    },
+    {
+      "id": "en-US/creative/search-doviz",
+      "type": "searchResults",
+      "size": "3840x2560",
+      "locale": "en-US",
+      "file": "creative/en-US/search-doviz-3840x2560.jpg",
+      "headline": "Foreign payments in your currency",
+      "usage": [
+        "cpp:doviz"
+      ]
+    }
+  ]
+}

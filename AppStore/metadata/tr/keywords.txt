@@ -1,0 +1,1 @@
+gider,gelir,fatura,maaş,kredi kartı,ekstre,taksit,aile,ev,hane,hesap,döviz,iban,hatırlatma,aidat

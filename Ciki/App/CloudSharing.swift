@@ -29,6 +29,18 @@ final class SceneDelegate: NSObject, UIWindowSceneDelegate {
         if let metadata = connectionOptions.cloudKitShareMetadata {
             Task { await CloudSharing.accept(metadata) }
         }
+        #if DEBUG && targetEnvironment(macCatalyst)
+        // Mağaza görselleri için pencereyi sabit boyutta aç: -macWindowSize 1280x800
+        if let value = UserDefaults.standard.string(forKey: "macWindowSize"),
+           let windowScene = scene as? UIWindowScene {
+            let parts = value.split(separator: "x").compactMap { Double($0) }
+            if parts.count == 2 {
+                let size = CGSize(width: parts[0], height: parts[1])
+                windowScene.sizeRestrictions?.minimumSize = size
+                windowScene.sizeRestrictions?.maximumSize = size
+            }
+        }
+        #endif
     }
 
     func windowScene(_ windowScene: UIWindowScene, userDidAcceptCloudKitShareWith metadata: CKShare.Metadata) {

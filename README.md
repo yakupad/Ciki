@@ -142,6 +142,18 @@ iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca 
 - "Geçen aydan kopyala" ekstre satırlarını yeni aya taşır.
 - Tüm tutarlar sabit genişlikli rakamlarla yazılır, sütunlar hizalı kalır.
 
+## App Store sayfası
+
+`AppStore/` klasöründe mağaza için gereken her şey var:
+
+- `metadata/`: Türkçe ve İngilizce metinler
+- `screenshots/`: tüm cihazlar için başlıklı ekran görüntüleri
+- `creative/`: Asset Library görselleri (ürün sayfası başlığı, arama sonucu, evrensel görsel)
+- `asset-library.json`: tüm görsellerin listesi
+- `strategy.md`: özel ürün sayfası (CPP) ve ürün sayfası optimizasyonu (PPO) planı
+
+Görseller `AppStore/tools/` altındaki betiklerle yeniden üretilir. Hepsi **kurgusal örnek hane** (Deniz ve Ece) ile alınır, gerçek kişisel veri kullanılmaz. Mac görüntüleri için DEBUG derlemesine `-macWindowSize 1280x800` verilir.
+
 ## Tasarım
 
 ### Palet
