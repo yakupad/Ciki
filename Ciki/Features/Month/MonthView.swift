@@ -29,6 +29,7 @@ struct MonthView: View {
             Section {
                 OwnerFilterPicker(selection: $filter, people: Array(people))
             }
+            .frame(maxWidth: .infinity)
             .listRowBackground(Color.clear)
             .listRowInsets(EdgeInsets())
 
@@ -40,6 +41,7 @@ struct MonthView: View {
                 } actions: {
                     Button("Geçen aydan kopyala") { copyFromPrevious() }
                 }
+                .frame(maxWidth: .infinity)
                 .listRowBackground(Color.clear)
             }
 

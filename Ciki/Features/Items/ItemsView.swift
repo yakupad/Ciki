@@ -32,6 +32,7 @@ struct ItemsView: View {
                     Button("Kalem ekle") { route = .newItem }
                         .buttonStyle(.borderedProminent)
                 }
+                .frame(maxWidth: .infinity)
             }
 
             section("Düzenli ödemeler", recurringExpense)

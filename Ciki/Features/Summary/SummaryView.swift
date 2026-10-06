@@ -52,7 +52,9 @@ struct SummaryView: View {
     @ViewBuilder
     private func content(_ summary: MonthSummary) -> some View {
         if items.isEmpty {
-            ScrollView { emptyState.padding(.horizontal) }
+            // Boş durum pencere genişliğinin tamamına yayılır; Mac'te pencere boyutu değişince dar bir şeritte kalmaz.
+            ScrollView { emptyState.frame(maxWidth: .infinity).padding(.horizontal) }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         } else if isWide {
             wideLayout(summary)
         } else {

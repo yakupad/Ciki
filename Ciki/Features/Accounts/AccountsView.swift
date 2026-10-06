@@ -41,9 +41,11 @@ struct AccountsView: View {
                     Button("Hesap ekle") { editing = .new }
                         .buttonStyle(.borderedProminent)
                 }
+                .frame(maxWidth: .infinity)
                 .listRowBackground(Color.clear)
             } else if visible.isEmpty {
                 ContentUnavailableView.search(text: query)
+                    .frame(maxWidth: .infinity)
                     .listRowBackground(Color.clear)
             }
 

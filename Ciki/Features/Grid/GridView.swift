@@ -38,6 +38,7 @@ struct GridView: View {
                 if table.rows.isEmpty {
                     ContentUnavailableView("Gösterilecek kalem yok", systemImage: "tablecells",
                                            description: Text("Kalemler sekmesinden kalem ekleyin."))
+                        .frame(maxWidth: .infinity)
                 } else {
                     HStack(alignment: .top, spacing: 0) {
                         titleColumn(table)

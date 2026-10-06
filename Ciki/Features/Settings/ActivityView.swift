@@ -22,6 +22,7 @@ struct ActivityView: View {
             if recent.isEmpty {
                 ContentUnavailableView("Henüz değişiklik yok", systemImage: "clock",
                                        description: Text("Kayıt ekledikçe ya da ödendi işaretledikçe burada görünür."))
+                    .frame(maxWidth: .infinity)
                     .listRowBackground(Color.clear)
             }
             ForEach(days, id: \.key) { day, entries in
