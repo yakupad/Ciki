@@ -58,8 +58,7 @@ struct OnboardingView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Image("AppLogo")
                         .resizable()
-                        .frame(width: 72, height: 72)
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .frame(width: 76, height: 76)
                         .accessibilityHidden(true)
                     Text("Çıkı'ya hoş geldiniz")
                         .font(.largeTitle.bold())

@@ -40,6 +40,7 @@
 		6404A858752DFF0EDCCF3BC7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3B63C9F9965A2789A0D3289F /* PrivacyInfo.xcprivacy */; };
 		6DA4122D62A5BA97E61446AE /* CikiWatchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01139B0FD7775CA6E049110F /* CikiWatchWidget.swift */; };
 		6FAB374197D2B1F203279D4D /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
+		740C267F54080B319E4974EF /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F73F237C6BDC32454FCD29F7 /* AppIcon.icon */; };
 		75F3B9C3F67CF9F93D4B7F26 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFB8AED1A660F28B0CEBEA3 /* MonthView.swift */; };
 		796AD74958FEC481DBDB2CDE /* AppLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C51E84022FCDB84E37FF13 /* AppLock.swift */; };
 		800192826582883EDF34855F /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C883597180558BCEBA4BBE /* ExportView.swift */; };
@@ -72,6 +73,7 @@
 		F2984F80F0CA4CA43DB68F9E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EB3973B1E2F04667E36186 /* OnboardingView.swift */; };
 		F334CDE03E137897883AF716 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47F8BA4D76D9190BEE06704 /* GridView.swift */; };
 		F4BFF45E7FAFA77C85B72619 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7503D6EAEACABBA273915DA1 /* ItemsView.swift */; };
+		F4D3EA60E403C64F3529571D /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 1A7C82407F49E77148A69638 /* AppIcon.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +160,7 @@
 		0CB8C1B13709303B3733E5CB /* Ciki.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ciki.xcdatamodel; sourceTree = "<group>"; };
 		0FB3C7D9794927C82279EB20 /* CikiUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CikiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D9FFE9812A0B85A6B08004 /* WatchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStore.swift; sourceTree = "<group>"; };
+		1A7C82407F49E77148A69638 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		1B9644BDC8E7E0D892FC2C07 /* Ciki 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Ciki 4.xcdatamodel"; sourceTree = "<group>"; };
 		2026FF0C60952C16D6747ED0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		22EFAE6A3573CE66482F19D0 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -224,6 +227,7 @@
 		E756BA2CAEBC4F68C8F0E3FC /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		EA7F656656581FF93EB77C56 /* CloudSharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSharing.swift; sourceTree = "<group>"; };
 		F58BBEB10E4AD5EB21DC94B3 /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
+		F73F237C6BDC32454FCD29F7 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -357,6 +361,7 @@
 		6B1276F0465FE33201A48610 /* CikiWatch */ = {
 			isa = PBXGroup;
 			children = (
+				1A7C82407F49E77148A69638 /* AppIcon.icon */,
 				30F16C648B54B8AC82112F0C /* Assets.xcassets */,
 				45747D7F2C8DF2991B743C38 /* CikiWatch.entitlements */,
 				D99BE031D327C1604A200B23 /* CikiWatchApp.swift */,
@@ -489,6 +494,7 @@
 		FF52476647EBCD11795C3AD2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F73F237C6BDC32454FCD29F7 /* AppIcon.icon */,
 				809A497B8582C2B81502B625 /* Assets.xcassets */,
 				253E6EBB807152CD7AFF5CDF /* InfoPlist.xcstrings */,
 				93D19DB573A7030D1017B5FA /* Localizable.xcstrings */,
@@ -687,6 +693,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				740C267F54080B319E4974EF /* AppIcon.icon in Resources */,
 				90E0708AADA9E4D5C7104784 /* Assets.xcassets in Resources */,
 				27E6616805F7CF8DEC8A283F /* InfoPlist.xcstrings in Resources */,
 				37B08892F33CF5D2D077AD25 /* Localizable.xcstrings in Resources */,
@@ -707,6 +714,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D3EA60E403C64F3529571D /* AppIcon.icon in Resources */,
 				B17F7E4DFE6A7DCF2A76EB0D /* Assets.xcassets in Resources */,
 				CAF73DE1D100E17A50C07317 /* Localizable.xcstrings in Resources */,
 				196BA9878583584B90CC9525 /* PrivacyInfo.xcprivacy in Resources */,

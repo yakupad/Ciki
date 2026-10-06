@@ -24,6 +24,15 @@ Ortak bütçe, borç ve ödeme takibi. Excel'de tutulan aylık borç, gelir ve �
 - **Gösterim para birimi:** Toplamlar TL, EUR, USD ya da desteklenen herhangi bir birimde gösterilebilir (Ayarlar → Para birimi).
 - **Tasarım sayfası:** [Plan, ekranlar ve palet](https://claude.ai/artifact/QEnAVyTx2Cw5UZVjPVkVHu)
 
+## Uygulama ikonu
+
+`Ciki/Resources/AppIcon.icon` ve `CikiWatch/AppIcon.icon`, Xcode 27.1'deki **Icon Composer** biçiminde katmanlı ikonlardır: petrol yeşili degrade zemin, büzülmüş ağzı amber bir bağla bağlanmış bohça. Cam efekti, ışık, gölge ve koyu / renklendirilmiş / şeffaf modlar sistem tarafından üretilir. Önizleme:
+
+```sh
+ictool Ciki/Resources/AppIcon.icon --export-image --output-file icon.png --platform iOS --rendition Default --width 1024 --height 1024 --scale 1
+```
+(`ictool`: `Xcode_27.1.app/Contents/Applications/Icon Composer.app/Contents/Executables/ictool`; `--rendition` için `Dark`, `TintedLight`, `ClearLight` da kullanılabilir.)
+
 ## Ekran boyutları
 
 - **iPhone ve iPhone Duo dış ekranı:** tek sütun, altta sekme çubuğu.
