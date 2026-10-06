@@ -184,7 +184,10 @@ func render(_ job: Job) throws {
     try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
     // App Store alfa kanalı kabul etmez: zemin opak çizildi, JPEG'e alfasız yazılır.
     let opaque = NSBitmapImageRep(cgImage: rep.cgImage!.copy(colorSpace: CGColorSpace(name: CGColorSpace.sRGB)!)!)
-    let data = opaque.representation(using: .jpeg, properties: [.compressionFactor: 0.9])!
+    // Ürün sayfası başlığı ve evrensel görsel için Asset Library yalnızca PNG kabul ediyor.
+    let data = url.pathExtension == "png"
+        ? opaque.representation(using: .png, properties: [:])!
+        : opaque.representation(using: .jpeg, properties: [.compressionFactor: 0.9])!
     try data.write(to: url)
 }
 

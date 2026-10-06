@@ -202,7 +202,8 @@ def main(raw):
 
         shot = lambda s: raw_path(f"iphone69_{L}_{s}")
         for cid, spec in CREATIVE.items():
-            out = os.path.join(out_creative, loc, f"{cid}-{spec['size'][0]}x{spec['size'][1]}.jpg")
+            ext = "jpg" if spec["layout"] == "search" else "png"  # başlık ve evrensel görsel PNG olmalı
+            out = os.path.join(out_creative, loc, f"{cid}-{spec['size'][0]}x{spec['size'][1]}.{ext}")
             headline, subhead = spec.get(L, SCREENS.get(spec.get("screen", ""), {}).get(L, (None, None)))
             job = {"out": out, "width": spec["size"][0], "height": spec["size"][1], "layout": spec["layout"],
                    "shots": [shot(s) for s in spec.get("shots", ["ozet"])], "headline": headline, "subhead": subhead}

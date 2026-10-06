@@ -649,7 +649,7 @@
       "type": "productPageHeader",
       "size": "3840x1646",
       "locale": "tr",
-      "file": "creative/tr/header-urun-3840x1646.jpg",
+      "file": "creative/tr/header-urun-3840x1646.png",
       "headline": null,
       "usage": [
         "default",
@@ -665,7 +665,7 @@
       "type": "productPageHeader",
       "size": "3840x1646",
       "locale": "tr",
-      "file": "creative/tr/header-marka-3840x1646.jpg",
+      "file": "creative/tr/header-marka-3840x1646.png",
       "headline": "Çıkı",
       "usage": [
         "ppo:test-2-baslik-gorseli"
@@ -687,7 +687,7 @@
       "type": "universal",
       "size": "5244x2950",
       "locale": "tr",
-      "file": "creative/tr/universal-5244x2950.jpg",
+      "file": "creative/tr/universal-5244x2950.png",
       "headline": "Hanenin bütçesi, tek bir çıkıda",
       "usage": [
         "default"
@@ -1118,7 +1118,7 @@
       "type": "productPageHeader",
       "size": "3840x1646",
       "locale": "en-US",
-      "file": "creative/en-US/header-urun-3840x1646.jpg",
+      "file": "creative/en-US/header-urun-3840x1646.png",
       "headline": null,
       "usage": [
         "default",
@@ -1134,7 +1134,7 @@
       "type": "productPageHeader",
       "size": "3840x1646",
       "locale": "en-US",
-      "file": "creative/en-US/header-marka-3840x1646.jpg",
+      "file": "creative/en-US/header-marka-3840x1646.png",
       "headline": "Çıkı",
       "usage": [
         "ppo:test-2-baslik-gorseli"
@@ -1156,7 +1156,7 @@
       "type": "universal",
       "size": "5244x2950",
       "locale": "en-US",
-      "file": "creative/en-US/universal-5244x2950.jpg",
+      "file": "creative/en-US/universal-5244x2950.png",
       "headline": "Your household budget, all tied together",
       "usage": [
         "default"

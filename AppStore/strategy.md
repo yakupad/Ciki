@@ -21,6 +21,20 @@ swift tools/compose.swift tools/jobs.json
 
 Ham görüntüler DEBUG derlemesinden `-loadSampleData` ile alınır. Durum çubuğu 9:41'e sabitlenir.
 
+### App Store Connect'e yükleme
+
+`tools/asc/` altındaki betikler App Store Connect API ile çalışır. Anahtar bilgileri ortam değişkenlerinden okunur ve repoya yazılmaz: `ASC_KEY_ID`, `ASC_ISSUER_ID` ve `ASC_KEY_PATH` (`.p8` dosyasının yolu).
+
+| Betik | Ne yapar |
+| --- | --- |
+| `metadata.rb` | Kategori, ad, alt başlık, açıklama, anahtar kelimeler ve tanıtım metni (iOS ve macOS, TR ve EN) |
+| `screenshots.rb` | Ekran görüntüleri; setteki eskileri silip yeniden yükler |
+| `cpp.rb` | Özel ürün sayfaları ve sayfa başına ekran görüntüsü sırası |
+| `creative.rb` | Asset Library'ye başlık, arama ve evrensel görseller |
+| `placements.rb` | Başlık ve arama görsellerini varsayılan sayfaya ve özel sayfalara bağlar |
+
+Asset Library ürün sayfası başlığı ve evrensel görsel için JPEG kabul etmiyor (`INVALID_ASSET_FILE_FORMAT`). Bu yüzden ikisi PNG olarak üretilir. Arama görseli JPEG olarak kabul ediliyor.
+
 ## Metinler
 
 | | Türkçe | English |
@@ -87,11 +101,13 @@ Her sayfa kendi arama anahtar kelimelerine bağlanır. Böylece o aramayı yapan
 
 Tanıtım metinleri ve sayfa başına ekran görüntüsü sırası `asset-library.json` içindedir. Her sayfanın İngilizce karşılığı da tanımlıdır.
 
+**Anahtar kelime bağlama:** API özel sayfalara arama anahtar kelimesi bağlamayı destekliyor. Ancak bağlanabilecek kelimeler, uygulamanın onaylanmış sürümündeki anahtar kelimelerden gelir. Bu yüzden ilk sürüm onaylandıktan sonra yapılabilir.
+
 **İsteğe bağlı derin bağlantı:** Bir CPP uygulamayı ilgili ekranda açabilir (örneğin `doviz` → Kalemler). Bunun için uygulamaya bir URL şeması ya da Universal Link eklenmesi gerekir. Şu an tanımlı değil.
 
 ## Ürün sayfası optimizasyonu (PPO)
 
-Aynı anda tek test çalışır. Her test en az 14 gün sürer ve App Store Connect en fazla 90 gün izin verir.
+Testler uygulama yayındayken başlatılabilir. Aynı anda tek test çalışır. Her test en az 14 gün sürer ve App Store Connect en fazla 90 gün izin verir.
 
 **Test 1 — İlk ekran görüntüsünün mesajı** (Türkçe, trafik dört eşit parça)
 
