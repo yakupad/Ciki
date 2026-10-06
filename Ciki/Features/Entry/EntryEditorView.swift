@@ -24,14 +24,12 @@ struct EntryEditorView: View {
     @State private var isCreatingItem: Bool
     @State private var confirmDelete: Bool
 
-    @FocusState private var amountFocused: Bool
-
     init(item: LedgerItem?, month: Month) {
         let entry = item?.entry(for: month)
         self.existing = entry
         self.direction = item?.direction ?? .expense
         self.item = item
-        self.amount = entry?.amountValue ?? item?.recurringAmountValue
+        self.amount = entry?.amountValue ?? item?.recurringAmount(in: month)
         self.month = month
         self.status = entry?.status ?? .pending
         self.note = entry?.note ?? ""
@@ -60,12 +58,10 @@ struct EntryEditorView: View {
 
                 Section {
                     VStack(spacing: 6) {
-                        TextField("0", value: $amount, format: .number.locale(Money.locale))
-                            .keyboardType(.decimalPad)
+                        AmountField(value: $amount, autofocus: isNew)
                             .multilineTextAlignment(.center)
                             .font(.amount(40))
                             .foregroundStyle(direction == .expense ? Color.gider : Color.gelir)
-                            .focused($amountFocused)
                         Text(amountCaption)
                             .font(.footnote)
                             .foregroundStyle(Color.ikincil)
@@ -173,7 +169,7 @@ struct EntryEditorView: View {
                 if item?.direction != newValue { item = nil }
             }
             .onChange(of: item) { _, newValue in
-                if isNew, amount == nil, let recurring = newValue?.recurringAmountValue {
+                if isNew, amount == nil, let recurring = newValue?.recurringAmount(in: month) {
                     amount = recurring
                 }
             }
@@ -185,7 +181,6 @@ struct EntryEditorView: View {
             .confirmationDialog("Bu ayın kaydı silinsin mi?", isPresented: $confirmDelete, titleVisibility: .visible) {
                 Button("Sil", role: .destructive) { deleteEntry() }
             }
-            .onAppear { if isNew { amountFocused = true } }
         }
     }
 

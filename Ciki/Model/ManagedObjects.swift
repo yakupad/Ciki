@@ -40,6 +40,8 @@ nonisolated final class LedgerItem: NSManagedObject {
     @NSManaged var recurringAmount: NSDecimalNumber?
     @NSManaged var recurringStart: Int32
     @NSManaged var recurringEnd: Int32
+    /// Düzenli tutarın sonraki değişiklikleri (JSON). Bkz. `amountChanges`.
+    @NSManaged var recurringChanges: String?
     @NSManaged var note: String?
     @NSManaged var createdAt: Date?
     @NSManaged var updatedAt: Date?
@@ -162,6 +164,25 @@ nonisolated extension LedgerItem {
         ((entries as? Set<LedgerEntry>) ?? []).first { $0.monthKey == month.key }
     }
 
+    /// "Şu aydan itibaren şu tutar" değişiklikleri, aya göre sıralı. Ör. Ocak'tan itibaren 125.000.
+    var amountChanges: [AmountChange] {
+        get {
+            guard let data = recurringChanges?.data(using: .utf8),
+                  let changes = try? JSONDecoder().decode([AmountChange].self, from: data) else { return [] }
+            return changes.sorted { $0.from < $1.from }
+        }
+        set {
+            let sorted = newValue.sorted { $0.from < $1.from }
+            recurringChanges = sorted.isEmpty ? nil : (try? JSONEncoder().encode(sorted)).flatMap { String(data: $0, encoding: .utf8) }
+        }
+    }
+
+    /// O ay geçerli olan düzenli tutar: ayından önceki son değişiklik, yoksa ilk tutar.
+    func recurringAmount(in month: Month) -> Decimal? {
+        guard let base = recurringAmountValue else { return nil }
+        return amountChanges.last { $0.from <= month.key }?.amount ?? base
+    }
+
     func isRecurringActive(in month: Month) -> Bool {
         guard isRecurring, !isArchived, recurringAmount != nil else { return false }
         if recurringStart != 0, month.key < recurringStart { return false }
@@ -222,4 +243,14 @@ nonisolated extension LedgerEntry {
     }
 
     var month: Month { Month(key: monthKey) }
+}
+
+/// Düzenli bir kalemin tutarının belli bir aydan itibaren değişmesi.
+nonisolated struct AmountChange: Codable, Hashable, Identifiable, Sendable {
+    /// Değişikliğin başladığı ayın anahtarı (`Month.key`).
+    var from: Int32
+    var amount: Decimal
+
+    var id: Int32 { from }
+    var month: Month { Month(key: from) }
 }

@@ -146,6 +146,10 @@ extension PersistenceController {
             }
             let url = coordinator.persistentStores.first { $0.identifier == store }?.url
             let database = url?.lastPathComponent == sharedName ? "paylaşılan" : "özel"
+            let succeeded = event.succeeded, error = event.error
+            if event.type != .setup || !succeeded {
+                Task { @MainActor in SyncMonitor.shared.record(success: succeeded, error: error) }
+            }
             if let error = event.error {
                 logger.error("\(database, privacy: .public) depo, \(kind, privacy: .public) başarısız: \(error, privacy: .public)")
             } else {

@@ -59,6 +59,9 @@ struct SharingSection: View {
             Label("Bu cihazda iCloud'a giriş yapılmamış. Veriler yalnızca bu cihazda.", systemImage: "icloud.slash")
                 .foregroundStyle(Color.ikincil)
         }
+        if status == .available {
+            SyncStatusRow()
+        }
     }
 
     @ViewBuilder
@@ -119,5 +122,38 @@ private struct ParticipantRow: View {
         case .removed: return String(localized: "Çıkarıldı")
         default: return String(localized: "Bilinmiyor")
         }
+    }
+}
+
+/// Son eşitleme zamanı ya da hatası. Xcode derlemesinde ayrı ortam uyarısı da gösterilir.
+private struct SyncStatusRow: View {
+    private let monitor = SyncMonitor.shared
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            if let error = monitor.lastError {
+                Label {
+                    Text("Eşitleme hatası: \(error)")
+                } icon: {
+                    Image(systemName: "exclamationmark.icloud").foregroundStyle(Color.gider)
+                }
+            } else if let date = monitor.lastSuccess {
+                Label {
+                    Text("Son eşitleme: \(date.formatted(.relative(presentation: .named)))")
+                } icon: {
+                    Image(systemName: "checkmark.icloud").foregroundStyle(Color.gelir)
+                }
+            } else {
+                Label("Eşitleniyor…", systemImage: "arrow.triangle.2.circlepath.icloud")
+            }
+            if SyncMonitor.isDevelopmentBuild {
+                Text("Geliştirici derlemesi: iCloud'un deneme ortamına bağlı. TestFlight ve App Store'dan kurulan cihazlarla eşitlenmez.")
+                    .font(.caption)
+                    .foregroundStyle(Color.uyari)
+            }
+        }
+        .font(.subheadline)
+        .foregroundStyle(Color.ikincil)
+        .accessibilityElement(children: .combine)
     }
 }

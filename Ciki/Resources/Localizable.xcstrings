@@ -129,6 +129,22 @@
         }
       }
     },
+    "%@ itibarıyla %@" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ itibarıyla %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@ from %1$@"
+          }
+        }
+      }
+    },
     "%@ kişisini sil" : {
       "localizations" : {
         "en" : {
@@ -173,6 +189,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ rehberden silinir. Bağlı kalemler silinmez."
+          }
+        }
+      }
+    },
+    "%@ ve sonrası: %@" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ ve sonrası: %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ onward: %2$@"
           }
         }
       }
@@ -363,6 +395,7 @@
       }
     },
     "0" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2202,6 +2235,38 @@
         }
       }
     },
+    "Eşitleme hatası: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sync error: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eşitleme hatası: %@"
+          }
+        }
+      }
+    },
+    "Eşitleniyor…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Syncing…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eşitleniyor…"
+          }
+        }
+      }
+    },
     "Eski Excel tablonuz gibi: satırlar kalemler, sütunlar aylar (%@ – %@). Tutarlar %@ cinsinden; düzenli kalemlerin tahminleri dahil, hariç kayıtlar boş." : {
       "localizations" : {
         "en" : {
@@ -2407,6 +2472,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Geliştirici"
+          }
+        }
+      }
+    },
+    "Geliştirici derlemesi: iCloud'un deneme ortamına bağlı. TestFlight ve App Store'dan kurulan cihazlarla eşitlenmez." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer build: connected to the iCloud development environment. It doesn't sync with devices that installed from TestFlight or the App Store."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geliştirici derlemesi: iCloud'un deneme ortamına bağlı. TestFlight ve App Store'dan kurulan cihazlarla eşitlenmez."
           }
         }
       }
@@ -5038,6 +5119,22 @@
         }
       }
     },
+    "Son eşitleme: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last synced: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son eşitleme: %@"
+          }
+        }
+      }
+    },
     "Son ödeme %@ · %@" : {
       "localizations" : {
         "en" : {
@@ -5214,6 +5311,22 @@
         }
       }
     },
+    "Şu aydan itibaren" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starting from"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şu aydan itibaren"
+          }
+        }
+      }
+    },
     "Tablo" : {
       "localizations" : {
         "en" : {
@@ -5274,6 +5387,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "Temizle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temizle"
           }
         }
       }
@@ -5423,6 +5552,54 @@
         }
       }
     },
+    "Tutar belli bir aydan sonra değişiyorsa ekleyin. Ör. yılbaşına kadar 100.000, sonra 6 ay 125.000." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add one if the amount changes after a certain month. For example, 100,000 until New Year, then 125,000 for 6 months."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutar belli bir aydan sonra değişiyorsa ekleyin. Ör. yılbaşına kadar 100.000, sonra 6 ay 125.000."
+          }
+        }
+      }
+    },
+    "Tutar değişikliği ekle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Amount Change"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutar değişikliği ekle"
+          }
+        }
+      }
+    },
+    "Tutar değişiklikleri" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount Changes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutar değişiklikleri"
+          }
+        }
+      }
+    },
     "Tutarı %@ olarak girin" : {
       "localizations" : {
         "en" : {
@@ -5435,6 +5612,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutarı %@ olarak girin"
+          }
+        }
+      }
+    },
+    "Üç sıfır ekle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add three zeros"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üç sıfır ekle"
           }
         }
       }
@@ -5643,6 +5836,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yeni kayıt, %@"
+          }
+        }
+      }
+    },
+    "Yeni tutar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New amount"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni tutar"
           }
         }
       }

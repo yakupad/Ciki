@@ -17,6 +17,7 @@
 		11BE5CC82D20AF45F4DCB714 /* ManagedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08D6670F39CAC265A24B926 /* ManagedObjects.swift */; };
 		196BA9878583584B90CC9525 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C213E4AD83119BFB1BF0A093 /* PrivacyInfo.xcprivacy */; };
 		1C79AC6DADD36463EB3713ED /* CikiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A673A96DCCDE9C450C393 /* CikiApp.swift */; };
+		1D616981C42E27F3FFD46598 /* SyncMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C554E51E0B3EB0D215EB4D /* SyncMonitor.swift */; };
 		1E4E639EDFADFEFA1790CFCC /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
 		20EC917C042BAC8C5A6F015E /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A2EC34B0F4DE41F0B07050 /* ActivityView.swift */; };
 		27E6616805F7CF8DEC8A283F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 253E6EBB807152CD7AFF5CDF /* InfoPlist.xcstrings */; };
@@ -42,6 +43,7 @@
 		6FAB374197D2B1F203279D4D /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
 		740C267F54080B319E4974EF /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F73F237C6BDC32454FCD29F7 /* AppIcon.icon */; };
 		75F3B9C3F67CF9F93D4B7F26 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFB8AED1A660F28B0CEBEA3 /* MonthView.swift */; };
+		7676725207B821360D7A8059 /* EditingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CAE95A2B025CABF96207EE /* EditingTests.swift */; };
 		796AD74958FEC481DBDB2CDE /* AppLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C51E84022FCDB84E37FF13 /* AppLock.swift */; };
 		800192826582883EDF34855F /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C883597180558BCEBA4BBE /* ExportView.swift */; };
 		81B608A44FD146C0074AA740 /* CikiWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99BE031D327C1604A200B23 /* CikiWatchApp.swift */; };
@@ -62,6 +64,7 @@
 		B31C96356B8E84C8EA1FC62A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6D21D2D8AF914328F23796B9 /* Localizable.xcstrings */; };
 		B5AE26A89B92F33CF952C326 /* DeviceOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033423DE3BA43609B3C52A6 /* DeviceOwner.swift */; };
 		B5B41FB2317780F88F93277E /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92251F93CE72375C8F0D170F /* ReportView.swift */; };
+		BD2B9AC7F46C20499C919F44 /* AmountField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41616603D2165BEDD05307FC /* AmountField.swift */; };
 		C6D3723FEEBBCCC809636BDC /* IBAN.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3517F6BA36212FF2842DD4 /* IBAN.swift */; };
 		C8BA80D107B81A5D2EBF4416 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF13F6A92984DE7B1D4CA77 /* Reminders.swift */; };
 		CAF73DE1D100E17A50C07317 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 330EFD0EBA942483ADC5EDD7 /* Localizable.xcstrings */; };
@@ -159,6 +162,7 @@
 		087DA3CED54A1503310691F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0CB8C1B13709303B3733E5CB /* Ciki.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ciki.xcdatamodel; sourceTree = "<group>"; };
 		0FB3C7D9794927C82279EB20 /* CikiUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CikiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17CAE95A2B025CABF96207EE /* EditingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTests.swift; sourceTree = "<group>"; };
 		17D9FFE9812A0B85A6B08004 /* WatchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStore.swift; sourceTree = "<group>"; };
 		1A7C82407F49E77148A69638 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		1B9644BDC8E7E0D892FC2C07 /* Ciki 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Ciki 4.xcdatamodel"; sourceTree = "<group>"; };
@@ -176,10 +180,12 @@
 		3B63C9F9965A2789A0D3289F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3E5C45BEE8551539293B6E62 /* Ciki.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ciki.entitlements; sourceTree = "<group>"; };
 		3EC67ADC5E3BF84474B4EB5C /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		41616603D2165BEDD05307FC /* AmountField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountField.swift; sourceTree = "<group>"; };
 		45747D7F2C8DF2991B743C38 /* CikiWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CikiWatch.entitlements; sourceTree = "<group>"; };
 		52B0C6F38A3E9C64FFAFE107 /* ItemEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEditorView.swift; sourceTree = "<group>"; };
 		56A2EC34B0F4DE41F0B07050 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		5A3CB58304B58A6C6B921D99 /* Ciki 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Ciki 3.xcdatamodel"; sourceTree = "<group>"; };
+		65C554E51E0B3EB0D215EB4D /* SyncMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMonitor.swift; sourceTree = "<group>"; };
 		670ECEF6F7DABDF2B082FC0F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		6CB05686DF2E8767ED1EB67F /* HouseholdSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseholdSync.swift; sourceTree = "<group>"; };
 		6D21D2D8AF914328F23796B9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 		809A497B8582C2B81502B625 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92251F93CE72375C8F0D170F /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		93D19DB573A7030D1017B5FA /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		950EB71C1AC1A41305C91ED2 /* Ciki 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Ciki 5.xcdatamodel"; sourceTree = "<group>"; };
 		98FC8FE7931CBD346914560A /* CikiWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = CikiWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BABF2E112C89B90A4178F51 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9F969F42D9BC0196D7D0E96B /* WatchSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSync.swift; sourceTree = "<group>"; };
@@ -310,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				2AF99398CA2987926E7A2CB6 /* AccessibilityAuditTests.swift */,
+				17CAE95A2B025CABF96207EE /* EditingTests.swift */,
 			);
 			path = CikiUITests;
 			sourceTree = "<group>";
@@ -330,6 +338,7 @@
 		54539D66E70822966A78D334 /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				41616603D2165BEDD05307FC /* AmountField.swift */,
 				A01FA153FAD077DD14B33A89 /* Components.swift */,
 				A4D05711B5BA87E93D46DFB2 /* Layout.swift */,
 				DB6282C95195E4A421255F4E /* Theme.swift */,
@@ -381,6 +390,7 @@
 				DE4F523D234502A9CE7621D4 /* LedgerActions.swift */,
 				22EFAE6A3573CE66482F19D0 /* PersistenceController.swift */,
 				3EC67ADC5E3BF84474B4EB5C /* SampleData.swift */,
+				65C554E51E0B3EB0D215EB4D /* SyncMonitor.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -731,6 +741,7 @@
 				A6EB181FB750C2AB98D205FB /* AccountEditorView.swift in Sources */,
 				44504E944C31ADBD71323B4E /* AccountsView.swift in Sources */,
 				20EC917C042BAC8C5A6F015E /* ActivityView.swift in Sources */,
+				BD2B9AC7F46C20499C919F44 /* AmountField.swift in Sources */,
 				9474A9B8D65366A2FAE9ADFD /* AppLanguage.swift in Sources */,
 				796AD74958FEC481DBDB2CDE /* AppLock.swift in Sources */,
 				05DF1F5F79124EA90C6244FE /* Appearance.swift in Sources */,
@@ -766,6 +777,7 @@
 				5F365FB3BDDBF9FA14509DB2 /* SettingsView.swift in Sources */,
 				8743FD1A8080C860C9932C4E /* SharingSection.swift in Sources */,
 				AA90C89646BEB5F94B110EA0 /* SummaryView.swift in Sources */,
+				1D616981C42E27F3FFD46598 /* SyncMonitor.swift in Sources */,
 				40BB3A18717BC227A9E56DC1 /* Theme.swift in Sources */,
 				9F2CE1F9EFDD5F81464A3DCB /* WatchSync.swift in Sources */,
 				960D57098460F81E2F7EFBF2 /* WidgetPublisher.swift in Sources */,
@@ -814,6 +826,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56CB458193ECBD3CD082D76D /* AccessibilityAuditTests.swift in Sources */,
+				7676725207B821360D7A8059 /* EditingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1327,9 +1340,10 @@
 				75C5C31C761AE52F79F794F3 /* Ciki 2.xcdatamodel */,
 				5A3CB58304B58A6C6B921D99 /* Ciki 3.xcdatamodel */,
 				1B9644BDC8E7E0D892FC2C07 /* Ciki 4.xcdatamodel */,
+				950EB71C1AC1A41305C91ED2 /* Ciki 5.xcdatamodel */,
 				0CB8C1B13709303B3733E5CB /* Ciki.xcdatamodel */,
 			);
-			currentVersion = 1B9644BDC8E7E0D892FC2C07 /* Ciki 4.xcdatamodel */;
+			currentVersion = 950EB71C1AC1A41305C91ED2 /* Ciki 5.xcdatamodel */;
 			path = Ciki.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

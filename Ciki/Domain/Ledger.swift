@@ -95,7 +95,7 @@ enum Ledger {
                               signedValue: rates.value(of: amount, in: item.currency, fixedTRYRate: fixed).map { $0 * sign })
         }
 
-        guard item.isRecurringActive(in: month), let recurring = item.recurringAmountValue else {
+        guard item.isRecurringActive(in: month), let recurring = item.recurringAmount(in: month) else {
             return nil
         }
         return LedgerLine(item: item, entry: nil, month: month, amount: recurring, status: .pending,
@@ -158,7 +158,7 @@ extension Ledger {
             let total = recent.reduce(Decimal(0)) { $0 + $1.amountValue }
             add(String(localized: "\(recent.count) ay ort."), (total / Decimal(recent.count)).rounded(scale: 2))
         }
-        add(String(localized: "Düzenli"), item.recurringAmountValue)
+        add(String(localized: "Düzenli"), item.recurringAmount(in: month))
         return result
     }
 

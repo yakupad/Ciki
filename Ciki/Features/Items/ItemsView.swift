@@ -101,10 +101,10 @@ private struct ItemRow: View {
             ItemBadge(item: item)
             VStack(alignment: .leading, spacing: 3) {
                 Text(item.fullTitle).font(.subheadline.weight(.semibold))
-                Text(subtitle).font(.caption).foregroundStyle(Color.ikincil).lineLimit(1)
+                Text(subtitle).font(.caption).foregroundStyle(Color.ikincil).lineLimit(2)
             }
             Spacer()
-            if item.isRecurring, let amount = item.recurringAmountValue {
+            if item.isRecurring, let amount = item.recurringAmount(in: .current) {
                 VStack(alignment: .trailing, spacing: 2) {
                     Text(Money.string(amount * item.direction.sign, currency: item.currency, sign: .always))
                         .font(.amount(14, weight: .semibold))
@@ -127,6 +127,10 @@ private struct ItemRow: View {
             parts.append(item.dueDay > 0
                          ? String(localized: "her ayın \(Int(item.dueDay)). günü")
                          : String(localized: "her ay"))
+            if let next = item.amountChanges.first(where: { $0.month > .current }) {
+                let amount = Money.string(next.amount, currency: item.currency)
+                parts.append(String(localized: "\(next.month.shortTitle) itibarıyla \(amount)"))
+            }
             if item.recurringEnd != 0 {
                 parts.append(String(localized: "son ay: \(Month(key: item.recurringEnd).title)"))
             }

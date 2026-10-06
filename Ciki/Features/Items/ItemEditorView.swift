@@ -25,6 +25,7 @@ struct ItemEditorView: View {
     @State private var recurringStart: Month
     @State private var hasEnd: Bool
     @State private var recurringEnd: Month
+    @State private var changes: [EditableAmountChange]
     @State private var isArchived: Bool
     @State private var payee: Account?
     @State private var isCreatingAccount: Bool
@@ -51,6 +52,7 @@ struct ItemEditorView: View {
         self.recurringStart = start
         self.hasEnd = (item?.recurringEnd ?? 0) != 0
         self.recurringEnd = item.flatMap { $0.recurringEnd == 0 ? nil : Month(key: $0.recurringEnd) } ?? start.adding(11)
+        self.changes = (item?.amountChanges ?? []).map { EditableAmountChange(month: $0.month, amount: $0.amount) }
         self.isArchived = item?.isArchived ?? false
         self.payee = item?.payee
         self.isCreatingAccount = false
@@ -137,8 +139,7 @@ struct ItemEditorView: View {
                         HStack {
                             Text("Aylık tutar")
                             Spacer()
-                            TextField("0", value: $recurringAmount, format: .number.locale(Money.locale))
-                                .keyboardType(.decimalPad)
+                            AmountField(value: $recurringAmount)
                                 .multilineTextAlignment(.trailing)
                                 .font(.amount(17, weight: .semibold))
                             Text(currency.symbol).foregroundStyle(Color.ikincil)
@@ -156,6 +157,31 @@ struct ItemEditorView: View {
                         Text(recurringFooter)
                     } else {
                         Text("Kira, kredi taksidi, maaş ve döviz gönderimleri gibi her ay tekrar eden kalemler için açın.")
+                    }
+                }
+
+                if isRecurring {
+                    Section {
+                        ForEach($changes) { $change in
+                            VStack(spacing: 10) {
+                                MonthStepperRow(title: "Şu aydan itibaren", month: $change.month)
+                                HStack {
+                                    Text("Yeni tutar")
+                                    Spacer()
+                                    AmountField(value: $change.amount)
+                                        .multilineTextAlignment(.trailing)
+                                        .font(.amount(17, weight: .semibold))
+                                    Text(currency.symbol).foregroundStyle(Color.ikincil)
+                                }
+                            }
+                            .padding(.vertical, 4)
+                        }
+                        .onDelete { changes.remove(atOffsets: $0) }
+                        Button("Tutar değişikliği ekle", systemImage: "plus.circle") { addChange() }
+                    } header: {
+                        Text("Tutar değişiklikleri")
+                    } footer: {
+                        Text(changesFooter)
                     }
                 }
 
@@ -195,6 +221,50 @@ struct ItemEditorView: View {
         }
     }
 
+    /// Yeni değişiklik: son dönemden sonraki ilk gelecek aydan, son tutarla başlar.
+    private func addChange() {
+        let lastMonth = changes.map(\.month).max() ?? recurringStart
+        let lastAmount = changes.last { $0.month == lastMonth }?.amount ?? recurringAmount
+        let month = max(lastMonth.adding(1), Month.current.adding(1))
+        withAnimation {
+            changes.append(EditableAmountChange(month: month, amount: lastAmount))
+        }
+    }
+
+    /// Kaydedilecek değişiklikler: tutarı girilmiş, başlangıçtan sonra ve (varsa) son aydan önce; ay başına bir tane.
+    private var validChanges: [AmountChange] {
+        var byMonth: [Int32: Decimal] = [:]
+        for change in changes {
+            guard let amount = change.amount, change.month > recurringStart else { continue }
+            if hasEnd, change.month > recurringEnd { continue }
+            byMonth[change.month.key] = amount
+        }
+        return byMonth.map { AmountChange(from: $0.key, amount: $0.value) }.sorted { $0.from < $1.from }
+    }
+
+    /// Dönemlerin özeti: "Eki 2026 – Ara 2026: 100.000 ₺ · Oca 2027 – Haz 2027: 125.000 ₺".
+    private var changesFooter: String {
+        let valid = validChanges
+        guard !valid.isEmpty, let first = recurringAmount else {
+            return String(localized: "Tutar belli bir aydan sonra değişiyorsa ekleyin. Ör. yılbaşına kadar 100.000, sonra 6 ay 125.000.")
+        }
+        var periods: [(start: Month, amount: Decimal)] = [(recurringStart, first)]
+        periods += valid.map { ($0.month, $0.amount) }
+        var lines: [String] = []
+        for (index, period) in periods.enumerated() {
+            let end: Month? = index + 1 < periods.count ? periods[index + 1].start.adding(-1) : (hasEnd ? recurringEnd : nil)
+            let amount = Money.string(period.amount, currency: currency)
+            if let end {
+                lines.append(end == period.start
+                             ? "\(period.start.title): \(amount)"
+                             : "\(period.start.title) – \(end.title): \(amount)")
+            } else {
+                lines.append(String(localized: "\(period.start.title) ve sonrası: \(amount)"))
+            }
+        }
+        return lines.joined(separator: "\n")
+    }
+
     private var recurringFooter: String {
         let start = recurringStart.title
         guard hasEnd else { return String(localized: "\(start) ayından itibaren her ay tahmini olarak görünür.") }
@@ -227,6 +297,7 @@ struct ItemEditorView: View {
         target.recurringAmountValue = isRecurring ? recurringAmount : nil
         target.recurringStart = isRecurring ? recurringStart.key : 0
         target.recurringEnd = isRecurring && hasEnd ? recurringEnd.key : 0
+        target.amountChanges = isRecurring ? validChanges : []
         target.isArchived = isArchived
         target.updatedAt = .now
         target.updatedBy = DeviceOwner.name(in: context)
@@ -272,4 +343,11 @@ struct CurrencyLabel: View {
             .font(.system(.body, design: .rounded).weight(.semibold))
             .frame(minWidth: 36, alignment: .leading)
     }
+}
+
+/// Düzenleme sırasında bir tutar değişikliği; ay değiştirilebildiği için kimliği ayrı tutulur.
+struct EditableAmountChange: Identifiable {
+    let id = UUID()
+    var month: Month
+    var amount: Decimal?
 }

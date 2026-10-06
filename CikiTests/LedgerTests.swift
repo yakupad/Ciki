@@ -544,4 +544,70 @@ struct LedgerTests {
         ece.relation = nil
         #expect(ece.relationRaw == nil)
     }
+
+    // MARK: - Dönemli tutar
+
+    @Test func recurringAmountChangesFromAGivenMonth() {
+        // Yılbaşına kadar 100.000, Ocak'tan itibaren 6 ay 125.000, sonra biter.
+        let january = Month(year: 2027, month: 1)
+        let item = makeItem(kind: .loan, recurring: 100_000, start: october, end: Month(year: 2027, month: 6))
+        item.amountChanges = [AmountChange(from: january.key, amount: 125_000)]
+
+        #expect(item.recurringAmount(in: Month(year: 2026, month: 12)) == 100_000)
+        #expect(item.recurringAmount(in: january) == 125_000)
+        #expect(Ledger.line(for: item, month: october, rates: rates)?.signedValue == -100_000)
+        #expect(Ledger.line(for: item, month: Month(year: 2027, month: 6), rates: rates)?.signedValue == -125_000)
+        #expect(Ledger.line(for: item, month: Month(year: 2027, month: 7), rates: rates) == nil)
+    }
+
+    @Test func amountChangesAreSortedAndStoredAsText() throws {
+        let item = makeItem(kind: .rent, recurring: 20_000, start: october)
+        item.amountChanges = [AmountChange(from: october.adding(6).key, amount: 26_000),
+                              AmountChange(from: october.adding(3).key, amount: 23_000)]
+        context.saveIfNeeded()
+        #expect(item.amountChanges.map(\.amount) == [23_000, 26_000])
+        #expect(item.recurringAmount(in: october.adding(4)) == 23_000)
+        #expect(item.recurringAmount(in: october.adding(12)) == 26_000)
+        #expect(item.recurringChanges?.isEmpty == false)
+
+        item.amountChanges = []
+        #expect(item.recurringChanges == nil)
+        #expect(item.recurringAmount(in: october.adding(12)) == 20_000)
+    }
+
+    @Test func suggestionUsesTheAmountForThatMonth() {
+        let item = makeItem(kind: .loan, recurring: 100_000, start: october)
+        item.amountChanges = [AmountChange(from: october.adding(3).key, amount: 125_000)]
+        let suggestions = Ledger.suggestions(for: item, before: october.adding(4))
+        #expect(suggestions.contains { $0.amount == 125_000 })
+        #expect(!suggestions.contains { $0.amount == 100_000 })
+    }
+
+    // MARK: - Tutar yazımı
+
+    @Test func amountInputGroupsThousandsWhileTyping() {
+        let turkish = Locale(identifier: "tr_TR")
+        #expect(AmountInput.format("125000", locale: turkish).text == "125.000")
+        #expect(AmountInput.format("125000", locale: turkish).value == 125_000)
+        #expect(AmountInput.format("1.234.567", locale: turkish).text == "1.234.567")
+        #expect(AmountInput.format("1234,5", locale: turkish).text == "1.234,5")
+        #expect(AmountInput.format("1234,567", locale: turkish).text == "1.234,56")
+        #expect(AmountInput.format("1234,56", locale: turkish).value == Decimal(string: "1234.56"))
+        #expect(AmountInput.format(",5", locale: turkish).text == "0,5")
+        #expect(AmountInput.format("0007", locale: turkish).text == "7")
+        #expect(AmountInput.format("12,", locale: turkish).text == "12,")
+        #expect(AmountInput.format("1,2,3", locale: turkish).text == "1,23")
+        #expect(AmountInput.format("", locale: turkish).value == nil)
+
+        let english = Locale(identifier: "en_US")
+        #expect(AmountInput.format("1234.5", locale: english).text == "1,234.5")
+        #expect(AmountInput.format("1,234", locale: english).text == "1,234")
+    }
+
+    @Test func amountInputShowsStoredValues() {
+        let turkish = Locale(identifier: "tr_TR")
+        #expect(AmountInput.text(for: 125_000, locale: turkish) == "125.000")
+        #expect(AmountInput.text(for: Decimal(string: "1234.5"), locale: turkish) == "1.234,50")
+        #expect(AmountInput.text(for: nil, locale: turkish) == "")
+    }
 }
