@@ -45,7 +45,7 @@ Asset Library ürün sayfası başlığı ve evrensel görsel için JPEG kabul e
 
 Anahtar kelimeler, ad ve alt başlıkta geçen sözcükleri tekrar etmez (App Store bunları zaten dizine ekler). "Çıkı" adı Türkçe klavye olmadan "Ciki" diye de aranır. Apple aksanları eşleştirdiği için ayrıca eklenmedi.
 
-**Bağlantılar:** gizlilik politikası https://yakupad.github.io/ciki-app/privacy/ ve destek https://yakupad.github.io/ciki-app/support/ . Sayfalar herkese açık `yakupad/ciki-app` deposunun `docs/` klasöründen GitHub Pages ile yayınlanır; sorun bildirimleri o deponun Issues sekmesine gelir.
+**Bağlantılar:** gizlilik politikası https://yakupad.github.io/Ciki/privacy/ ve destek https://yakupad.github.io/Ciki/support/ . Sayfalar bu deponun `docs/` klasöründen GitHub Pages ile yayınlanır. Sorun bildirimleri deponun Issues sekmesine gelir.
 
 **App Privacy (Gizlilik etiketi):** "Veri toplanmaz" (Data Not Collected). Uygulama hiçbir sunucuya veri göndermez. iCloud verisi kullanıcının kendi hesabındadır ve Apple'ın tanımına göre geliştiricinin topladığı veri sayılmaz. TCMB kur isteği kişisel veri içermez.
 

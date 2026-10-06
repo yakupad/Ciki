@@ -1,0 +1,8 @@
+title: Çıkı
+description: >-
+  Hanenin ortak bütçesi: borç, ödeme ve kira takibi. Your household's shared
+  budget for bills, debts and rent.
+theme: jekyll-theme-minimal
+permalink: /:name/
+exclude:
+  - screens/
