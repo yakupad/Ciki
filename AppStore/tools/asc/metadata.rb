@@ -14,7 +14,7 @@ puts "✓ kategori"
 # Uygulama bilgisi (ad, alt başlık)
 existing = ASC.get("/v1/appInfos/#{INFO}/appInfoLocalizations")["data"].to_h { |l| [l["attributes"]["locale"], l["id"]] }
 %w[tr en-US].each do |locale|
-  attrs = { name: text(locale, "name"), subtitle: text(locale, "subtitle") }
+  attrs = { name: text(locale, "name"), subtitle: text(locale, "subtitle"), privacyPolicyUrl: text(locale, "privacy_url") }
   if (id = existing[locale])
     ASC.patch("/v1/appInfoLocalizations/#{id}", { data: { type: "appInfoLocalizations", id: id, attributes: attrs } })
   else
@@ -28,7 +28,8 @@ end
 VERSIONS.each do |platform, version|
   locs = ASC.get("/v1/appStoreVersions/#{version}/appStoreVersionLocalizations")["data"].to_h { |l| [l["attributes"]["locale"], l["id"]] }
   %w[tr en-US].each do |locale|
-    attrs = { description: text(locale, "description"), keywords: text(locale, "keywords"), promotionalText: text(locale, "promotional_text") }
+    attrs = { description: text(locale, "description"), keywords: text(locale, "keywords"), promotionalText: text(locale, "promotional_text"),
+              supportUrl: text(locale, "support_url") }
     if (id = locs[locale])
       ASC.patch("/v1/appStoreVersionLocalizations/#{id}", { data: { type: "appStoreVersionLocalizations", id: id, attributes: attrs } })
     else
