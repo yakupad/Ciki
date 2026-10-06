@@ -140,8 +140,6 @@ struct ItemEditorView: View {
                             Text("Aylık tutar")
                             Spacer()
                             AmountField(value: $recurringAmount)
-                                .multilineTextAlignment(.trailing)
-                                .font(.amount(17, weight: .semibold))
                             Text(currency.symbol).foregroundStyle(Color.ikincil)
                         }
                         MonthStepperRow(title: "Başlangıç", month: $recurringStart)
@@ -169,8 +167,6 @@ struct ItemEditorView: View {
                                     Text("Yeni tutar")
                                     Spacer()
                                     AmountField(value: $change.amount)
-                                        .multilineTextAlignment(.trailing)
-                                        .font(.amount(17, weight: .semibold))
                                     Text(currency.symbol).foregroundStyle(Color.ikincil)
                                 }
                             }

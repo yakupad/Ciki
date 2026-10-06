@@ -10,6 +10,8 @@ struct EntryEditorView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\LedgerItem.sortOrder)],
                   predicate: NSPredicate(format: "isArchived == NO"))
     private var items: FetchedResults<LedgerItem>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\Person.sortOrder)])
+    private var people: FetchedResults<Person>
 
     private let existing: LedgerEntry?
 
@@ -22,6 +24,10 @@ struct EntryEditorView: View {
     @State private var splitIntoInstallments: Bool
     @State private var installmentCount: Int
     @State private var isCreatingItem: Bool
+    /// Yeni kayıtta kalem seçmek yerine tek seferlik bir harcama girilir; kalem arka planda oluşur.
+    @State private var isOneOff: Bool
+    @State private var oneOffName: String
+    @State private var oneOffOwner: Person?
     @State private var confirmDelete: Bool
 
     init(item: LedgerItem?, month: Month) {
@@ -36,6 +42,9 @@ struct EntryEditorView: View {
         self.splitIntoInstallments = false
         self.installmentCount = 3
         self.isCreatingItem = false
+        self.isOneOff = false
+        self.oneOffName = ""
+        self.oneOffOwner = nil
         self.confirmDelete = false
     }
 
@@ -58,10 +67,8 @@ struct EntryEditorView: View {
 
                 Section {
                     VStack(spacing: 6) {
-                        AmountField(value: $amount, autofocus: isNew)
-                            .multilineTextAlignment(.center)
-                            .font(.amount(40))
-                            .foregroundStyle(direction == .expense ? Color.gider : Color.gelir)
+                        AmountField(value: $amount, size: 40, weight: .bold, alignment: .center,
+                                    color: UIColor(direction == .expense ? Color.gider : Color.gelir), autofocus: isNew)
                         Text(amountCaption)
                             .font(.footnote)
                             .foregroundStyle(Color.ikincil)
@@ -87,20 +94,39 @@ struct EntryEditorView: View {
 
                 Section {
                     if isNew {
-                        Picker("Kalem", selection: $item) {
-                            Text("Seçin").tag(LedgerItem?.none)
-                            ForEach(items.filter { $0.direction == direction }, id: \.objectID) { item in
-                                Text(verbatim: "\(item.fullTitle) · \(item.ownerName)")
-                                    .tag(Optional(item))
-                            }
+                        Picker("Kalem türü", selection: $isOneOff.animation()) {
+                            Text("Kayıtlı kalem").tag(false)
+                            Text("Tek seferlik").tag(true)
                         }
-                        Button("Yeni kalem oluştur", systemImage: "plus.circle") { isCreatingItem = true }
+                        .pickerStyle(.segmented)
+                        if isOneOff {
+                            TextField("Ne için?", text: $oneOffName, prompt: Text("Ör. Kombi tamiri"))
+                            Picker("Kişi", selection: $oneOffOwner) {
+                                Text("Ortak").tag(Person?.none)
+                                ForEach(people, id: \.objectID) { person in
+                                    Text(verbatim: person.displayName).tag(Optional(person))
+                                }
+                            }
+                        } else {
+                            Picker("Kalem", selection: $item) {
+                                Text("Seçin").tag(LedgerItem?.none)
+                                ForEach(items.filter { $0.direction == direction }, id: \.objectID) { item in
+                                    Text(verbatim: "\(item.fullTitle) · \(item.ownerName)")
+                                        .tag(Optional(item))
+                                }
+                            }
+                            Button("Yeni kalem oluştur", systemImage: "plus.circle") { isCreatingItem = true }
+                        }
                     } else if let item {
                         LabeledContent("Kalem", value: item.fullTitle)
                         LabeledContent("Kişi", value: item.ownerName)
                     }
                     MonthStepperRow(title: splitIntoInstallments ? "İlk taksit" : "Ay", month: $month)
                         .disabled(!isNew)
+                } footer: {
+                    if isNew && isOneOff {
+                        Text("Yalnızca bu aya (ya da taksitlerine) yazılır. Kalemler listesinde Arşiv'de durur, yeni aylarda görünmez.")
+                    }
                 }
 
                 if let payee = item?.payee {
@@ -162,11 +188,18 @@ struct EntryEditorView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Kaydet") { save() }
-                        .disabled(item == nil || amount == nil)
+                        .disabled(!canSave)
                 }
             }
             .onChange(of: direction) { _, newValue in
                 if item?.direction != newValue { item = nil }
+            }
+            .onChange(of: isOneOff) { _, oneOff in
+                if oneOff { item = nil }
+            }
+            .onAppear {
+                // Bu yönde hiç kalem yoksa doğrudan tek seferlik girişle başlar.
+                if isNew, item == nil, !items.contains(where: { $0.direction == direction }) { isOneOff = true }
             }
             .onChange(of: item) { _, newValue in
                 if isNew, amount == nil, let recurring = newValue?.recurringAmount(in: month) {
@@ -204,7 +237,34 @@ struct EntryEditorView: View {
         return parts.isEmpty ? Money.string(amount, currency: currency) : parts.joined(separator: " · ")
     }
 
+    private var canSave: Bool {
+        guard let amount, amount > 0 else { return false }
+        if isNew && isOneOff { return !oneOffName.trimmingCharacters(in: .whitespaces).isEmpty }
+        return item != nil
+    }
+
+    /// Tek seferlik harcama için kalem: tekrarlamaz ve arşivlenmiş olarak oluşur, kaydı o ayda görünür.
+    private func makeOneOffItem() -> LedgerItem {
+        let created = LedgerItem(context: context)
+        created.uuid = UUID()
+        created.createdAt = .now
+        created.updatedAt = .now
+        created.updatedBy = DeviceOwner.name(in: context)
+        created.sortOrder = context.nextItemSortOrder()
+        let household = context.currentHousehold()
+        context.place(created, in: household)
+        created.household = household
+        created.name = oneOffName.trimmingCharacters(in: .whitespaces)
+        created.kind = direction == .receivable ? .receivable : .other
+        created.direction = direction
+        created.currency = .tl
+        created.owner = oneOffOwner
+        created.isArchived = true
+        return created
+    }
+
     private func save() {
+        let item = isNew && isOneOff ? (canSave ? makeOneOffItem() : nil) : self.item
         guard let item, let amount else { return }
         let trimmedNote = note.trimmingCharacters(in: .whitespacesAndNewlines)
         if isNew && splitIntoInstallments {

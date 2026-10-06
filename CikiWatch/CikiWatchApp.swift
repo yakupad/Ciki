@@ -16,47 +16,68 @@ struct WatchRootView: View {
     @Environment(WatchStore.self) private var store
     /// DEBUG'da "-watchPage 1" ile Ödemeler sayfasından açılır (ekran görüntüsü için).
     @State private var page = UserDefaults.standard.integer(forKey: "watchPage")
+    /// Gösterilen ayın anahtarı; boşsa bu ay.
+    @State private var selectedKey: Int32?
 
     var body: some View {
         NavigationStack {
             // Saat, iPhone'daki uygulama kilidinden bağımsızdır; tutarlar her zaman gösterilir.
-            if let snapshot = store.snapshot {
+            let months = store.months
+            if let index = selectedIndex(in: months) {
+                let month = months[index]
                 TabView(selection: $page) {
-                    SummaryPage(snapshot: snapshot).tag(0)
-                    PaymentsPage().tag(1)
+                    SummaryPage(month: month).tag(0)
+                    PaymentsPage(month: month).tag(1)
                 }
                 .tabViewStyle(.verticalPage)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Önceki ay", systemImage: "chevron.left") { selectedKey = months[index - 1].key }
+                            .disabled(index == 0)
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Sonraki ay", systemImage: "chevron.right") { selectedKey = months[index + 1].key }
+                            .disabled(index == months.count - 1)
+                    }
+                }
             } else {
                 WaitingView()
             }
         }
+    }
+
+    /// Seçili ay listede yoksa (yeni ay başladı ya da özet yenilendi) bu aya döner.
+    private func selectedIndex(in months: [WidgetSnapshot.MonthSummary]) -> Int? {
+        guard !months.isEmpty else { return nil }
+        if let selectedKey, let index = months.firstIndex(where: { $0.key == selectedKey }) { return index }
+        return months.firstIndex(where: \.isCurrent) ?? 0
     }
 }
 
 // MARK: - Özet
 
 private struct SummaryPage: View {
-    let snapshot: WidgetSnapshot
+    let month: WidgetSnapshot.MonthSummary
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                Text("Ay sonu net")
+                Text(month.isCurrent ? "Ay sonu net" : "Net")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
-                Text(verbatim: snapshot.net)
+                Text(verbatim: month.net)
                     .font(.system(.title2, design: .rounded, weight: .bold).monospacedDigit())
-                    .foregroundStyle(snapshot.netIsNegative ? WatchColors.gider : WatchColors.gelir)
+                    .foregroundStyle(month.netIsNegative ? WatchColors.gider : WatchColors.gelir)
                     .minimumScaleFactor(0.6)
                     .lineLimit(1)
                 Divider()
-                AmountRow(title: "Gelir + alacak", value: snapshot.incoming, color: WatchColors.gelir)
-                AmountRow(title: "Gider", value: snapshot.expense, color: WatchColors.gider)
-                AmountRow(title: "Ödenmemiş", value: snapshot.unpaid, color: .primary)
+                AmountRow(title: "Gelir + alacak", value: month.incoming, color: WatchColors.gelir)
+                AmountRow(title: "Gider", value: month.expense, color: WatchColors.gider)
+                AmountRow(title: "Ödenmemiş", value: month.unpaid, color: .primary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .navigationTitle(Text(verbatim: snapshot.monthTitle))
+        .navigationTitle(Text(verbatim: month.title))
     }
 }
 
@@ -79,15 +100,17 @@ private struct AmountRow: View {
 // MARK: - Ödemeler
 
 private struct PaymentsPage: View {
+    let month: WidgetSnapshot.MonthSummary
     @Environment(WatchStore.self) private var store
 
     var body: some View {
+        let payments = store.payments(in: month)
         List {
-            if store.upcoming.isEmpty {
-                Text("Bu ay bekleyen ödeme yok")
+            if payments.isEmpty {
+                Text("Bekleyen ödeme yok")
                     .foregroundStyle(.secondary)
             }
-            ForEach(store.upcoming) { payment in
+            ForEach(payments) { payment in
                 NavigationLink {
                     PaymentDetail(payment: payment)
                 } label: {
@@ -95,7 +118,7 @@ private struct PaymentsPage: View {
                 }
             }
         }
-        .navigationTitle("Ödemeler")
+        .navigationTitle(Text(verbatim: month.title))
     }
 }
 

@@ -5391,22 +5391,6 @@
         }
       }
     },
-    "Temizle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Temizle"
-          }
-        }
-      }
-    },
     "Toplanmayanlar" : {
       "localizations" : {
         "en" : {
@@ -5612,22 +5596,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutarı %@ olarak girin"
-          }
-        }
-      }
-    },
-    "Üç sıfır ekle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add three zeros"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Üç sıfır ekle"
           }
         }
       }
@@ -5884,6 +5852,102 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yön"
+          }
+        }
+      }
+    },
+    "Kalem türü" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Item type"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalem türü"
+          }
+        }
+      }
+    },
+    "Kayıtlı kalem" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved item"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıtlı kalem"
+          }
+        }
+      }
+    },
+    "Tek seferlik" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One-time"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek seferlik"
+          }
+        }
+      }
+    },
+    "Ne için?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What for?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ne için?"
+          }
+        }
+      }
+    },
+    "Ör. Kombi tamiri" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E.g. Boiler repair"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ör. Kombi tamiri"
+          }
+        }
+      }
+    },
+    "Yalnızca bu aya (ya da taksitlerine) yazılır. Kalemler listesinde Arşiv'de durur, yeni aylarda görünmez." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recorded only for this month (or its installments). It stays under Archive in the items list and doesn't appear in new months."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yalnızca bu aya (ya da taksitlerine) yazılır. Kalemler listesinde Arşiv'de durur, yeni aylarda görünmez."
           }
         }
       }

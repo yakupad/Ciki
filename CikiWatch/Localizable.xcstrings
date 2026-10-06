@@ -17,22 +17,6 @@
         }
       }
     },
-    "Bu ay bekleyen ödeme yok": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No payments due this month"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu ay bekleyen ödeme yok"
-          }
-        }
-      }
-    },
     "Bugün": {
       "localizations": {
         "en": {
@@ -161,22 +145,6 @@
         }
       }
     },
-    "Ödemeler": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Payments"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ödemeler"
-          }
-        }
-      }
-    },
     "Ödendi": {
       "localizations": {
         "en": {
@@ -205,6 +173,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ödenmemiş"
+          }
+        }
+      }
+    },
+    "Bekleyen ödeme yok": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No pending payments"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bekleyen ödeme yok"
+          }
+        }
+      }
+    },
+    "Net": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net"
+          }
+        }
+      }
+    },
+    "Önceki ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous Month"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önceki ay"
+          }
+        }
+      }
+    },
+    "Sonraki ay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next Month"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonraki ay"
           }
         }
       }

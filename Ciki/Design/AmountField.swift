@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 /// Tutar yazarken metni anında biçimler: "125000" → "125.000", "1234,5" → "1.234,5".
 /// Binlik ayırıcıyı kullanıcı yazmaz; ondalık ayırıcı ("," ya da ".") bir kez ve en fazla iki hane kabul edilir.
@@ -46,54 +47,111 @@ nonisolated enum AmountInput {
     }
 }
 
-/// Yazarken binlik ayırıcı ekleyen tutar alanı. Klavyenin üstünde "000" ve "Bitti" düğmeleri olur.
-struct AmountField: View {
+/// Yazarken binlik ayırıcı ekleyen tutar alanı. UIKit metin alanı kullanılır; böylece biçimleme
+/// sonrası imleç aynı rakamın yanında kalır ve binlik noktası üzerinde geri silme bir rakam siler.
+struct AmountField: UIViewRepresentable {
     @Binding var value: Decimal?
-    let prompt: String
+    /// Yazı boyutu (Dynamic Type ile büyür) ve kalınlığı; tutarlar SF Pro Rounded'dır.
+    var size: CGFloat = 17
+    var weight: UIFont.Weight = .semibold
+    var alignment: NSTextAlignment = .right
+    var color: UIColor = .label
     /// Ekran açılınca klavye hemen gelsin mi (yeni kayıt girerken).
-    let autofocus: Bool
+    var autofocus = false
 
-    @State private var text: String
-    @FocusState private var isFocused: Bool
+    func makeCoordinator() -> Coordinator { Coordinator(value: $value) }
 
-    init(value: Binding<Decimal?>, prompt: String = "0", autofocus: Bool = false) {
-        _value = value
-        self.prompt = prompt
-        self.autofocus = autofocus
-        self.text = AmountInput.text(for: value.wrappedValue)
+    func makeUIView(context: Context) -> UITextField {
+        let field = UITextField()
+        field.delegate = context.coordinator
+        field.keyboardType = .decimalPad
+        field.placeholder = "0"
+        field.text = AmountInput.text(for: value)
+        field.adjustsFontForContentSizeCategory = true
+        field.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        field.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        field.setContentHuggingPriority(.required, for: .vertical)
+        return field
     }
 
-    var body: some View {
-        TextField(prompt, text: $text)
-            .keyboardType(.decimalPad)
-            .focused($isFocused)
-            .monospacedDigit()
-            .onAppear { if autofocus { isFocused = true } }
-            .onChange(of: text) { _, newText in
-                let formatted = AmountInput.format(newText)
-                if formatted.text != newText { text = formatted.text }
-                if formatted.value != value { value = formatted.value }
+    func updateUIView(_ field: UITextField, context: Context) {
+        context.coordinator.value = $value
+        field.font = Self.font(size: size, weight: weight)
+        field.textAlignment = alignment
+        field.textColor = color
+        // Dışarıdan değişti (ör. öneri çipi): alan yeniden yazılır.
+        if AmountInput.format(field.text ?? "").value != value {
+            field.text = AmountInput.text(for: value)
+        }
+        if autofocus, !context.coordinator.didAutofocus {
+            context.coordinator.didAutofocus = true
+            DispatchQueue.main.async { field.becomeFirstResponder() }
+        }
+    }
+
+    func sizeThatFits(_ proposal: ProposedViewSize, uiView: UITextField, context: Context) -> CGSize? {
+        let height = uiView.intrinsicContentSize.height
+        return CGSize(width: proposal.width ?? uiView.intrinsicContentSize.width, height: height)
+    }
+
+    /// `Font.amount` ile aynı eşleme: boyut en yakın metin stiline bağlanır.
+    static func font(size: CGFloat, weight: UIFont.Weight) -> UIFont {
+        let style: UIFont.TextStyle = switch size {
+        case 30...: .largeTitle
+        case 24..<30: .title1
+        case 20..<24: .title2
+        case 17..<20: .body
+        default: .subheadline
+        }
+        var font = UIFont.monospacedDigitSystemFont(ofSize: size, weight: weight)
+        if let rounded = font.fontDescriptor.withDesign(.rounded) {
+            font = UIFont(descriptor: rounded, size: size)
+        }
+        return UIFontMetrics(forTextStyle: style).scaledFont(for: font)
+    }
+
+    final class Coordinator: NSObject, UITextFieldDelegate {
+        var value: Binding<Decimal?>
+        var didAutofocus = false
+
+        init(value: Binding<Decimal?>) { self.value = value }
+
+        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
+                       replacementString string: String) -> Bool {
+            let current = textField.text ?? ""
+            guard var editRange = Range(range, in: current) else { return false }
+            let grouping = Money.locale.groupingSeparator ?? "."
+            // Binlik noktası üzerinde geri silme: noktadan önceki rakam silinir.
+            if string.isEmpty, current[editRange] == grouping, editRange.lowerBound > current.startIndex {
+                editRange = current.index(before: editRange.lowerBound)..<editRange.upperBound
             }
-            .onChange(of: value) { _, newValue in
-                // Dışarıdan değişti (ör. öneri çipi): alan yeniden yazılır.
-                if AmountInput.format(text).value != newValue { text = AmountInput.text(for: newValue) }
+            // İmleçten sonra kaç anlamlı karakter (rakam ya da ondalık ayırıcı) kaldığı korunur.
+            let trailing = Self.significantCount(current[editRange.upperBound...], grouping: grouping)
+            let proposed = current.replacingCharacters(in: editRange, with: string)
+            let formatted = AmountInput.format(proposed)
+            textField.text = formatted.text
+            Self.placeCaret(in: textField, trailingSignificant: trailing, grouping: grouping)
+            if formatted.value != value.wrappedValue { value.wrappedValue = formatted.value }
+            return false
+        }
+
+        private static func significantCount(_ text: Substring, grouping: String) -> Int {
+            text.filter { String($0) != grouping }.count
+        }
+
+        private static func placeCaret(in field: UITextField, trailingSignificant: Int, grouping: String) {
+            let text = field.text ?? ""
+            var index = text.endIndex
+            var remaining = trailingSignificant
+            while remaining > 0, index > text.startIndex {
+                index = text.index(before: index)
+                if String(text[index]) != grouping { remaining -= 1 }
             }
-            .toolbar {
-                if isFocused {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Button("Temizle") { text = "" }
-                        Button {
-                            text = AmountInput.format(text + "000").text
-                        } label: {
-                            Text(verbatim: "000").monospacedDigit()
-                        }
-                        .accessibilityLabel(Text("Üç sıfır ekle"))
-                        Spacer()
-                        Button("Bitti") { isFocused = false }
-                            .fontWeight(.semibold)
-                    }
-                }
+            let offset = text.distance(from: text.startIndex, to: index)
+            if let position = field.position(from: field.beginningOfDocument, offset: offset) {
+                field.selectedTextRange = field.textRange(from: position, to: position)
             }
+        }
     }
 }
 

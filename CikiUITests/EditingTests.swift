@@ -1,6 +1,6 @@
 import XCTest
 
-/// Kalem düzenleme akışları: yazarken tutar biçimleme, klavye araç çubuğu ve tutar değişikliği.
+/// Kalem düzenleme akışları: yazarken tutar biçimleme, klavyenin kapanması ve tutar değişikliği.
 @MainActor
 final class EditingTests: XCTestCase {
     private func launchOnItems() -> XCUIApplication {
@@ -29,14 +29,16 @@ final class EditingTests: XCTestCase {
         // Yeni değişikliğin tutar alanı: önce temizlenir, sonra yazılır.
         let fields = app.textFields.allElementsBoundByIndex
         let field = try XCTUnwrap(fields.last)
-        field.tap()
-        let clear = app.buttons["Temizle"]
-        XCTAssertTrue(clear.waitForExistence(timeout: 5), "Klavye araç çubuğu görünmeli")
-        clear.tap()
+        // İmleç metnin sonuna gelsin diye alanın sağ ucuna dokunulur.
+        field.coordinate(withNormalizedOffset: CGVector(dx: 0.98, dy: 0.5)).tap()
+        // Önceki tutar silinir, yenisi yazılır.
+        let existing = (field.value as? String) ?? ""
+        field.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: existing.count))
         field.typeText("27500")
         XCTAssertEqual(field.value as? String, "27.500")
-        app.buttons["Üç sıfır ekle"].tap()
-        XCTAssertEqual(field.value as? String, "27.500.000")
+        // Geri silme son rakamı siler ve binlik ayırıcı yeniden yerleşir.
+        field.typeText(XCUIKeyboardKey.delete.rawValue)
+        XCTAssertEqual(field.value as? String, "2.750")
 
         // Boş bir yere dokununca klavye kapanır.
         app.staticTexts["Yeni tutar"].tap()
@@ -46,5 +48,32 @@ final class EditingTests: XCTestCase {
         screenshot.name = "Tutar değişikliği"
         screenshot.lifetime = .keepAlways
         add(screenshot)
+    }
+
+    func testOneOffExpenseInOneStep() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-loadSampleData", "-AppleLanguages", "(tr)", "-startTab", "1"]
+        app.launch()
+
+        let newEntry = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Yeni kayıt'")).firstMatch
+        XCTAssertTrue(newEntry.waitForExistence(timeout: 10))
+        newEntry.tap()
+        XCTAssertTrue(app.navigationBars["Yeni kayıt"].waitForExistence(timeout: 5))
+
+        // Tutar alanı açılışta odaklıdır.
+        app.typeText("3450")
+        app.buttons["Tek seferlik"].tap()
+        let name = app.textFields["Ör. Kombi tamiri"]
+        XCTAssertTrue(name.waitForExistence(timeout: 5))
+        name.tap()
+        name.typeText("Kombi tamiri")
+        app.buttons["Kaydet"].tap()
+
+        // Kayıt bu ayın listesinde, "Diğer giderler" altında görünür; liste aşağı kaydırılır.
+        XCTAssertTrue(app.navigationBars["Yeni kayıt"].waitForNonExistence(timeout: 5), "Kayıt ekranı kapanmalı")
+        let row = app.staticTexts["Kombi tamiri"]
+        for _ in 0..<8 where !row.exists { app.swipeUp() }
+        XCTAssertTrue(row.exists)
+        XCTAssertTrue(app.staticTexts["−3.450 ₺"].exists)
     }
 }

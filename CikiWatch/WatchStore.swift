@@ -26,8 +26,12 @@ final class WatchStore {
         connection.activate()
     }
 
-    var upcoming: [WidgetSnapshot.Payment] {
-        (snapshot?.upcoming ?? []).filter { !pendingPaid.contains($0.id) }
+    /// Saatte gezinilebilen aylar (geçmiş 3, gelecek 6).
+    var months: [WidgetSnapshot.MonthSummary] { snapshot?.monthList ?? [] }
+
+    /// Bir ayın bekleyen ödemeleri; saatte "ödendi" denenler onay gelene kadar gizlenir.
+    func payments(in month: WidgetSnapshot.MonthSummary) -> [WidgetSnapshot.Payment] {
+        month.payments.filter { !pendingPaid.contains($0.id) }
     }
 
     /// iPhone yakındaysa hemen, değilse kuyruğa alınarak gönderilir. Liste hemen güncellenir.
@@ -40,7 +44,7 @@ final class WatchStore {
     private func apply(_ new: WidgetSnapshot) {
         snapshot = new
         // iPhone'dan gelen yeni özette artık olmayan ödemeler onaylanmış demektir.
-        let remaining = Set(new.upcoming.map(\.id))
+        let remaining = Set(new.monthList.flatMap(\.payments).map(\.id))
         pendingPaid = pendingPaid.intersection(remaining)
         new.save()
         WidgetCenter.shared.reloadAllTimelines()
