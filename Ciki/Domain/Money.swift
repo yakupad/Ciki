@@ -1,7 +1,7 @@
 import Foundation
 
 nonisolated enum Money {
-    /// Uygulama dilinin sayı biçimi: Türkçe "18989", İngilizce "18989".
+    /// Uygulama dilinin sayı biçimi: Türkçe "12.345,67", İngilizce "12,345.67".
     static var locale: Locale { AppLanguage.current.locale }
 
     static let baseCurrencyKey = "baseCurrency"
@@ -20,17 +20,19 @@ nonisolated enum Money {
         case never
     }
 
-    /// "−18989 ₺", "+42320 ₺", "52319 €"
+    /// "−12.345,67 ₺", "+50.000 ₺", "150 €"
     static func string(_ value: Decimal,
                        currency: Currency = Money.baseCurrency,
                        sign: SignStyle = .automatic,
                        fractions: Bool = true,
                        locale: Locale = Money.locale) -> String {
         let magnitude = value < 0 ? -value : value
+        // Kuruşu olan tutar her zaman iki haneli yazılır: "6.210,90", tam sayı ise kuruşsuz: "24.000".
+        let hasKurus = fractions && magnitude.rounded(scale: 2) != magnitude.rounded(scale: 0)
         let number = magnitude.formatted(
             .number
                 .locale(locale)
-                .precision(.fractionLength(fractions ? 0...2 : 0...0))
+                .precision(.fractionLength(hasKurus ? 2...2 : 0...0))
         )
         let prefix: String
         switch sign {

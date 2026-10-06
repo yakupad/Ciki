@@ -72,7 +72,7 @@ xcodebuild -project Ciki.xcodeproj -scheme Ciki \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-Debug derlemesinde **Ayarlar → Geliştirici → Excel örnek verisini yükle** (`-loadSampleData` ilk açılış ekranını da atlar; `-onboardingStep people|privacy|invited` ilk açılışın bir adımını açar) ile Ağustos–Kasım 2026 örnek verisi yüklenir. Simülatörde `-loadSampleData` başlatma argümanı aynı işi açılışta yapar; `-openReport` doğrudan rapor ekranını, `-startTab 0…3` istenen sekmeyi açar.
+Debug derlemesinde **Ayarlar → Geliştirici → Örnek veriyi yükle**: kurgusal Deniz ve Ece hanesi, aylar ve ödeme günleri bugüne göre (`-loadSampleData` ilk açılış ekranını da atlar; `-onboardingStep people|privacy|invited` ilk açılışın bir adımını açar) yüklenir. Simülatörde `-loadSampleData` başlatma argümanı aynı işi açılışta yapar; `-openReport` doğrudan rapor ekranını, `-startTab 0…3` istenen sekmeyi açar.
 
 ## iCloud ile ortak kullanım kurulumu
 
@@ -106,15 +106,15 @@ iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca 
 
 | Excel'de | Uygulamada | Ne işe yarar |
 |---|---|---|
-| Satır: **YapıKredi · Kart**, **Kira**, **Konut** | **Kalem** (banka + tür veya serbest ad) | Her kalemin sahibi (Deniz, Ece veya Ortak), türü, para birimi ve ödeme günü olur. |
+| Satır: **Banka · Kart**, **Kira**, **Konut kredisi** | **Kalem** (banka + tür veya serbest ad) | Her kalemin sahibi (hanedeki bir kişi ya da Ortak), türü, para birimi ve ödeme günü olur. |
 | Sütun: **Ekim, Kasım…** | **Ay** | Ay ay ileri geri gidilir. Tablo görünümü Excel düzenini aynen gösterir. |
-| Hücre: `-18989` | **Kayıt** (kalem + ay + tutar) | Ekstre veya taksit tutarı. Bekliyor, ödendi ve hariç olarak üç durumu vardır. |
-| ~~-48986~~ (üstü çizili) | **Ödendi** | Satır sola kaydırılınca ödendi olur. Toplamlarda kalır, listede soluk görünür. |
-| `-47875*0` | **Hariç tut** | Tutarı silmeden o ayın hesabından çıkarır. |
+| Hücre: `-12345,67` | **Kayıt** (kalem + ay + tutar) | Ekstre veya taksit tutarı. Bekliyor, ödendi ve hariç olarak üç durumu vardır. |
+| ~~-24000~~ (üstü çizili) | **Ödendi** | Satır sola kaydırılınca ödendi olur. Toplamlarda kalır, listede soluk görünür. |
+| `-10000*0` | **Hariç tut** | Tutarı silmeden o ayın hesabından çıkarır. |
 | "son ödeme tarihi" sütunu | **Ödeme günü** | Özet ekranında bu ay ödenecekler gün sırasıyla listelenir. |
-| Alt notlar: **52319 euro harçlık**, **300 harçlık**, **20 dolar** | **Düzenli ödeme** (₺, $ veya €) | Her ay tahmini satır üretir. Döviz tutarı güncel TCMB kuruyla TL'ye çevrilir. |
+| Alt notlar: **150 euro harçlık**, **20 dolar abonelik** | **Düzenli ödeme** (₺, $ veya €) | Her ay tahmini satır üretir. Döviz tutarı güncel TCMB kuruyla TL'ye çevrilir. |
 | **Maaş** satırı | Gelir türünde düzenli kalem | Maaş değişince o aydan itibaren yeni tutar geçerli olur. |
-| **Alacak** satırı | **Alacak** türü | Size ödenecek tutarlar. Gelir gibi toplanır. |
+| **Alacak** satırı (ör. birinden alınacak borç) | **Alacak** türü | Size ödenecek tutarlar. Gelir gibi toplanır. |
 | 33. satır: aylık genel toplam | Özet kartı + 13 aylık grafik | Geçmiş aylar dolu, gelecek aylar soluk (tahmin) gösterilir. |
 
 ## Ekranlar
@@ -153,8 +153,8 @@ iCloud hesabı olmayan cihazda (ya da container açılmadan) uygulama yalnızca 
 | Gider | `#CF4438` | `#F0736A` | Borç, ekstre, negatif net |
 | Yaklaşan | `#D98E10` | `#F0B04A` | Son ödeme bugün |
 | Ödendi | `#8C9692` | `#6E7C78` | Üstü çizili, soluk satır |
-| Deniz | `#3D5FD9` | | Kişi rengi (Ayarlar'dan değiştirilebilir) |
-| Ece | `#C23F7B` | | Kişi rengi (Ayarlar'dan değiştirilebilir) |
+| Kişi 1 | `#3D5FD9` | | Kişi rengi (Ayarlar'dan değiştirilebilir) |
+| Kişi 2 | `#C23F7B` | | Kişi rengi (Ayarlar'dan değiştirilebilir) |
 | Zemin | `#F3F5F2` | `#0D1312` | Yeşile çalan nötr gri |
 
 Renkler `Ciki/Design/Theme.swift` içinde tanımlıdır.
@@ -202,7 +202,7 @@ erDiagram
 - **Tutarlar `Decimal`.** Kuruş yuvarlama hatası olmaz. Taksit bölmede artan kuruşlar son taksite eklenir.
 - **Gösterim para birimi.** TCMB kurları TL karşılığı olarak gelir; TL ara birimdir. Gösterim birimi TL değilse çapraz kurla çevrilir (ör. USD → EUR = USD/TL ÷ EUR/TL). Seçim cihaza özeldir, her kişi kendi telefonunda farklı birim seçebilir. Ödenmiş döviz kayıtlarının TL karşılığı ödeme günündeki kurla sabittir.
 - **Döviz.** Ödenmemiş kayıtlar güncel kurla, ödenmiş kayıtlar ödeme günündeki kurla TL'ye çevrilir. Kaynak: `https://www.tcmb.gov.tr/kurlar/today.xml`. Döviz satış kuru kullanılır, yayımlanmayan birimlerde efektif satış. JPY gibi 100 birimlik kurlar bire indirilir. Çevrimdışıyken son alınan kurlar kullanılır.
-- **Yerelleştirme.** Metinler `Localizable.xcstrings` (kaynak dil Türkçe) içinde. Tutar ve tarih biçimi uygulama diline göre: Türkçe `18989`, İngilizce `18989`.
+- **Yerelleştirme.** Metinler `Localizable.xcstrings` (kaynak dil Türkçe) içinde. Tutar ve tarih biçimi uygulama diline göre: Türkçe `12.345,67`, İngilizce `12,345.67`.
 - **Kilit.** Face ID / Touch ID / cihaz parolası (`LocalAuthentication`). Kilit ekranı ayrı bir `UIWindow`'da gösterilir; açık sayfalar da uygulama değiştiricide gizlenir.
 - **Hatırlatmalar.** Bu ay ve sonraki iki ayın bekleyen, son ödeme günü olan giderleri için yerel bildirim (en fazla 60). Her kayıt değişikliğinde yeniden planlanır.
 - **Widget.** Uygulama bu ayın özetini `group.com.yakupad.Ciki` App Group'una JSON olarak yazar; widget yalnızca bu özeti okur, veri tabanına erişmez. Gerçek cihazda App Group için Xcode'da Team seçili olmalıdır.

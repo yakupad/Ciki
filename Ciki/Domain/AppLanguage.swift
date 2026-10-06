@@ -9,7 +9,7 @@ nonisolated enum AppLanguage: Sendable {
         Bundle.main.preferredLocalizations.first?.hasPrefix("en") == true ? .english : .turkish
     }
 
-    /// Tutar ve tarih biçimi: "18989" / "18989".
+    /// Tutar ve tarih biçimi: "12.345,67" / "12,345.67".
     var locale: Locale {
         switch self {
         case .turkish: Locale(identifier: "tr_TR")

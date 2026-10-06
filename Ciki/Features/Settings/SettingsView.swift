@@ -231,14 +231,14 @@ struct SettingsView: View {
 
                 #if DEBUG
                 Section {
-                    Button("Excel örnek verisini yükle") {
+                    Button("Örnek veriyi yükle") {
                         SampleData.load(into: context)
                     }
                     Button("Tüm kalemleri sil", role: .destructive) { confirmWipe = true }
                 } header: {
                     Text("Geliştirici")
                 } footer: {
-                    Text("Örnek veri Excel tablonuzun Ağustos–Kasım 2026 sütunlarından alınmıştır.")
+                    Text("Kurgusal örnek hane (Deniz ve Ece). Deneme ve tanıtım görselleri içindir.")
                 }
                 #endif
             }

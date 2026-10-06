@@ -1,22 +1,26 @@
 import CoreData
 
-/// Önizlemeler ve geliştirme için Excel tablosunun Ağustos–Kasım 2026 sütunlarından örnek veri.
+/// Önizlemeler, deneme ve tanıtım görselleri için **tamamen kurgusal** örnek hane: Deniz ve Ece.
+/// İsimler, bankalar ve tutarlar uydurmadır; gerçek kişi ya da kurumlarla ilgisi yoktur.
+/// Aylar ve ödeme günleri bugüne göre hesaplanır, böylece görseller hangi gün alınırsa alınsın
+/// "bu ay ödenecekler" listesinde bugün ve yakın günler görünür.
 enum SampleData {
     static func load(into context: NSManagedObjectContext) {
         let household = context.currentHousehold()
+        household.name = String(localized: "Evimiz")
         if household.peopleArray.isEmpty {
-            context.addPerson(named: "Deniz", to: household)
-            context.addPerson(named: "Ece", to: household)
+            context.addPerson(named: "Deniz", to: household).relation = nil
+            context.addPerson(named: "Ece", to: household).relation = .partner
         }
         let people = household.peopleArray
         let deniz = people.first
         let ece = people.dropFirst().first
-        let rates = RateTable(usd: 49.06, eur: 55.18)
+        let rates = RateTable(usd: 41, eur: 48)
 
-        let aug = Month(year: 2026, month: 8)
-        let sep = aug.adding(1)
-        let oct = aug.adding(2)
-        let nov = aug.adding(3)
+        let now = Month.current
+        let today = Calendar.current.component(.day, from: .now)
+        /// Bugünden `offset` gün sonraki ayın günü (1…28).
+        func due(_ offset: Int) -> Int16 { Int16(min(max(today + offset, 1), 28)) }
 
         var order: Int32 = 0
         func item(_ name: String?, bank: String? = nil, kind: ItemKind, owner: Person?,
@@ -24,6 +28,7 @@ enum SampleData {
                   recurring: Decimal? = nil, from start: Month? = nil) -> LedgerItem {
             order += 1
             let item = LedgerItem(context: context)
+            context.place(item, in: household)
             item.uuid = UUID()
             item.createdAt = .now
             item.name = name
@@ -34,7 +39,6 @@ enum SampleData {
             item.owner = owner
             item.dueDay = dueDay
             item.sortOrder = order
-            context.place(item, in: household)
             item.household = household
             if let recurring {
                 item.isRecurring = true
@@ -44,61 +48,62 @@ enum SampleData {
             return item
         }
 
-        func add(_ item: LedgerItem, _ month: Month, _ amount: Decimal, _ status: EntryStatus = .pending) {
-            context.upsertEntry(item: item, month: month, amount: amount, status: status, rates: rates)
+        /// Geçmiş aylar ödenmiş; bu ay, günü geçmişse ödenmiş, değilse bekliyor.
+        func add(_ item: LedgerItem, _ offset: Int, _ amount: Decimal, _ status: EntryStatus? = nil) {
+            let month = now.adding(offset)
+            let resolved = status ?? (offset < 0 || (offset == 0 && Int(item.dueDay) < today && item.dueDay > 0) ? .paid : .pending)
+            context.upsertEntry(item: item, month: month, amount: amount, status: resolved, rates: rates)
         }
 
         // Deniz
-        let ykCard = item(nil, bank: "YapıKredi", kind: .card, owner: deniz, dueDay: 5)
-        add(ykCard, aug, 16767, .paid); add(ykCard, sep, 17878, .paid)
-        add(ykCard, oct, 18989); add(ykCard, nov, 20100)
+        let maviCard = item(nil, bank: "Mavi Bank", kind: .card, owner: deniz, dueDay: due(0))
+        for (offset, amount) in [(-5, 7_840.20), (-4, 9_215.60), (-3, 6_480.00), (-2, 8_420.50), (-1, 9_115.30), (0, 11_240.75), (1, 4_180.00)] {
+            add(maviCard, offset, Decimal(amount))
+        }
+        let adaCard = item(nil, bank: "Ada Bank", kind: .card, owner: deniz, dueDay: due(3))
+        for (offset, amount) in [(-4, 2_150.00), (-3, 3_480.90), (-2, 3_250.00), (-1, 2_980.40), (0, 3_615.20), (1, 1_240.00)] {
+            add(adaCard, offset, Decimal(amount))
+        }
+        let adaLoan = item("İhtiyaç kredisi", bank: "Ada Bank", kind: .loan, owner: deniz, dueDay: due(6),
+                           recurring: 6_850, from: now.adding(-5))
+        for offset in -5...(-1) { add(adaLoan, offset, 6_850) }
 
-        let ykAdvance = item(nil, bank: "YapıKredi", kind: .cashAdvance, owner: deniz, dueDay: 5)
-        add(ykAdvance, oct, 10101)
-
-        let isCard = item(nil, bank: "İşBankası", kind: .card, owner: deniz, dueDay: 5)
-        add(isCard, aug, 21211, .paid); add(isCard, sep, 22322, .paid)
-        add(isCard, oct, 23433); add(isCard, nov, 27877)
-
-        let garantiAdvance = item(nil, bank: "Garanti", kind: .cashAdvance, owner: deniz, dueDay: 3)
-        add(garantiAdvance, aug, 53430, .paid)
-
-        let akCard = item(nil, bank: "Akbank", kind: .card, owner: deniz, dueDay: 15)
-        add(akCard, aug, 24544, .paid); add(akCard, sep, 24544, .paid); add(akCard, oct, 0, .paid)
-
-        let enpara = item(nil, bank: "Enpara", kind: .card, owner: deniz)
-        add(enpara, aug, 890); add(enpara, oct, 32321, .paid)
-
-        let rent = item(nil, kind: .rent, owner: deniz, dueDay: 1)
-        add(rent, aug, 46764, .paid); add(rent, sep, 46764, .paid); add(rent, nov, 46764)
-
-        let birikim = item("Birikim", kind: .housing, owner: deniz, dueDay: 20, recurring: 47875, from: aug)
-        add(birikim, aug, 47875, .paid); add(birikim, sep, 47875, .paid); add(birikim, oct, 47875, .excluded)
-
-        let konut = item("Konut", kind: .housing, owner: deniz, dueDay: 20, recurring: 40098, from: aug)
-        add(konut, aug, 40098, .paid); add(konut, sep, 40098, .paid)
-
-        let denizSalary = item(nil, kind: .salary, owner: deniz, recurring: 42320, from: oct)
-        add(denizSalary, aug, 41209, .paid); add(denizSalary, sep, 41209, .paid)
+        let denizSalary = item(nil, kind: .salary, owner: deniz, recurring: 68_500, from: now.adding(-5))
+        for offset in -5...(-1) { add(denizSalary, offset, 68_500) }
 
         // Ece
-        let tYkCard = item(nil, bank: "YapıKredi", kind: .card, owner: ece, dueDay: 7)
-        add(tYkCard, sep, 51208, .paid); add(tYkCard, oct, 28988)
-
-        let tYkAdvance = item(nil, bank: "YapıKredi", kind: .cashAdvance, owner: ece, dueDay: 7)
-        add(tYkAdvance, aug, 11212, .paid); add(tYkAdvance, sep, 50097, .paid)
-
-        let tGaranti = item(nil, bank: "Garanti", kind: .card, owner: ece, dueDay: 23)
-        add(tGaranti, aug, 25655, .paid)
-
-        _ = item(nil, kind: .salary, owner: ece, recurring: 33432, from: aug)
+        let yildizCard = item(nil, bank: "Yıldız Bank", kind: .card, owner: ece, dueDay: due(1))
+        for (offset, amount) in [(-5, 4_120.00), (-4, 3_870.45), (-3, 5_015.00), (-2, 4_640.80), (-1, 5_430.00), (0, 6_210.90), (1, 2_350.00)] {
+            add(yildizCard, offset, Decimal(amount))
+        }
+        let eceSalary = item(nil, kind: .salary, owner: ece, recurring: 54_000, from: now.adding(-5))
+        for offset in -5...(-1) { add(eceSalary, offset, 54_000) }
 
         // Ortak
-        let alacak = item("Alacak", kind: .receivable, owner: nil)
-        add(alacak, aug, 43431); add(alacak, sep, 43431)
-        add(alacak, oct, 44542); add(alacak, nov, 43431)
+        let rent = item(nil, kind: .rent, owner: nil, dueDay: 1, recurring: 24_000, from: now.adding(-5))
+        for offset in -5...0 { add(rent, offset, 24_000) }
 
-        _ = item("Harçlık", kind: .family, owner: nil, dueDay: 5, currency: .eur, recurring: 52319, from: nov)
+        let savings = item("Ev birikimi", kind: .housing, owner: nil, dueDay: due(8), recurring: 10_000, from: now.adding(-5))
+        for offset in -5...(-1) { add(savings, offset, 10_000) }
+        add(savings, 0, 10_000, .excluded)
+
+        let dues = item("Aidat", kind: .bill, owner: nil, dueDay: due(4), recurring: 1_850, from: now.adding(-5))
+        for offset in -5...(-1) { add(dues, offset, 1_850) }
+
+        let electricity = item("Elektrik", kind: .bill, owner: nil, dueDay: due(2))
+        for (offset, amount) in [(-5, 1_420.00), (-4, 1_265.40), (-3, 980.00), (-2, 1_140.60), (-1, 1_012.30), (0, 1_065.00)] {
+            add(electricity, offset, Decimal(amount))
+        }
+        let internet = item("İnternet", kind: .bill, owner: nil, dueDay: due(5), recurring: 649, from: now.adding(-5))
+        for offset in -5...(-1) { add(internet, offset, 649) }
+
+        let allowance = item("Kardeş harçlığı", kind: .family, owner: nil, dueDay: due(7),
+                             currency: .eur, recurring: 150, from: now.adding(-3))
+        for offset in -3...(-1) { add(allowance, offset, 150) }
+
+        let receivable = item("Emre'den alacak", kind: .receivable, owner: nil)
+        add(receivable, -1, 5_000)
+        add(receivable, 0, 7_500, .pending)
 
         context.saveIfNeeded()
     }

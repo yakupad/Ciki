@@ -47,12 +47,13 @@ nonisolated struct WidgetSnapshot: Codable, Equatable, Sendable {
     }
 
     static let placeholder = WidgetSnapshot(
-        monthTitle: "Ekim 2026", net: "−45653 ₺", netIsNegative: true,
-        incoming: "34543 ₺", expense: "35654 ₺", unpaid: "36765 ₺",
+        monthTitle: Date.now.formatted(.dateTime.month(.wide).year()), net: "+66.258 ₺", netIsNegative: false,
+        incoming: "130.000 ₺", expense: "63.742 ₺", unpaid: "39.742 ₺",
         upcoming: [
-            Payment(title: "YapıKredi Kart", owner: "Deniz", amount: "−18989 ₺", dueDate: .now),
-            Payment(title: "İşBankası Kart", owner: "Deniz", amount: "−23433 ₺", dueDate: .now),
-            Payment(title: "YapıKredi Kart", owner: "Ece", amount: "−28988 ₺", dueDate: .now.addingTimeInterval(2 * 86400)),
+            // Kurgusal örnek: widget galerisinde ve saatte önizleme olarak görünür.
+            Payment(title: "Mavi Bank Kart", owner: "Deniz", amount: "−11.240,75 ₺", dueDate: .now),
+            Payment(title: "Yıldız Bank Kart", owner: "Ece", amount: "−6.210,90 ₺", dueDate: .now.addingTimeInterval(86400)),
+            Payment(title: "Elektrik", owner: "Ortak", amount: "−1.065 ₺", dueDate: .now.addingTimeInterval(2 * 86400)),
         ],
         isPrivate: false, updatedAt: .now
     )

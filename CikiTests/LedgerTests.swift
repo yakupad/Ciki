@@ -46,21 +46,21 @@ struct LedgerTests {
     }
 
     @Test func recurringItemIsProjectedOnlyWithinItsRange() {
-        let item = makeItem(kind: .housing, recurring: 47875, start: october, end: october.adding(2))
+        let item = makeItem(kind: .housing, recurring: 10000, start: october, end: october.adding(2))
         #expect(Ledger.line(for: item, month: october.adding(-1), rates: rates) == nil)
         #expect(Ledger.line(for: item, month: october.adding(3), rates: rates) == nil)
 
         let line = Ledger.line(for: item, month: october.adding(1), rates: rates)
         #expect(line?.isProjected == true)
-        #expect(line?.signedValue == -47875)
+        #expect(line?.signedValue == -10000)
     }
 
     @Test func entryOverridesRecurringAmount() {
-        let item = makeItem(kind: .salary, recurring: 42320, start: october)
-        context.upsertEntry(item: item, month: october, amount: 210000, status: .paid, rates: rates)
+        let item = makeItem(kind: .salary, recurring: 50000, start: october)
+        context.upsertEntry(item: item, month: october, amount: 52000, status: .paid, rates: rates)
         let line = Ledger.line(for: item, month: october, rates: rates)
         #expect(line?.isProjected == false)
-        #expect(line?.signedValue == 210000)
+        #expect(line?.signedValue == 52000)
     }
 
     @Test func excludedEntriesDoNotCountAndPaidEntriesDo() {
@@ -68,7 +68,7 @@ struct LedgerTests {
         let housing = makeItem(kind: .housing)
         let salary = makeItem(kind: .salary)
         context.upsertEntry(item: card, month: october, amount: 1000, status: .paid, rates: rates)
-        context.upsertEntry(item: housing, month: october, amount: 47875, status: .excluded, rates: rates)
+        context.upsertEntry(item: housing, month: october, amount: 10000, status: .excluded, rates: rates)
         context.upsertEntry(item: salary, month: october, amount: 5000, status: .pending, rates: rates)
 
         let summary = Ledger.summary(of: Ledger.lines(for: october, items: [card, housing, salary], rates: rates))
@@ -79,16 +79,16 @@ struct LedgerTests {
     }
 
     @Test func foreignCurrencyUsesCurrentRateUntilPaid() {
-        let item = makeItem(kind: .family, currency: .eur, recurring: 52319, start: october)
-        #expect(Ledger.line(for: item, month: october, rates: rates)?.signedValue == -57500)
+        let item = makeItem(kind: .family, currency: .eur, recurring: 150, start: october)
+        #expect(Ledger.line(for: item, month: october, rates: rates)?.signedValue == -7500)
 
         let line = Ledger.line(for: item, month: october, rates: rates)!
         context.setStatus(.paid, for: line, rates: rates)
 
         // Kur sonradan değişse de ödenmiş kayıt ödeme günündeki kurla kalır.
         let laterRates = RateTable(usd: 45, eur: 60)
-        #expect(Ledger.line(for: item, month: october, rates: laterRates)?.signedValue == -57500)
-        #expect(Ledger.line(for: item, month: october.adding(1), rates: laterRates)?.signedValue == -69000)
+        #expect(Ledger.line(for: item, month: october, rates: laterRates)?.signedValue == -7500)
+        #expect(Ledger.line(for: item, month: october.adding(1), rates: laterRates)?.signedValue == -9000)
     }
 
     @Test func missingRateIsReportedInsteadOfCounted() {
@@ -111,28 +111,31 @@ struct LedgerTests {
         let card = makeItem()
         card.owner = deniz
         let receivable = makeItem(kind: .receivable)
-        context.upsertEntry(item: card, month: october, amount: 18989, status: .pending, rates: rates)
-        context.upsertEntry(item: receivable, month: october, amount: 44542, status: .pending, rates: rates)
+        context.upsertEntry(item: card, month: october, amount: 12345.67, status: .pending, rates: rates)
+        context.upsertEntry(item: receivable, month: october, amount: 5000, status: .pending, rates: rates)
 
         let summary = Ledger.summary(of: Ledger.lines(for: october, items: [card, receivable], rates: rates))
-        #expect(summary.net(for: deniz) == -18989)
-        #expect(summary.net(for: nil) == 44542)
+        #expect(summary.net(for: deniz) == -12345.67)
+        #expect(summary.net(for: nil) == 5000)
     }
 
     @Test func moneyFormatsInTurkish() {
         let turkish = Locale(identifier: "tr_TR")
-        #expect(Money.string(-18989, locale: turkish) == "−18989 ₺")
-        #expect(Money.string(42320, sign: .always, locale: turkish) == "+42320 ₺")
-        #expect(Money.string(52319, currency: .eur, locale: turkish) == "52319 €")
-        #expect(Money.compact(-30099, locale: turkish) == "−45653")
-        #expect(Money.string(-18989, locale: Locale(identifier: "en_US")) == "−18989 ₺")
+        #expect(Money.string(-12345.67, locale: turkish) == "−12.345,67 ₺")
+        #expect(Money.string(50000, sign: .always, locale: turkish) == "+50.000 ₺")
+        #expect(Money.string(1500, currency: .eur, locale: turkish) == "1.500 €")
+        #expect(Money.compact(-12345.9, locale: turkish) == "−12.346")
+        #expect(Money.string(-12345.67, locale: Locale(identifier: "en_US")) == "−12,345.67 ₺")
+        #expect(Money.string(-6210.9, locale: turkish) == "−6.210,90 ₺")
+        #expect(Money.string(24000, locale: turkish) == "24.000 ₺")
+        #expect(Money.string(-6210.9, fractions: false, locale: turkish) == "−6.211 ₺")
     }
 
     @Test func copyEntriesSkipsRecurringAndExisting() {
         let card = makeItem()
-        let housing = makeItem(kind: .housing, recurring: 47875, start: october)
+        let housing = makeItem(kind: .housing, recurring: 10000, start: october)
         context.upsertEntry(item: card, month: october, amount: 1200, status: .paid, rates: rates)
-        context.upsertEntry(item: housing, month: october, amount: 47875, status: .paid, rates: rates)
+        context.upsertEntry(item: housing, month: october, amount: 10000, status: .paid, rates: rates)
 
         let copied = context.copyEntries(from: october, to: october.adding(1), items: [card, housing], rates: rates)
         #expect(copied == 1)
@@ -153,14 +156,14 @@ struct LedgerTests {
     }
 
     @Test func suggestionsOfferPreviousMonthAverageAndRecurring() {
-        let item = makeItem(kind: .housing, recurring: 47875, start: october.adding(-3))
+        let item = makeItem(kind: .housing, recurring: 10000, start: october.adding(-3))
         context.upsertEntry(item: item, month: october.adding(-3), amount: 1000, status: .paid, rates: rates)
         context.upsertEntry(item: item, month: october.adding(-2), amount: 2000, status: .paid, rates: rates)
         context.upsertEntry(item: item, month: october.adding(-1), amount: 3000, status: .paid, rates: rates)
         context.upsertEntry(item: item, month: october, amount: 9999, status: .pending, rates: rates)
 
         let suggestions = Ledger.suggestions(for: item, before: october)
-        #expect(suggestions.map(\.amount) == [3000, 2000, 47875])
+        #expect(suggestions.map(\.amount) == [3000, 2000, 10000])
         #expect(suggestions.first?.label == String(localized: "Geçen ay"))
     }
 
@@ -223,11 +226,11 @@ struct LedgerTests {
         let table = RateTable(rates: ["EUR": 50, "USD": 40], base: .eur)
         let card = makeItem()
         context.upsertEntry(item: card, month: october, amount: 5000, status: .pending, rates: table)
-        let euroItem = makeItem(kind: .family, currency: .eur, recurring: 52319, start: october)
+        let euroItem = makeItem(kind: .family, currency: .eur, recurring: 150, start: october)
         let dollarItem = makeItem(kind: .family, currency: .usd, recurring: 100, start: october)
 
         #expect(Ledger.line(for: card, month: october, rates: table)?.signedValue == -100)
-        #expect(Ledger.line(for: euroItem, month: october, rates: table)?.signedValue == -52319)
+        #expect(Ledger.line(for: euroItem, month: october, rates: table)?.signedValue == -150)
         #expect(Ledger.line(for: dollarItem, month: october, rates: table)?.signedValue == -80)
         #expect(table.rate(for: .tl) == Decimal(string: "0.02"))
     }
@@ -333,8 +336,8 @@ struct LedgerTests {
         let format = CSVExport.Format(separator: ";", locale: Locale(identifier: "tr_TR"))
         let text = CSVExport.csv([["Ad", "Not"], ["Kira; Ekim", "\"özel\" not"]], format)
         #expect(text == "Ad;Not\r\n\"Kira; Ekim\";\"\"\"özel\"\" not\"")
-        #expect(CSVExport.number(-18989, format) == "-18989")
-        #expect(CSVExport.number(52319, CSVExport.Format(separator: ",", locale: Locale(identifier: "en_US"))) == "52319")
+        #expect(CSVExport.number(-12345.67, format) == "-12345,67")
+        #expect(CSVExport.number(1500, CSVExport.Format(separator: ",", locale: Locale(identifier: "en_US"))) == "1500")
     }
 
     @Test func csvTableSumsNetAndLeavesExcludedBlank() {
@@ -389,18 +392,18 @@ struct LedgerTests {
         let ece = Person(context: context)
         ece.name = "ece"
         ece.household = source
-        let deniz = Person(context: context)
-        deniz.name = "Deniz"
-        deniz.household = source
+        let mert = Person(context: context)
+        mert.name = "Mert"
+        mert.household = source
         let landlord = Account(context: context)
         landlord.title = "Ev sahibi"
         landlord.iban = "TR330006100519786457841326"
         landlord.household = source
         let rent = makeItem(kind: .rent)
         rent.household = source
-        rent.owner = deniz
+        rent.owner = mert
         rent.payee = landlord
-        context.upsertEntry(item: rent, month: october, amount: 46764, status: .paid, rates: rates)
+        context.upsertEntry(item: rent, month: october, amount: 24000, status: .paid, rates: rates)
         let eceCard = makeItem()
         eceCard.household = source
         eceCard.owner = ece
@@ -409,11 +412,11 @@ struct LedgerTests {
         HouseholdSync.copy(source, into: target, in: context)
 
         #expect(source.isDeleted || source.managedObjectContext == nil)
-        #expect(target.peopleArray.map(\.displayName) == ["Deniz", "Ece", "Deniz"])
+        #expect(target.peopleArray.map(\.displayName) == ["Deniz", "Ece", "Mert"])
         let copiedRent = try #require(target.itemsArray.first { $0.kind == .rent })
-        #expect(copiedRent.owner?.displayName == "Deniz")
+        #expect(copiedRent.owner?.displayName == "Mert")
         #expect(copiedRent.payee?.title == "Ev sahibi")
-        #expect(copiedRent.entry(for: october)?.amountValue == 46764)
+        #expect(copiedRent.entry(for: october)?.amountValue == 24000)
         #expect(copiedRent.entry(for: october)?.status == .paid)
         let copiedCard = try #require(target.itemsArray.first { $0.kind == .card })
         #expect(copiedCard.owner?.displayName == "Ece")
@@ -453,7 +456,7 @@ struct LedgerTests {
         let item = NSEntityDescription.insertNewObject(forEntityName: "LedgerItem", into: oldContext)
         item.setValue("Kira", forKey: "name")
         let entry = NSEntityDescription.insertNewObject(forEntityName: "LedgerEntry", into: oldContext)
-        entry.setValue(NSDecimalNumber(value: 46764), forKey: "amount")
+        entry.setValue(NSDecimalNumber(value: 24000), forKey: "amount")
         entry.setValue(item, forKey: "item")
         try oldContext.save()
         try oldCoordinator.persistentStores.forEach { try oldCoordinator.remove($0) }
@@ -467,19 +470,19 @@ struct LedgerTests {
         newContext.persistentStoreCoordinator = newCoordinator
         let migrated = try newContext.fetch(NSFetchRequest<NSManagedObject>(entityName: "LedgerEntry"))
         #expect(migrated.count == 1)
-        #expect((migrated.first?.value(forKey: "amount") as? NSDecimalNumber)?.intValue == 46764)
+        #expect((migrated.first?.value(forKey: "amount") as? NSDecimalNumber)?.intValue == 24000)
         #expect(migrated.first?.value(forKey: "updatedBy") == nil)
         #expect(try newContext.count(for: NSFetchRequest<NSManagedObject>(entityName: "Account")) == 0)
     }
 
     @Test func remindersCanHideAmounts() throws {
         let item = makeItem(); item.dueDay = 20
-        context.upsertEntry(item: item, month: october, amount: 18989, status: .pending, rates: rates)
+        context.upsertEntry(item: item, month: october, amount: 12345.67, status: .pending, rates: rates)
         let lines = Ledger.lines(for: october, items: [item], rates: rates)
         let shown = try #require(Reminders.plan(lines: lines, daysBefore: 1, hour: 9, now: .distantPast).first)
         let hidden = try #require(Reminders.plan(lines: lines, daysBefore: 1, hour: 9, hidesAmounts: true, now: .distantPast).first)
-        #expect(shown.body.contains("89"))
-        #expect(!hidden.body.contains("89"))
+        #expect(shown.body.contains("12"))
+        #expect(!hidden.body.contains("12"))
         #expect(hidden.date == shown.date)
     }
 
@@ -508,7 +511,7 @@ struct LedgerTests {
         let household = householdWithPeople()
         let card = makeItem()
         card.household = household
-        context.upsertEntry(item: card, month: october, amount: 28988, status: .pending, rates: rates)
+        context.upsertEntry(item: card, month: october, amount: 1250.50, status: .pending, rates: rates)
         try context.obtainPermanentIDs(for: [card])
         context.saveIfNeeded()
 

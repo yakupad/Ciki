@@ -226,6 +226,13 @@ nonisolated enum Banks {
         return lift((hex >> 16) & 0xFF) << 16 | lift((hex >> 8) & 0xFF) << 8 | lift(hex & 0xFF)
     }
 
+    /// Listede olmayan, elle yazılmış bankalar için addan türetilen sabit bir renk (her açılışta aynı).
+    private static func customColorHex(for bank: String) -> UInt32 {
+        let palette: [UInt32] = [0x2F6FB0, 0x7A4FD1, 0x1F8F7E, 0xB5452E, 0x8A6B2E, 0x3D5FD9, 0xA2367A, 0x4A7A2E]
+        let sum = key(bank).unicodeScalars.reduce(0) { ($0 &* 31 &+ Int($1.value)) & 0xFFFF }
+        return palette[sum % palette.count]
+    }
+
     static func colorHex(for bank: String) -> UInt32 {
         switch bank {
         case "YapıKredi": 0x1B4F9C
@@ -242,7 +249,7 @@ nonisolated enum Banks {
         case "ING": 0xE0681B
         case "Kuveyt Türk": 0x0B7A4B
         case "Papara": 0x4B3FA8
-        default: 0x4A5A55
+        default: customColorHex(for: bank)
         }
     }
 }

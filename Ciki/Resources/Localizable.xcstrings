@@ -2074,23 +2074,6 @@
         }
       }
     },
-    "Excel örnek verisini yükle": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Load Excel Sample Data"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Excel örnek verisini yükle"
-          }
-        }
-      }
-    },
     "Eş": {
       "localizations": {
         "en": {
@@ -3917,6 +3900,22 @@
         }
       }
     },
+    "Kurgusal örnek hane (Deniz ve Ece). Deneme ve tanıtım görselleri içindir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A fictional sample household (Deniz and Ece) for trying the app and for promotional screenshots."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurgusal örnek hane (Deniz ve Ece). Deneme ve tanıtım görselleri içindir."
+          }
+        }
+      }
+    },
     "Kurlar %@ karşılığı olarak, TCMB kurlarından çapraz hesaplanır.": {
       "localizations": {
         "en": {
@@ -5630,19 +5629,18 @@
         }
       }
     },
-    "Örnek veri Excel tablonuzun Ağustos–Kasım 2026 sütunlarından alınmıştır.": {
-      "extractionState": "stale",
+    "Örnek veriyi yükle": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sample data comes from the August–November 2026 columns of your spreadsheet."
+            "value": "Load Sample Data"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Örnek veri Excel tablonuzun Ağustos–Kasım 2026 sütunlarından alınmıştır."
+            "value": "Örnek veriyi yükle"
           }
         }
       }
