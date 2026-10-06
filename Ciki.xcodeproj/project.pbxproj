@@ -857,7 +857,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ciki/Ciki.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ciki/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
@@ -888,7 +888,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CikiWidget/CikiWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CikiWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -929,7 +929,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CikiWatchWidget/CikiWatchWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CikiWatchWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -953,7 +953,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CikiWatch/CikiWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -976,7 +976,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ciki/Ciki.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ciki/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
@@ -1086,7 +1086,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CikiWidget/CikiWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CikiWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1178,7 +1178,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CikiWatchWidget/CikiWatchWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CikiWatchWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1220,7 +1220,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CikiWatch/CikiWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
