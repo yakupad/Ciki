@@ -76,4 +76,17 @@ final class EditingTests: XCTestCase {
         XCTAssertTrue(row.exists)
         XCTAssertTrue(app.staticTexts["−3.450 ₺"].exists)
     }
+
+    /// iCloud'dan gelen değişiklik taklit edilir; Kalemler listesi açık ekranda kendiliğinden güncellenmeli.
+    func testItemsListUpdatesForRemoteChanges() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-loadSampleData", "-simulateRemoteChange", "-AppleLanguages", "(tr)", "-startTab", "3"]
+        app.launch()
+        let rent = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Kira,'")).firstMatch
+        XCTAssertTrue(rent.waitForExistence(timeout: 10))
+        XCTAssertTrue(rent.label.contains("24.000"), rent.label)
+        let updated = NSPredicate(format: "label CONTAINS '26.000'")
+        expectation(for: updated, evaluatedWith: rent)
+        waitForExpectations(timeout: 15)
+    }
 }

@@ -180,6 +180,14 @@ struct MonthView: View {
 struct EntryRow: View {
     let line: LedgerLine
     var showOwner = true
+    /// Nesne izlenir: başka cihazdan iCloud ile gelen değişiklikte satır kendiliğinden yenilenir.
+    @ObservedObject private var item: LedgerItem
+
+    init(line: LedgerLine, showOwner: Bool = true) {
+        self.line = line
+        self.showOwner = showOwner
+        self._item = ObservedObject(wrappedValue: line.item)
+    }
 
     var body: some View {
         HStack(spacing: 12) {

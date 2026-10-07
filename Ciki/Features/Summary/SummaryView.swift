@@ -273,6 +273,14 @@ private struct PersonTile: View {
 private struct UpcomingRow: View {
     let line: LedgerLine
     let markPaid: () -> Void
+    /// Nesne izlenir: başka cihazdan iCloud ile gelen değişiklikte satır kendiliğinden yenilenir.
+    @ObservedObject private var item: LedgerItem
+
+    init(line: LedgerLine, markPaid: @escaping () -> Void) {
+        self.line = line
+        self.markPaid = markPaid
+        self._item = ObservedObject(wrappedValue: line.item)
+    }
 
     var body: some View {
         HStack(spacing: 10) {

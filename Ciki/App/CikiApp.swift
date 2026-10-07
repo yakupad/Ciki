@@ -81,6 +81,9 @@ struct CikiApp: App {
                         SampleData.wipe(persistence.viewContext)
                         SampleData.load(into: persistence.viewContext)
                     }
+                    if CommandLine.arguments.contains("-simulateRemoteChange") {
+                        SampleData.simulateRemoteChange(in: persistence.container)
+                    }
                     #endif
                     await rates.refreshIfStale()
                 }

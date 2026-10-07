@@ -120,4 +120,21 @@ enum SampleData {
         }
         context.saveIfNeeded()
     }
+
+    #if DEBUG
+    /// Başka bir cihazdan iCloud ile gelmiş gibi bir değişiklik: 8 saniye sonra arka plan bağlamında
+    /// "Kira" kaleminin düzenli tutarı 26.000 yapılır. Ekranların kendiliğinden yenilendiğini sınamak için.
+    static func simulateRemoteChange(in container: NSPersistentCloudKitContainer) {
+        let rentKind = ItemKind.rent.rawValue
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
+            container.performBackgroundTask { @Sendable context in
+                let request = NSFetchRequest<LedgerItem>(entityName: "LedgerItem")
+                request.predicate = NSPredicate(format: "kindRaw == %@", rentKind)
+                guard let rent = try? context.fetch(request).first else { return }
+                rent.recurringAmount = NSDecimalNumber(value: 26_000)
+                try? context.save()
+            }
+        }
+    }
+    #endif
 }

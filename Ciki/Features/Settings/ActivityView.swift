@@ -56,8 +56,9 @@ struct ActivityView: View {
 }
 
 private struct ActivityRow: View {
-    let entry: LedgerEntry
-    let item: LedgerItem
+    /// Nesne izlenir: başka cihazdan iCloud ile gelen değişiklikte satır kendiliğinden yenilenir.
+    @ObservedObject var entry: LedgerEntry
+    @ObservedObject var item: LedgerItem
     let color: Color
 
     var body: some View {

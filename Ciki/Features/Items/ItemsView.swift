@@ -93,7 +93,8 @@ extension ItemsView {
 }
 
 private struct ItemRow: View {
-    let item: LedgerItem
+    /// Nesne izlenir: başka cihazdan iCloud ile gelen değişiklikte satır kendiliğinden yenilenir.
+    @ObservedObject var item: LedgerItem
     let rates: RateTable
 
     var body: some View {

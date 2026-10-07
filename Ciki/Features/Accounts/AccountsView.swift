@@ -146,7 +146,8 @@ struct AccountsView: View {
 }
 
 struct AccountRow: View {
-    let account: Account
+    /// Nesne izlenir: başka cihazdan iCloud ile gelen değişiklikte satır kendiliğinden yenilenir.
+    @ObservedObject var account: Account
     var isCopied = false
 
     var body: some View {
@@ -225,7 +226,8 @@ struct BankBadge: View {
 
 /// Kayıt ekranında kalemin ödeme hesabı: alıcı, banka ve kopyalanabilir IBAN.
 struct PayeeCard: View {
-    let account: Account
+    /// Nesne izlenir: başka cihazdan iCloud ile gelen değişiklikte satır kendiliğinden yenilenir.
+    @ObservedObject var account: Account
     @State private var copied = false
 
     var body: some View {

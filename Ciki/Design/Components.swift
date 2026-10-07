@@ -3,12 +3,13 @@ import CoreData
 
 /// Kalemin solundaki rozet: banka baş harfleri ya da tür simgesi.
 struct ItemBadge: View {
-    let item: LedgerItem
+    /// Nesne izlenir: başka cihazdan iCloud ile gelen değişiklikte satır kendiliğinden yenilenir.
+    @ObservedObject var item: LedgerItem
     /// Yazı boyutuyla birlikte büyür (Dynamic Type).
     @ScaledMetric(relativeTo: .body) private var size: CGFloat = 30
 
     init(item: LedgerItem) {
-        self.item = item
+        self._item = ObservedObject(wrappedValue: item)
     }
 
     var body: some View {
