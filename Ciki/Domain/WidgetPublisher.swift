@@ -32,6 +32,9 @@ enum WidgetPublisher {
         #if canImport(WatchConnectivity) && !targetEnvironment(macCatalyst)
         WatchSync.shared.send(snapshot)
         #endif
+        #if targetEnvironment(macCatalyst)
+        MenuBarBridge.shared.update(snapshot)
+        #endif
     }
 
     /// Bir ayın özeti ve o ay bekleyen ödemeleri (en fazla 12).

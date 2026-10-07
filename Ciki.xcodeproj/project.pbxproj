@@ -10,6 +10,7 @@
 		006499BF362118F99BC342C6 /* CikiWatchWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 33D41DF4E9F9E6E84CAD0DF4 /* CikiWatchWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0298310AFBB976538016CCC4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6DA17A4A3D13570B672FAFCA /* Localizable.xcstrings */; };
 		05DF1F5F79124EA90C6244FE /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD2B05B821AEAAB1B715B4D /* Appearance.swift */; };
+		066AC3909F0419953812F8C0 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515A0C33D13A376162C6ECD9 /* MenuBarController.swift */; };
 		06E1624A50236EB0C77F89A3 /* CikiWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B13EA76E2AE6C2AC98E55828 /* CikiWatch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		073ADEDCBCE6178883A590B6 /* EntryEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17B740325531EE5EB003759 /* EntryEditorView.swift */; };
 		0D22113E3A4A1A954FA50663 /* CSVExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F43C0A8A9FA642ED3AF200 /* CSVExport.swift */; };
@@ -21,6 +22,7 @@
 		1E4E639EDFADFEFA1790CFCC /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
 		20EC917C042BAC8C5A6F015E /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A2EC34B0F4DE41F0B07050 /* ActivityView.swift */; };
 		27E6616805F7CF8DEC8A283F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 253E6EBB807152CD7AFF5CDF /* InfoPlist.xcstrings */; };
+		2A6C9F3CE7256297EE134AC1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5DCA6864936E8F3C7ED3961C /* Localizable.xcstrings */; };
 		30A26733EEFF5AD1353C1618 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7E88C3EE3096B592C46CCE /* Month.swift */; };
 		33512D94C42A261C18F6931D /* LedgerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F523D234502A9CE7621D4 /* LedgerActions.swift */; };
 		35BBFC76CA72FFCC19CF3EDE /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE32E7FF0B5E4FBFB2A0CFBE /* Money.swift */; };
@@ -33,14 +35,17 @@
 		46D6C9BC976E44AC8B6CDC06 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA153FAD077DD14B33A89 /* Components.swift */; };
 		47A091DCA99DAAA55813F0AD /* HouseholdSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB05686DF2E8767ED1EB67F /* HouseholdSync.swift */; };
 		4D489F5BA9C20BD12F70359C /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E756BA2CAEBC4F68C8F0E3FC /* PrivacyView.swift */; };
+		562A7F4733950FFA16980F56 /* MenuBarControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D8E9972FF195256A381C1 /* MenuBarControlling.swift */; };
 		56CB458193ECBD3CD082D76D /* AccessibilityAuditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF99398CA2987926E7A2CB6 /* AccessibilityAuditTests.swift */; };
 		5820F4B9FDBE2A484384F5FC /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC67ADC5E3BF84474B4EB5C /* SampleData.swift */; };
+		5AD538F81B2078F4C4397553 /* MenuBarBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9474EE60219C36B75AA8EEC7 /* MenuBarBridge.swift */; };
 		5F365FB3BDDBF9FA14509DB2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BABF2E112C89B90A4178F51 /* SettingsView.swift */; };
 		6252EBB5553C5681DC3DE74B /* CikiWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 98FC8FE7931CBD346914560A /* CikiWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		637FEC061347420CBC778C83 /* DataEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0EAF804F5B2C100E6EE0E /* DataEraser.swift */; };
 		6404A858752DFF0EDCCF3BC7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3B63C9F9965A2789A0D3289F /* PrivacyInfo.xcprivacy */; };
 		6DA4122D62A5BA97E61446AE /* CikiWatchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01139B0FD7775CA6E049110F /* CikiWatchWidget.swift */; };
 		6FAB374197D2B1F203279D4D /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
+		7392CCC0554BC227A86C08DE /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5210FD709506698C7EE635C /* MenuBarView.swift */; };
 		740C267F54080B319E4974EF /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F73F237C6BDC32454FCD29F7 /* AppIcon.icon */; };
 		75F3B9C3F67CF9F93D4B7F26 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFB8AED1A660F28B0CEBEA3 /* MonthView.swift */; };
 		7676725207B821360D7A8059 /* EditingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CAE95A2B025CABF96207EE /* EditingTests.swift */; };
@@ -48,6 +53,7 @@
 		800192826582883EDF34855F /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C883597180558BCEBA4BBE /* ExportView.swift */; };
 		81B608A44FD146C0074AA740 /* CikiWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99BE031D327C1604A200B23 /* CikiWatchApp.swift */; };
 		852C7D001EFB518DBB2CC88D /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
+		867449FF9A0D9857954B21CF /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
 		86850EF598A903BF99FEC5EB /* CikiWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB126094CFCCC925E35DF1D /* CikiWidget.swift */; };
 		8743FD1A8080C860C9932C4E /* SharingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED8C8CF41D4EEE70C62C92 /* SharingSection.swift */; };
 		90E0708AADA9E4D5C7104784 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 809A497B8582C2B81502B625 /* Assets.xcassets */; };
@@ -65,11 +71,13 @@
 		B5AE26A89B92F33CF952C326 /* DeviceOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033423DE3BA43609B3C52A6 /* DeviceOwner.swift */; };
 		B5B41FB2317780F88F93277E /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92251F93CE72375C8F0D170F /* ReportView.swift */; };
 		BD2B9AC7F46C20499C919F44 /* AmountField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41616603D2165BEDD05307FC /* AmountField.swift */; };
+		BE38DBB072A17C4775ECABA5 /* CikiMenuBar.bundle in Embed Dependencies */ = {isa = PBXBuildFile; fileRef = 8B77A80D6774A15E1FE81DAF /* CikiMenuBar.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C6D3723FEEBBCCC809636BDC /* IBAN.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3517F6BA36212FF2842DD4 /* IBAN.swift */; };
 		C8BA80D107B81A5D2EBF4416 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF13F6A92984DE7B1D4CA77 /* Reminders.swift */; };
 		CAF73DE1D100E17A50C07317 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 330EFD0EBA942483ADC5EDD7 /* Localizable.xcstrings */; };
 		D010AFC30CDFEF21CA1EFC0C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0304B2E5767AE62A85DF7B /* Enums.swift */; };
 		D2217FB3713C4430E65FE84A /* CloudSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F656656581FF93EB77C56 /* CloudSharing.swift */; };
+		DC299C4610EC002C974FAE7D /* MenuBarControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D8E9972FF195256A381C1 /* MenuBarControlling.swift */; };
 		DFB7F5231904AA9B6173F01E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 2026FF0C60952C16D6747ED0 /* PrivacyInfo.xcprivacy */; };
 		DFCD54F44261880102C316C8 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D05711B5BA87E93D46DFB2 /* Layout.swift */; };
 		F0BB27F1C7452F9B44DD8C5E /* LedgerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855E2E16A16C9B4189115E7 /* LedgerTests.swift */; };
@@ -80,6 +88,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2328BBBA81EFC5CDD08A33C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D05DD6F9A853AE02F5228CE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7203CF9B2DE9227EEC03A83C;
+			remoteInfo = CikiMenuBar;
+		};
 		2648F60067B3944323C03FF0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D05DD6F9A853AE02F5228CE1 /* Project object */;
@@ -140,6 +155,17 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C4415292973FF52DFCB6EB0B /* Embed Dependencies */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BE38DBB072A17C4775ECABA5 /* CikiMenuBar.bundle in Embed Dependencies */,
+			);
+			name = "Embed Dependencies";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EE59B819C8A151F77C692A87 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,9 +208,12 @@
 		3EC67ADC5E3BF84474B4EB5C /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		41616603D2165BEDD05307FC /* AmountField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountField.swift; sourceTree = "<group>"; };
 		45747D7F2C8DF2991B743C38 /* CikiWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CikiWatch.entitlements; sourceTree = "<group>"; };
+		515A0C33D13A376162C6ECD9 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		52B0C6F38A3E9C64FFAFE107 /* ItemEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEditorView.swift; sourceTree = "<group>"; };
 		56A2EC34B0F4DE41F0B07050 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		587D8E9972FF195256A381C1 /* MenuBarControlling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarControlling.swift; sourceTree = "<group>"; };
 		5A3CB58304B58A6C6B921D99 /* Ciki 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Ciki 3.xcdatamodel"; sourceTree = "<group>"; };
+		5DCA6864936E8F3C7ED3961C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		65C554E51E0B3EB0D215EB4D /* SyncMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMonitor.swift; sourceTree = "<group>"; };
 		670ECEF6F7DABDF2B082FC0F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		6CB05686DF2E8767ED1EB67F /* HouseholdSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseholdSync.swift; sourceTree = "<group>"; };
@@ -197,8 +226,10 @@
 		76E50AA49D65BDDCB6745DCB /* RateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateService.swift; sourceTree = "<group>"; };
 		7DF13F6A92984DE7B1D4CA77 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
 		809A497B8582C2B81502B625 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8B77A80D6774A15E1FE81DAF /* CikiMenuBar.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CikiMenuBar.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		92251F93CE72375C8F0D170F /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		93D19DB573A7030D1017B5FA /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		9474EE60219C36B75AA8EEC7 /* MenuBarBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarBridge.swift; sourceTree = "<group>"; };
 		950EB71C1AC1A41305C91ED2 /* Ciki 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Ciki 5.xcdatamodel"; sourceTree = "<group>"; };
 		98FC8FE7931CBD346914560A /* CikiWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = CikiWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BABF2E112C89B90A4178F51 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -230,6 +261,7 @@
 		DE4F523D234502A9CE7621D4 /* LedgerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerActions.swift; sourceTree = "<group>"; };
 		E367A30D8A525526A873BF61 /* CikiWatchWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CikiWatchWidget.entitlements; sourceTree = "<group>"; };
 		E3A41978C85F5786BDA1D215 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E5210FD709506698C7EE635C /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		E53DE4749329E77D5597AD1D /* CikiWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CikiWidget.entitlements; sourceTree = "<group>"; };
 		E756BA2CAEBC4F68C8F0E3FC /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		EA7F656656581FF93EB77C56 /* CloudSharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSharing.swift; sourceTree = "<group>"; };
@@ -245,6 +277,8 @@
 				D9C51E84022FCDB84E37FF13 /* AppLock.swift */,
 				005A673A96DCCDE9C450C393 /* CikiApp.swift */,
 				EA7F656656581FF93EB77C56 /* CloudSharing.swift */,
+				9474EE60219C36B75AA8EEC7 /* MenuBarBridge.swift */,
+				587D8E9972FF195256A381C1 /* MenuBarControlling.swift */,
 				9F969F42D9BC0196D7D0E96B /* WatchSync.swift */,
 			);
 			path = App;
@@ -326,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				1F2428B6C3277A39A07EC375 /* Ciki */,
+				C7DB1AF629E6742F830F40E1 /* CikiMenuBar */,
 				602AA87221DB426C1868AC8B /* CikiTests */,
 				4E5B65B6C2A731387FBDEF3B /* CikiUITests */,
 				6B1276F0465FE33201A48610 /* CikiWatch */,
@@ -350,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				DB9D2E4B841EFBB9C3C84736 /* Ciki.app */,
+				8B77A80D6774A15E1FE81DAF /* CikiMenuBar.bundle */,
 				2BCDDD364E25F3D9A2871538 /* CikiTests.xctest */,
 				0FB3C7D9794927C82279EB20 /* CikiUITests.xctest */,
 				B13EA76E2AE6C2AC98E55828 /* CikiWatch.app */,
@@ -465,6 +501,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C7DB1AF629E6742F830F40E1 /* CikiMenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				5DCA6864936E8F3C7ED3961C /* Localizable.xcstrings */,
+				515A0C33D13A376162C6ECD9 /* MenuBarController.swift */,
+				E5210FD709506698C7EE635C /* MenuBarView.swift */,
+			);
+			path = CikiMenuBar;
+			sourceTree = "<group>";
+		};
 		CF5B3C523D1F278DC5609D5E /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +569,7 @@
 				1F9A6EE7DF2EAC141B9D9EBB /* Sources */,
 				9AE24061573E0874A8DCCBF5 /* Resources */,
 				4C1313716654F723F5C02848 /* Embed Foundation Extensions */,
+				C4415292973FF52DFCB6EB0B /* Embed Dependencies */,
 				2065617C84307D6634BA9CF8 /* Embed Watch Content */,
 			);
 			buildRules = (
@@ -530,6 +577,7 @@
 			dependencies = (
 				ADAFD1301C165CE3106A8CDE /* PBXTargetDependency */,
 				6689FDF53D555740ACF07AB3 /* PBXTargetDependency */,
+				FF1547C817F40A16E233B25D /* PBXTargetDependency */,
 			);
 			name = Ciki;
 			packageProductDependencies = (
@@ -537,6 +585,24 @@
 			productName = Ciki;
 			productReference = DB9D2E4B841EFBB9C3C84736 /* Ciki.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7203CF9B2DE9227EEC03A83C /* CikiMenuBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A3D69C29954BDED1B9EFC8A /* Build configuration list for PBXNativeTarget "CikiMenuBar" */;
+			buildPhases = (
+				E7830838267E2FC132815500 /* Sources */,
+				DA07979CBC5E1AD6380B5EA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CikiMenuBar;
+			packageProductDependencies = (
+			);
+			productName = CikiMenuBar;
+			productReference = 8B77A80D6774A15E1FE81DAF /* CikiMenuBar.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 		73AE0158A4CBAD98B56E45EE /* CikiWatchWidget */ = {
 			isa = PBXNativeTarget;
@@ -643,6 +709,10 @@
 						DevelopmentTeam = D677J9K7QY;
 						ProvisioningStyle = Automatic;
 					};
+					7203CF9B2DE9227EEC03A83C = {
+						DevelopmentTeam = D677J9K7QY;
+						ProvisioningStyle = Automatic;
+					};
 					73AE0158A4CBAD98B56E45EE = {
 						DevelopmentTeam = D677J9K7QY;
 						ProvisioningStyle = Automatic;
@@ -680,6 +750,7 @@
 			projectRoot = "";
 			targets = (
 				11EB049E588CF312F8AB558F /* Ciki */,
+				7203CF9B2DE9227EEC03A83C /* CikiMenuBar */,
 				B584F6C22C1A35BEBDB28BCA /* CikiTests */,
 				8A637AA62A783123A1452F08 /* CikiUITests */,
 				AF2EFD923F78C24849EF6554 /* CikiWatch */,
@@ -717,6 +788,14 @@
 			files = (
 				B31C96356B8E84C8EA1FC62A /* Localizable.xcstrings in Resources */,
 				DFB7F5231904AA9B6173F01E /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA07979CBC5E1AD6380B5EA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A6C9F3CE7256297EE134AC1 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,6 +843,8 @@
 				113FC50A09F2C7DACD5AEA06 /* Ledger.swift in Sources */,
 				33512D94C42A261C18F6931D /* LedgerActions.swift in Sources */,
 				11BE5CC82D20AF45F4DCB714 /* ManagedObjects.swift in Sources */,
+				5AD538F81B2078F4C4397553 /* MenuBarBridge.swift in Sources */,
+				DC299C4610EC002C974FAE7D /* MenuBarControlling.swift in Sources */,
 				35BBFC76CA72FFCC19CF3EDE /* Money.swift in Sources */,
 				30A26733EEFF5AD1353C1618 /* Month.swift in Sources */,
 				75F3B9C3F67CF9F93D4B7F26 /* MonthView.swift in Sources */,
@@ -830,6 +911,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E7830838267E2FC132815500 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				066AC3909F0419953812F8C0 /* MenuBarController.swift in Sources */,
+				562A7F4733950FFA16980F56 /* MenuBarControlling.swift in Sources */,
+				7392CCC0554BC227A86C08DE /* MenuBarView.swift in Sources */,
+				867449FF9A0D9857954B21CF /* WidgetSnapshot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -859,6 +951,12 @@
 			target = 11EB049E588CF312F8AB558F /* Ciki */;
 			targetProxy = B738D97D4A4EE00C4F848D66 /* PBXContainerItemProxy */;
 		};
+		FF1547C817F40A16E233B25D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = maccatalyst;
+			target = 7203CF9B2DE9227EEC03A83C /* CikiMenuBar */;
+			targetProxy = 2328BBBA81EFC5CDD08A33C0 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -870,7 +968,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ciki/Ciki.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ciki/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
@@ -901,7 +999,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CikiWidget/CikiWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CikiWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -942,7 +1040,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CikiWatchWidget/CikiWatchWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CikiWatchWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -966,7 +1064,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CikiWatch/CikiWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -989,7 +1087,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ciki/Ciki.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ciki/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
@@ -1099,7 +1197,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CikiWidget/CikiWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CikiWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1117,6 +1215,27 @@
 				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
+		};
+		97C3143079CCA9319EC00F55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPrincipalClass = CikiMenuBarController;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.Ciki.MenuBar;
+				PRODUCT_NAME = CikiMenuBar;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
 		};
 		98487C458319E50046532751 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1186,12 +1305,33 @@
 			};
 			name = Debug;
 		};
+		A06BA2E18734BBEC8FB0FC5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPrincipalClass = CikiMenuBarController;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yakupad.Ciki.MenuBar;
+				PRODUCT_NAME = CikiMenuBar;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		AD9ACC8F1CFA5120C709555B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CikiWatchWidget/CikiWatchWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CikiWatchWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1233,7 +1373,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CikiWatch/CikiWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Çıkı";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1282,6 +1422,15 @@
 			buildConfigurations = (
 				5C6B27F482C0F1A2631A2540 /* Debug */,
 				DD2C42D17A557BC58F902088 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4A3D69C29954BDED1B9EFC8A /* Build configuration list for PBXNativeTarget "CikiMenuBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97C3143079CCA9319EC00F55 /* Debug */,
+				A06BA2E18734BBEC8FB0FC5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

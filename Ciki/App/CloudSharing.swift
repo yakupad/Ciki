@@ -11,6 +11,9 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         #if canImport(WatchConnectivity) && !targetEnvironment(macCatalyst)
         WatchSync.shared.activate()
         #endif
+        #if targetEnvironment(macCatalyst)
+        MenuBarBridge.shared.start()
+        #endif
         return true
     }
 

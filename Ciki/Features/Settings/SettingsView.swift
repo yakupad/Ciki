@@ -20,6 +20,9 @@ struct SettingsView: View {
     @State private var confirmErase = false
     @AppStorage(DeviceOwner.key) private var deviceOwnerID = ""
     @AppStorage(Appearance.key) private var appearance: Appearance = .system
+    #if targetEnvironment(macCatalyst)
+    @AppStorage(MenuBarBridge.visibleKey) private var showsMenuBar = true
+    #endif
     @State private var personToDelete: Person?
 
     var body: some View {
@@ -122,6 +125,13 @@ struct SettingsView: View {
                 }
 
                 #if targetEnvironment(macCatalyst)
+                Section {
+                    Toggle("Menü çubuğunda göster", isOn: $showsMenuBar)
+                        .onChange(of: showsMenuBar) { _, visible in MenuBarBridge.shared.setVisible(visible) }
+                } footer: {
+                    Text("Menü çubuğundaki simgeye tıklayınca bu ayın özeti ve bekleyen ödemeler açılır; oklarla geçmiş 3 ve gelecek 6 aya geçilir.")
+                }
+
                 Section {
                     LabeledContent("Uygulama dili") {
                         Text(verbatim: AppLanguage.current == .english ? "English" : "Türkçe")

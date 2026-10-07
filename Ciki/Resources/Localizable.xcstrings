@@ -5967,6 +5967,38 @@
           }
         }
       }
+    },
+    "Menü çubuğunda göster" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show in Menu Bar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menü çubuğunda göster"
+          }
+        }
+      }
+    },
+    "Menü çubuğundaki simgeye tıklayınca bu ayın özeti ve bekleyen ödemeler açılır; oklarla geçmiş 3 ve gelecek 6 aya geçilir." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click the menu bar icon to see this month's summary and pending payments; use the arrows to move through the past 3 and next 6 months."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menü çubuğundaki simgeye tıklayınca bu ayın özeti ve bekleyen ödemeler açılır; oklarla geçmiş 3 ve gelecek 6 aya geçilir."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
