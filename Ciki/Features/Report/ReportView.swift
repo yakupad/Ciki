@@ -14,17 +14,27 @@ struct ReportView: View {
     private var entries: FetchedResults<LedgerEntry>
 
     @State private var filter: OwnerFilter = .all
-    @State private var range: ReportRange = .year
+    @State private var range: ReportRange = .initial
     @Environment(\.isWideLayout) private var isWide
 
     enum ReportRange: String, CaseIterable, Identifiable {
         case half, year, plan
+
+        /// Açılıştaki aralık; DEBUG'da "-reportRange plan" ile değiştirilebilir (ekran görüntüsü için).
+        static var initial: ReportRange {
+            #if DEBUG
+            if let raw = UserDefaults.standard.string(forKey: "reportRange"), let range = ReportRange(rawValue: raw) {
+                return range
+            }
+            #endif
+            return .year
+        }
         var id: String { rawValue }
         var title: String {
             switch self {
             case .half: String(localized: "6 ay")
             case .year: String(localized: "12 ay")
-            case .plan: String(localized: "12 ay + 6 ay")
+            case .plan: String(localized: "12 ay + tahmin")
             }
         }
         /// Bugüne göre ay aralığı.
@@ -35,6 +45,14 @@ struct ReportView: View {
             case .plan: -11...6
             }
         }
+    }
+
+    /// Seçili aralığın açıklaması: "Kas 2025 – Nis 2027 · son 6 ay tahmini".
+    private func rangeCaption(_ months: [Month]) -> String {
+        guard let first = months.first, let last = months.last else { return "" }
+        let span = "\(first.shortTitle) – \(last.shortTitle)"
+        let future = months.filter { $0 > .current }.count
+        return future > 0 ? String(localized: "\(span) · gelecek \(future) ay düzenli ödemelerden tahmin") : span
     }
 
     var body: some View {
@@ -50,6 +68,9 @@ struct ReportView: View {
                     ForEach(ReportRange.allCases) { Text($0.title).tag($0) }
                 }
                 .pickerStyle(.segmented)
+                Text(rangeCaption(months))
+                    .font(.footnote)
+                    .foregroundStyle(Color.ikincil)
 
                 StatsRow(totals: totals, now: now)
                 if isWide {
@@ -135,6 +156,10 @@ private struct StatTile: View {
 // MARK: - Grafikler
 
 private struct NetTrendChart: View {
+    /// Grafiğin ölçülen genişliği; sayısal eksende çubuk genişliği buna göre hesaplanır.
+    @State private var chartWidth: CGFloat = 300
+    private var barWidth: CGFloat { max(3, (chartWidth - 44) / CGFloat(max(totals.count, 1)) * 0.65) }
+
     let totals: [MonthTotals]
     let now: Month
 
@@ -142,46 +167,68 @@ private struct NetTrendChart: View {
         let month: Month
         let net: Double
         let cumulative: Double
+        /// Tahmini (gelecek) ay; çubuk soluk çizilir.
+        let isFuture: Bool
         var id: Int32 { month.key }
+        var color: Color { net < 0 ? .gider : .gelir }
+        var opacity: Double { isFuture ? 0.3 : 0.6 }
+        /// Sayısal eksende ayın yeri.
+        var x: Double { Double(month.key) }
     }
 
     private var points: [Point] {
         var running: Decimal = 0
         return totals.map { total in
             running += total.net
-            return Point(month: total.month, net: total.net.doubleValue, cumulative: running.doubleValue)
+            return Point(month: total.month, net: total.net.doubleValue, cumulative: running.doubleValue,
+                         isFuture: total.month > now)
         }
+    }
+
+    // Grafik öğeleri ayrı fonksiyonlarda: tek ifadede derleyicinin tür çıkarımı çok uzuyor.
+    private func bar(_ point: Point, width: CGFloat) -> some ChartContent {
+        let x: PlottableValue<Double> = .value("Ay", point.x)
+        let bottom: PlottableValue<Double> = .value("Net", 0)
+        let top: PlottableValue<Double> = .value("Net", point.net)
+        return BarMark(x: x, yStart: bottom, yEnd: top, width: .fixed(width))
+            .foregroundStyle(point.color)
+            .opacity(point.opacity)
+            .cornerRadius(3)
+            .accessibilityLabel(Text(verbatim: point.month.title))
+            .accessibilityValue(Text(verbatim: Money.string(Decimal(point.net), sign: .always, fractions: false)))
+    }
+
+    private func line(_ point: Point) -> some ChartContent {
+        let x: PlottableValue<Double> = .value("Ay", point.x)
+        let y: PlottableValue<Double> = .value("Birikimli", point.cumulative)
+        return LineMark(x: x, y: y)
+            .foregroundStyle(Color.petrol)
+            .lineStyle(StrokeStyle(lineWidth: 2.5))
+            .interpolationMethod(.monotone)
     }
 
     var body: some View {
         ChartCard(title: "Net ve birikimli bakiye",
                   caption: "Çubuk: o ayın neti. Çizgi: dönem başından bu yana toplam. Çizgi aşağı iniyorsa borç birikiyor.") {
             Chart {
-                ForEach(points) { point in
-                    BarMark(x: .value("Ay", "\(point.month.key)"), y: .value("Net", point.net))
-                        .foregroundStyle(point.net < 0 ? Color.gider : Color.gelir)
-                        .opacity(point.month > now ? 0.3 : 0.6)
-                        .cornerRadius(3)
-                        .accessibilityLabel(Text(verbatim: point.month.title))
-                        .accessibilityValue(Text(verbatim: Money.string(Decimal(point.net), sign: .always, fractions: false)))
-                }
-                ForEach(points) { point in
-                    LineMark(x: .value("Ay", "\(point.month.key)"), y: .value("Birikimli", point.cumulative))
-                        .foregroundStyle(Color.petrol)
-                        .lineStyle(StrokeStyle(lineWidth: 2.5))
-                        .interpolationMethod(.monotone)
-                }
+                ForEach(points) { point in bar(point, width: barWidth) }
+                ForEach(points) { point in line(point) }
                 RuleMark(y: .value("Sıfır", 0))
                     .foregroundStyle(Color.secondary.opacity(0.4))
             }
             .monthAxis(totals.map(\.month), now: now)
             .thousandsAxis()
             .frame(height: 200)
+            .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { chartWidth = $0 }
         }
     }
 }
 
 private struct DebtChart: View {
+    /// Grafiğin ölçülen genişliği; sayısal eksende çubuk genişliği buna göre hesaplanır.
+    @State private var chartWidth: CGFloat = 300
+    private var barWidth: CGFloat { max(3, (chartWidth - 44) / CGFloat(max(totals.count, 1)) * 0.65) }
+
     let totals: [MonthTotals]
     let now: Month
 
@@ -189,13 +236,32 @@ private struct DebtChart: View {
         let month: Month
         let bank: String
         let value: Double
+        /// Aynı aydaki önceki bankaların toplamı; çubuklar bunun üstüne yığılır.
+        let base: Double
+        let isFuture: Bool
+        var opacity: Double { isFuture ? 0.45 : 1 }
         var id: String { "\(month.key)-\(bank)" }
+        var top: Double { base + value }
+    }
+
+    private func bar(_ slice: Slice, width: CGFloat) -> some ChartContent {
+        let x: PlottableValue<Double> = .value("Ay", Double(slice.month.key))
+        let bottom: PlottableValue<Double> = .value("Tutar", slice.base)
+        let top: PlottableValue<Double> = .value("Tutar", slice.top)
+        return BarMark(x: x, yStart: bottom, yEnd: top, width: .fixed(width))
+            .foregroundStyle(by: .value("Banka", slice.bank))
+            .opacity(slice.opacity)
+            .accessibilityLabel(Text(verbatim: "\(slice.bank), \(slice.month.title)"))
+            .accessibilityValue(Text(verbatim: Money.string(Decimal(slice.value), fractions: false)))
     }
 
     var body: some View {
         let slices = totals.flatMap { total in
-            total.debtByBank.sorted { $0.key < $1.key }.map {
-                Slice(month: total.month, bank: $0.key, value: $0.value.doubleValue)
+            var base = 0.0
+            return total.debtByBank.sorted { $0.key < $1.key }.map { bank, amount in
+                defer { base += amount.doubleValue }
+                return Slice(month: total.month, bank: bank, value: amount.doubleValue, base: base,
+                             isFuture: total.month > now)
             }
         }
         let banks = Array(Set(slices.map(\.bank))).sorted()
@@ -208,18 +274,13 @@ private struct DebtChart: View {
                     .foregroundStyle(Color.ikincil)
                     .frame(maxWidth: .infinity, minHeight: 120)
             } else {
-                Chart(slices) { slice in
-                    BarMark(x: .value("Ay", "\(slice.month.key)"), y: .value("Tutar", slice.value))
-                        .foregroundStyle(by: .value("Banka", slice.bank))
-                        .opacity(slice.month > now ? 0.45 : 1)
-                        .accessibilityLabel(Text(verbatim: "\(slice.bank), \(slice.month.title)"))
-                        .accessibilityValue(Text(verbatim: Money.string(Decimal(slice.value), fractions: false)))
-                }
+                Chart(slices) { slice in bar(slice, width: barWidth) }
                 .chartForegroundStyleScale(domain: banks, range: banks.map { Color(light: Banks.colorHex(for: $0), dark: Banks.darkColorHex(for: $0)) })
                 .chartLegend(position: .bottom, alignment: .leading)
                 .monthAxis(totals.map(\.month), now: now)
                 .thousandsAxis()
                 .frame(height: 220)
+                .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { chartWidth = $0 }
             }
         }
     }
@@ -247,22 +308,36 @@ private struct ChartCard<Content: View>: View {
 }
 
 private extension View {
-    /// X ekseni tüm aylar için sabit; 8 aydan uzun aralıklarda etiketler ikişer ay atlar.
+    /// X ekseni ay anahtarı üzerinden sayısaldır; böylece etiketler seçilebilir. Etiketler bu aydan başlayarak
+    /// seyreltilir: 7 aya kadar her ay, 13 aya kadar iki ayda bir, daha uzunsa üç ayda bir. Ocak etiketinde yıl da yazar.
+    /// Charts sayısal eksende kendi etiketlerini erişilebilirlik ağacına doğru vermediği için eksen yalnızca yer ayırır;
+    /// görünen etiketler aynı konumlara sıradan metin olarak çizilir ve VoiceOver bunları okur.
     func monthAxis(_ months: [Month], now: Month) -> some View {
-        let keys = months.map { "\($0.key)" }
-        let step = months.count > 8 ? 2 : 1
-        let labeled = months.enumerated()
-            .filter { ($0.offset - (months.firstIndex(of: now) ?? 0)) % step == 0 }
-            .map { "\($0.element.key)" }
+        let first = Double(months.first?.key ?? 0), last = Double(months.last?.key ?? 0)
+        let step = months.count <= 7 ? 1 : (months.count <= 13 ? 2 : 3)
+        let anchor = months.firstIndex(of: now) ?? 0
+        let labeled = months.enumerated().filter { ($0.offset - anchor) % step == 0 }.map(\.element)
         return self
-            .chartXScale(domain: keys)
+            .chartXScale(domain: (first - 0.5)...(last + 0.5))
             .chartXAxis {
-                AxisMarks(values: labeled) { value in
-                    AxisValueLabel {
-                        if let raw = value.as(String.self), let key = Int32(raw) {
-                            let month = Month(key: key)
-                            Text(month.shortName)
-                                .fontWeight(month == now ? .bold : .regular)
+                AxisMarks(values: labeled.map { Double($0.key) }) { _ in
+                    AxisValueLabel { Text(verbatim: "Oca '26").hidden() }
+                }
+            }
+            .chartOverlay { proxy in
+                GeometryReader { geometry in
+                    if let plotFrame = proxy.plotFrame {
+                        let plot = geometry[plotFrame]
+                        ForEach(labeled, id: \.key) { month in
+                            if let x = proxy.position(forX: Double(month.key)) {
+                                Text(verbatim: month.month == 1 ? month.shortTitle : month.shortName)
+                                    .font(.caption2)
+                                    .fontWeight(month == now ? .bold : .regular)
+                                    .foregroundStyle(Color.ikincil)
+                                    .fixedSize()
+                                    .accessibilityLabel(Text(verbatim: month.title))
+                                    .position(x: plot.minX + x, y: plot.maxY + 12)
+                            }
                         }
                     }
                 }

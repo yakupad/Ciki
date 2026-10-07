@@ -523,22 +523,6 @@
         }
       }
     },
-    "12 ay + 6 ay" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "12 mo + 6 mo"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "12 ay + 6 ay"
-          }
-        }
-      }
-    },
     "Açık" : {
       "localizations" : {
         "en" : {
@@ -5948,6 +5932,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yalnızca bu aya (ya da taksitlerine) yazılır. Kalemler listesinde Arşiv'de durur, yeni aylarda görünmez."
+          }
+        }
+      }
+    },
+    "12 ay + tahmin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12 mo + forecast"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12 ay + tahmin"
+          }
+        }
+      }
+    },
+    "%@ · gelecek %lld ay düzenli ödemelerden tahmin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · next %2$lld months forecast from recurring payments"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · gelecek %2$lld ay düzenli ödemelerden tahmin"
           }
         }
       }
