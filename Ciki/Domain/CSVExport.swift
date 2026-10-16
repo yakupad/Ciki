@@ -15,7 +15,7 @@ enum CSVExport {
         }
     }
 
-    /// Tüm kayıtlar, ay sırasıyla, her satır bir kayıt.
+    /// Tüm kayıtlar, ay sırasıyla, her satır bir kayıt. `CSVImport` bu biçimi geri okur.
     static func entries(items: [LedgerItem], rates: RateTable, format: Format = .current) -> String {
         let header = [
             String(localized: "Ay"), String(localized: "Kişi"), String(localized: "Kalem"),
@@ -23,6 +23,7 @@ enum CSVExport {
             String(localized: "Para birimi"), String(localized: "Tutar"), String(localized: "Durum"),
             String(localized: "Ödeme tarihi"), String(localized: "Kur (TL)"),
             String(localized: "Karşılık (\(rates.base.code))"), String(localized: "Not"),
+            String(localized: "Son ödeme günü"),
         ]
         let rows = items
             .flatMap { item in item.entriesArray.map { (item, $0) } }
@@ -43,6 +44,7 @@ enum CSVExport {
                     entry.rateValue.map { number($0, format, digits: 4) } ?? "",
                     line?.signedValue.map { number($0, format) } ?? "",
                     entry.note ?? "",
+                    item.dueDay > 0 ? String(item.dueDay) : "",
                 ]
             }
         return csv([header] + rows, format)

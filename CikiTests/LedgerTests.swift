@@ -1,3 +1,4 @@
+import CloudKit
 import CoreData
 import Testing
 @testable import Ciki
@@ -609,5 +610,71 @@ struct LedgerTests {
         #expect(AmountInput.text(for: 125_000, locale: turkish) == "125.000")
         #expect(AmountInput.text(for: Decimal(string: "1234.5"), locale: turkish) == "1.234,50")
         #expect(AmountInput.text(for: nil, locale: turkish) == "")
+    }
+
+    @Test func csvImportReadsTurkishNumbersAndQuotedFields() throws {
+        let text = "\u{FEFF}Ay;Kişi;Kalem;Banka;Tür;Yön;Para birimi;Tutar;Durum;Ödeme tarihi;Kur;Karşılık;Not;Son ödeme günü\r\n"
+            + "2026-10;Deniz;;yapı kredi;kart;gider;TRY;\"-1.234,56\";odendi;2026-10-05;;;\"not; ayraçlı\";7\r\n"
+            + "bozuk;satır\r\n"
+            + "2026-11;;Senet;;konut;gider;EUR;-1300;bekliyor;;;;;\r\n"
+        let parsed = try CSVImport.parse(text)
+        #expect(parsed.skippedLines == [3])
+        #expect(parsed.rows.count == 2)
+        let card = parsed.rows[0]
+        #expect(card.person == "Deniz")
+        #expect(card.bank == "YapıKredi")
+        #expect(card.signedAmount == Decimal(string: "-1234.56"))
+        #expect(card.status == .paid)
+        #expect(card.note == "not; ayraçlı")
+        #expect(card.dueDay == 7)
+        #expect(parsed.rows[1].person == nil)
+        #expect(parsed.rows[1].currency == .eur)
+        #expect(CSVImport.number("1,234.5", decimal: ".") == Decimal(string: "1234.5"))
+    }
+
+    @Test func csvImportRoundTripsExportWithoutDuplicates() throws {
+        let household = householdWithPeople()
+        let deniz = try #require(household.peopleArray.first)
+        let card = makeItem(); card.bank = "Akbank"; card.owner = deniz; card.household = household; card.dueDay = 15
+        let salary = makeItem(kind: .salary); salary.household = household
+        context.upsertEntry(item: card, month: october, amount: 300, status: .paid, rates: rates)
+        context.upsertEntry(item: card, month: october.adding(1), amount: -50, status: .pending, rates: rates)
+        context.upsertEntry(item: salary, month: october, amount: 1000, status: .excluded, rates: rates)
+        context.saveIfNeeded()
+        let format = CSVExport.Format(separator: ";", locale: Locale(identifier: "tr_TR"))
+        let text = CSVExport.entries(items: [card, salary], rates: rates, format: format)
+
+        // Aynı haneye geri yüklenince yeni kalem ya da kişi oluşmaz, kayıtlar aynı kalır.
+        let again = CSVImport.apply(try CSVImport.parse(text).rows, to: context, rates: rates)
+        #expect(again == CSVImport.Outcome(createdItems: 0, createdPeople: 0, entries: 3))
+        #expect(household.itemsArray.count == 2)
+        #expect(card.entry(for: october.adding(1))?.amountValue == -50)
+
+        // Boş bir haneye yüklenince kalemler, kişi ve son ödeme günü yeniden oluşur.
+        let fresh = PersistenceController(inMemory: true).viewContext
+        let outcome = CSVImport.apply(try CSVImport.parse(text).rows, to: fresh, rates: rates)
+        #expect(outcome == CSVImport.Outcome(createdItems: 2, createdPeople: 1, entries: 3))
+        let items = fresh.currentHousehold().itemsArray
+        let imported = try #require(items.first { $0.kind == .card })
+        #expect(imported.bankName == "Akbank")
+        #expect(imported.ownerName == deniz.displayName)
+        #expect(imported.dueDay == 15)
+        #expect(imported.entry(for: october)?.status == .paid)
+        #expect(items.first { $0.kind == .salary }?.entry(for: october)?.status == .excluded)
+    }
+}
+
+struct SyncMonitorTests {
+    /// Kısmi hatada asıl neden kayıt başına hatadaki sunucu mesajıdır; toplu istek hataları atlanır.
+    @Test func partialFailureShowsServerMessage() {
+        let message = "Cannot create new type cloudkit.share in production schema"
+        let zone = CKRecordZone.ID(zoneName: "z", ownerName: CKCurrentUserDefaultName)
+        let share = CKError(.invalidArguments, userInfo: ["ServerErrorDescription": message])
+        let batch = CKError(.batchRequestFailed)
+        let error = CKError(.partialFailure, userInfo: [CKPartialErrorsByItemIDKey: [
+            CKRecord.ID(recordName: "a", zoneID: zone): batch,
+            CKRecord.ID(recordName: "b", zoneID: zone): share,
+        ]])
+        #expect(SyncMonitor.describe(error) == message)
     }
 }

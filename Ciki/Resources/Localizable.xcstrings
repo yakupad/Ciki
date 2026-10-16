@@ -3723,7 +3723,8 @@
             "value" : "Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için."
           }
         }
-      }
+      },
+      "extractionState" : "stale"
     },
     "Kendi hanemi oluşturayım" : {
       "localizations" : {
@@ -5996,6 +5997,182 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Menü çubuğundaki simgeye tıklayınca bu ayın özeti ve bekleyen ödemeler açılır; oklarla geçmiş 3 ve gelecek 6 aya geçilir."
+          }
+        }
+      }
+    },
+    "CSV dosyası seç" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose CSV file"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSV dosyası seç"
+          }
+        }
+      }
+    },
+    "Çıkı'nın \"Kayıt listesi\" biçimi: ay (2026-10), kişi, kalem, banka, tür, yön, para birimi, tutar, durum ve isteğe bağlı olarak ödeme tarihi, kur, not, son ödeme günü. Aynı kalemin aynı aydaki kaydı varsa güncellenir; kalemler yinelenmez." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çıkı's \"Entry list\" format: month (2026-10), person, item, bank, type, direction, currency, amount, status and optionally payment date, rate, note, due day. If an item already has an entry for that month it is updated; items are not duplicated."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çıkı'nın \"Kayıt listesi\" biçimi: ay (2026-10), kişi, kalem, banka, tür, yön, para birimi, tutar, durum ve isteğe bağlı olarak ödeme tarihi, kur, not, son ödeme günü. Aynı kalemin aynı aydaki kaydı varsa güncellenir; kalemler yinelenmez."
+          }
+        }
+      }
+    },
+    "Dosya" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya"
+          }
+        }
+      }
+    },
+    "Kayıt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entries"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıt"
+          }
+        }
+      }
+    },
+    "Önizleme" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preview"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önizleme"
+          }
+        }
+      }
+    },
+    "İçe aktar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İçe aktar"
+          }
+        }
+      }
+    },
+    "İçe aktar (CSV)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import (CSV)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İçe aktar (CSV)"
+          }
+        }
+      }
+    },
+    "Okunamayan satırlar atlanacak: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unreadable lines will be skipped: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okunamayan satırlar atlanacak: %@"
+          }
+        }
+      }
+    },
+    "%lld kayıt içe aktarıldı. %lld yeni kalem, %lld yeni kişi eklendi." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imported %1$lld entries. Added %2$lld new items and %3$lld new people."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kayıt içe aktarıldı. %lld yeni kalem, %lld yeni kişi eklendi."
+          }
+        }
+      }
+    },
+    "Dosyada içe aktarılacak kayıt bulunamadı. Çıkı'nın \"Kayıt listesi\" biçiminde bir CSV seçin." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No entries to import were found. Choose a CSV in Çıkı's \"Entry list\" format."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosyada içe aktarılacak kayıt bulunamadı. Çıkı'nın \"Kayıt listesi\" biçiminde bir CSV seçin."
+          }
+        }
+      }
+    },
+    "Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için. Kayıt listesi biçimindeki bir CSV geri yüklenebilir." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To open entries or the monthly table in Excel, Numbers or Google Sheets. A CSV in the entry list format can be imported back."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için. Kayıt listesi biçimindeki bir CSV geri yüklenebilir."
           }
         }
       }

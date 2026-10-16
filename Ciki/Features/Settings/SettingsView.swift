@@ -212,8 +212,13 @@ struct SettingsView: View {
                     } label: {
                         Label("Dışa aktar (CSV)", systemImage: "square.and.arrow.up")
                     }
+                    NavigationLink {
+                        ImportView()
+                    } label: {
+                        Label("İçe aktar (CSV)", systemImage: "square.and.arrow.down")
+                    }
                 } footer: {
-                    Text("Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için.")
+                    Text("Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için. Kayıt listesi biçimindeki bir CSV geri yüklenebilir.")
                 }
 
                 SharingSection()
