@@ -1,1 +1,4 @@
-Çıkı'nın ilk sürümü. Geri bildirimlerinizi bekliyoruz.
+• CSV içe aktarma: Ayarlar'dan, Çıkı'nın dışa aktardığı kayıt listesini geri yükleyebilirsiniz. Aynı dosyayı yeniden yüklemek kalemleri çoğaltmaz.
+• Mac'te menü çubuğu simgesi: ayın neti ve yaklaşan ödemeler tek tık uzakta.
+• iCloud eşitlemesi durduğunda Ayarlar'da artık asıl neden görünüyor.
+• Kişi davet ederken görülen "Couldn't add people" hatası giderildi.

@@ -41,7 +41,7 @@ targets:
         # 27.1 SDK'sında geldi; 27.0 SDK'sıyla derlenirken Duo düzeni yerine yan yana bölmeler kullanılır.
         "SWIFT_ACTIVE_COMPILATION_CONDITIONS[sdk=iphoneos27.0*]": "$(inherited) NO_ARRANGEMENT_VIEW"
         "SWIFT_ACTIVE_COMPILATION_CONDITIONS[sdk=iphonesimulator27.0*]": "$(inherited) NO_ARRANGEMENT_VIEW"
-        MARKETING_VERSION: "1.0"
+        MARKETING_VERSION: "1.1"
         CURRENT_PROJECT_VERSION: "13"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
@@ -92,7 +92,7 @@ targets:
         PRODUCT_NAME: CikiMenuBar
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_NSPrincipalClass: CikiMenuBarController
-        MARKETING_VERSION: "1.0"
+        MARKETING_VERSION: "1.1"
         CURRENT_PROJECT_VERSION: "13"
         CODE_SIGN_STYLE: Automatic
         SKIP_INSTALL: YES
@@ -119,7 +119,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.Ciki.Widget
         GENERATE_INFOPLIST_FILE: YES
-        MARKETING_VERSION: "1.0"
+        MARKETING_VERSION: "1.1"
         CURRENT_PROJECT_VERSION: "13"
         TARGETED_DEVICE_FAMILY: "1,2,6"
         SUPPORTS_MACCATALYST: YES
@@ -152,7 +152,7 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
-        MARKETING_VERSION: "1.0"
+        MARKETING_VERSION: "1.1"
         CURRENT_PROJECT_VERSION: "13"
         SKIP_INSTALL: YES
         CODE_SIGN_STYLE: Automatic
@@ -179,7 +179,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.yakupad.Ciki.watchkitapp.Complications
         GENERATE_INFOPLIST_FILE: YES
-        MARKETING_VERSION: "1.0"
+        MARKETING_VERSION: "1.1"
         CURRENT_PROJECT_VERSION: "13"
         SKIP_INSTALL: YES
         CODE_SIGN_STYLE: Automatic

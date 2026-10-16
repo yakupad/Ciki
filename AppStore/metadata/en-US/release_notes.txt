@@ -1,1 +1,4 @@
-The first release of Çıkı. We'd love to hear your feedback.
+• CSV import: in Settings, bring back an entry list exported from Çıkı. Importing the same file again doesn't duplicate items.
+• Menu bar icon on Mac: the month's net and upcoming payments are one click away.
+• When iCloud sync stops, Settings now shows the actual reason.
+• Fixed the "Couldn't add people" error when inviting people.
