@@ -113,6 +113,7 @@ final class PersistenceController {
             do {
                 try container.initializeCloudKitSchema(options: [])
                 Logger(subsystem: "com.yakupad.Ciki", category: "CloudKit").notice("Şema Development ortamına yüklendi")
+                Task { await createShareRecordType() }
             } catch {
                 Logger(subsystem: "com.yakupad.Ciki", category: "CloudKit").error("Şema yüklenemedi: \(error, privacy: .public)")
             }
@@ -124,6 +125,28 @@ final class PersistenceController {
         container.viewContext.transactionAuthor = "app"
     }
 }
+
+#if DEBUG
+extension PersistenceController {
+    /// `cloudkit.share` kayıt tipi `initializeCloudKitSchema` ile oluşmaz; Development'ta bir paylaşım
+    /// kaydedilene kadar şemada yoktur ve Production'a aktarılamaz. O zaman davetler "Cannot create new type
+    /// cloudkit.share in production schema" hatasıyla düşer. Geçici bir bölgede paylaşım kaydedilip bölge silinir.
+    private func createShareRecordType() async {
+        let logger = Logger(subsystem: "com.yakupad.Ciki", category: "CloudKit")
+        let database = cloudContainer.privateCloudDatabase
+        let zone = CKRecordZone(zoneName: "CikiSchemaShare")
+        do {
+            _ = try await database.modifyRecordZones(saving: [zone], deleting: [])
+            let (saved, _) = try await database.modifyRecords(saving: [CKShare(recordZoneID: zone.zoneID)], deleting: [])
+            for result in saved.values { _ = try result.get() }
+            _ = try await database.modifyRecordZones(saving: [], deleting: [zone.zoneID])
+            logger.notice("cloudkit.share kayıt tipi Development ortamında oluşturuldu")
+        } catch {
+            logger.error("cloudkit.share oluşturulamadı: \(SyncMonitor.describe(error), privacy: .public)")
+        }
+    }
+}
+#endif
 
 extension PersistenceController {
     /// iCloud eşitleme olaylarını (kurulum, içe/dışa aktarma) sistem günlüğüne yazar.
@@ -151,7 +174,7 @@ extension PersistenceController {
                 Task { @MainActor in SyncMonitor.shared.record(success: succeeded, error: error) }
             }
             if let error = event.error {
-                logger.error("\(database, privacy: .public) depo, \(kind, privacy: .public) başarısız: \(error, privacy: .public)")
+                logger.error("\(database, privacy: .public) depo, \(kind, privacy: .public) başarısız: \(SyncMonitor.describe(error), privacy: .public) — \(error, privacy: .public)")
             } else {
                 logger.notice("\(database, privacy: .public) depo, \(kind, privacy: .public) tamam")
             }
