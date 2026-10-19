@@ -1,0 +1,8 @@
+Çıkı has no login and no user accounts. There is no sign-in screen, no server and no username or password, so a demo account is not needed.
+
+- All data is stored on the device and, if iCloud is on, in the user's own private iCloud database (NSPersistentCloudKitContainer). The developer runs no backend.
+- The lock screen you may see is the optional Face ID / passcode app lock (Settings > Security). It is off by default and uses only the device's own authentication.
+- "Invite People" (Settings > Share with iCloud) uses Apple's iCloud sharing (CKShare) to share a household with other Apple Accounts. Testing it requires two devices signed in to different Apple Accounts; the rest of the app works without it.
+- The only network request downloads public exchange rates from the Central Bank of the Republic of Türkiye (tcmb.gov.tr).
+
+How to try the app: on first launch tap "Get Started", add one or two people, then add items (card, rent, salary) and enter monthly amounts. The Apple Watch app, widgets and, on Mac, the menu bar icon show the same summary.
