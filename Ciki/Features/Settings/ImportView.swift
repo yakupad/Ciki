@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 import UniformTypeIdentifiers
 
 /// "Kayıt listesi" biçimindeki bir CSV'yi okur, özetini gösterir ve onaylanınca haneye ekler.
@@ -6,7 +7,6 @@ struct ImportView: View {
     @Environment(\.managedObjectContext) private var context
     @Environment(RateService.self) private var rates
 
-    @State private var isPicking = false
     @State private var parsed: CSVImport.Parsed?
     @State private var fileName: String?
     @State private var outcome: CSVImport.Outcome?
@@ -15,7 +15,11 @@ struct ImportView: View {
     var body: some View {
         List {
             Section {
-                Button("CSV dosyası seç", systemImage: "doc.badge.plus") { isPicking = true }
+                Button("CSV dosyası seç", systemImage: "doc.badge.plus") {
+                    DocumentPicker.shared.present(types: [.commaSeparatedText, .plainText]) { url in
+                        if let url { load(url) }
+                    }
+                }
             } footer: {
                 Text("Çıkı'nın \"Kayıt listesi\" biçimi: ay (2026-10), kişi, kalem, banka, tür, yön, para birimi, tutar, durum ve isteğe bağlı olarak ödeme tarihi, kur, not, son ödeme günü. Aynı kalemin aynı aydaki kaydı varsa güncellenir; kalemler yinelenmez.")
             }
@@ -60,18 +64,12 @@ struct ImportView: View {
             }
         }
         .navigationTitle("İçe aktar")
-        .fileImporter(isPresented: $isPicking, allowedContentTypes: [.commaSeparatedText, .plainText]) { result in
-            load(result)
-        }
     }
 
-    private func load(_ result: Result<URL, Error>) {
+    private func load(_ url: URL) {
         outcome = nil
         parsed = nil
         do {
-            let url = try result.get()
-            let accessing = url.startAccessingSecurityScopedResource()
-            defer { if accessing { url.stopAccessingSecurityScopedResource() } }
             let text = try String(contentsOf: url, encoding: .utf8)
             parsed = try CSVImport.parse(text)
             fileName = url.lastPathComponent
@@ -79,5 +77,33 @@ struct ImportView: View {
         } catch {
             errorMessage = error.localizedDescription
         }
+    }
+}
+
+/// Belge seçici en üstteki ekrandan açılır. Mac'te Ayarlar bir sheet içinde olduğu için `.fileImporter`
+/// seçiciyi göstermeden pencereyi kilitliyordu. Dosya kopyalanarak verilir; güvenlik kapsamı gerekmez.
+private final class DocumentPicker: NSObject, UIDocumentPickerDelegate {
+    static let shared = DocumentPicker()
+    private var completion: ((URL?) -> Void)?
+
+    func present(types: [UTType], completion: @escaping (URL?) -> Void) {
+        let picker = UIDocumentPickerViewController(forOpeningContentTypes: types, asCopy: true)
+        picker.delegate = self
+        picker.allowsMultipleSelection = false
+        self.completion = completion
+        CloudSharing.topViewController()?.present(picker, animated: true)
+    }
+
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        finish(urls.first)
+    }
+
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        finish(nil)
+    }
+
+    private func finish(_ url: URL?) {
+        completion?(url)
+        completion = nil
     }
 }

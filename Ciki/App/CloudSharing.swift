@@ -94,7 +94,8 @@ enum CloudSharing {
         topViewController()?.present(controller, animated: true)
     }
 
-    private static func topViewController() -> UIViewController? {
+    /// En üstte gösterilen ekran (açık sheet'ler dahil).
+    static func topViewController() -> UIViewController? {
         let scene = UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
             .first { $0.activationState == .foregroundActive }
