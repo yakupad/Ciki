@@ -2,8 +2,10 @@ import AppKit
 
 /// Menü çubuğundaki Çıkı simgesi ve tıklayınca açılan aylık özet.
 @objc(CikiMenuBarController)
-final class MenuBarController: NSObject, MenuBarControlling {
+final class MenuBarController: NSObject, MenuBarControlling, NSPopoverDelegate {
     private var statusItem: NSStatusItem?
+    /// Açıkken başka bir uygulamaya ya da masaüstüne yapılan tıklamayı izler.
+    private var outsideClickMonitor: Any?
     private let popover = NSPopover()
     private let model = MenuBarModel()
     private lazy var viewController = MenuBarViewController(model: model)
@@ -25,6 +27,7 @@ final class MenuBarController: NSObject, MenuBarControlling {
             self?.updateButton()
         }
         popover.behavior = .transient
+        popover.delegate = self
         popover.contentViewController = viewController
         setVisible(true)
         #if DEBUG
@@ -72,9 +75,26 @@ final class MenuBarController: NSObject, MenuBarControlling {
             popover.performClose(nil)
         } else {
             model.showCurrentMonth()
+            _ = viewController.view
+            popover.contentSize = viewController.preferredContentSize
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
             popover.contentViewController?.view.window?.makeKey()
+            watchOutsideClicks()
         }
+    }
+
+    /// Çıkı arka plandayken `.transient` dışarıdaki tıklamayı görmez (Mac Catalyst süreci etkin değil);
+    /// başka bir uygulamaya ya da masaüstüne tıklanınca pencere elle kapatılır.
+    private func watchOutsideClicks() {
+        guard outsideClickMonitor == nil else { return }
+        outsideClickMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]) { [weak self] _ in
+            self?.popover.performClose(nil)
+        }
+    }
+
+    func popoverDidClose(_ notification: Notification) {
+        if let outsideClickMonitor { NSEvent.removeMonitor(outsideClickMonitor) }
+        outsideClickMonitor = nil
     }
 }
 

@@ -49,13 +49,14 @@ final class MenuBarViewController: NSViewController {
         stack.spacing = 10
         stack.edgeInsets = NSEdgeInsets(top: 14, left: 14, bottom: 14, right: 14)
         stack.translatesAutoresizingMaskIntoConstraints = false
-        let container = NSView()
+        let container = TopAlignedView()
         container.addSubview(stack)
         NSLayoutConstraint.activate([
             stack.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             stack.topAnchor.constraint(equalTo: container.topAnchor),
-            stack.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            // İçerik üste yaslanır; pencere bir an içerikten uzun kalırsa boşluk altta kalır, başlığa ya da rakamlara dağılmaz.
+            stack.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor),
             stack.widthAnchor.constraint(equalToConstant: 330),
         ])
         view = container
@@ -77,7 +78,9 @@ final class MenuBarViewController: NSViewController {
         }
         add(separator())
         add(footer())
-        preferredContentSize = view.fittingSize
+        // Boyut yığından hesaplanır: görünümün kendi çerçevesi kısıt olarak kaldığı için `view.fittingSize`
+        // hiç küçülmüyordu; kalabalık bir aydan sakin bir aya geçince pencere uzun kalıyordu.
+        preferredContentSize = stack.fittingSize
     }
 
     // MARK: - Bölümler
@@ -92,6 +95,7 @@ final class MenuBarViewController: NSViewController {
         let center = NSStackView(views: [title])
         center.orientation = .vertical
         center.spacing = 1
+        center.setHuggingPriority(.required, for: .vertical)
         if !month.isCurrent {
             let back = NSButton(title: localized("Bu aya dön"), target: self, action: #selector(currentMonth))
             back.bezelStyle = .inline
@@ -112,7 +116,11 @@ final class MenuBarViewController: NSViewController {
             center.centerXAnchor.constraint(equalTo: row.centerXAnchor),
             center.topAnchor.constraint(equalTo: row.topAnchor),
             center.bottomAnchor.constraint(equalTo: row.bottomAnchor),
+            // Satır, başlık ve oklardan uzun olmaz; aksi halde pencerenin fazla yüksekliğini bu satır yutuyordu.
+            previous.topAnchor.constraint(greaterThanOrEqualTo: row.topAnchor),
+            next.topAnchor.constraint(greaterThanOrEqualTo: row.topAnchor),
         ])
+        row.setContentHuggingPriority(.required, for: .vertical)
         return fullWidth(row)
     }
 
@@ -280,6 +288,11 @@ final class MenuBarViewController: NSViewController {
     private func localized(_ key: String) -> String {
         Bundle.menuBar.localizedString(forKey: key, value: key, table: nil)
     }
+}
+
+/// Koordinatları üstten başlar: pencere içerikten uzun kalsa da içerik üstte durur.
+private final class TopAlignedView: NSView {
+    override var isFlipped: Bool { true }
 }
 
 /// Uygulamanın gelir, gider ve uyarı renkleri; açık ve koyu menü çubuğuna uyar.
