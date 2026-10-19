@@ -23,6 +23,8 @@ nonisolated struct WidgetSnapshot: Codable, Equatable, Sendable {
         let incoming: String
         let expense: String
         let unpaid: String
+        /// O ay henüz gelmemiş gelir ve alacaklar. Eski özetlerde yok.
+        var pendingIncoming: String? = nil
         /// O ay ödenmemiş, son ödeme günü olan giderler; tarihe göre sıralı.
         let payments: [Payment]
         let isCurrent: Bool
@@ -96,15 +98,15 @@ nonisolated struct WidgetSnapshot: Codable, Equatable, Sendable {
         let nextMonth = calendar.date(byAdding: .month, value: 1, to: .now) ?? .now
         return [
             MonthSummary(key: key - 1, title: title(-1), net: "+61.904 ₺", netIsNegative: false, incoming: "122.500 ₺",
-                         expense: "60.596 ₺", unpaid: "0 ₺", payments: [], isCurrent: false),
+                         expense: "60.596 ₺", unpaid: "0 ₺", pendingIncoming: "0 ₺", payments: [], isCurrent: false),
             MonthSummary(key: key, title: title(0), net: "+66.258 ₺", netIsNegative: false, incoming: "130.000 ₺",
-                         expense: "63.742 ₺", unpaid: "39.742 ₺", payments: [
+                         expense: "63.742 ₺", unpaid: "39.742 ₺", pendingIncoming: "7.500 ₺", payments: [
                             Payment(title: "Mavi Bank Kart", owner: "Deniz", amount: "−11.240,75 ₺", dueDate: .now),
                             Payment(title: "Yıldız Bank Kart", owner: "Ece", amount: "−6.210,90 ₺", dueDate: .now.addingTimeInterval(86400)),
                             Payment(title: "Elektrik", owner: "Ortak", amount: "−1.065 ₺", dueDate: .now.addingTimeInterval(2 * 86400)),
                          ], isCurrent: true),
             MonthSummary(key: key + 1, title: title(1), net: "+70.890 ₺", netIsNegative: false, incoming: "122.500 ₺",
-                         expense: "51.610 ₺", unpaid: "51.610 ₺", payments: [
+                         expense: "51.610 ₺", unpaid: "51.610 ₺", pendingIncoming: "122.500 ₺", payments: [
                             Payment(title: "Kira", owner: "Ortak", amount: "−24.000 ₺", dueDate: nextMonth),
                          ], isCurrent: false),
         ]

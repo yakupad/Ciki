@@ -126,6 +126,21 @@ struct PaymentTests {
         #expect(card.entry(for: september)?.carriedToKey == 0)
     }
 
+    @Test func pendingIncomingCountsOnlyWhatHasNotArrived() {
+        let salary = makeItem(kind: .salary)
+        let receivable = makeItem(kind: .receivable)
+        let rent = makeItem(kind: .rent)
+        context.upsertEntry(item: salary, month: october, amount: 80000, status: .paid, rates: rates)
+        context.upsertEntry(item: receivable, month: october, amount: 10000, status: .pending, rates: rates)
+        context.addPayment(4000, to: line(receivable, october), rates: rates)
+        context.upsertEntry(item: rent, month: october, amount: 20000, status: .pending, rates: rates)
+
+        let summary = Ledger.summary(of: Ledger.lines(for: october, items: [salary, receivable, rent], rates: rates))
+        #expect(summary.income + summary.receivable == 90000)
+        #expect(summary.pendingIncoming == 6000)
+        #expect(summary.unpaidExpense == 20000)
+    }
+
     @Test func cashPositionSumsOwnBalancesInDisplayCurrency() {
         func account(_ balance: Decimal?, _ currency: Currency = .tl, own: Bool = true) {
             let account = Account(context: context)

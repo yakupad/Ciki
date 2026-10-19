@@ -245,10 +245,15 @@ private struct NetCard: View {
                 }
             }
 
-            if summary.unpaidExpense > 0 {
-                Text("Ödenmemiş: \(Money.string(summary.unpaidExpense, fractions: false))")
-                    .font(.footnote)
-                    .foregroundStyle(Color.ikincil)
+            // Ayın henüz gerçekleşmeyen kısmı: gelecek para ve ödenecek borç.
+            if summary.unpaidExpense > 0 || summary.pendingIncoming > 0 {
+                HStack {
+                    Text("Gelecek: \(Money.string(summary.pendingIncoming, fractions: false))")
+                    Spacer()
+                    Text("Ödenecek: \(Money.string(summary.unpaidExpense, fractions: false))")
+                }
+                .font(.footnote)
+                .foregroundStyle(Color.ikincil)
             }
             if summary.missingRateCount > 0 {
                 Label("\(summary.missingRateCount) döviz kalemi kur olmadığı için toplama girmedi.", systemImage: "exclamationmark.triangle.fill")

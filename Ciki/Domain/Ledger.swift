@@ -83,6 +83,8 @@ struct MonthSummary {
     /// Pozitif olarak tutulur.
     var expense: Decimal = 0
     var unpaidExpense: Decimal = 0
+    /// Henüz gelmemiş gelir ve alacaklar (bekleyen kalanları).
+    var pendingIncoming: Decimal = 0
     /// Kişi bazında net. `nil` anahtarı ortak kalemlerdir.
     var byOwner: [NSManagedObjectID?: Decimal] = [:]
     /// Kuru bilinmediği için toplama girmeyen satır sayısı.
@@ -124,8 +126,9 @@ enum Ledger {
                 continue
             }
             switch line.direction {
-            case .income: summary.income += value
-            case .receivable: summary.receivable += value
+            case .income, .receivable:
+                if line.direction == .income { summary.income += value } else { summary.receivable += value }
+                if line.status == .pending { summary.pendingIncoming += line.remainingSignedValue ?? value }
             case .expense:
                 summary.expense -= value
                 if line.status == .pending { summary.unpaidExpense -= line.remainingSignedValue ?? value }

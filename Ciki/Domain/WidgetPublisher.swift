@@ -42,7 +42,7 @@ enum WidgetPublisher {
         let lines = Ledger.lines(for: month, items: items, rates: rates)
         let summary = Ledger.summary(of: lines)
         let payments = lines
-            .filter { $0.direction == .expense && $0.status == .pending && $0.amount > 0 && $0.item.dueDay > 0 }
+            .filter { $0.direction == .expense && $0.status == .pending && $0.remaining > 0 && $0.item.dueDay > 0 }
             .compactMap { line -> WidgetSnapshot.Payment? in
                 let day = month.clampedDay(Int(line.item.dueDay))
                 guard let due = Calendar.current.date(from: DateComponents(year: month.year, month: month.month, day: day)) else {
@@ -50,7 +50,7 @@ enum WidgetPublisher {
                 }
                 let key = "\(line.item.objectID.uriRepresentation().absoluteString)|\(line.month.key)"
                 return WidgetSnapshot.Payment(key: key, title: line.item.fullTitle, owner: line.item.ownerName,
-                                              amount: Money.string(-line.amount, currency: line.currency),
+                                              amount: Money.string(-line.remaining, currency: line.currency),
                                               dueDate: due)
             }
             .sorted { $0.dueDate < $1.dueDate }
@@ -61,6 +61,7 @@ enum WidgetPublisher {
             incoming: Money.string(summary.income + summary.receivable, fractions: false),
             expense: Money.string(summary.expense, fractions: false),
             unpaid: Money.string(summary.unpaidExpense, fractions: false),
+            pendingIncoming: Money.string(summary.pendingIncoming, fractions: false),
             payments: Array(payments.prefix(12)),
             isCurrent: isCurrent)
     }

@@ -133,13 +133,18 @@ final class MenuBarViewController: NSViewController {
         netStack.alignment = .leading
         netStack.spacing = 1
 
-        let figures = NSStackView(views: [
-            figure(localized("Gelir + alacak"), month.incoming, MenuBarColors.gelir), spacer(),
-            figure(localized("Gider"), month.expense, MenuBarColors.gider), spacer(),
-            figure(localized("Ödenmemiş"), month.unpaid, .labelColor),
+        // Üst satır ayın toplamı, alt satır henüz gerçekleşmeyen kısmı: gelecek para ve ödenecek borç.
+        let pending = month.pendingIncoming.map { figure(localized("Gelecek"), $0, MenuBarColors.gelir) }
+        let figures = NSGridView(views: [
+            [figure(localized("Gelir + alacak"), month.incoming, MenuBarColors.gelir),
+             figure(localized("Gider"), month.expense, MenuBarColors.gider)],
+            [pending ?? NSGridCell.emptyContentView,
+             figure(localized("Ödenecek"), month.unpaid, .labelColor)],
         ])
-        figures.orientation = .horizontal
-        figures.alignment = .top
+        figures.rowSpacing = 8
+        figures.columnSpacing = 0
+        figures.column(at: 0).width = 151
+        figures.column(at: 1).width = 151
 
         let column = NSStackView(views: [netStack, fullWidth(figures)])
         column.orientation = .vertical
