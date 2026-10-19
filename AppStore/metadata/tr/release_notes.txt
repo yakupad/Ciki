@@ -2,7 +2,4 @@
 • Önceki aylardan kalan borçlar Aylar ekranının başında listelenir; tek dokunuşla ödendi yapın ya da bu aya devredin.
 • Varlıklar: hesaplarınızın bakiyesini girin, nakit varlığınızı ve ödemelerden sonra ne kalacağını Özet'te görün.
 • Bir kaydın durumu değişince ekran artık hemen güncelleniyor.
-• CSV içe aktarma: Ayarlar'dan, Çıkı'nın dışa aktardığı kayıt listesini geri yükleyebilirsiniz. Aynı dosyayı yeniden yüklemek kalemleri çoğaltmaz.
-• Mac'te menü çubuğu simgesi: ayın neti ve yaklaşan ödemeler tek tık uzakta.
-• iCloud eşitlemesi durduğunda Ayarlar'da artık asıl neden görünüyor.
-• Kişi davet ederken görülen "Couldn't add people" hatası giderildi.
+• Mac'te CSV içe aktarırken pencerenin kilitlenmesi giderildi.
