@@ -62,6 +62,9 @@ nonisolated final class Account: NSManagedObject {
     @NSManaged var iban: String?
     @NSManaged var currencyCode: String?
     @NSManaged var isOwn: Bool
+    /// Kendi hesaplarda güncel bakiye (nakit varlık). Girilmemişse nil.
+    @NSManaged var balance: NSDecimalNumber?
+    @NSManaged var balanceUpdatedAt: Date?
     @NSManaged var note: String?
     @NSManaged var sortOrder: Int32
     @NSManaged var createdAt: Date?
@@ -78,6 +81,14 @@ nonisolated final class LedgerEntry: NSManagedObject {
     @NSManaged var statusRaw: String?
     @NSManaged var rate: NSDecimalNumber?
     @NSManaged var paidAt: Date?
+    /// Kısmi ödemeler (JSON). Bkz. `paymentList`.
+    @NSManaged var payments: String?
+    /// Önceki aydan bu kayda devredilen kalan.
+    @NSManaged var carriedIn: NSDecimalNumber?
+    /// Bu kaydın ödenmeyen kalanından sonraki bir aya devredilen kısım.
+    @NSManaged var carriedOut: NSDecimalNumber?
+    /// `carriedOut`'un devredildiği ayın anahtarı; devir yoksa 0.
+    @NSManaged var carriedToKey: Int32
     @NSManaged var note: String?
     @NSManaged var createdAt: Date?
     @NSManaged var updatedAt: Date?
@@ -213,6 +224,11 @@ nonisolated extension Account {
 
     var formattedIBAN: String { IBAN.formatted(iban ?? "") }
 
+    var balanceValue: Decimal? {
+        get { balance as Decimal? }
+        set { balance = newValue.map { NSDecimalNumber(decimal: $0) } }
+    }
+
     var itemsArray: [LedgerItem] {
         ((items as? Set<LedgerItem>) ?? []).sorted { $0.sortOrder < $1.sortOrder }
     }
@@ -243,6 +259,55 @@ nonisolated extension LedgerEntry {
     }
 
     var month: Month { Month(key: monthKey) }
+
+    var paymentList: [EntryPayment] {
+        get {
+            guard let data = payments?.data(using: .utf8),
+                  let list = try? JSONDecoder().decode([EntryPayment].self, from: data) else { return [] }
+            return list.sorted { $0.date < $1.date }
+        }
+        set {
+            let sorted = newValue.sorted { $0.date < $1.date }
+            payments = sorted.isEmpty ? nil : (try? JSONEncoder().encode(sorted)).flatMap { String(data: $0, encoding: .utf8) }
+        }
+    }
+
+    var carriedInValue: Decimal {
+        get { (carriedIn as Decimal?) ?? 0 }
+        set { carriedIn = newValue == 0 ? nil : NSDecimalNumber(decimal: newValue) }
+    }
+
+    var carriedOutValue: Decimal {
+        get { (carriedOut as Decimal?) ?? 0 }
+        set { carriedOut = newValue == 0 ? nil : NSDecimalNumber(decimal: newValue) }
+    }
+
+    /// Bu ayın payına düşen tutar: girilen tutar + devralınan − devredilen.
+    var dueValue: Decimal { amountValue + carriedInValue - carriedOutValue }
+
+    /// Ödenen kısım. Ödendi durumunda tamamı, değilse kısmi ödemelerin toplamı.
+    var paidValue: Decimal {
+        switch status {
+        case .paid: dueValue
+        case .excluded: 0
+        case .pending: min(paymentList.reduce(0) { $0 + $1.amount }, max(dueValue, 0))
+        }
+    }
+
+    /// Ödenmeyi bekleyen kalan.
+    var remainingValue: Decimal {
+        status == .pending ? max(dueValue - paidValue, 0) : 0
+    }
+
+    /// Kısmen ödenmiş, kalanı bekleyen kayıt.
+    var isPartiallyPaid: Bool { status == .pending && paidValue > 0 && remainingValue > 0 }
+}
+
+/// Bir kaydın kısmi ödemesi. Ör. 50.000'lik kartın 30.000'i 5 Ekim'de.
+nonisolated struct EntryPayment: Codable, Hashable, Identifiable, Sendable {
+    var id = UUID()
+    var date: Date
+    var amount: Decimal
 }
 
 /// Düzenli bir kalemin tutarının belli bir aydan itibaren değişmesi.

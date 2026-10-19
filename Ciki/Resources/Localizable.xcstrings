@@ -4992,22 +4992,6 @@
         }
       }
     },
-    "Sola kaydırın: ödendi. Sağa kaydırın: bu ay hesaba katma. Düzenli kalemler kayıt girilene kadar tahmini görünür." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe left: paid. Swipe right: skip this month. Recurring items show as estimates until you enter an amount."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sola kaydırın: ödendi. Sağa kaydırın: bu ay hesaba katma. Düzenli kalemler kayıt girilene kadar tahmini görünür."
-          }
-        }
-      }
-    },
     "Son 6 ay ort. net" : {
       "localizations" : {
         "en" : {
@@ -6173,6 +6157,502 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kayıtları ya da aylık tabloyu Excel, Numbers veya Google E-Tablolar'da açmak için. Kayıt listesi biçimindeki bir CSV geri yüklenebilir."
+          }
+        }
+      }
+    },
+    "Kısmi öde" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pay part"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısmi öde"
+          }
+        }
+      }
+    },
+    "Sola kaydırın: ödendi ya da kısmi öde. Sağa kaydırın: bu ay hesaba katma. Düzenli kalemler kayıt girilene kadar tahmini görünür." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swipe left: paid or pay part. Swipe right: skip this month. Recurring items show as estimates until an entry is added."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sola kaydırın: ödendi ya da kısmi öde. Sağa kaydırın: bu ay hesaba katma. Düzenli kalemler kayıt girilene kadar tahmini görünür."
+          }
+        }
+      }
+    },
+    "Bu aya devret" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carry to this month"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu aya devret"
+          }
+        }
+      }
+    },
+    "Önceki aylardan kalan" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Left from earlier months"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önceki aylardan kalan"
+          }
+        }
+      }
+    },
+    "Ödenmemiş ya da kısmen ödenmiş kayıtlar. Sola kaydırın: ödendi ya da %@ ayına devret. Devredilen kalan eski ayın toplamından düşer, bu ayın kaydına eklenir." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unpaid or partly paid entries. Swipe left: paid, or carry to %@. A carried balance leaves the old month's total and is added to this month's entry."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ödenmemiş ya da kısmen ödenmiş kayıtlar. Sola kaydırın: ödendi ya da %@ ayına devret. Devredilen kalan eski ayın toplamından düşer, bu ayın kaydına eklenir."
+          }
+        }
+      }
+    },
+    "Kalan %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ left"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalan %@"
+          }
+        }
+      }
+    },
+    "Kısmi · %@ ödendi" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partial · %@ paid"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısmi · %@ ödendi"
+          }
+        }
+      }
+    },
+    "%@ ayına devredildi" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carried to %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ayına devredildi"
+          }
+        }
+      }
+    },
+    "Devreden %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ carried in"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devreden %@"
+          }
+        }
+      }
+    },
+    "Önceki aylardan devreden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carried from earlier months"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önceki aylardan devreden"
+          }
+        }
+      }
+    },
+    "Ekle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekle"
+          }
+        }
+      }
+    },
+    "Kalanın tamamını öde (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pay the rest (%@)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalanın tamamını öde (%@)"
+          }
+        }
+      }
+    },
+    "Devri geri al" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undo carry"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devri geri al"
+          }
+        }
+      }
+    },
+    "Ödemeler" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payments"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ödemeler"
+          }
+        }
+      }
+    },
+    "Ödenen %@ · Kalan %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paid %1$@ · %2$@ left"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ödenen %1$@ · Kalan %2$@"
+          }
+        }
+      }
+    },
+    "Parça parça ödüyorsanız her ödemeyi ekleyin. Kalan sıfırlanınca kayıt ödendi olur." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paying in parts? Add each payment. When nothing is left the entry becomes paid."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parça parça ödüyorsanız her ödemeyi ekleyin. Kalan sıfırlanınca kayıt ödendi olur."
+          }
+        }
+      }
+    },
+    "Güncel bakiye" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current balance"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güncel bakiye"
+          }
+        }
+      }
+    },
+    "Nakit varlık" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cash"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nakit varlık"
+          }
+        }
+      }
+    },
+    "Son güncelleme: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last updated: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son güncelleme: %@"
+          }
+        }
+      }
+    },
+    "Hesaptaki ya da elinizdeki parayı girin; Özet'te nakit varlık olarak toplanır. Elde nakit için IBAN gerekmez." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter what's in the account or in hand; it adds up as cash on Summary. Cash in hand needs no IBAN."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesaptaki ya da elinizdeki parayı girin; Özet'te nakit varlık olarak toplanır. Elde nakit için IBAN gerekmez."
+          }
+        }
+      }
+    },
+    "Banka hesaplarınızı ve elinizdeki nakdi ekleyip bakiyelerini girin. Toplam, ödenmemiş borçlarla birlikte burada ve Özet'te görünür." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add your bank accounts and cash in hand with their balances. The total shows here and on Summary next to unpaid debts."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banka hesaplarınızı ve elinizdeki nakdi ekleyip bakiyelerini girin. Toplam, ödenmemiş borçlarla birlikte burada ve Özet'te görünür."
+          }
+        }
+      }
+    },
+    "Varlıklar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assets"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varlıklar"
+          }
+        }
+      }
+    },
+    "Hesaplarınızın bakiyesini girin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your account balances"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesaplarınızın bakiyesini girin"
+          }
+        }
+      }
+    },
+    "Bankadaki ve elinizdeki parayı girdiğinizde ödenmemiş borçlar düşülünce ne kaldığını görürsünüz." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the money in the bank and in hand to see what's left once unpaid debts are paid."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bankadaki ve elinizdeki parayı girdiğinizde ödenmemiş borçlar düşülünce ne kaldığını görürsünüz."
+          }
+        }
+      }
+    },
+    "Ödenmemiş" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unpaid"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ödenmemiş"
+          }
+        }
+      }
+    },
+    "Ödemelerden sonra" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After payments"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ödemelerden sonra"
+          }
+        }
+      }
+    },
+    "Bazı bakiyeler %@ güncellendi." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some balances were updated %@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bazı bakiyeler %@ güncellendi."
+          }
+        }
+      }
+    },
+    "%lld döviz hesabı kur olmadığı için toplama girmedi." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld foreign currency accounts left out of the total for lack of a rate."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld döviz hesabı kur olmadığı için toplama girmedi."
+          }
+        }
+      }
+    },
+    "Bakiye gir" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add balance"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bakiye gir"
+          }
+        }
+      }
+    },
+    "Bakiye girilmedi" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No balance yet"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bakiye girilmedi"
+          }
+        }
+      }
+    },
+    "Varlıkları açar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens assets"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varlıkları açar"
           }
         }
       }

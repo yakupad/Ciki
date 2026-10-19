@@ -11,12 +11,15 @@ struct SummaryView: View {
     private var items: FetchedResults<LedgerItem>
     @FetchRequest(sortDescriptors: [SortDescriptor(\Person.sortOrder)])
     private var people: FetchedResults<Person>
+    @FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "isOwn == YES"))
+    private var ownAccounts: FetchedResults<Account>
     /// Kayıt değişikliklerinde (durum, tutar) ekranın yenilenmesi için.
     private let changes = ContextVersion()
 
     @State private var route: EditorRoute?
     @Environment(\.isWideLayout) private var isWide
     @State private var showReport = false
+    @State private var showAssets = false
     /// Büyük yazı boyutlarında kişi kutuları daha az sütuna iner, tutarlar kırpılmaz.
     @ScaledMetric(relativeTo: .footnote) private var personTileWidth: CGFloat = 104
 
@@ -40,6 +43,7 @@ struct SummaryView: View {
         }
         .sheet(item: $route) { EditorSheet(route: $0) }
         .navigationDestination(isPresented: $showReport) { ReportView() }
+        .navigationDestination(isPresented: $showAssets) { AssetsView() }
         #if DEBUG
         .onAppear {
             if CommandLine.arguments.contains("-openReport") { showReport = true }
@@ -109,6 +113,18 @@ struct SummaryView: View {
     @ViewBuilder
     private func overview(_ summary: MonthSummary) -> some View {
         NetCard(summary: summary)
+        Button { showAssets = true } label: {
+            AssetsCard(position: Ledger.cash(in: ownAccounts, rates: rates.table),
+                       unpaid: AssetsView.unpaid(through: .current, items: items, rates: rates.table))
+                .overlay(alignment: .topTrailing) {
+                    Image(systemName: "chevron.right")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(Color.ikincil)
+                        .padding(16)
+                }
+        }
+        .buttonStyle(.plain)
+        .accessibilityHint(Text("Varlıkları açar"))
         peopleRow(summary)
         NetChart(points: chartPoints, selected: app.month)
     }
@@ -148,7 +164,7 @@ struct SummaryView: View {
     private var upcoming: some View {
         let month = Month.current
         let pending = Ledger.lines(for: month, items: items, rates: rates.table)
-            .filter { $0.direction == .expense && $0.status == .pending && $0.amount > 0 }
+            .filter { $0.direction == .expense && $0.status == .pending && $0.remaining > 0 }
             .sorted { lhs, rhs in
                 let left = lhs.item.dueDay == 0 ? 99 : lhs.item.dueDay
                 let right = rhs.item.dueDay == 0 ? 99 : rhs.item.dueDay
@@ -296,7 +312,7 @@ private struct UpcomingRow: View {
                 }
             }
             Spacer()
-            Text(Money.string(-line.amount, currency: line.currency))
+            Text(Money.string(-line.remaining, currency: line.currency))
                 .font(.amount(14, weight: .semibold))
                 .foregroundStyle(Color.gider)
             Button("Ödendi olarak işaretle", systemImage: "checkmark.circle", action: markPaid)
@@ -310,7 +326,7 @@ private struct UpcomingRow: View {
         // Satır tek öğe olarak okunur; "ödendi" işareti ekran okuyucu eylemi olarak sunulur.
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text(verbatim: line.item.fullTitle))
-        .accessibilityValue(Text(verbatim: "\(Money.string(-line.amount, currency: line.currency)), \(line.item.ownerName)"))
+        .accessibilityValue(Text(verbatim: "\(Money.string(-line.remaining, currency: line.currency)), \(line.item.ownerName)"))
         .accessibilityHint(Text("Kaydı açmak için dokunun"))
         .accessibilityAddTraits(.isButton)
         .accessibilityAction(named: Text("Ödendi olarak işaretle"), markPaid)

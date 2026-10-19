@@ -164,6 +164,10 @@ struct AccountRow: View {
                             .font(.caption.weight(.semibold))
                             .foregroundStyle(Color.gelir)
                             .transition(.opacity)
+                    } else if account.isOwn, let balance = account.balanceValue {
+                        Text(Money.string(balance, currency: account.currency))
+                            .font(.amount(14, weight: .semibold))
+                            .foregroundStyle(Color.amount(balance))
                     } else if account.currency != .tl {
                         Text(verbatim: account.currency.title)
                             .font(.caption2.weight(.bold))

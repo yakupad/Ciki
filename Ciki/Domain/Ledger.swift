@@ -50,7 +50,7 @@ struct LedgerLine: Identifiable {
     let item: LedgerItem
     let entry: LedgerEntry?
     let month: Month
-    /// Kalemin kendi para biriminde, işaretsiz tutar.
+    /// Kalemin kendi para biriminde, işaretsiz tutar. Devirler dahildir (bkz. `LedgerEntry.dueValue`).
     let amount: Decimal
     let status: EntryStatus
     /// Gösterim birimindeki işaretli karşılığı. Kur bilinmiyorsa nil.
@@ -61,6 +61,20 @@ struct LedgerLine: Identifiable {
     var currency: Currency { item.currency }
     var direction: Direction { item.direction }
     var counts: Bool { status != .excluded }
+
+    /// Ödenen kısım, kalemin para biriminde.
+    var paid: Decimal { entry?.paidValue ?? 0 }
+    /// Ödenmeyi bekleyen kalan, kalemin para biriminde.
+    var remaining: Decimal { entry?.remainingValue ?? (status == .pending ? amount : 0) }
+    var isPartiallyPaid: Bool { entry?.isPartiallyPaid ?? false }
+
+    /// Kalanın gösterim birimindeki işaretli karşılığı.
+    var remainingSignedValue: Decimal? {
+        guard let signedValue else { return nil }
+        if remaining == amount { return signedValue }
+        guard amount != 0 else { return 0 }
+        return signedValue * remaining / amount
+    }
 }
 
 struct MonthSummary {
@@ -89,7 +103,7 @@ enum Ledger {
     static func line(for item: LedgerItem, month: Month, rates: RateTable) -> LedgerLine? {
         let sign = item.direction.sign
         if let entry = item.entry(for: month) {
-            let amount = entry.amountValue
+            let amount = entry.dueValue
             let fixed = entry.status == .paid ? entry.rateValue : nil
             return LedgerLine(item: item, entry: entry, month: month, amount: amount, status: entry.status,
                               signedValue: rates.value(of: amount, in: item.currency, fixedTRYRate: fixed).map { $0 * sign })
@@ -114,11 +128,25 @@ enum Ledger {
             case .receivable: summary.receivable += value
             case .expense:
                 summary.expense -= value
-                if line.status == .pending { summary.unpaidExpense -= value }
+                if line.status == .pending { summary.unpaidExpense -= line.remainingSignedValue ?? value }
             }
             summary.byOwner[line.item.owner?.objectID, default: 0] += value
         }
         return summary
+    }
+
+    /// Önceki aylardan ödenmemiş kalan giderler (yalnızca girilmiş kayıtlar; tahmini satırlar sayılmaz).
+    /// Eskiden yeniye sıralıdır; `lookback` aydan eskisine bakılmaz.
+    static func carryOver(before month: Month, items: some Sequence<LedgerItem>, rates: RateTable,
+                          lookback: Int = 12) -> [LedgerLine] {
+        let earliest = month.adding(-lookback)
+        var result: [LedgerLine] = []
+        for item in items where item.direction == .expense {
+            for entry in item.entriesArray where entry.month >= earliest && entry.month < month && entry.remainingValue > 0 {
+                if let line = line(for: item, month: entry.month, rates: rates) { result.append(line) }
+            }
+        }
+        return result.sorted { ($0.month, $0.item.sortOrder) < ($1.month, $1.item.sortOrder) }
     }
 
     /// Toplamı kuruş hassasiyetinde eşit taksitlere böler; artan kuruşlar son taksite eklenir.
@@ -200,7 +228,7 @@ extension Ledger {
                 guard let value = line.signedValue else { continue }
                 if line.direction == .expense {
                     totals.expense -= value
-                    if line.status == .pending { totals.pendingExpense -= value }
+                    if line.status == .pending { totals.pendingExpense -= line.remainingSignedValue ?? value }
                     if line.item.kind.isBankProduct {
                         let name = line.item.bankName ?? String(localized: "Diğer")
                         let title = bankTitles[Banks.key(name)] ?? name
@@ -213,5 +241,37 @@ extension Ledger {
             }
             return totals
         }
+    }
+}
+
+// MARK: - Nakit varlık
+
+struct CashPosition {
+    /// Bakiyesi girilmiş kendi hesapların gösterim birimindeki toplamı.
+    var total: Decimal = 0
+    /// Bakiyesi girilmiş hesap sayısı.
+    var accountCount = 0
+    /// Kuru bilinmediği için toplama girmeyen hesap sayısı.
+    var missingRateCount = 0
+    /// En eski bakiye güncellemesi; bakiyeler ne kadar taze, gösterilir.
+    var oldestUpdate: Date?
+}
+
+extension Ledger {
+    static func cash(in accounts: some Sequence<Account>, rates: RateTable) -> CashPosition {
+        var position = CashPosition()
+        for account in accounts where account.isOwn {
+            guard let balance = account.balanceValue else { continue }
+            position.accountCount += 1
+            if let date = account.balanceUpdatedAt {
+                position.oldestUpdate = min(position.oldestUpdate ?? date, date)
+            }
+            guard let value = rates.value(of: balance, in: account.currency) else {
+                position.missingRateCount += 1
+                continue
+            }
+            position.total += value
+        }
+        return position
     }
 }

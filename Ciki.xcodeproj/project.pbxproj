@@ -63,6 +63,7 @@
 		9474A9B8D65366A2FAE9ADFD /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735307CB5599BD58183B2C87 /* AppLanguage.swift */; };
 		94BD020A8A27952BB76433F1 /* Ciki.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51B197CF3C926D8990009B01 /* Ciki.xcdatamodeld */; };
 		960D57098460F81E2F7EFBF2 /* WidgetPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF41E4A0B815161210029CD /* WidgetPublisher.swift */; };
+		9B028757D1746C53F661AA72 /* PaymentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6FD87FA20AD355EA1157A /* PaymentTests.swift */; };
 		9F2CE1F9EFDD5F81464A3DCB /* WatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F969F42D9BC0196D7D0E96B /* WatchSync.swift */; };
 		A231EF93B2A6B5AAFBD15306 /* RateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E50AA49D65BDDCB6745DCB /* RateService.swift */; };
 		A4577566E45EA99B260EA877 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */; };
@@ -78,6 +79,7 @@
 		C6D3723FEEBBCCC809636BDC /* IBAN.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3517F6BA36212FF2842DD4 /* IBAN.swift */; };
 		C8BA80D107B81A5D2EBF4416 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF13F6A92984DE7B1D4CA77 /* Reminders.swift */; };
 		CAF73DE1D100E17A50C07317 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 330EFD0EBA942483ADC5EDD7 /* Localizable.xcstrings */; };
+		CE1FA46D07B7E004872E02A2 /* AssetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086FB36E8CE6EE019708E8A9 /* AssetsView.swift */; };
 		D010AFC30CDFEF21CA1EFC0C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0304B2E5767AE62A85DF7B /* Enums.swift */; };
 		D2217FB3713C4430E65FE84A /* CloudSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F656656581FF93EB77C56 /* CloudSharing.swift */; };
 		DC299C4610EC002C974FAE7D /* MenuBarControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D8E9972FF195256A381C1 /* MenuBarControlling.swift */; };
@@ -188,6 +190,7 @@
 		03F43C0A8A9FA642ED3AF200 /* CSVExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVExport.swift; sourceTree = "<group>"; };
 		05C94795E4674C80EF8AD26F /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
 		0855E2E16A16C9B4189115E7 /* LedgerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerTests.swift; sourceTree = "<group>"; };
+		086FB36E8CE6EE019708E8A9 /* AssetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsView.swift; sourceTree = "<group>"; };
 		087DA3CED54A1503310691F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0CB8C1B13709303B3733E5CB /* Ciki.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ciki.xcdatamodel; sourceTree = "<group>"; };
 		0FB3C7D9794927C82279EB20 /* CikiUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CikiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +241,7 @@
 		98FC8FE7931CBD346914560A /* CikiWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = CikiWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BABF2E112C89B90A4178F51 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9F969F42D9BC0196D7D0E96B /* WatchSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSync.swift; sourceTree = "<group>"; };
+		9FA6FD87FA20AD355EA1157A /* PaymentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTests.swift; sourceTree = "<group>"; };
 		A01FA153FAD077DD14B33A89 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		A43D98ED6D1C947C1D5CF2DF /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		A4D05711B5BA87E93D46DFB2 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 		D99BE031D327C1604A200B23 /* CikiWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CikiWatchApp.swift; sourceTree = "<group>"; };
 		D9C51E84022FCDB84E37FF13 /* AppLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLock.swift; sourceTree = "<group>"; };
 		DB6282C95195E4A421255F4E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		DB8847E74769DA2455378925 /* Ciki 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Ciki 6.xcdatamodel"; sourceTree = "<group>"; };
 		DB9D2E4B841EFBB9C3C84736 /* Ciki.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Ciki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCABCD961CFA81BDBCF197A3 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
 		DE4F523D234502A9CE7621D4 /* LedgerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerActions.swift; sourceTree = "<group>"; };
@@ -320,6 +325,7 @@
 			children = (
 				2576A105665BD3E0828FE6FA /* AccountEditorView.swift */,
 				F58BBEB10E4AD5EB21DC94B3 /* AccountsView.swift */,
+				086FB36E8CE6EE019708E8A9 /* AssetsView.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				0855E2E16A16C9B4189115E7 /* LedgerTests.swift */,
+				9FA6FD87FA20AD355EA1157A /* PaymentTests.swift */,
 			);
 			path = CikiTests;
 			sourceTree = "<group>";
@@ -833,6 +840,7 @@
 				9474A9B8D65366A2FAE9ADFD /* AppLanguage.swift in Sources */,
 				796AD74958FEC481DBDB2CDE /* AppLock.swift in Sources */,
 				05DF1F5F79124EA90C6244FE /* Appearance.swift in Sources */,
+				CE1FA46D07B7E004872E02A2 /* AssetsView.swift in Sources */,
 				0D22113E3A4A1A954FA50663 /* CSVExport.swift in Sources */,
 				8EEAC50AC1891ACB9B2BD421 /* CSVImport.swift in Sources */,
 				94BD020A8A27952BB76433F1 /* Ciki.xcdatamodeld in Sources */,
@@ -902,6 +910,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0BB27F1C7452F9B44DD8C5E /* LedgerTests.swift in Sources */,
+				9B028757D1746C53F661AA72 /* PaymentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1502,9 +1511,10 @@
 				5A3CB58304B58A6C6B921D99 /* Ciki 3.xcdatamodel */,
 				1B9644BDC8E7E0D892FC2C07 /* Ciki 4.xcdatamodel */,
 				950EB71C1AC1A41305C91ED2 /* Ciki 5.xcdatamodel */,
+				DB8847E74769DA2455378925 /* Ciki 6.xcdatamodel */,
 				0CB8C1B13709303B3733E5CB /* Ciki.xcdatamodel */,
 			);
-			currentVersion = 950EB71C1AC1A41305C91ED2 /* Ciki 5.xcdatamodel */;
+			currentVersion = DB8847E74769DA2455378925 /* Ciki 6.xcdatamodel */;
 			path = Ciki.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

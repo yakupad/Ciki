@@ -29,6 +29,10 @@ struct EntryEditorView: View {
     @State private var oneOffName: String
     @State private var oneOffOwner: Person?
     @State private var confirmDelete: Bool
+    /// Kısmi ödemeler; Kaydet'e basınca kayda yazılır.
+    @State private var payments: [EntryPayment]
+    @State private var newPayment: Decimal?
+    @State private var newPaymentDate: Date
 
     init(item: LedgerItem?, month: Month) {
         let entry = item?.entry(for: month)
@@ -46,10 +50,20 @@ struct EntryEditorView: View {
         self.oneOffName = ""
         self.oneOffOwner = nil
         self.confirmDelete = false
+        self.payments = entry?.paymentList ?? []
+        self.newPayment = nil
+        self.newPaymentDate = .now
     }
 
     private var isNew: Bool { existing == nil }
     private var currency: Currency { item?.currency ?? .tl }
+
+    /// Bu ayın payına düşen: tutar + devralınan − devredilen.
+    private var due: Decimal {
+        (amount ?? 0) + (existing?.carriedInValue ?? 0) - (existing?.carriedOutValue ?? 0)
+    }
+    private var paidSum: Decimal { payments.reduce(0) { $0 + $1.amount } }
+    private var remaining: Decimal { max(due - paidSum, 0) }
 
     var body: some View {
         NavigationStack {
@@ -147,6 +161,11 @@ struct EntryEditorView: View {
                     }
                 }
 
+                if !splitIntoInstallments && (status == .pending || !payments.isEmpty
+                                              || (existing?.carriedInValue ?? 0) > 0 || (existing?.carriedOutValue ?? 0) > 0) {
+                    paymentsSection
+                }
+
                 if isNew {
                     Section {
                         Toggle("Taksitlendir", isOn: $splitIntoInstallments.animation())
@@ -217,6 +236,70 @@ struct EntryEditorView: View {
         }
     }
 
+    @ViewBuilder
+    private var paymentsSection: some View {
+        Section {
+            if let existing, existing.carriedInValue > 0 {
+                LabeledContent("Önceki aylardan devreden") {
+                    Text(Money.string(existing.carriedInValue, currency: currency)).monospacedDigit()
+                }
+            }
+            ForEach(payments) { payment in
+                LabeledContent {
+                    Text(Money.string(payment.amount, currency: currency)).monospacedDigit()
+                } label: {
+                    Label(payment.date.formatted(.dateTime.day().month(.abbreviated).year().locale(Money.locale)),
+                          systemImage: "checkmark.circle")
+                }
+            }
+            .onDelete { offsets in
+                payments.remove(atOffsets: offsets)
+                if status == .paid, paidSum < due { status = .pending }
+            }
+            if status == .pending {
+                HStack(spacing: 12) {
+                    AmountField(value: $newPayment, alignment: .left)
+                    DatePicker("Ödeme tarihi", selection: $newPaymentDate, in: ...Date.now, displayedComponents: .date)
+                        .labelsHidden()
+                    Button("Ekle", action: addPayment)
+                        .buttonStyle(.bordered)
+                        .disabled((newPayment ?? 0) <= 0)
+                }
+                if remaining > 0, due > 0 {
+                    Button("Kalanın tamamını öde (\(Money.string(remaining, currency: currency)))", systemImage: "checkmark.circle.fill") {
+                        newPayment = remaining
+                        addPayment()
+                    }
+                }
+            }
+            if let existing, existing.carriedOutValue > 0 {
+                LabeledContent("\(Month(key: existing.carriedToKey).title) ayına devredildi") {
+                    Text(Money.string(existing.carriedOutValue, currency: currency)).monospacedDigit()
+                }
+                Button("Devri geri al", systemImage: "arrow.uturn.backward") {
+                    context.undoCarry(of: existing, rates: rates.table)
+                    dismiss()
+                }
+            }
+        } header: {
+            Text("Ödemeler")
+        } footer: {
+            if paidSum > 0 && status == .pending {
+                Text("Ödenen \(Money.string(paidSum, currency: currency)) · Kalan \(Money.string(remaining, currency: currency))")
+            } else if status == .pending {
+                Text("Parça parça ödüyorsanız her ödemeyi ekleyin. Kalan sıfırlanınca kayıt ödendi olur.")
+            }
+        }
+    }
+
+    private func addPayment() {
+        guard let value = newPayment, value > 0 else { return }
+        payments.append(EntryPayment(date: newPaymentDate, amount: value))
+        newPayment = nil
+        newPaymentDate = .now
+        if due > 0, paidSum >= due { status = .paid }
+    }
+
     private func suggestions(for item: LedgerItem) -> [AmountSuggestion] {
         Ledger.suggestions(for: item, before: month)
     }
@@ -274,16 +357,20 @@ struct EntryEditorView: View {
                                     status: index == 0 ? status : .pending, note: label, rates: rates.table)
             }
         } else {
-            context.upsertEntry(item: item, month: month, amount: amount, status: status,
-                                note: trimmedNote, rates: rates.table)
+            let entry = context.upsertEntry(item: item, month: month, amount: amount, status: status,
+                                            note: trimmedNote, rates: rates.table)
+            entry.paymentList = status == .excluded ? [] : payments
+            // Son ödemeyle kapanan kaydın ödeme günü o ödemenin tarihidir.
+            if status == .paid, existing?.status != .paid, let last = payments.last {
+                entry.paidAt = last.date
+            }
         }
         context.saveIfNeeded()
         dismiss()
     }
 
     private func deleteEntry() {
-        if let existing { context.delete(existing) }
-        context.saveIfNeeded()
+        if let existing { context.deleteEntry(existing, rates: rates.table) }
         dismiss()
     }
 }

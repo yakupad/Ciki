@@ -18,13 +18,15 @@ struct AccountEditorView: View {
     @State private var bank: String
     @State private var currency: Currency
     @State private var note: String
+    @State private var balance: Decimal?
     @State private var confirmDelete: Bool
     /// Banka adı IBAN'dan otomatik dolduysa, IBAN değişince yeniden doldurulur.
     @State private var bankFromIBAN: Bool
 
-    init(account: Account?) {
+    /// - Parameter isOwnByDefault: Yeni hesap "Bizim hesap" olarak açılır (Varlıklar ekranından).
+    init(account: Account?, isOwnByDefault: Bool = false) {
         self.account = account
-        self.isOwn = account?.isOwn ?? false
+        self.isOwn = account?.isOwn ?? isOwnByDefault
         self.owner = account?.owner
         self.title = account?.title ?? ""
         self.holderName = account?.holderName ?? ""
@@ -32,6 +34,7 @@ struct AccountEditorView: View {
         self.bank = account?.bank ?? ""
         self.currency = account?.currency ?? .tl
         self.note = account?.note ?? ""
+        self.balance = account?.balanceValue
         self.confirmDelete = false
         self.bankFromIBAN = (account?.bank ?? "").isEmpty
     }
@@ -61,6 +64,22 @@ struct AccountEditorView: View {
                                 Text(verbatim: person.displayNameWithRelation).tag(Optional(person))
                             }
                             Text("Ortak").tag(Person?.none)
+                        }
+                    }
+                }
+
+                if isOwn {
+                    Section {
+                        LabeledContent("Güncel bakiye") {
+                            AmountField(value: $balance)
+                        }
+                    } header: {
+                        Text("Nakit varlık")
+                    } footer: {
+                        if let updated = account?.balanceUpdatedAt {
+                            Text("Son güncelleme: \(updated.formatted(.dateTime.day().month(.abbreviated).year().locale(Money.locale)))")
+                        } else {
+                            Text("Hesaptaki ya da elinizdeki parayı girin; Özet'te nakit varlık olarak toplanır. Elde nakit için IBAN gerekmez.")
                         }
                     }
                 }
@@ -182,6 +201,11 @@ struct AccountEditorView: View {
         target.bank = bank.trimmedOrNil
         target.currency = currency
         target.note = note.trimmedOrNil
+        let newBalance = isOwn ? balance : nil
+        if newBalance != target.balanceValue {
+            target.balanceValue = newBalance
+            target.balanceUpdatedAt = newBalance == nil ? nil : .now
+        }
         context.saveIfNeeded()
         dismiss()
     }

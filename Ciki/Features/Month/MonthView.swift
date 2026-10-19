@@ -24,6 +24,7 @@ struct MonthView: View {
         let lines = Ledger.lines(for: app.month, items: items.filter(filter.includes), rates: rates.table)
         let groups = Self.groups(from: lines)
         let summary = Ledger.summary(of: lines)
+        let carried = Ledger.carryOver(before: app.month, items: items.filter(filter.includes), rates: rates.table)
 
         List {
             Section {
@@ -32,6 +33,10 @@ struct MonthView: View {
             .frame(maxWidth: .infinity)
             .listRowBackground(Color.clear)
             .listRowInsets(EdgeInsets())
+
+            if !carried.isEmpty {
+                carryOverSection(carried)
+            }
 
             if lines.isEmpty {
                 ContentUnavailableView {
@@ -62,6 +67,12 @@ struct MonthView: View {
                                         context.setStatus(.paid, for: line, rates: rates.table)
                                     }
                                     .tint(.gelir)
+                                    if line.status == .pending && line.direction == .expense {
+                                        Button("Kısmi öde", systemImage: "circle.lefthalf.filled") {
+                                            route = .entry(item: line.item, month: line.month)
+                                        }
+                                        .tint(.petrol)
+                                    }
                                 }
                             }
                             .swipeActions(edge: .leading, allowsFullSwipe: true) {
@@ -107,7 +118,7 @@ struct MonthView: View {
                             .foregroundStyle(Color.amount(summary.net))
                     }
                 } footer: {
-                    Text("Sola kaydırın: ödendi. Sağa kaydırın: bu ay hesaba katma. Düzenli kalemler kayıt girilene kadar tahmini görünür.")
+                    Text("Sola kaydırın: ödendi ya da kısmi öde. Sağa kaydırın: bu ay hesaba katma. Düzenli kalemler kayıt girilene kadar tahmini görünür.")
                 }
             }
         }
@@ -127,6 +138,50 @@ struct MonthView: View {
             Button("Tamam") { copyMessage = nil }
         } message: {
             Text(copyMessage ?? "")
+        }
+    }
+
+    /// Önceki aylarda ödenmemiş kalanlar: ödenebilir ya da bu aya devredilebilir.
+    private func carryOverSection(_ lines: [LedgerLine]) -> some View {
+        let total = lines.compactMap(\.remainingSignedValue).reduce(0, +)
+        return Section {
+            ForEach(lines, id: \.entry?.objectID) { line in
+                EntryRow(line: line, showOwner: filter == .all, showsMonth: true)
+                    .contentShape(Rectangle())
+                    .onTapGesture { route = .entry(item: line.item, month: line.month) }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button("Ödendi", systemImage: "checkmark") {
+                            context.setStatus(.paid, for: line, rates: rates.table)
+                        }
+                        .tint(.gelir)
+                        Button("Bu aya devret", systemImage: "arrow.turn.down.right") {
+                            context.carryOver(line, to: app.month, rates: rates.table)
+                        }
+                        .tint(.uyari)
+                    }
+                    .contextMenu {
+                        Button("Bu aya devret", systemImage: "arrow.turn.down.right") {
+                            context.carryOver(line, to: app.month, rates: rates.table)
+                        }
+                        Button("Ödendi", systemImage: "checkmark") {
+                            context.setStatus(.paid, for: line, rates: rates.table)
+                        }
+                        Button("Kısmi öde", systemImage: "circle.lefthalf.filled") {
+                            route = .entry(item: line.item, month: line.month)
+                        }
+                    }
+            }
+        } header: {
+            HStack {
+                Label("Önceki aylardan kalan", systemImage: "exclamationmark.circle.fill")
+                    .foregroundStyle(Color.uyari)
+                Spacer()
+                Text(Money.string(total))
+                    .monospacedDigit()
+                    .foregroundStyle(Color.ikincil)
+            }
+        } footer: {
+            Text("Ödenmemiş ya da kısmen ödenmiş kayıtlar. Sola kaydırın: ödendi ya da \(app.month.name) ayına devret. Devredilen kalan eski ayın toplamından düşer, bu ayın kaydına eklenir.")
         }
     }
 
@@ -180,12 +235,15 @@ struct MonthView: View {
 struct EntryRow: View {
     let line: LedgerLine
     var showOwner = true
+    /// Önceki aylardan kalanlarda kaydın ayı ve yalnızca kalan tutar gösterilir.
+    var showsMonth = false
     /// Nesne izlenir: başka cihazdan iCloud ile gelen değişiklikte satır kendiliğinden yenilenir.
     @ObservedObject private var item: LedgerItem
 
-    init(line: LedgerLine, showOwner: Bool = true) {
+    init(line: LedgerLine, showOwner: Bool = true, showsMonth: Bool = false) {
         self.line = line
         self.showOwner = showOwner
+        self.showsMonth = showsMonth
         self._item = ObservedObject(wrappedValue: line.item)
     }
 
@@ -205,11 +263,17 @@ struct EntryRow: View {
             }
             Spacer(minLength: 8)
             VStack(alignment: .trailing, spacing: 2) {
-                Text(Money.string(line.amount * line.direction.sign, currency: line.currency, sign: .always))
+                Text(Money.string((showsMonth ? line.remaining : line.amount) * line.direction.sign,
+                                  currency: line.currency, sign: .always))
                     .font(.amount(15, weight: .semibold))
                     .strikethrough(line.status != .pending, pattern: line.status == .excluded ? .dash : .solid)
                     .foregroundStyle(amountColor)
-                if line.currency != Money.baseCurrency, let value = line.signedValue {
+                if line.isPartiallyPaid && !showsMonth {
+                    Text("Kalan \(Money.string(line.remaining, currency: line.currency, fractions: false))")
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(Color.uyari)
+                        .monospacedDigit()
+                } else if line.currency != Money.baseCurrency, let value = line.signedValue {
                     Text("≈ " + Money.string(value, fractions: false))
                         .font(.caption2)
                         .foregroundStyle(Color.ikincil)
@@ -224,12 +288,19 @@ struct EntryRow: View {
     private var amountColor: Color {
         switch line.status {
         case .paid, .excluded: .odendi
-        case .pending: line.direction == .expense ? .gider : .gelir
+        case .pending:
+            // Kalanı sonraki aya devredilmiş kayıt bu ay için kapanmıştır.
+            if !line.isProjected && line.remaining == 0 && (line.entry?.carriedOutValue ?? 0) > 0 {
+                .odendi
+            } else {
+                line.direction == .expense ? .gider : .gelir
+            }
         }
     }
 
     private var subtitle: String {
         var parts: [String] = []
+        if showsMonth { parts.append(line.month.title) }
         switch line.status {
         case .paid:
             if let date = line.entry?.paidAt {
@@ -239,7 +310,17 @@ struct EntryRow: View {
                 parts.append(String(localized: "Ödendi"))
             }
         case .excluded: parts.append(String(localized: "Bu ay hariç"))
-        case .pending: if line.isProjected { parts.append(String(localized: "Düzenli · tahmini")) }
+        case .pending:
+            if line.isProjected { parts.append(String(localized: "Düzenli · tahmini")) }
+            if line.isPartiallyPaid {
+                parts.append(String(localized: "Kısmi · \(Money.string(line.paid, currency: line.currency, fractions: false)) ödendi"))
+            }
+            if let entry = line.entry, entry.carriedOutValue > 0, entry.remainingValue == 0 {
+                parts.append(String(localized: "\(Month(key: entry.carriedToKey).shortTitle) ayına devredildi"))
+            }
+        }
+        if let carriedIn = line.entry?.carriedInValue, carriedIn > 0 {
+            parts.append(String(localized: "Devreden \(Money.string(carriedIn, currency: line.currency, fractions: false))"))
         }
         if showOwner { parts.append(line.item.ownerName) }
         if line.item.dueDay > 0 { parts.append(String(localized: "SÖT \(Int(line.item.dueDay))")) }
