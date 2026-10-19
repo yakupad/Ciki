@@ -17,6 +17,7 @@
 		0D22113E3A4A1A954FA50663 /* CSVExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F43C0A8A9FA642ED3AF200 /* CSVExport.swift */; };
 		113FC50A09F2C7DACD5AEA06 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CD8B9267987C195160107D /* Ledger.swift */; };
 		11BE5CC82D20AF45F4DCB714 /* ManagedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08D6670F39CAC265A24B926 /* ManagedObjects.swift */; };
+		17251CF14515CB9A73CA18CC /* ContextVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3A49DC4351C53492B15ED /* ContextVersion.swift */; };
 		196BA9878583584B90CC9525 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C213E4AD83119BFB1BF0A093 /* PrivacyInfo.xcprivacy */; };
 		1C79AC6DADD36463EB3713ED /* CikiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A673A96DCCDE9C450C393 /* CikiApp.swift */; };
 		1D616981C42E27F3FFD46598 /* SyncMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C554E51E0B3EB0D215EB4D /* SyncMonitor.swift */; };
@@ -208,6 +209,7 @@
 		3B63C9F9965A2789A0D3289F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3E5C45BEE8551539293B6E62 /* Ciki.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ciki.entitlements; sourceTree = "<group>"; };
 		3EC67ADC5E3BF84474B4EB5C /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		3EE3A49DC4351C53492B15ED /* ContextVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextVersion.swift; sourceTree = "<group>"; };
 		41616603D2165BEDD05307FC /* AmountField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountField.swift; sourceTree = "<group>"; };
 		45747D7F2C8DF2991B743C38 /* CikiWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CikiWatch.entitlements; sourceTree = "<group>"; };
 		515A0C33D13A376162C6ECD9 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 		82D783D770D1E6C923FD9935 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				3EE3A49DC4351C53492B15ED /* ContextVersion.swift */,
 				71C0EAF804F5B2C100E6EE0E /* DataEraser.swift */,
 				D033423DE3BA43609B3C52A6 /* DeviceOwner.swift */,
 				6CB05686DF2E8767ED1EB67F /* HouseholdSync.swift */,
@@ -836,6 +839,7 @@
 				1C79AC6DADD36463EB3713ED /* CikiApp.swift in Sources */,
 				D2217FB3713C4430E65FE84A /* CloudSharing.swift in Sources */,
 				46D6C9BC976E44AC8B6CDC06 /* Components.swift in Sources */,
+				17251CF14515CB9A73CA18CC /* ContextVersion.swift in Sources */,
 				637FEC061347420CBC778C83 /* DataEraser.swift in Sources */,
 				B5AE26A89B92F33CF952C326 /* DeviceOwner.swift in Sources */,
 				073ADEDCBCE6178883A590B6 /* EntryEditorView.swift in Sources */,

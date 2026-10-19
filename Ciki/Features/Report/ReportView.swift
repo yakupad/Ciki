@@ -10,8 +10,8 @@ struct ReportView: View {
     private var items: FetchedResults<LedgerItem>
     @FetchRequest(sortDescriptors: [SortDescriptor(\Person.sortOrder)])
     private var people: FetchedResults<Person>
-    @FetchRequest(sortDescriptors: [])
-    private var entries: FetchedResults<LedgerEntry>
+    /// Kayıt değişikliklerinde (durum, tutar) ekranın yenilenmesi için.
+    private let changes = ContextVersion()
 
     @State private var filter: OwnerFilter = .all
     @State private var range: ReportRange = .initial
@@ -56,7 +56,7 @@ struct ReportView: View {
     }
 
     var body: some View {
-        let _ = entries.count
+        let _ = changes.version
         let now = Month.current
         let months = range.offsets.map { now.adding($0) }
         let totals = Ledger.totals(for: months, items: items.filter(filter.includes), rates: rates.table)

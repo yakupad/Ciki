@@ -10,8 +10,8 @@ struct GridView: View {
     private var items: FetchedResults<LedgerItem>
     @FetchRequest(sortDescriptors: [SortDescriptor(\Person.sortOrder)])
     private var people: FetchedResults<Person>
-    @FetchRequest(sortDescriptors: [])
-    private var entries: FetchedResults<LedgerEntry>
+    /// Kayıt değişikliklerinde (durum, tutar) ekranın yenilenmesi için.
+    private let changes = ContextVersion()
 
     @State private var filter: OwnerFilter = .all
     @State private var route: EditorRoute?
@@ -27,7 +27,7 @@ struct GridView: View {
 
     var body: some View {
         @Bindable var app = app
-        let _ = entries.count
+        let _ = changes.version
         let months = (-4...6).map { app.month.adding($0) }
         let table = buildTable(months: months)
 

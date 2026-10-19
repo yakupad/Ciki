@@ -11,9 +11,8 @@ struct SummaryView: View {
     private var items: FetchedResults<LedgerItem>
     @FetchRequest(sortDescriptors: [SortDescriptor(\Person.sortOrder)])
     private var people: FetchedResults<Person>
-    /// Kayıt değişikliklerinde ekranın yenilenmesi için.
-    @FetchRequest(sortDescriptors: [])
-    private var entries: FetchedResults<LedgerEntry>
+    /// Kayıt değişikliklerinde (durum, tutar) ekranın yenilenmesi için.
+    private let changes = ContextVersion()
 
     @State private var route: EditorRoute?
     @Environment(\.isWideLayout) private var isWide
@@ -23,7 +22,7 @@ struct SummaryView: View {
 
     var body: some View {
         @Bindable var app = app
-        let _ = entries.count
+        let _ = changes.version
         let lines = Ledger.lines(for: app.month, items: items, rates: rates.table)
         let summary = Ledger.summary(of: lines)
 
