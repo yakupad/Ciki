@@ -1,5 +1,6 @@
 • Parçalı ödeme: bir borcun bir kısmını ödeyip kalanını sonra kapatın. Ödenen ve kalan tutar satırda görünür.
 • Önceki aylardan kalan borçlar Aylar ekranının başında listelenir; tek dokunuşla ödendi yapın ya da bu aya devredin.
 • Varlıklar: hesaplarınızın bakiyesini girin, nakit varlığınızı ve ödemelerden sonra ne kalacağını Özet'te görün.
+• Her ay ne kadar ödeneceği ve ne kadar geleceği Özet'te ve Mac'te menü çubuğunda görünür.
 • Bir kaydın durumu değişince ekran artık hemen güncelleniyor.
 • Mac'te CSV içe aktarırken pencerenin kilitlenmesi giderildi.

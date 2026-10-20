@@ -1,5 +1,6 @@
 • Partial payments: pay part of a debt now and the rest later. The paid and remaining amounts show on the row.
 • Balances left from earlier months are listed at the top of Months; mark them paid or carry them into this month.
 • Assets: enter your account balances and see your cash and what's left after payments on Summary.
+• Summary and the Mac menu bar now show what's still to pay and still to come each month.
 • The screen now updates as soon as an entry's status changes.
 • Fixed the window locking up when importing a CSV on Mac.
